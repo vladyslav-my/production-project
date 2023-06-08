@@ -8,7 +8,10 @@
     "allowJs": true, // Комплілятор буде оброблювати не тільки ts файли, а й js
     "moduleResolution": "node",
     // Для абсолютного імпорту
-  //  "baseUrl": ".",
+   "baseUrl": ".",
+   "paths": {
+    "*": ["./src/*"]
+   },
     "esModuleInterop": true, // дозволяє працювати з пакетами node js за допомогою синтаксису модулів ES
     // Включає default import, тобто замість 
     // import * as path from 'path'; - можна писати import path from 'path';
