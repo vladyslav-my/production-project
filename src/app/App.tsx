@@ -7,18 +7,18 @@ import { MainPage } from "pages/MainPage";
 import { useTheme } from "app/providers/ThemeProvider";
 import { classNames } from "shared/lib/classNames/classNames";
 import { AppRouter } from "./providers/router";
+import { Navbar } from "widgets/Navbar";
 
 const App = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
   
   return (
     <div className={classNames("app", {}, [theme])}>
-      <button onClick={toggleTheme}>TOGGLE</button>
-      <Link to={"/"}>Главная</Link>
-      <Link to={"/about"}>О сайте</Link>
+      <Navbar />
       <AppRouter />
     </div>
   );
 };
 
 export default App;
+
