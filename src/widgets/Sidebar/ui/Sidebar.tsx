@@ -9,20 +9,20 @@ interface SidebarProps {
 }
 
 export const Sidebar: FC<SidebarProps> = ({ className }) => {
-    const [collapsed, setColappsed] = useState(false);
+	const [collapsed, setColappsed] = useState(false);
 
-    const onToggle = () => {
-        setColappsed(prev => !prev);
-    }
+	const onToggle = () => {
+		setColappsed(prev => !prev);
+	};
 
-    return (
-        <div className={classNames(cls.Sidebar, {[cls.collapsed]: collapsed}, [className])}>
+	return (
+		<div className={classNames(cls.Sidebar, {[cls.collapsed]: collapsed}, [className])}>
            
-            <div className={cls.switchers}>
-                <LangSwitcher />
-                <button onClick={onToggle}>Toggle</button>
-                <ThemeSwitcher className='' />
-            </div>
-        </div>
-    )
-}
+			<div className={cls.switchers}>
+				<LangSwitcher />
+				<button onClick={onToggle}>Toggle</button>
+				<ThemeSwitcher className='' />
+			</div>
+		</div>
+	);
+};
