@@ -7,21 +7,23 @@ module.exports = {
 	extends: [
 		'eslint:recommended',
 		'plugin:react/recommended',
-		'plugin:@typescript-eslint/recommended'
+		'plugin:@typescript-eslint/recommended',
+		'plugin:i18next/recommended'
 	],
 	overrides: [
 	],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
-		'ecmaVersion': 'latest',
-		'sourceType': 'module'
+		ecmaVersion: 'latest',
+		sourceType: 'module'
 	},
 	plugins: [
 		'react',
-		'@typescript-eslint'
+		'@typescript-eslint',
+		'i18next'
 	],
 	rules: {
-		indent: [
+		'indent': [
 			'error',
 			'tab'
 		],
@@ -29,14 +31,15 @@ module.exports = {
 			'error',
 			'unix'
 		],
-		quotes: [
+		'quotes': [
 			'error',
 			'single'
 		],
-		semi: [
+		'semi': [
 			'error',
 			'always'
 		],
+		'i18next/no-literal-string': ['warn', { markupOnly: true }],
 		'@typescript-eslint/ban-ts-comment': 'warn',
 		'react/react-in-jsx-scope': 'off'
 	}
