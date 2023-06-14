@@ -6,7 +6,11 @@
   "scripts": {
     "start": "webpack serve --env port=3000",
     "build:prod": "webpack  --env mode=production",
-    "build:dev": "webpack  --env mode=development"
+    "build:dev": "webpack  --env mode=development",
+    "lint:ts": "eslint \"**/*.{ts,tsx}\"",
+    "lint:ts:fix": "eslint --fix \"**/*.{ts,tsx}\"",
+    "lint:scss": "stylelint \"**/*.scss\"",
+    "lint:scss:fix": "stylelint --fix \"**/*.scss\""
   },
   "keywords": [],
   "author": "",
@@ -35,6 +39,9 @@
     "sass": "^1.63.2",
     "sass-loader": "^13.3.1",
     "style-loader": "^3.3.3",
+    "stylelint": "^15.7.0",
+    "stylelint-config-recommended-scss": "^12.0.0",
+    "stylelint-config-standard-scss": "^9.0.0",
     "ts-loader": "^9.4.3",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.3",
