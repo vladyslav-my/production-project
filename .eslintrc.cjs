@@ -20,7 +20,7 @@ module.exports = {
 	plugins: [
 		"react",
 		"@typescript-eslint",
-		"i18next"
+		"i18next",
 	],
 	rules: {
 		"indent": [
