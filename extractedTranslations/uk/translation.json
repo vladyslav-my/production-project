@@ -3,5 +3,8 @@
   "lang": "lang",
   "routeAbout": "routeAbout",
   "routeMain": "routeMain",
-  "text": "text"
+  "text": "text",
+  "throw error": "throw error",
+  "Обновить страницу": "Обновить страницу",
+  "Произошла непредвиденная ошибка": "Произошла непредвиденная ошибка"
 }
