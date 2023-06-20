@@ -5,4 +5,6 @@
       "source.fixAll.eslint": true,
       "source.fixAll.stylelint": true
    },
+   "jest.jestCommandLine": "npx jest --config config/jest/jest.config.ts",
+   "jest.autoRun": "off"
 }
