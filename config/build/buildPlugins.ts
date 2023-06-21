@@ -20,9 +20,9 @@ export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPlugi
 			__IS_DEV__: JSON.stringify(isDev),
 		}),
 		new ReactRefreshWebpachPlugin,
-		new webpack.HotModuleReplacementPlugin({
+		new webpack.HotModuleReplacementPlugin(),
+		new BundleAnalyzerPlugin({
 			openAnalyzer: false,
-		}),
-		new BundleAnalyzerPlugin()
+		})
 	];
 }
