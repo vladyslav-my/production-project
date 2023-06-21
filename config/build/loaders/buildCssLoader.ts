@@ -18,5 +18,5 @@ export function buildCssLoader(isDev: boolean) {
 			},
 			"sass-loader",
 		],
-	}
+	};
 }
