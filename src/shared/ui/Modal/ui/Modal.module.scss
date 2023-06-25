@@ -1,0 +1,41 @@
+.Modal {
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba($color: #000000, $alpha: 0.4);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	transition: opacity 0.3s ease;
+
+}
+
+.wrapper {
+	padding: 10px;
+	border-radius: 10px;
+	transition: all 0.5s ease;
+	color: var(--primary-color);
+	background-color: var(--secondary-bg-color);
+}
+
+.clossed {
+	pointer-events: none;
+	opacity: 0;
+	.scalled {
+		transform: scale(0.2);
+	}
+}
+
+.oppened {
+	pointer-events: auto;
+	opacity: 1;
+	.scalled {
+		transform: scale(1);
+	}
+}
+

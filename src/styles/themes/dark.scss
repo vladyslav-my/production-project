@@ -1,8 +1,12 @@
-.app.dark {
+:root:has(.app.dark) {
     --bg-color: #090949;
+    --secondary-bg-color: #4e4eac;
     --invert-bg-color: #e8e8ea;
 
     --primary-color: #049604;
     --invert-primary-color: #f838e5;
     --secondary-color: #0449e0;
 }
+
+
+
