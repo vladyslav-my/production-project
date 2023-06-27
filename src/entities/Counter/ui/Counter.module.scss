@@ -1,0 +1,19 @@
+.Counter {
+	display: inline-flex;
+	border-radius: 10px;
+	font-size: 32px;
+	align-items: center;
+}
+
+.inc, .dec {
+	
+	width: 48px;
+	height: 48px;
+	border: none;
+	border-radius: 100%;
+	background-color: aquamarine;
+}
+
+.result {
+	padding: 0 10px;
+}
