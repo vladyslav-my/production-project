@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { Button, ThemeButton } from "shared/ui/Button";
 import { Modal } from "shared/ui/Modal";
 import { Portal } from "shared/ui/Portal";
+import { LoginModal } from "features/AuthByUsername";
 
 interface NavBarProps {
     className?: string
@@ -24,9 +25,7 @@ export const Navbar: FC<NavBarProps> = ({ className }) => {
 		<div className={classNames(cls.Navbar, {}, [className])}>
 			<Button onClick={onToggleModal} theme={ThemeButton.OUTLINE}>toggle modal</Button>
 			<Portal>
-				<Modal oppened={modalOpenned} onToggle={onToggleModal}>
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt, adipisci.
-				</Modal>
+				<LoginModal oppened={modalOpenned} onToggle={onToggleModal}></LoginModal>
 			</Portal>
 		</div>
 	);

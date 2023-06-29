@@ -1,0 +1,15 @@
+.Input {
+	width: 100%;
+	outline: none;
+	border: none;
+	padding: 5px;
+	border-radius: 10px;
+	&:focus {
+		outline: none;
+	}
+}
+
+.wrapper {
+	width: 300px;
+
+}

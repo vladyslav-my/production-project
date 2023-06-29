@@ -12,9 +12,11 @@ export const StoreProvider: FC<StoreProviderProps> = ({ children, initialState }
 	
 	const store = createReduxStore(initialState);
 	
+
 	return (
 		<Provider store={store}>
 			{ children }
 		</Provider>
 	);
 };
+
