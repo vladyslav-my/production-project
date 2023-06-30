@@ -8,11 +8,11 @@ import { loginByUsername } from "../../services/loginByUsername/loginByUsername"
 import { Button, ThemeButton } from "shared/ui/Button";
 import { Input } from "shared/ui/Input/Input";
 
-interface LoginFormProps {
+export interface LoginFormProps {
 	className?: string
 }
 
-export const LoginForm: FC<LoginFormProps> = ({ className }) => {
+const LoginForm: FC<LoginFormProps> = ({ className }) => {
 	const dispatch = useDispatch<any>();
 
 	const {username, password, isLoading, error} = useSelector(getLoginFormState);
@@ -39,3 +39,5 @@ export const LoginForm: FC<LoginFormProps> = ({ className }) => {
 		</div>
 	);
 };
+
+export default LoginForm;

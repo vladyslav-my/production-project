@@ -20,13 +20,14 @@ export function buildPlugins({paths, isDev}: BuildOptions): webpack.WebpackPlugi
 		}),
 	];
 
+	new BundleAnalyzerPlugin({
+		openAnalyzer: false,
+	});
+
 	if (isDev) {
 		plugins.push(
 			new ReactRefreshWebpachPlugin,
 			new webpack.HotModuleReplacementPlugin(),
-			new BundleAnalyzerPlugin({
-				openAnalyzer: false,
-			})
 		);
 	}
 

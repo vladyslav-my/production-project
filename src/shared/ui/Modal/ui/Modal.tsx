@@ -18,6 +18,12 @@ export const Modal: FC<ModalProps> = ({ className, oppened, lazy, onToggle, chil
 		if (oppened) {
 			setIsMounted(true);
 		}
+
+		if (!oppened) {
+			timeoutRef.current = setTimeout(() => {
+				setIsMounted(false);
+			}, 300);
+		}
 	}, [oppened]);
 
 
