@@ -1,5 +1,5 @@
 import { FC, ReactNode } from "react";
-import { StateSchema } from "../config/stateSchema";
+import { StateSchema } from "../config/StateSchema";
 import { Provider } from "react-redux";
 import { createReduxStore } from "../config/store";
 

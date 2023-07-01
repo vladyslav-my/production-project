@@ -26,4 +26,3 @@ export const LoginModal: FC<LoginModalProps> = ({ className, oppened, onToggle }
 		</Modal>
 	);
 };
-
