@@ -32,18 +32,6 @@
     gap: 15px
 }
 
-.mainSvg, .aboutSvg {
-    width: 30px;
-    height: 30px;
-    fill: var(--secondary-color);
-} 
-
-.link {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
 .block {
     display: none;
 }
