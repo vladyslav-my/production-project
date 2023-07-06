@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, ThemeButton } from "shared/ui/Button";
 import { Input } from "shared/ui/Input/Input";
 import { DynamicReduceLoader } from "shared/lib/components/DynamicReduceLoader";
-import { StateSchemaKey } from "app/providers/StoreProvider/config/StateSchema";
+import { ReducersList } from "app/providers/StoreProvider";
 import { loginByUsername } from "../../services/loginByUsername/loginByUsername";
 import { getLoginFormUsername } from "../../selectors/getLoginFormUsername/getLoginFormUsername";
 import { getLoginFormPassword } from "../../selectors/getLoginFormPassword/getLoginFormPassword";
@@ -15,9 +15,6 @@ import { getLoginFormIsLoading } from "../../selectors/getLoginFormIsLoading/get
 import { getLoginFormError } from "../../selectors/getLoginFormError/getLoginFormError";
 import { loginFormActions, loginFormReducer } from "../../slice/loginFormSlice";
 
-export type ReducersList = {
-	[name in StateSchemaKey]?: Reducer;
-}
 
 export interface LoginFormProps {
 	className?: string

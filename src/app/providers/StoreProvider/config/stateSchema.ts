@@ -7,13 +7,14 @@ import {
 import { CombinedState } from "redux";
 import { AxiosInstance } from "axios";
 import { NavigateOptions, To } from "react-router-dom";
+import { ProfileSchema } from "entities/Profile/model/types/Profile";
 
 export interface StateSchema {
     counter: CounterSchema;
     user: UserSchema;
     loginForm?: LoginFormSchema;
+    profile?: ProfileSchema;
 }
-
 
 export type StateSchemaKey = keyof StateSchema;
 
@@ -36,4 +37,9 @@ export interface ExtraArgumentType {
 export interface ThunkConfig<T> {
     rejectValue: T;
     extra: ExtraArgumentType;
+    state: StateSchema;
+}
+
+export type ReducersList = {
+	[name in StateSchemaKey]?: Reducer;
 }

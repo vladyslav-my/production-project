@@ -7,7 +7,6 @@ import { ErrorBoundary } from "./providers/ErrorBoundary";
 
 const App = () => {
 	const { theme } = useTheme();
-  
 	return (
 		<div className={classNames("app", {}, [theme])}>
 			<Navbar />
