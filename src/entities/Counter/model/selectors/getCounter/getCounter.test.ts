@@ -9,6 +9,6 @@ describe("getCounter", () => {
 				value: 10
 			}
 		};
-		expect(getCounter(state as StateSchema)).toEqual({value: 10});
+		expect(getCounter(state as StateSchema)).toEqual({ value: 10 });
 	});
 });

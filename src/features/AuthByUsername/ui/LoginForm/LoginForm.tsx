@@ -42,7 +42,7 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
 
 	const onLoginClick = useCallback(() => {
 		console.log("loginByUsername");
-		dispatch(loginByUsername({username, password}));
+		dispatch(loginByUsername({ username, password }));
 	}, [dispatch, username, password]);
 	
 	return (

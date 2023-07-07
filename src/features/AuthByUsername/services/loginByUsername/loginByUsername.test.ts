@@ -5,7 +5,7 @@ import { loginByUsername } from "./loginByUsername";
 
 jest.mock("axios");
 
-const mockedAxios = jest.mocked(axios, {shallow: false});
+const mockedAxios = jest.mocked(axios, { shallow: false });
 
 describe("loginByUsername", () => {
 	// let dispatch: Dispatch;

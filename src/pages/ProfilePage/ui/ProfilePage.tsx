@@ -31,16 +31,16 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
 
 
 	const onFirstNameChange = useCallback((value?: string) => {
-		dispatch(ProfileActions.setFormData({ first: value}));
+		dispatch(ProfileActions.setFormData({ first: value }));
 	}, [dispatch]);
 	const onLastNameChange = useCallback((value?: string) => {
-		dispatch(ProfileActions.setFormData({ lastName: value}));
+		dispatch(ProfileActions.setFormData({ lastName: value }));
 	}, [dispatch]);
 	const onAgeChange = useCallback((value?: string) => {
-		dispatch(ProfileActions.setFormData({ age: Number(value)}));
+		dispatch(ProfileActions.setFormData({ age: Number(value) }));
 	}, [dispatch]);
 	const onAvatarChange = useCallback((value?: string) => {
-		dispatch(ProfileActions.setFormData({ avatar: value}));
+		dispatch(ProfileActions.setFormData({ avatar: value }));
 	}, [dispatch]);
 
 

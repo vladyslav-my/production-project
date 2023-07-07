@@ -16,7 +16,7 @@ interface SidebarProps {
 
 export const Sidebar: FC<SidebarProps> = ({ className }) => {
 	const [collapsed, setColappsed] = useState(false);
-	const {t} = useTranslation("navbar");
+	const { t } = useTranslation("navbar");
 	
 
 	const onToggle = () => {
@@ -28,7 +28,7 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
 	));
 
 	return (
-		<div data-testid="sidebar" className={classNames(cls.Sidebar, {[cls.collapsed]: collapsed}, [className])}>
+		<div data-testid="sidebar" className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}>
 			<div className={cls.links}>
 				{creatingLinks}
 			</div>

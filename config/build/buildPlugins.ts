@@ -1,11 +1,11 @@
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import webpack from "webpack";
-import {BuildOptions} from "./types/config";
+import { BuildOptions } from "./types/config";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import ReactRefreshWebpachPlugin from "@pmmmwh/react-refresh-webpack-plugin";
-import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
-export function buildPlugins({paths, isDev, apiUrl}: BuildOptions): webpack.WebpackPluginInstance[] {
+export function buildPlugins({ paths, isDev, apiUrl }: BuildOptions): webpack.WebpackPluginInstance[] {
 	const plugins = [
 		new HtmlWebpackPlugin({
 			template: paths.html,

@@ -15,7 +15,7 @@ interface NavBarProps {
 }
 
 export const Navbar: FC<NavBarProps> = ({ className }) => {
-	const {t} = useTranslation("navbar");
+	const { t } = useTranslation("navbar");
 	const dispatch = useDispatch();
 	const authData = useSelector(getUserAuthData);
 	const booleanAuthData = !!authData;
