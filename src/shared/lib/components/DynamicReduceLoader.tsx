@@ -8,7 +8,7 @@ type ReducersListEntry = [StateSchemaKey, Reducer]
 
 interface DynamicReduceLoaderProps {
 	children: ReactNode,
-	removeAfterUnmount?: boolean
+	removeAfterUnmount?: boolean,
 	reducers: any,
 }
 
@@ -18,14 +18,15 @@ export const DynamicReduceLoader: FC<DynamicReduceLoaderProps> = ({ children, re
 	const store = useStore() as ReduxStoreWithManager;
 
 	useEffect(() => {
-		Object.entries(reducers).forEach(([name, reducer]: ReducersListEntry) => {
+		const cortageEntries = Object.entries(reducers) as ReducersListEntry[];
+		cortageEntries.forEach(([name, reducer]: ReducersListEntry) => {
 			store.reducerManager.add(name, reducer);
 			dispatch({ type: `@INIT ${name} reducer` });
 		});
 
 		return () => {
 			if (removeAfterUnmount) {
-				Object.entries(reducers).forEach(([name, reducer]: ReducersListEntry) => {
+				cortageEntries.forEach(([name, reducer]: ReducersListEntry) => {
 					store.reducerManager.remove(name);
 					dispatch({ type: `@DESTROY ${name} reducer` });
 				});

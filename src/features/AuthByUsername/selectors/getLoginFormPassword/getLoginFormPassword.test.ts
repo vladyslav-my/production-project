@@ -1,7 +1,6 @@
 import { StateSchema } from "app/providers/StoreProvider/config/StateSchema";
 
 import { getLoginFormPassword } from "./getLoginFormPassword";
-import { DeepPartial } from "@reduxjs/toolkit";
 
 describe("getLoginFormPassword", () => {
 	test("should return current value", () => {

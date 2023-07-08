@@ -46,7 +46,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 		<div className={classNames(cls.ProfileCard, {}, [className])}>
 			<Input onChange={onFirstNameChange} readOnly={readOnly} externalPlaceholder="First name" value={data?.first} />
 			<Input onChange={onLastNameChange} readOnly={readOnly} externalPlaceholder="Last name" value={data?.lastname} />
-			<Input onChange={onAgeChange} readOnly={readOnly} externalPlaceholder="Age" value={data?.age.toString()} />
+			<Input onChange={onAgeChange} readOnly={readOnly} externalPlaceholder="Age" value={data?.age?.toString()} />
 			<Input onChange={onAvatarChange} readOnly={readOnly} externalPlaceholder="Avatar url" value={data?.avatar} />
 		</div>
 	);

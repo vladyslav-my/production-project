@@ -1,7 +1,6 @@
-import { ReducersMapObject, configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { CombinedState, Reducer, ReducersMapObject, configureStore } from "@reduxjs/toolkit";
 import { StateSchema } from "./StateSchema";
 import { counterReducer } from "entities/Counter";
-import { loginFormReducer } from "features/AuthByUsername";
 import { userReducer } from "entities/User";
 import { createReducerManager } from "./reducerManager";
 import { $api } from "shared/api/api";
@@ -13,7 +12,7 @@ import { ExtraArgumentType } from "./StateSchema";
 export const createReduxStore = (
 	initialState?: StateSchema, 
 	asyncReducers?: ReducersMapObject<StateSchema>,
-	navigate?: (to: To, options?: NavigateOptions) => void
+	navigate?: (to: To, options?: NavigateOptions | undefined) => void
 ) => {
 
 	const rootReducers: ReducersMapObject<StateSchema> = {
@@ -31,7 +30,7 @@ export const createReduxStore = (
 	const reducerManager = createReducerManager(rootReducers);
 
 	const store = configureStore({
-		reducer: reducerManager.reduce,
+		reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
 		devTools: __IS_DEV__,
 		preloadedState: initialState,
 		middleware: (getDefaultMiddleware) => getDefaultMiddleware({
@@ -39,12 +38,13 @@ export const createReduxStore = (
 		})
 	});
 
-	//@ts-ignore
+	// @ts-ignore
 	store.reducerManager = reducerManager;
 
 	return store; 
 };
 
 export type AppDispatch = ReturnType<typeof createReduxStore>["dispatch"];
+export type RootState = ReturnType<ReturnType<typeof createReduxStore>["getState"]>;
 
 

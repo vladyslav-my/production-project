@@ -4,20 +4,17 @@ import { FC, useState } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import { ThemeSwitcher } from "shared/ui/ThemeSwitcher";
 import { LangSwitcher } from "shared/ui/LangSwitcher";
-import { useTranslation } from "react-i18next";
 import { Button, ThemeButton } from "shared/ui/Button";
 import { SidebarItemsLink } from "widgets/Sidebar/model/links";
 import { SidebarLink } from "../SidebarLink/SidebarLink";
 
 
 interface SidebarProps {
-    className?: string
+   className?: string
 }
 
 export const Sidebar: FC<SidebarProps> = ({ className }) => {
 	const [collapsed, setColappsed] = useState(false);
-	const { t } = useTranslation("navbar");
-	
 
 	const onToggle = () => {
 		setColappsed(prev => !prev);

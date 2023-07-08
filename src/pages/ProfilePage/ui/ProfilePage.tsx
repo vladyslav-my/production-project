@@ -34,7 +34,7 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
 		dispatch(ProfileActions.setFormData({ first: value }));
 	}, [dispatch]);
 	const onLastNameChange = useCallback((value?: string) => {
-		dispatch(ProfileActions.setFormData({ lastName: value }));
+		dispatch(ProfileActions.setFormData({ lastname: value }));
 	}, [dispatch]);
 	const onAgeChange = useCallback((value?: string) => {
 		dispatch(ProfileActions.setFormData({ age: Number(value) }));

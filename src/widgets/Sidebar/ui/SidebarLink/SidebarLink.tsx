@@ -15,7 +15,7 @@ export const SidebarLink: FC<SidebarLinkProps> = ({ className, item, collapsed }
 	return (
 		<AppLink className={classNames(cls.SidebarLink, {}, [className])} to={item.path}>
 			<item.Icon className={cls.icon} />
-			<span className={collapsed ? cls.block : null}>{item.name}</span>
+			<span className={collapsed ? cls.block : undefined}>{item.name}</span>
 		</AppLink>
 	);
 };

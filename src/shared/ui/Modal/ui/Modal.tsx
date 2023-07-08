@@ -1,6 +1,7 @@
 import React, { FC, ReactNode, useEffect, useRef, useState } from "react";
 import cls from "./Modal.module.scss";
 import { classNames } from "shared/lib/classNames/classNames";
+import { Portal } from "shared/ui/Portal";
 
 interface ModalProps {
 	className?: string,
@@ -34,7 +35,7 @@ export const Modal: FC<ModalProps> = ({ className, oppened, lazy, onToggle, chil
 	}, []);
 
 	const onCloseHandler = () => {
-		onToggle();
+		onToggle && onToggle();
 		timeoutRef.current = setTimeout(() => {
 			setIsMounted(false);
 		}, 300);
@@ -54,10 +55,12 @@ export const Modal: FC<ModalProps> = ({ className, oppened, lazy, onToggle, chil
 	}
 
 	return (
-		<div onClick={onCloseHandler} className={classNames(cls.Modal, modalMods, [className])}>
-			<div onClick={onWrapperClick} className={classNames(cls.wrapper, {}, [cls.animation])}>
-				{ children }
+		<Portal>
+			<div onClick={onCloseHandler} className={classNames(cls.Modal, modalMods, [className])}>
+				<div onClick={onWrapperClick} className={classNames(cls.wrapper, {}, [cls.animation])}>
+					{ children }
+				</div>
 			</div>
-		</div>
+		</Portal>
 	);
 };
