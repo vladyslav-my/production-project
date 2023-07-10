@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import cls from "./SidebarLink.module.scss";
 import { classNames } from "shared/lib/classNames/classNames";
 import { AppLink } from "shared/ui/AppLink/AppLink";
@@ -11,11 +11,11 @@ interface SidebarLinkProps {
 	item: SidebarItemsLinkType
 }
 
-export const SidebarLink: FC<SidebarLinkProps> = ({ className, item, collapsed }) => {
+export const SidebarLink: FC<SidebarLinkProps> = memo(({ className, item, collapsed }) => {
 	return (
 		<AppLink className={classNames(cls.SidebarLink, {}, [className])} to={item.path}>
 			<item.Icon className={cls.icon} />
 			<span className={collapsed ? cls.block : undefined}>{item.name}</span>
 		</AppLink>
 	);
-};
+});

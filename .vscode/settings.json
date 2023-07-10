@@ -29,7 +29,36 @@
       ],
       "exports": [
          "export { <FTName> } from \"./ui/<FTName>\";"
+      ],
+      "selectorTest": [
+         "import { StateSchema } from \"app/providers/StoreProvider/config/StateSchema\";",
+         "",
+         "import { <state | capitalize>Form<key | capitalize> } from \"./<state | capitalize>Form<key | capitalize>\";",
+         "",
+         "describe(\"<state | capitalize>Form<key | capitalize>\", () => {",
+         "\ttest(\"should return current value\", () => {",
+         "\t\tconst state: DeepPartial<StateSchema> = {",
+         "\t\t\t<state | lowercasefirstchar>: {",
+         "\t\t\t\t<key | lowercasefirstchar>: \"test\"",
+         "\t\t\t}",
+         "\t\t};",
+         "",
+         "\t\texpect(<state | capitalize>Form<key | capitalize>(state as StateSchema)).toEqual(\"test\");",
+         "\t});",
+         "",
+         "\ttest(\"should work with emty state\", () => {",
+         "\t\tconst state: DeepPartial<StateSchema> = {};",
+         "",
+         "\t\texpect(<state | capitalize>Form<key | capitalize>(state as StateSchema)).toEqual(\"\");",
+         "\t});",
+         "});"
+      ],
+      "selector": [
+         "import { StateSchema } from \"app/providers/StoreProvider\";",
+         "",
+         "export const getProfileData = (state: StateSchema) => state.profile?.data;"
       ]
+
    },
    "folderTemplates.structures": [
       {
@@ -46,6 +75,26 @@
             {
                "fileName": "ui/<FTName>.module.scss",
                "template": "style"
+            }
+         ]
+      },
+      {
+         "name": "Created selector test",
+         "omitParentDirectory": true,
+         "omitFTName": true,
+         "openFilesWhenDone": [
+            "get<state | capitalize><key | capitalize>/get<state | capitalize><key | capitalize>.ts",
+            "get<state | capitalize><key | capitalize>/get<state | capitalize><key | capitalize>.test.ts"
+      ],
+         "customVariables": ["state", "key"],
+         "structure": [
+            {
+              "fileName": "get<state | capitalize><key | capitalize>/get<state | capitalize><key | capitalize>.ts",
+              "template": "selector"
+            },
+            {
+               "fileName": "get<state | capitalize><key | capitalize>/get<state | capitalize><key | capitalize>.test.ts",
+               "template": "selectorTest"
             }
          ]
       }

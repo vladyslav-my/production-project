@@ -1,6 +1,6 @@
 import cls from "./Navbar.module.scss";
 import { classNames } from "shared/lib/classNames/classNames";
-import { FC, useCallback, useEffect } from "react";
+import { FC, memo, useCallback, useEffect } from "react";
 import { Button, ThemeButton } from "shared/ui/Button";
 import { LoginModal } from "features/AuthByUsername";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,7 +11,7 @@ interface NavBarProps {
     className?: string
 }
 
-export const Navbar: FC<NavBarProps> = ({ className }) => {
+export const Navbar: FC<NavBarProps> = memo(({ className }) => {
 	const dispatch = useDispatch();
 	const authData = useSelector(getUserAuthData);
 	const booleanAuthData = !!authData;
@@ -30,4 +30,4 @@ export const Navbar: FC<NavBarProps> = ({ className }) => {
 			<LoginModal oppened={!booleanAuthData}></LoginModal>
 		</div>
 	);
-};
+});

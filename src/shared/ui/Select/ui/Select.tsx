@@ -1,4 +1,4 @@
-import { ChangeEvent, FC } from "react";
+import { ChangeEvent, FC, memo } from "react";
 import cls from "./Select.module.scss";
 import { classNames } from "shared/lib/classNames/classNames";
 
@@ -16,7 +16,7 @@ interface SelectProps {
 	onChange?: (value: string) => void;
 }
 
-export const Select: FC<SelectProps> = ({ className, value, options, readOnly, externalPlaceholder, onChange }) => {
+export const Select: FC<SelectProps> = memo(({ className, value, options, readOnly, externalPlaceholder, onChange }) => {
 
 
 	const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -45,4 +45,4 @@ export const Select: FC<SelectProps> = ({ className, value, options, readOnly, e
 			</select>
 		</div>
 	);
-};
+});

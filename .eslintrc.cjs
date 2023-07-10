@@ -18,6 +18,8 @@ module.exports = {
 	},
 	plugins: ["react", "@typescript-eslint", "i18next"],
 	rules: {
+		"react/display-name": "off",
+		"react/prop-types": "off",
 		"object-curly-spacing": ["warn", "always"],
 		"indent": ["error", "tab"],
 		"linebreak-style": ["error", "unix"],

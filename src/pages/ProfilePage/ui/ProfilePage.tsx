@@ -62,7 +62,7 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
 				{ error?.length !== 0 && error?.map(error => (
 					<div key={error} className={cls.error}>{error}</div>
 				)) }
-				<ProfileCard 
+				<ProfileCard
 					onFirstNameChange={onFirstNameChange}
 					onLastNameChange={onLastNameChange}
 					onAgeChange={onAgeChange}
