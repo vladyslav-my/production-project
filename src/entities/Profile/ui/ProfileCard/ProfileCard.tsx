@@ -54,6 +54,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 			<Input onChange={onLastNameChange} readOnly={readOnly} externalPlaceholder="Last name" value={data?.lastname} />
 			<Input onChange={onAgeChange} readOnly={readOnly} externalPlaceholder="Age" value={data?.age?.toString()} />
 			<Input onChange={onAvatarChange} readOnly={readOnly} externalPlaceholder="Avatar url" value={data?.avatar} />
+			<Input onChange={onAvatarChange} readOnly={readOnly} externalPlaceholder="City" value={data?.city} />
 			<CurrencySelect onChange={onCurrencyChange} readOnly={readOnly} externalPlaceholder="Currency" value={data?.currency} />
 			<CountrySelect onChange={onCountryChange} readOnly={readOnly} externalPlaceholder="Country" value={data?.country} />
 		</div>

@@ -6,5 +6,50 @@
       "source.fixAll.stylelint": true
    },
    "jest.jestCommandLine": "npx jest --config config/jest/jest.config.ts",
-   "jest.autoRun": "off"
+   "jest.autoRun": "off",
+
+
+   "folderTemplates.fileTemplates": {
+      "component": [
+         "import { FC } from \"react\";",
+         "import cls from \"./<FTName>.module.scss\";",
+         "import { classNames } from \"shared/lib/classNames/classNames\";",
+         "",
+         "interface <FTName>Props {",
+         "\tclassName?: string",
+         "}",
+         "",
+         "export const <FTName>: FC<<FTName>Props> = ({ className }) => {",
+         "\treturn (",
+         "\t\t<div className={classNames(cls.<FTName>, {}, [className])}>",
+         "\t\t\t",
+         "\t\t</div>",
+         "\t)",
+         "}"
+      ],
+      "exports": [
+         "export { <FTName> } from \"./ui/<FTName>\";"
+      ]
+   },
+   "folderTemplates.structures": [
+      {
+         "name": "Component sliced features design",
+         "structure": [
+            {
+              "fileName": "ui/<FTName>.tsx",
+              "template": "component"
+            },
+            {
+               "fileName": "index.ts",
+               "template": "exports"
+            },
+            {
+               "fileName": "ui/<FTName>.module.scss",
+               "template": "style"
+            }
+         ]
+      }
+   ],
+
+   
 }

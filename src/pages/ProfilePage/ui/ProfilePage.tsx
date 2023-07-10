@@ -13,6 +13,7 @@ import { fetchProfileData } from "entities/Profile/model/services/fetchProfileDa
 import { getProfileIsLoading } from "entities/Profile/model/selectors/getProfileIsLoading/getProfileIsLoading";
 import { getProfileFormData } from "entities/Profile/model/selectors/getProfileFormData/getProfileFormData";
 import { Currency } from "entities/Currency";
+import { getProfileError } from "entities/Profile/model/selectors/getProfileError/getProfileError";
 
 interface ProfilePageProps {
    className?: string
@@ -27,7 +28,7 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
 	const readOnly = useSelector(getProfileReadOnly);
 	const formData = useSelector(getProfileFormData);
 	const isLoading = useSelector(getProfileIsLoading);
-
+	const error = useSelector(getProfileError);
 
 	const onFirstNameChange = useCallback((value?: string) => {
 		dispatch(ProfileActions.setFormData({ first: value }));
@@ -58,6 +59,9 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
 		<DynamicReduceLoader reducers={initialReducers}>
 			<div className={classNames(cls.ProfilePage, {}, [className])}>
 				<ProfileHeader />
+				{ error?.length !== 0 && error?.map(error => (
+					<div key={error} className={cls.error}>{error}</div>
+				)) }
 				<ProfileCard 
 					onFirstNameChange={onFirstNameChange}
 					onLastNameChange={onLastNameChange}

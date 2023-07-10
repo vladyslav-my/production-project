@@ -1,4 +1,3 @@
-
 .SidebarLink {
 	display: flex;
 	gap: 10px;
@@ -10,5 +9,9 @@
     height: 30px;
     fill: var(--secondary-color);
 } 
+
+.block {
+	display: none;
+}
 
 
