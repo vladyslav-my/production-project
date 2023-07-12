@@ -8,8 +8,8 @@ type ValueOf<T> = T[keyof T];
 export interface SidebarItemsLinkType {
 	path: ValueOf<typeof RoutePath>,
 	Icon: React.FunctionComponent<React.SVGAttributes<SVGElement>>,
-	name: string
-
+	name: string,
+	authOnly?: boolean
 }
 
 export const SidebarItemsLink: SidebarItemsLinkType[] = [
@@ -26,6 +26,7 @@ export const SidebarItemsLink: SidebarItemsLinkType[] = [
 	{
 		path: RoutePath.profile,
 		Icon: ProfileSvg,
-		name: "Profile"
+		name: "Profile",
+		authOnly: true
 	}
 ];
