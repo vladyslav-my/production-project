@@ -18,6 +18,7 @@ module.exports = {
 	},
 	plugins: ["react", "@typescript-eslint", "i18next"],
 	rules: {
+		"@typescript-eslint/no-empty-interface": "off",
 		"react/display-name": "off",
 		"react/prop-types": "off",
 		"object-curly-spacing": ["warn", "always"],

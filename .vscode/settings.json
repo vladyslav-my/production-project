@@ -10,6 +10,34 @@
 
 
    "folderTemplates.fileTemplates": {
+      "schema": [
+         "export interface <FTName | capitalize>Schema {",
+         "\t// Schema",
+         "}"
+      ],
+      "exportEntities": [
+         "export { <FTName> } from \"./ui/<FTName>\";"
+      ],
+      "slice": [
+         "import { createSlice } from \"@reduxjs/toolkit\";",
+         "import { <FTName | capitalize>Schema } from \"../types/<FTName | capitalize>Schema\";",
+         "",
+         "",
+         "const initialState: <FTName | capitalize>Schema = {",
+         "\t",
+         "};",
+         "",
+         "export const <FTName | lowercase>Slice = createSlice({",
+         "\tname: \"<FTName | lowercase>\",",
+         "\tinitialState,",
+         "\treducers: {",
+         "",
+         "\t},",
+         "});",
+         "",
+         "export const { actions: <FTName | lowercase>Actions } = <FTName | lowercase>Slice;",
+         "export const { reducer: <FTName | lowercase>Reducer } = <FTName | lowercase>Slice;"
+      ],
       "component": [
          "import { FC } from \"react\";",
          "import cls from \"./<FTName>.module.scss\";",
@@ -79,7 +107,7 @@
          ]
       },
       {
-         "name": "Created selector test",
+         "name": "Create selector test",
          "omitParentDirectory": true,
          "omitFTName": true,
          "openFilesWhenDone": [
@@ -95,6 +123,31 @@
             {
                "fileName": "get<state | capitalize><key | capitalize>/get<state | capitalize><key | capitalize>.test.ts",
                "template": "selectorTest"
+            }
+         ]
+      },
+      {
+         "name": "Create entities",
+         "structure": [
+            {
+               "fileName": "ui/<FTName>.tsx",
+               "template": "component"
+            },
+            {
+               "fileName": "model/types/<FTName | capitalize>Schema.ts",
+               "template": "schema"
+            },
+            {
+               "fileName": "model/slice/<FTName | lowercase>Slice.ts",
+               "template": "slice"
+            },
+            {
+               "fileName": "model/selectors",
+               "template": "EmptyDirectory"
+            },
+            {
+               "fileName": "index.ts",
+               "template": "exports"
             }
          ]
       }
