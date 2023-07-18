@@ -1,6 +1,6 @@
 import { FC } from "react";
 import cls from "./ArticleDetailsPage.module.scss";
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames } from "@/shared/lib/classNames/classNames";
 
 interface ArticleDetailsPageProps {
 	className?: string

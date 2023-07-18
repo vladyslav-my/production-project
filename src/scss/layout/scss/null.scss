@@ -1,0 +1,91 @@
+* {
+	margin: 0;
+	padding: 0;
+
+	border: 0;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+:focus,
+:active {
+	// outline: none;
+}
+
+html,
+body {
+	min-width: $minWidth + px;
+	height: 100%;
+}
+
+body {
+	color: $fontColor;
+	background: $layoutColor;
+
+	font-family: $fontFamily;
+	font-size: $fontSize;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	// text-rendering: optimizeLegibility;
+	text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+	font-family: $fontFamily;
+	font-size: inherit;
+}
+
+input {
+	outline: none;
+}
+
+button {
+	cursor: pointer;
+
+	color: inherit;
+	background-color: inherit;
+}
+
+a {
+	color: inherit;
+}
+
+a:focus,
+a:active {
+	// outline: none;
+}
+
+a:link,
+a:visited {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+ul li {
+	list-style: none;
+}
+
+img {
+	vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: inherit;
+	font-weight: inherit;
+}

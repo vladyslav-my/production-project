@@ -1,12 +1,12 @@
 import { FC, useCallback } from "react";
 import cls from "./ProfileHeader.module.scss";
-import { classNames } from "shared/lib/classNames/classNames";
-import { Button, ThemeButton } from "shared/ui/Button";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { Button, ThemeButton } from "@/shared/ui/Button";
 import { useSelector } from "react-redux";
-import { ProfileActions } from "entities/Profile/model/slice/ProfileSlice";
-import { getProfileReadOnly } from "entities/Profile/model/selectors/getProfileReadOnly/getProfileReadOnly";
-import { updateProfileData } from "entities/Profile/model/services/updateProfileData/updateProfileData";
-import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { ProfileActions } from "@/entities/Profile/model/slice/ProfileSlice";
+import { getProfileReadOnly } from "@/entities/Profile/model/selectors/getProfileReadOnly/getProfileReadOnly";
+import { updateProfileData } from "@/entities/Profile/model/services/updateProfileData/updateProfileData";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 
 interface ProfileHeaderProps {
 	className?: string

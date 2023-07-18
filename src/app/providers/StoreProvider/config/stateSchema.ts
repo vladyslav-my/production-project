@@ -1,13 +1,13 @@
-import { CounterSchema } from "entities/Counter";
-import { UserSchema } from "entities/User";
-import { LoginFormSchema } from "features/AuthByUsername";
+import { CounterSchema } from "@/entities/Counter";
+import { UserSchema } from "@/entities/User";
+import { LoginFormSchema } from "@/features/AuthByUsername";
 import {
 	AnyAction, EnhancedStore, Reducer, ReducersMapObject,
 } from "@reduxjs/toolkit";
 import { CombinedState } from "redux";
 import { AxiosInstance } from "axios";
 import { NavigateOptions, To } from "react-router-dom";
-import { ProfileSchema } from "entities/Profile/model/types/Profile";
+import { ProfileSchema } from "@/entities/Profile/model/types/Profile";
 import { RootState } from "./store";
 
 export interface StateSchema {

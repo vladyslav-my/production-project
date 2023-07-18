@@ -1,4 +1,4 @@
-import { Button, ThemeButton } from "shared/ui/Button";
+import { Button, ThemeButton } from "@/shared/ui/Button";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 

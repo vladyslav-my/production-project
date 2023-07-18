@@ -1,11 +1,11 @@
 import { FC } from "react";
 import cls from "./ProfileCard.module.scss";
-import { classNames } from "shared/lib/classNames/classNames";
-import { Input } from "shared/ui/Input/Input";
-import { Profile } from "entities/Profile/model/types/Profile";
-import { Loader } from "shared/ui/Loader";
-import { CurrencySelect } from "entities/Currency";
-import { CountrySelect } from "entities/Country";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { Input } from "@/shared/ui/Input/Input";
+import { Profile } from "@/entities/Profile/model/types/Profile";
+import { Loader } from "@/shared/ui/Loader";
+import { CurrencySelect } from "@/entities/Currency";
+import { CountrySelect } from "@/entities/Country";
 
 interface ProfileCardProps {
 	className?: string;

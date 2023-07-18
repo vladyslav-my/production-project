@@ -1,11 +1,11 @@
 import { RouteProps } from "react-router-dom";
 
-import { AboutPage } from "pages/AboutPage";
-import { MainPage } from "pages/MainPage";
-import { ProfilePage } from "pages/ProfilePage";
-import { ArticlesPage } from "pages/ArticlesPage";
-import { ArticleDetailsPage } from "pages/ArticleDetailsPage";
-import { NotFoundPage } from "pages/NotFoundPage";
+import { AboutPage } from "@/pages/AboutPage";
+import { MainPage } from "@/pages/MainPage";
+import { ProfilePage } from "@/pages/ProfilePage";
+import { ArticlesPage } from "@/pages/ArticlesPage";
+import { ArticleDetailsPage } from "@/pages/ArticleDetailsPage";
+import { NotFoundPage } from "@/pages/NotFoundPage";
 
 export type AppRouteProps = RouteProps & {
 	authOnly?: boolean;

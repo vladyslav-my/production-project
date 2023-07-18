@@ -1,11 +1,11 @@
 import cls from "./Navbar.module.scss";
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames } from "@/shared/lib/classNames/classNames";
 import { FC, memo, useCallback, useEffect } from "react";
-import { Button, ThemeButton } from "shared/ui/Button";
-import { LoginModal } from "features/AuthByUsername";
+import { Button, ThemeButton } from "@/shared/ui/Button";
+import { LoginModal } from "@/features/AuthByUsername";
 import { useDispatch, useSelector } from "react-redux";
-import { userActions } from "entities/User";
-import { getUserAuthData } from "entities/User/selectors/getUserAuthData";
+import { userActions } from "@/entities/User";
+import { getUserAuthData } from "@/entities/User/selectors/getUserAuthData";
 
 interface NavBarProps {
     className?: string

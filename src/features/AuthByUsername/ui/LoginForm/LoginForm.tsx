@@ -1,13 +1,13 @@
 import cls from "./LoginForm.module.scss";
 
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames } from "@/shared/lib/classNames/classNames";
 import { FC, useCallback } from "react";
 import { Reducer } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, ThemeButton } from "shared/ui/Button";
-import { Input } from "shared/ui/Input/Input";
-import { DynamicReduceLoader } from "shared/lib/components/DynamicReduceLoader";
-import { ReducersList } from "app/providers/StoreProvider";
+import { Button, ThemeButton } from "@/shared/ui/Button";
+import { Input } from "@/shared/ui/Input/Input";
+import { DynamicReduceLoader } from "@/shared/lib/components/DynamicReduceLoader";
+import { ReducersList } from "@/app/providers/StoreProvider";
 import { loginByUsername } from "../../services/loginByUsername/loginByUsername";
 import { getLoginFormUsername } from "../../selectors/getLoginFormUsername/getLoginFormUsername";
 import { getLoginFormPassword } from "../../selectors/getLoginFormPassword/getLoginFormPassword";

@@ -1,7 +1,7 @@
 import { FC } from "react";
 import cls from "./CurrencySelect.module.scss";
-import { classNames } from "shared/lib/classNames/classNames";
-import { Select, SelectOption } from "shared/ui/Select";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { Select, SelectOption } from "@/shared/ui/Select";
 import { Currency } from "../model/types/Currency";
 
 

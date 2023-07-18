@@ -1,11 +1,11 @@
 import cls from "./Sidebar.module.scss";
 
 import { FC, memo, useState } from "react";
-import { classNames } from "shared/lib/classNames/classNames";
-import { ThemeSwitcher } from "shared/ui/ThemeSwitcher";
-import { LangSwitcher } from "shared/ui/LangSwitcher";
-import { Button, ThemeButton } from "shared/ui/Button";
-import { SidebarItemsLink } from "widgets/Sidebar/model/links";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { ThemeSwitcher } from "@/shared/ui/ThemeSwitcher";
+import { LangSwitcher } from "@/shared/ui/LangSwitcher";
+import { Button, ThemeButton } from "@/shared/ui/Button";
+import { SidebarItemsLink } from "@/widgets/Sidebar/model/links";
 import { SidebarLink } from "../SidebarLink/SidebarLink";
 
 

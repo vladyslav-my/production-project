@@ -1,7 +1,7 @@
 import { FC } from "react";
 import cls from "./CountrySelect.module.scss";
-import { classNames } from "shared/lib/classNames/classNames";
-import { Select, SelectOption } from "shared/ui/Select";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { Select, SelectOption } from "@/shared/ui/Select";
 import { Country } from "../model/types/Country";
 
 

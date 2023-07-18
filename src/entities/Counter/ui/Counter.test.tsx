@@ -2,7 +2,7 @@ import { fireEvent, getByTestId, screen } from "@testing-library/react";
 import { Counter } from "./Counter";
 import {
 	componentRender
-} from "shared/lib/tests/componentRender/componentRender";
+} from "@/shared/lib/tests/componentRender/componentRender";
 
 describe("Counter", () => {
 	test("inc", () => {

@@ -1,0 +1,30 @@
+@import "@/scss/tools";
+
+.MainElementsLayout {
+	display: grid;
+	height: 100vh;
+	grid-template-rows: repeat(2, max-content);
+	grid-template-columns: max-content auto;
+	grid-template-areas:
+   	"navbar navbar"
+   	"sidebar main"
+   	"sidebar main";
+	@media (max-width: $tablet) {
+		grid-template-areas:
+   	"navbar navbar"
+   	"sidebar sidebar"
+   	"main main";
+	}
+}
+
+.navbar {
+	grid-area: navbar;
+}
+
+.sidebar {
+	grid-area: sidebar;
+}
+
+.main {
+	grid-area: main;
+}

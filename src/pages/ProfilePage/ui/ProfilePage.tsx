@@ -1,19 +1,19 @@
 import { FC, useCallback, useEffect } from "react";
 import cls from "./ProfilePage.module.scss";
-import { classNames } from "shared/lib/classNames/classNames";
-import { ProfileCard } from "entities/Profile/ui/ProfileCard/ProfileCard";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { ProfileCard } from "@/entities/Profile/ui/ProfileCard/ProfileCard";
 import { ProfileHeader } from "./ProfileHeader/ProfileHeader";
-import { DynamicReduceLoader } from "shared/lib/components/DynamicReduceLoader";
-import { ProfileActions, ProfileReducer } from "entities/Profile/model/slice/ProfileSlice";
+import { DynamicReduceLoader } from "@/shared/lib/components/DynamicReduceLoader";
+import { ProfileActions, ProfileReducer } from "@/entities/Profile/model/slice/ProfileSlice";
 import { useSelector } from "react-redux";
-import { getProfileReadOnly } from "entities/Profile/model/selectors/getProfileReadOnly/getProfileReadOnly";
-import { ReducersList } from "app/providers/StoreProvider";
-import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { fetchProfileData } from "entities/Profile/model/services/fetchProfileData/fetchProfileData";
-import { getProfileIsLoading } from "entities/Profile/model/selectors/getProfileIsLoading/getProfileIsLoading";
-import { getProfileFormData } from "entities/Profile/model/selectors/getProfileFormData/getProfileFormData";
-import { Currency } from "entities/Currency";
-import { getProfileError } from "entities/Profile/model/selectors/getProfileError/getProfileError";
+import { getProfileReadOnly } from "@/entities/Profile/model/selectors/getProfileReadOnly/getProfileReadOnly";
+import { ReducersList } from "@/app/providers/StoreProvider";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { fetchProfileData } from "@/entities/Profile/model/services/fetchProfileData/fetchProfileData";
+import { getProfileIsLoading } from "@/entities/Profile/model/selectors/getProfileIsLoading/getProfileIsLoading";
+import { getProfileFormData } from "@/entities/Profile/model/selectors/getProfileFormData/getProfileFormData";
+import { Currency } from "@/entities/Currency";
+import { getProfileError } from "@/entities/Profile/model/selectors/getProfileError/getProfileError";
 
 interface ProfilePageProps {
    className?: string

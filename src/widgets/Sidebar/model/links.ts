@@ -1,8 +1,8 @@
-import MainSvg from "shared/assets/main.svg";
-import AboutSvg from "shared/assets/about.svg";
-import ProfileSvg from "shared/assets/about.svg";
-import ArticleSvg from "shared/assets/article.svg";
-import { RoutePath } from "shared/config/routeConfig/routeConfig";
+import MainSvg from "@/shared/assets/main.svg";
+import AboutSvg from "@/shared/assets/about.svg";
+import ProfileSvg from "@/shared/assets/about.svg";
+import ArticleSvg from "@/shared/assets/article.svg";
+import { RoutePath } from "@/shared/config/routeConfig/routeConfig";
 
 type ValueOf<T> = T[keyof T];
 

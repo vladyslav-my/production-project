@@ -1,6 +1,6 @@
 import { FC } from "react";
 import cls from "./ArticlesPage.module.scss";
-import { classNames } from "shared/lib/classNames/classNames";
+import { classNames } from "@/shared/lib/classNames/classNames";
 
 interface ArticlePageProps {
 	className?: string

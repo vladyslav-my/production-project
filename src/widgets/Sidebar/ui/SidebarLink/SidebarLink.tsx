@@ -1,10 +1,10 @@
 import { FC, memo } from "react";
 import cls from "./SidebarLink.module.scss";
-import { classNames } from "shared/lib/classNames/classNames";
-import { AppLink } from "shared/ui/AppLink/AppLink";
-import { SidebarItemsLinkType } from "widgets/Sidebar/model/links";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { AppLink } from "@/shared/ui/AppLink/AppLink";
+import { SidebarItemsLinkType } from "@/widgets/Sidebar/model/links";
 import { useSelector } from "react-redux";
-import { getUserAuthData } from "entities/User";
+import { getUserAuthData } from "@/entities/User";
 
 
 interface SidebarLinkProps {
