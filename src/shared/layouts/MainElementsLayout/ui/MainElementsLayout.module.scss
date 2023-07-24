@@ -2,10 +2,11 @@
 
 .MainElementsLayout {
 	display: grid;
+
 	height: 100vh;
 	grid-template-rows: repeat(2, max-content);
-	grid-template-columns: max-content auto;
-	grid-template-areas:
+	grid-template-columns: auto 1fr;
+	grid-template-areas: 
    	"navbar navbar"
    	"sidebar main"
    	"sidebar main";
@@ -24,6 +25,7 @@
 .sidebar {
 	grid-area: sidebar;
 }
+
 
 .main {
 	grid-area: main;

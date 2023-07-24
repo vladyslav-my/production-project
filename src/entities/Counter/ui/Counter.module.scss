@@ -1,14 +1,16 @@
 .Counter {
 	display: inline-flex;
-	border-radius: 10px;
-	font-size: 32px;
 	align-items: center;
+
+	border-radius: 10px;
+
+	font-size: 32px;
 }
 
 .inc, .dec {
-	
 	width: rem(48);
 	height: 48px;
+
 	border: none;
 	border-radius: 100%;
 	background-color: aquamarine;
