@@ -1,9 +1,19 @@
 :root:has(.app.dark) {
 	--bg-color: #090949;
-	--secondary-bg-color: #4e4eac;
+	// --secondary-bg-color: #4e4eac;
 	--invert-bg-color: #e8e8ea;
 
 	--primary-color: #049604;
 	--invert-primary-color: #f838e5;
 	--secondary-color: #0449e0;
+	
+	--primary-bg-color: #090F11;
+	--secondary-bg-color: #0C1214;
+	--third-bg-color: #151C1F;
+	--text-color: #DBDBDB;
+	--hint-color: #555555;
+	--cancel-color: #D95757;
+	--save-color: #6CD98B;
+	--icon-color: #74A2B2;
+	--accent-color: #5ED3F3;
 }

@@ -1,22 +1,11 @@
 @import "@/scss/tools";
 
-.lightTheme {
-    fill: #FFC700;
-}
+.ThemeSwitcher {
+    $p: &;
 
-.darkTheme {
-    fill: #4000ff;
-}
-
-.themeIcon {
-    width: em(20);
-    height: em(20);
-
-    &_light {
-        fill: yellow;
-    }
-
-    &_dark {
-        fill: #4000ff;
+    &__themeIcon {
+        width: em(20);
+        height: em(20);
+        fill: $iconColor;
     }
 }

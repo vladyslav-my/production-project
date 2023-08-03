@@ -1,12 +1,11 @@
 import { FC } from "react";
-import cls from "./CurrencySelect.module.scss";
+import cls from "./CurrencyDropDown.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Select, SelectOption } from "@/shared/ui/Select";
 import { Currency } from "../model/types/Currency";
+import { DropDown, DropDownOption } from "@/shared/ui/DropDown";
 
 
-
-const options: SelectOption[] = [
+const options: DropDownOption[] = [
 	{
 		content: Currency.UAH,
 		value: Currency.UAH
@@ -15,31 +14,29 @@ const options: SelectOption[] = [
 		content: Currency.EUR,
 		value: Currency.EUR
 	},
-
 	{
 		content: Currency.USD,
 		value: Currency.USD
 	}
 ];
 
-interface CurrencySelectProps {
+interface CurrencyDropDownProps {
 	className?: string;
 	value?: string;
 	readOnly: boolean;
-	externalPlaceholder?: string;
+	label?: string;
 	onChange?: () => void;
 }
 
-export const CurrencySelect: FC<CurrencySelectProps> = ({ className, value, externalPlaceholder, readOnly, onChange }) => {
+export const CurrencyDropDown: FC<CurrencyDropDownProps> = ({ className, value, label, readOnly, onChange }) => {
 	return (
-		<Select 
-			className={classNames(cls.CurrencySelect, {}, [className])} 
+		<DropDown
+			className={classNames(cls.CurrencyDropDown, {}, [className])} 
 			options={options}
 			onChange={onChange}
-			value={value}
+			select={value}
 			readOnly={readOnly}
-			externalPlaceholder={externalPlaceholder}
+			label={label}
 		/>
-
 	);
 };

@@ -19,7 +19,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -107,7 +109,13 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "features": {
+        "isAppRedesigned": true
+      },
+      "jsonSettings": {
+        "isArticlesPageWasOpened": true
+      }
     },
     {
       "id": "2",
@@ -119,7 +127,7 @@
   "profile": {
     "first": "Vladislav",
     "lastname": "Myronets",
-    "age": 20,
+    "age": 19,
     "currency": "UAH",
     "country": "Ukraine",
     "city": "Lutsk",

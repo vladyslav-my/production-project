@@ -1,16 +1,31 @@
-.Input {
-	width: 100%;
-	padding: 5px;
+@import "@/scss/tools";
 
-	border: none;
-	border-radius: 10px;
-	outline: none;
+.Input {
+	display: flex;
+	gap: em(8);
+
+	align-items: center;
+
 	&:focus {
 		outline: none;
 	}
-}
 
-.wrapper {
-	width: 300px;
+	&::placeholder {
+		color: $hintColor;
+	 }
 
+	&__field {
+		width: 100%;
+		padding: em(8) em(16);
+
+		border: em(1) solid $iconColor;
+		border-radius: em(48);
+	}
+
+	&__label {
+		white-space: nowrap;
+		&::after {
+			content: ":";
+		}
+	}
 }

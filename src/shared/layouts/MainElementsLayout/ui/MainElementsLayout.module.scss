@@ -1,32 +1,101 @@
 @import "@/scss/tools";
 
 .MainElementsLayout {
+	position: relative;
+
 	display: grid;
-
+	
 	height: 100vh;
-	grid-template-rows: repeat(2, max-content);
-	grid-template-columns: auto 1fr;
-	grid-template-areas: 
-   	"navbar navbar"
-   	"sidebar main"
-   	"sidebar main";
-	@media (max-width: $tablet) {
-		grid-template-areas:
-   	"navbar navbar"
-   	"sidebar sidebar"
-   	"main main";
+	grid-template-rows: auto 1fr auto;
+	grid-template-columns: auto 1fr auto;
+	grid-template-areas:
+   	"sideBar mainBar mainBar"
+   	"sideBar mainBar mainBar"
+   	"sideBar mainBar mainBar";
+
+	padding-top: rem(32);
+
+	&__navBar {
+
+		grid-area: navBar;
+
+		@media (min-width: em(1800)) {
+			position: absolute;
+			top: 0;
+			right: 0;
+	
+			width: 200px;
+		}
 	}
+	
+	&__sideBar {
+		grid-area: sideBar;
+
+
+
+		
+	}
+	
+	&__main {
+
+	}
+	
+	&__mainBar {
+		grid-area: mainBar;
+
+		&::-webkit-scrollbar {
+			display: block;
+
+			width: rem(10);
+
+			&-thumb {
+				height: rem(25);
+
+				
+				
+				border-radius: 38px;
+				background: $iconColor;
+			}
+			
+			&-track {
+				border-radius: 38px;
+				background-color: $thirdBgColor;
+			}
+
+		}
+
+	}
+
+	&__scrollUpBar {
+		grid-area: scrollUpBar;
+	}
+
+	&__widgetBar {
+		grid-area: widgetBar;
+	}
+	
+
+	@media (max-width: em(1800)) {
+		grid-template-areas:
+   	"navBar mainBar mainBar"
+   	"sideBar mainBar mainBar"
+   	"sideBar mainBar mainBar";
+	}
+
+
+	// @media (max-width: $tablet) {
+	// 	grid-template-areas:
+   // 	"navbar navbar"
+   // 	"sidebar sidebar"
+   // 	"main main";
+	// }
 }
 
-.navbar {
-	grid-area: navbar;
+
+.pageBar {
+	height: 2000px;
 }
 
-.sidebar {
-	grid-area: sidebar;
-}
-
-
-.main {
-	grid-area: main;
+.widgetBar {
+	position: fixed;
 }

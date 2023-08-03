@@ -3,13 +3,13 @@ import cls from "./Button.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 
 export enum ThemeButton {
-   CLEAR = "clear",
-	OUTLINE = "outline"
+   CLEAR = "Button_clear",
+	OUTLINE = "Button_outline"
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
-    theme?: string;
+    theme?: ThemeButton;
     children: ReactNode;
 }
 

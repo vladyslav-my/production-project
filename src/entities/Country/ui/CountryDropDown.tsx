@@ -1,11 +1,11 @@
 import { FC } from "react";
-import cls from "./CountrySelect.module.scss";
+import cls from "./CountryDropDown.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Select, SelectOption } from "@/shared/ui/Select";
 import { Country } from "../model/types/Country";
+import { DropDown, DropDownOption } from "@/shared/ui/DropDown";
 
 
-const options: SelectOption[] = [
+const options: DropDownOption[] = [
 	{
 		content: Country.UKRAINE,
 		value: Country.UKRAINE
@@ -20,24 +20,23 @@ const options: SelectOption[] = [
 	}
 ];
 
-interface CountrySelectProps {
+interface CountryDropDownProps {
 	className?: string;
 	value?: string;
 	readOnly: boolean;
-	externalPlaceholder?: string;
+	label?: string;
 	onChange?: () => void;
 }
 
-export const CountrySelect: FC<CountrySelectProps> = ({ className, value, externalPlaceholder, readOnly, onChange }) => {
+export const CountryDropDown: FC<CountryDropDownProps> = ({ className, value, label, readOnly, onChange }) => {
 	return (
-		<Select 
-			className={classNames(cls.CountrySelect, {}, [className])} 
+		<DropDown
+			className={classNames(cls.CountryDropDown, {}, [className])} 
 			options={options}
 			onChange={onChange}
-			value={value}
+			select={value}
 			readOnly={readOnly}
-			externalPlaceholder={externalPlaceholder}
+			label={label}
 		/>
-
 	);
 };

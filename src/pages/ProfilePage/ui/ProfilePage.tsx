@@ -14,6 +14,7 @@ import { getProfileIsLoading } from "@/entities/Profile/model/selectors/getProfi
 import { getProfileFormData } from "@/entities/Profile/model/selectors/getProfileFormData/getProfileFormData";
 import { Currency } from "@/entities/Currency";
 import { getProfileError } from "@/entities/Profile/model/selectors/getProfileError/getProfileError";
+import { Shell } from "@/shared/layouts/Shell";
 
 interface ProfilePageProps {
    className?: string
@@ -57,22 +58,24 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
 
 	return (
 		<DynamicReduceLoader reducers={initialReducers}>
-			<div className={classNames(cls.ProfilePage, {}, [className])}>
-				<ProfileHeader />
-				{ error?.length !== 0 && error?.map(error => (
-					<div key={error} className={cls.error}>{error}</div>
-				)) }
-				<ProfileCard
-					onFirstNameChange={onFirstNameChange}
-					onLastNameChange={onLastNameChange}
-					onAgeChange={onAgeChange}
-					onAvatarChange={onAvatarChange}
-					onCurrencyChange={onCurrencyChange}
-					isLoading={isLoading} 
-					readOnly={readOnly} 
-					data={formData} 
-				/>
-			</div>
+			<Shell>
+				<div className={classNames(cls.ProfilePage, {}, [className])}>
+					<ProfileHeader />
+					{ error?.length !== 0 && error?.map(error => (
+						<div key={error} className={cls.error}>{error}</div>
+					)) }
+					<ProfileCard
+						onFirstNameChange={onFirstNameChange}
+						onLastNameChange={onLastNameChange}
+						onAgeChange={onAgeChange}
+						onAvatarChange={onAvatarChange}
+						onCurrencyChange={onCurrencyChange}
+						isLoading={isLoading} 
+						readOnly={readOnly} 
+						data={formData} 
+					/>
+				</div>
+			</Shell>
 		</DynamicReduceLoader>
 
 	);

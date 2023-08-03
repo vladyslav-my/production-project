@@ -1,34 +1,92 @@
 @import "@/scss/tools";
 
 
+
+
 .sidebar {
-    width: 100%;
-    height: 100%;
+    $p: &;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
     padding: rem(22);
+
+    transition: background-color, color, $transition;
 
 
     border-radius: rem(32);
-    background-color: #151C1F;
+    background-color: $thirdBgColor;
+    
 
-    &__arrowIcon {
+    &__links {
+    }
+
+    &_unroll {
+        #{$p}__arrowButton {
+            padding: rem(120) rem(13);
+
+            transform: translateY(-50%) rotate3d(0, 1, 0, 0);
+        }
+
+        #{$p}__arrowIcon {
+            
+        }
+
+        #{$p}__switchers {
+            flex-direction: row;
+        }
+        
+        #{$p}__logoLink {
+            font-size: rem(16);
+        }
+
+        
+    }
+
+    &__switchers {
+        margin-top: auto;
+    }
+
+    &__arrowButton {
         position: absolute;
+        z-index: 100;
         top: 50%;
         right: 0;
-
+        
         box-sizing: content-box;
-        width: rem(8);
-        height: rem(13);
-        padding: rem(120) rem(13);
 
-        transform: translateY(-50%);
-        fill: #74A2B2;
+        padding: rem(120) rem(3);
+
+        transition: rotate3d, padding, $transition;
+
+        transform: translateY(-50%) rotate3d(0, 1, 0, 180deg);
+
+        &:hover #{$p}__arrowIcon {
+            animation: arrow 0.8s linear infinite alternate;
+        }
+        
+    }
+
+    &__arrowIcon {
+        width: em(8);
+        height: em(13);
+
+        
+        fill: $iconColor;
+
     }
     
     &__logoLink {
         position: relative;
         z-index: 0;
 
+        transition: font-size, $transition;
+
         border-radius: 50%;
+        
+        font-size: rem(10);
         &::before {
             position: absolute;
             z-index: 1;
@@ -45,6 +103,10 @@
 
             box-shadow: 0 0 60px 30px rgba(94, 211, 243, 0.3);
         }
+
+        &:not(:last-child) {
+            margin-bottom: rem(80);
+        }
     }
 
     &__logoIcon {
@@ -59,8 +121,7 @@
 
 
     @media (min-width: $tablet) {
-		padding-top: rem(22);
-        padding-bottom: rem(40);
+        padding: rem(22) 0 rem(40) 0;
 	}
 }
 
@@ -68,7 +129,8 @@
 
 
 .switchers {
-    display: flex;
+    display: inline-flex;
+    flex-direction: column;
     gap: 18px;
 }
 
@@ -77,6 +139,8 @@
     overflow-x: scroll;
     flex-direction: column;
     justify-content: center;
+
+    width: 100%;
 
     gap: 15px;
 
@@ -99,5 +163,20 @@
 
     @media (max-width: $tablet) {
         flex-direction: row;
+    }
+}
+
+
+@keyframes arrow {
+    from {
+        transform: translateX(0);
+    }
+    
+    50% {
+        transform: translateX(rem(-4))
+    }
+
+    to {
+        transform: translateX(0);
     }
 }

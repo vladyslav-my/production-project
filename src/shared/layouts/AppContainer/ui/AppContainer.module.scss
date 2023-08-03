@@ -1,0 +1,37 @@
+@import "@/scss/tools";
+
+
+$mainContainer: 1060;
+$widgetContainer: 270;
+$pageContainer: 780;
+$margin: $mainContainer - ($widgetContainer + $pageContainer);
+
+
+
+.AppContainer {
+	box-sizing: content-box;
+	
+
+	&_main {
+		display: flex;
+
+		max-width: rem($mainContainer);
+		margin: 0 auto;
+		padding: 0 rem(20);
+		gap: rem($margin);
+	}
+
+	&_app {
+		max-width: rem(1920);
+		margin: 0 auto;
+		padding-left: rem(32);
+	}
+
+	&__widget {
+		flex: 0 0 rem($widgetContainer);
+	}
+
+	&__page {
+		flex: 1 1 min(100%, rem($pageContainer));
+	}
+}

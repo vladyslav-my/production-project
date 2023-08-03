@@ -6,9 +6,13 @@ import { ProfilePage } from "@/pages/ProfilePage";
 import { ArticlesPage } from "@/pages/ArticlesPage";
 import { ArticleDetailsPage } from "@/pages/ArticleDetailsPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
+import { ReactNode } from "react";
+import { Shell } from "@/shared/layouts/Shell";
 
 export type AppRouteProps = RouteProps & {
 	authOnly?: boolean;
+	Widget?: ReactNode;
+	Page: ReactNode;
 }
 
 
@@ -33,29 +37,30 @@ export const RoutePath: Record<AppRoutes, string> = {
 export const routeConfig: Record<AppRoutes, AppRouteProps> = {
 	[AppRoutes.MAIN]: {
 		path: RoutePath.main,
-		element: <MainPage />
+		Page: <MainPage />
 	},
 	[AppRoutes.ABOUT]: {
 		path: RoutePath.about,
-		element: <AboutPage />
+		Page: <AboutPage />
 	},
 	[AppRoutes.NOT_FOUND]: {
 		path: RoutePath.not_found,
-		element: <NotFoundPage />
+		Page: <NotFoundPage />
 	},
 	[AppRoutes.PROFILE]: {
 		path: RoutePath.profile,
-		element: <ProfilePage />,
+		Page: <ProfilePage />,
 		authOnly: true
 	},
 	[AppRoutes.ARTICLE]: {
 		path: RoutePath.article,
-		element: <ArticlesPage />,
+		Page: <ArticlesPage />,
+		Widget: <Shell>emty</Shell>,
 		authOnly: true
 	},
 	[AppRoutes.ARTICLE_DETAILS]: {
 		path: `${RoutePath.article_details}:id`,
-		element: <ArticleDetailsPage />,
+		Page: <ArticleDetailsPage />,
 		authOnly: true
 	},
 };

@@ -1,3 +1,56 @@
+@import "@/scss/tools";
+
 .ProfileHeader {
+	padding: rem(16);
+
+	&__row {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: rem(20);
+		@media (max-width: $laptop) {
+			flex-direction: column;
+		}
+	}
+
+	&__leftBtn {
+		display: flex;
+		flex: 1 1;
+		justify-content: start;
+		@media (max-width: $laptop) {
+			order: 2;
+		}
+	}
+
+	&__rightBtn {
+		display: flex;
+		flex: 1 1;
+		justify-content: end;
+	}
+
+
+
+	&__avatar {
+	}
+
+
+
+	&__editAndSave {
+		
+		&_save {
+			border-color: $saveColor;
+		}
+	}
 	
+	&__cancel {
+		transition: font-size 0.2s ease;
+
+		border-color: $cancelColor;
+
+		font-size: rem(16);		
+
+		&_hide {
+			font-size: 0;
+		}
+	}
 }

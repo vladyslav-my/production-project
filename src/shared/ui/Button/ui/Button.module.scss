@@ -1,25 +1,25 @@
+@import "@/scss/tools";
+
 .Button {
     display: inline-flex;
 
     cursor: pointer;
 
-    color: var(--primary-color);
+    &_clear {
+        color: $textColor;
+        border: none;
+        outline: none;
+        background: none;
+    }
+
+    &_outline {
+        padding: em(8) em(16);
+
+        color: $textColor;
+        border: em(1) solid $iconColor;
+        border-radius: em(16);
+        background: none;
+    }
 }
 
-.clear {
-    margin: 0;
-    padding: 0;
 
-    border: none;
-    outline: none;
-    background: none;
-}
-
-.outline {
-    margin: 0;
-    padding: 3px;
-
-    border: 2px solid var(--primary-color);
-    border-radius: 10px;
-    background: none;
-}

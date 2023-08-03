@@ -1,5 +1,28 @@
-.ProfileCard {
-	padding: 10px;
+@import "@/scss/tools";
 
-	border: 3px solid green;
+.ProfileCard {
+	&__row {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		gap: em(16) em(24);
+	}
+
+	&__leftColumn, &__rightColumn {
+		display: inline-flex;
+		flex-direction: column;
+		gap: em(16);
+
+		flex-grow: 1;
+	}
+
+	&__currencyDropDown {
+		position: relative;
+		z-index: 5;
+	}
+
+	&__countryDropDown {
+		position: relative;
+		z-index: 4;
+	}
 }

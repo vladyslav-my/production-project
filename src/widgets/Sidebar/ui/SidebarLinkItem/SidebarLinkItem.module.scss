@@ -1,0 +1,132 @@
+@import "@/scss/tools";
+
+.SidebarLinkItem {
+	&__navLink {
+		display: inline-block;
+
+		transition: color, 30ms ease;
+
+		color: $textColor;
+	}
+	&__link {
+	}
+}
+
+
+.link {
+	$p: &;
+	position: relative;
+
+
+	padding: rem(6) rem(16);
+	
+	&:hover {
+		background: linear-gradient(88deg, rgba(29, 89, 255, 0.10) 0%, rgba(94, 211, 243, 0.00) 100%);
+		&::before {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+
+			display: block;
+
+			width: rem(2);
+			height: 100%;
+
+			content: "";
+
+			background: $accentColor;
+
+			@media (max-width: $tablet) {
+				width: 100%;
+				height: rem(2);
+			}
+		}
+	}
+
+	&_unroll {
+		&_size {
+			#{$p}__appWrapper {
+				min-width: 220px;
+			}
+		}
+		#{$p}__appWrapper {
+			max-width: 220px;
+		}
+		
+		#{$p}__name {
+			transform: translateX(0);
+		}
+		
+		#{$p}__icon {
+			margin-right: rem(16);
+		}
+	}
+
+	&_active {
+		background: linear-gradient(88deg, rgba(29, 89, 255, 0.10) 0%, rgba(94, 211, 243, 0.00) 100%);
+		&:before {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+
+			display: block;
+
+			width: rem(2);
+			height: 100%;
+
+			content: "";
+
+			background: $accentColor;
+
+			@media (max-width: $tablet) {
+				width: 100%;
+				height: rem(2);
+			}
+		}
+
+		#{$p}__name {
+			color: $accentColor;
+		}
+
+	}
+	
+	&__appWrapper {
+		position: relative;
+		z-index: 1;
+	
+		display: inline-flex;
+		align-items: center;
+		
+		min-width: em(21);
+		max-width: em(21);
+	
+		transition: all 0.25s ease-in-out;
+	}
+
+	&__icon {
+		display: inline-flex;
+		flex: 0 0 auto;
+	
+		width: em(21);
+		height: em(21);
+		margin-right: rem(16);
+	
+		transition: all 0.25s ease-in-out;
+		fill: #74A2B2;
+		@media (max-width: $tablet) {
+			margin-right: 0;
+		}
+	
+	}
+
+	&__nameWrapper {
+		overflow: hidden;
+	}
+
+	&__name {
+		display: inline-block;
+
+		transition: all 0.25s ease-in-out;
+		transform: translateX(-100%);
+	}
+}

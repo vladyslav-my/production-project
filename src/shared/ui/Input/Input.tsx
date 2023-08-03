@@ -10,7 +10,7 @@ interface InputProps extends HTMLInputProps {
 	value?: string,
 	type?: string,
 	placeholder?: string,
-	externalPlaceholder?: string,
+	label?: string,
 	readOnly?: boolean
 	onChange?: (value: string) => void;
 
@@ -20,7 +20,7 @@ export const Input: FC<InputProps> = ({
 	className,
 	value,
 	placeholder,
-	externalPlaceholder,
+	label,
 	type = "text",
 	readOnly,
 	onChange,
@@ -32,10 +32,10 @@ export const Input: FC<InputProps> = ({
 	};
 
 	return (
-		<div className={cls.wrapper}>
-			{externalPlaceholder && <span>{externalPlaceholder}</span>}
-			<input 
-				className={classNames(cls.Input, {}, [className])}
+		<div className={cls.Input}>
+			{label && <span className={cls.Input__label}>{label}</span>}
+			<input
+				className={classNames(cls.Input__field, {}, [className])}
 				value={value}
 				placeholder={placeholder}
 				onChange={onChangeHandler}

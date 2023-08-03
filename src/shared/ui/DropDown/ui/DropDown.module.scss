@@ -1,0 +1,132 @@
+@import "@/scss/tools";
+
+
+.DropDown {
+	$p: &;
+	display: flex;
+
+	align-items: center;
+
+	line-height: normal;
+	gap: em(8);
+
+	&__label {
+		&::after {
+			content: ":";
+		}
+	}
+
+	&:not(:last-child) {
+		margin-right: em(8);
+	}
+
+	&__self {
+		position: relative;
+
+		display: inline-flex;
+		align-items: center;
+		flex-direction: column;
+
+		cursor: pointer;
+
+		user-select: none;
+	}
+
+
+	&__select {
+		position: relative;
+		z-index: 2;
+
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		width: 100%;
+		padding: em(5) em(16);
+
+		transition: border-radius 0.3s ease;
+
+		border-radius: em(19);
+
+		background-color: $thirdBgColor;
+		gap: em(8);
+	}
+	
+	&__arrowIcon {
+		box-sizing: content-box;
+		width: em(8);
+		height: em(13);
+		fill: #555555;
+
+		transition: transform $transition;
+		transform: rotate(-90deg);
+	}
+
+
+
+	&__menu {
+		position: absolute;
+		z-index: 1;
+		top: 50%;
+		left: 0;
+
+		display: flex;
+		overflow: hidden;
+		flex-direction: column;
+
+		// width: 100%;
+
+		min-width: 100%;
+
+		transition: height $transition,
+						top 0.3s ease;
+
+
+		border-radius: 0 0 em(19) em(19);
+	}
+
+	&__menuItem {
+		// display: inline;
+
+		margin-bottom: em(-32);
+		
+		padding: em(5) em(16);
+
+		transition: max-height, margin-bottom, $transition;
+
+		background-color: $secondaryBgColor;
+		
+		&_active {
+			background-color: $thirdBgColor;
+		}
+	}
+
+
+
+	&_unroll {
+		#{$p}__select {
+			border-radius: em(19) em(19) 0 0;
+		}
+
+		#{$p}__menu {
+			top: 100%;
+		}
+
+		#{$p}__menuItem {
+			margin-bottom: 0;	
+		}
+
+		#{$p}__arrowIcon {
+			transform: rotate(-270deg);
+		}
+	}
+
+	&_cursor {
+		#{$p}__self {
+			cursor: not-allowed;
+		}
+		
+	}
+}
+
+
