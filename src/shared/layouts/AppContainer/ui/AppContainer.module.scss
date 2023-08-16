@@ -33,5 +33,7 @@ $margin: $mainContainer - ($widgetContainer + $pageContainer);
 
 	&__page {
 		flex: 1 1 min(100%, rem($pageContainer));
+
+		min-width: 320px;
 	}
 }

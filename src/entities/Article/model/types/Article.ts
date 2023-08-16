@@ -1,12 +1,15 @@
+import { User } from "@/entities/User";
+
 export interface Article {
+	user: User;
 	id: number;
 	title: string;
 	subtitle: string;
 	img: string;
 	views: number;
 	createdAt: string;
-	type: ArticleTypes[]
-	blocks: ArticleBlocks[]
+	type: ArticleTypes[];
+	blocks: ArticleBlocks[];
 }
 
 
@@ -22,7 +25,7 @@ enum ArticleBlockTypes {
 	IMAGE = "IMAGE"
 }
 
-type ArticleBlocks = ArticleBlockCode | ArticleBlockText | ArticleBlockImage;
+export type ArticleBlocks = ArticleBlockCode | ArticleBlockText | ArticleBlockImage;
 
 interface ArticleBlockBase {
 	id: number;
@@ -34,13 +37,13 @@ interface ArticleBlockCode extends ArticleBlockBase {
 	code: string;
 }
 
-interface ArticleBlockText {
+interface ArticleBlockText extends ArticleBlockBase {
 	type: ArticleBlockTypes.TEXT;
 	title: string;
-	paragraph: string[];
+	paragraphs: string[];
 }
 
-interface ArticleBlockImage {
+interface ArticleBlockImage extends ArticleBlockBase {
 	type: ArticleBlockTypes.IMAGE;
 	src: string;
 	title: string;

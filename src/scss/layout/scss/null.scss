@@ -28,7 +28,8 @@ body {
 
 	font-family: $fontFamily;
 	font-size: $fontSize;
-	line-height: 1;
+	// line-height: 1;
+	line-height: normal;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 

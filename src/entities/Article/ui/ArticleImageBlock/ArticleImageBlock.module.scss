@@ -1,0 +1,17 @@
+@import "@/scss/tools";
+
+.ArticleImageBlock {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	> * {
+		&:not(:last-child) {
+			margin-bottom: rem(8);
+		}
+	}
+	
+	&__image {
+		max-width: 100%;
+		object-fit: contain;
+	}
+}

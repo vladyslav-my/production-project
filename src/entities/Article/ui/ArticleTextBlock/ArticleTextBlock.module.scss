@@ -1,0 +1,21 @@
+@import "@/scss/tools";
+
+.ArticleTextBlock {
+	> * {
+		&:not(:last-child) {
+			margin-bottom: rem(8);
+		}
+	}
+
+	&__title {
+		font-size: rem(24);
+	}
+
+	&__paragraphs {
+
+	}
+
+	&__paragraph {
+		text-indent: rem(20);
+	}
+}

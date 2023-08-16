@@ -6,6 +6,7 @@ import { createReducerManager } from "./reducerManager";
 import { $api } from "@/shared/api/api";
 import { NavigateOptions, To } from "react-router-dom";
 import { ExtraArgumentType } from "./StateSchema";
+import { articlesPageReducer } from "@/pages/ArticlesPage";
 
 
 
@@ -18,7 +19,8 @@ export const createReduxStore = (
 	const rootReducers: ReducersMapObject<StateSchema> = {
 		...asyncReducers,
 		counter: counterReducer,
-		user: userReducer
+		user: userReducer,
+		articlesPage: articlesPageReducer
 	};
 
 	const extraArgument: ExtraArgumentType = {

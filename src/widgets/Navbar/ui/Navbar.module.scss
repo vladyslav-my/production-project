@@ -3,13 +3,10 @@
 .Navbar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 
     width: 100%;
-    height: var(--navbar-height);
     padding: 20px;
-
-    background-color: var(--invert-bg-color);
 }
 
 .links {

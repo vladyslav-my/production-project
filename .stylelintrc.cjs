@@ -3,7 +3,8 @@ const otherRules = {
    'selector-class-pattern': null,
    'number-max-precision': null,
    'max-line-length': null,
-   'font-family-no-missing-generic-family-keyword': null
+   'font-family-no-missing-generic-family-keyword': null,
+   "no-descending-specificity": null
 };
 
 const rulesOrder = {

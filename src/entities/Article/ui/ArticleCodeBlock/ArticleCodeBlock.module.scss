@@ -1,0 +1,55 @@
+@import "@/scss/tools";
+
+.ArticleCodeBlock {
+	position: relative;
+	
+	
+	
+	
+
+	border-radius: rem(10);
+	background-color: $thirdBgColor;
+
+	&__pre {
+		overflow: auto;
+
+		padding: rem(18);
+
+		&::-webkit-scrollbar {
+			display: block;
+
+			width: rem(10);
+			height: rem(10);
+
+			&-thumb {
+				height: rem(25);
+
+				
+				
+				border-radius: 38px;
+				background: $iconColor;
+			}
+			
+			&-track {
+				border-radius: 38px;
+				background-color: $thirdBgColor;
+			}
+		}
+	}
+
+
+	&__copyBtn {
+		position: absolute;
+		top: rem(12);
+		right: rem(12);
+
+		cursor: pointer;
+		stroke: $iconColor;
+		fill: none;
+	}
+
+	&__copyIcon {
+		stroke: $iconColor;
+		fill: none;
+	}
+}
