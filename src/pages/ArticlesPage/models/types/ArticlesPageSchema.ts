@@ -1,4 +1,5 @@
 export interface ArticlesPageSchema {
+	_inited: boolean;
 	limit: 9 | 3;
 	page: number;
 	sort: Sort;

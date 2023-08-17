@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import {	
+	getArticlePageInited,
 	getArticlePageLimit,
 	getArticlePageOrder,
 	getArticlePagePage,
@@ -16,6 +17,7 @@ export const useAllSelector = () => {
 	const type = useSelector(getArticlePageType);
 	const search = useSelector(getArticlePageSearch);
 	const limit = useSelector(getArticlePageLimit);
+	const inited = useSelector(getArticlePageInited);
 
 	return {
 		page,
@@ -23,6 +25,7 @@ export const useAllSelector = () => {
 		sort,
 		type,
 		search,
-		limit
+		limit,
+		inited
 	};
 };

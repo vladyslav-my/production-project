@@ -1,21 +1,15 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { ArticlesPageSchema, Order, Sort, Type } from "../types/ArticlesPageSchema";
-// import { ArticlesSchema } from "../types/ArticlesSchema";
-
-
 
 
 const initialState: ArticlesPageSchema = {
-	limit: 9,
+	_inited: false,
+	limit: 3,
 	page: 1,
 	order: Order.ASC,
 	sort: Sort.CREATEDAT,
 	type: Type.ALL,
 };
-
-
-
-
 
 export const articlesPageSlice = createSlice({
 	name: "articlesPage",
@@ -38,6 +32,9 @@ export const articlesPageSlice = createSlice({
 		},
 		setSearch: (state, action) => {
 			state.search = action.payload;
+		},
+		setInited: (state, action) => {
+			state._inited = action.payload;
 		},
 	}
 });

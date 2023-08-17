@@ -3,7 +3,7 @@ import { ArticlesSchema } from "../types/ArticlesSchema";
 import { fetchArticles } from "../../services/fetchArticles/fetchArticles";
 
 const initialState: ArticlesSchema = {
-
+	data: [],
 };
 
 export const articlesSlice = createSlice({
@@ -16,7 +16,9 @@ export const articlesSlice = createSlice({
 	},
 	extraReducers: {
 		[fetchArticles.fulfilled.type]: (state, action) => {
-			state.data = action.payload;
+			//@ts-ignore
+			state.data?.push(...action.payload);
+			// state.data = action.payload;
 			state.isLoading = false;
 		},
 		[fetchArticles.pending.type]: (state, action) => {

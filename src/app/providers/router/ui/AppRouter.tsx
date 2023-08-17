@@ -15,7 +15,7 @@ const AppRouter = () => {
 
 		const container = (			
 			<AppContainer 
-				container={Container.MAIN} 
+				container={Container.MAIN}
 				Page={Page}
 				Widget={Widget} 
 			/>
