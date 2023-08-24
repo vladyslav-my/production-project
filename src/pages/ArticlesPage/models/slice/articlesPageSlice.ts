@@ -9,6 +9,7 @@ const initialState: ArticlesPageSchema = {
 	order: Order.ASC,
 	sort: Sort.CREATEDAT,
 	type: Type.ALL,
+	search: "",
 };
 
 export const articlesPageSlice = createSlice({

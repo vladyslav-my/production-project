@@ -7,12 +7,13 @@ type MediaQuerySettings = Partial<MediaQueryAllQueryable & {
 	maxHeight?: number | string | Devices;
 }>;
 
- 
+
+
 
 export const useAppMediaQuary = (
 	settings: MediaQuerySettings,
-	device: MediaQueryMatchers,
-	onChange: ((_: boolean) => void) | undefined
+	device?: MediaQueryMatchers,
+	onChange?: ((_: boolean) => void) | undefined,
 ) => {
 	useMediaQuery(settings, device, onChange);
 };

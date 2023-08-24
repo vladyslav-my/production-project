@@ -1,0 +1,7 @@
+@import "@/scss/tools";
+
+.GroupButton {
+	&_active {
+		background-color: $thirdBgColor;
+	}
+}

@@ -13,11 +13,11 @@ import "@/shared/config/i18n/i18n";
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 	<ErrorBoundary>
 		<StoreProvider>
-			<BrowserRouter>
-				<ThemeProvider>
+			<ThemeProvider>
+				<BrowserRouter>
 					<App />
-				</ThemeProvider>
-			</BrowserRouter>
+				</BrowserRouter>
+			</ThemeProvider>
 		</StoreProvider>
 	</ErrorBoundary>
 );

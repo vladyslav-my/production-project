@@ -1,5 +1,7 @@
 export enum Devices {
 	DESKTOP = 0,
+	BREAKPOINT_1800 = "112.5em",
+	BREAKPOINT_1394 = "87.125em",
 	TABLET = "61.99875em",
 	MOBILE = "47.99875em",
 	MOBILESMALL = "29.99875em"

@@ -1,0 +1,37 @@
+@import "@/scss/tools";
+
+.ArticlesPage {
+	&__articles {
+
+	}
+}
+
+
+.articles {
+	&_list {
+		> * {
+			&:not(:last-child) {
+				margin-bottom: rem(16);
+			}
+		}
+	}
+
+	&_tile {
+		display: grid;
+		// grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+		gap: rem(15);
+	}
+}
+
+.trigger {
+	height: rem(50);
+
+	background-color: red;
+}
+
+.ChangeArticlesView {
+	&__feature {
+		position: fixed;
+	}
+}

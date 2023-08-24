@@ -8,6 +8,7 @@ interface AppContainerProps {
 	container: Container;
 	Page?: ReactNode;
 	Widget?: ReactNode;
+	Feature?: ReactNode;
 }
 
 export enum Container {
@@ -17,16 +18,21 @@ export enum Container {
 	WIDGET = "AppContainer_widget"
 }
 
-export const AppContainer: FC<AppContainerProps> = ({ className, children, container = Container.APP, Page, Widget }) => {
+export const AppContainer: FC<AppContainerProps> = ({ className, children, container = Container.APP, Page, Widget, Feature }) => {
 
 	if (container === Container.MAIN) {
 		return (
 			<div className={classNames(cls.AppContainer, {}, [className, cls[container]])}>
+				<div className={cls.AppContainer__feature}>
+					{Feature}
+				</div>
 				<div className={cls.AppContainer__page}>
 					{Page}
 				</div>
 				<div className={cls.AppContainer__widget}>
-					{Widget}
+					<div className={cls.sticky}>
+						{Widget}
+					</div>
 				</div>
 			</div>
 		);

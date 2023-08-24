@@ -1,0 +1,31 @@
+@import "@/scss/tools";
+
+.InfinityArticlesList {
+	$p: &;
+	&_list {
+		#{$p}__articles {
+			> * {
+				&:not(:last-child) {
+					margin-bottom: rem(16);
+				}
+			}
+		}
+	}
+
+	&_tile {
+		#{$p}__articles {
+			display: grid;
+			// grid-template-columns: repeat(3, 1fr);
+			grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+			gap: rem(15);
+		}
+	}
+
+	&__articlesTrigger {
+		height: rem(50);
+
+		background-color: red;
+	}
+
+	
+}

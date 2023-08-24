@@ -68,10 +68,10 @@ export const DropDown: FC<DropDownProps> = ({
 
 	const menuItem = useMemo(() => (
 		options.map(({ value, content }) => (
-			<div onClick={readOnly ? undefined : onMenuItemClickHandler(content)} 
+			<div onClick={readOnly ? undefined : onMenuItemClickHandler(value)} 
 				key={value} 
 				className={classNames(cls.DropDown__menuItem, {
-					[cls.DropDown__menuItem_active]: select === content
+					[cls.DropDown__menuItem_active]: select === value
 				})}
 			>
 				{content}
@@ -87,14 +87,18 @@ export const DropDown: FC<DropDownProps> = ({
 				[cls.DropDown_cursor]: readOnly
 			}, [className])}
 		>
-			{label && <span className={cls.DropDown__label}>{label}</span>}
+			{label && <span className={cls.DropDown__label}>{label}:</span>}
 			<div
 				onClick={readOnly ? undefined : onSelfClickHandler}
 				style={{ width: size }}
 				className={cls.DropDown__self}
 			>
 				<div ref={dropDownSelect} className={cls.DropDown__select}>
-					<div className={cls.DropDown__currentValue}>{select}</div>
+					<div className={cls.DropDown__currentValue}>
+						{
+							options.map(option => option.value === select ? option.content : null)
+						}
+					</div>
 					<ArrowIcon className={cls.DropDown__arrowIcon} />
 				</div>
 				<div

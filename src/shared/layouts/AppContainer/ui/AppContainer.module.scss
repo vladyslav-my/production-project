@@ -10,15 +10,20 @@ $margin: $mainContainer - ($widgetContainer + $pageContainer);
 
 .AppContainer {
 	box-sizing: content-box;
-	
 
 	&_main {
+		position: relative;
+
 		display: flex;
+		
 
 		max-width: rem($mainContainer);
 		margin: 0 auto;
 		padding: 0 rem(20);
 		gap: rem($margin);
+		@media (max-width: em(1394)) {
+			flex-direction: column;
+		}
 	}
 
 	&_app {
@@ -28,12 +33,39 @@ $margin: $mainContainer - ($widgetContainer + $pageContainer);
 	}
 
 	&__widget {
-		flex: 0 0 rem($widgetContainer);
+		@media (min-width: em(1394)) {
+			flex: 0 0 rem($widgetContainer);
+		}
+		
 	}
 
 	&__page {
-		flex: 1 1 min(100%, rem($pageContainer));
 
-		min-width: 320px;
+		@media (min-width: em(1394)) {
+			flex: 1 1 min(100%, rem($pageContainer));
+
+			min-width: 320px;
+		}
+		@media (max-width: em(1394)) {
+			order: 2;
+		}
 	}
+
+	&__feature {
+		position: absolute;
+		left: -100px;
+	}
+}
+
+.sticky {
+	@media (min-width: em(1394)) {
+		position: sticky;
+		top: 0;
+		> * {
+			&:not(:last-child) {
+				margin-bottom: rem(10);
+			}
+		}
+	}
+
 }

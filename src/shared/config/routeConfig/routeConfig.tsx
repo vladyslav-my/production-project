@@ -11,8 +11,6 @@ import { Shell } from "@/shared/layouts/Shell";
 
 export type AppRouteProps = RouteProps & {
 	authOnly?: boolean;
-	Widget?: ReactNode;
-	Page: ReactNode;
 }
 
 
@@ -37,30 +35,29 @@ export const RoutePath: Record<AppRoutes, string> = {
 export const routeConfig: Record<AppRoutes, AppRouteProps> = {
 	[AppRoutes.MAIN]: {
 		path: RoutePath.main,
-		Page: <MainPage />
+		element: <MainPage />
 	},
 	[AppRoutes.ABOUT]: {
 		path: RoutePath.about,
-		Page: <AboutPage />
+		element: <AboutPage />
 	},
 	[AppRoutes.NOT_FOUND]: {
 		path: RoutePath.not_found,
-		Page: <NotFoundPage />
+		element: <NotFoundPage />
 	},
 	[AppRoutes.PROFILE]: {
 		path: RoutePath.profile,
-		Page: <ProfilePage />,
+		element: <ProfilePage />,
 		authOnly: true
 	},
 	[AppRoutes.ARTICLE]: {
 		path: RoutePath.article,
-		Page: <ArticlesPage />,
-		Widget: <Shell>emty</Shell>,
+		element: <ArticlesPage />,
 		authOnly: true
 	},
 	[AppRoutes.ARTICLE_DETAILS]: {
 		path: `${RoutePath.article_details}:id`,
-		Page: <ArticleDetailsPage />,
+		element: <ArticleDetailsPage />,
 		authOnly: true
 	},
 };

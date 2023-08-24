@@ -1,0 +1,55 @@
+@import "@/scss/tools";	
+
+.ArticlesFilters {
+	display: flex;
+	flex-direction: column;
+	gap: rem(32);
+
+	&__changeArticlesView {
+		@media (max-width: em(1394)) {
+			width: max-content;
+		}
+	}
+
+	&__search {
+
+	}
+
+	&__selectType {
+		display: inline-flex;
+		
+		gap: rem(8);
+		@media (max-width: em(1394)) {
+			flex-direction: row;
+
+			width: max-content;
+		}
+
+		@media (min-width: em(1394)) {
+			flex-direction: column;
+		}
+	}
+
+	&__wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: rem(24);
+
+		> * {
+			flex: 0 0 auto;
+		}
+	}
+
+	&__sort {
+		@media (max-width: em(1394)) {
+			width: max-content;
+		}
+	}
+	@media (max-width: em(1394)) {
+	}
+	
+	@media (min-width: em(1394)) {
+		align-items: start;
+	}
+}

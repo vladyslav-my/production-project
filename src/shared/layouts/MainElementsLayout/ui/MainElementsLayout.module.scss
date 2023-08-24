@@ -4,8 +4,9 @@
 	position: relative;
 
 	display: grid;
-	
+
 	height: 100vh;
+
 	grid-template-rows: auto 1fr auto;
 	grid-template-columns: auto 1fr auto;
 	grid-template-areas:
@@ -13,35 +14,39 @@
    	"sideBar mainBar mainBar"
    	"sideBar mainBar mainBar";
 
-	padding-top: rem(32);
+	
+
+	// padding: rem(32) 0;
 
 	&__navBar {
-
 		grid-area: navBar;
 
-		@media (min-width: em(1800)) {
-			position: absolute;
-			top: 0;
-			right: 0;
-	
-			width: 200px;
-		}
+		margin-top: 0;
+
+		transition: all 0.3s linear;
+		// position: absolute;
+		// top: rem(15);
+		// right: rem(20);
 	}
 	
 	&__sideBar {
+		
 		grid-area: sideBar;
+		@media (min-width: $tablet) {
+			margin: rem(32) 0;
+		}	
+	}
+	
 
-
+	&__mainBar {
+		overflow-y: scroll;
 
 		
-	}
-	
-	&__main {
 
-	}
-	
-	&__mainBar {
+		padding: rem(32) 0;
 		grid-area: mainBar;
+
+		
 
 		&::-webkit-scrollbar {
 			display: block;
@@ -65,37 +70,42 @@
 		}
 
 	}
-
-	&__scrollUpBar {
-		grid-area: scrollUpBar;
-	}
-
-	&__widgetBar {
-		grid-area: widgetBar;
-	}
+	
+	
+	// @media (min-width: $tablet) {
+	// 	height: 100vh;
+	// }
 	
 
-	@media (max-width: em(1800)) {
+	// @media (max-width: em(1800)) {
+	// 	grid-template-areas:
+   // 	"navBar mainBar mainBar"
+   // 	"sideBar mainBar mainBar"
+   // 	"sideBar mainBar mainBar";
+	// }
+
+	@media (max-width: $tablet) {
 		grid-template-areas:
-   	"navBar mainBar mainBar"
+   	"navBar navBar navBar"
+   	"sideBar sideBar sideBar"
+   	"mainBar mainBar mainBar";
+	}
+
+	@media (min-width: $tablet) and (max-width: em(1394)) {
+		grid-template-areas:
+   	"sideBar navBar navBar"
    	"sideBar mainBar mainBar"
    	"sideBar mainBar mainBar";
 	}
-
-
-	// @media (max-width: $tablet) {
-	// 	grid-template-areas:
-   // 	"navbar navbar"
-   // 	"sidebar sidebar"
-   // 	"main main";
-	// }
 }
 
 
-.pageBar {
-	height: 2000px;
-}
-
-.widgetBar {
+.fixed {
 	position: fixed;
+
+}
+
+
+.hide {
+	// margin-top: -40px;
 }

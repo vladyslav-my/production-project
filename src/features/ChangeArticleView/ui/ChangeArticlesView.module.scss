@@ -1,0 +1,58 @@
+@import "@/scss/tools";
+
+
+.ChangeArticlesView {
+	display: inline-flex;
+	overflow: hidden;
+
+	border-radius: em(32);
+
+	font-size: rem(16);
+
+	&_size {
+		&_small {
+			font-size: rem(13);
+		}
+		
+		&_medium {
+			font-size: rem(16);
+		}
+	}
+
+	&_border {
+		&_primary {
+			border: rem(3) solid $primaryBgColor;
+		}
+
+		&_secondary {
+			border: rem(3) solid $secondaryBgColor;
+		}
+	}
+}
+
+
+.viewMode {
+	$p: &;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: em(50);
+	height: em(50);
+
+
+	background-color: $secondaryBgColor;
+
+
+
+	&_active {
+		background-color: $primaryBgColor;
+		#{$p}__icon {
+			fill: $iconColor;
+		}
+	}
+
+	&__icon {
+		fill: $thirdBgColor;
+	}
+}

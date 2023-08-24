@@ -26,7 +26,8 @@ export const Navbar: FC<NavBarProps> = memo(({ className }) => {
 
 	return (
 		<div className={classNames(cls.Navbar, {}, [className])}>
-			{booleanAuthData && <Button onClick={onLogoutHandler} theme={ThemeButton.OUTLINE}>LOG OUT</Button>}
+			{booleanAuthData && <Button onClick={onLogoutHandler} theme={ThemeButton.OUTLINE}>log out</Button>}
+			{booleanAuthData && <Button theme={ThemeButton.OUTLINE}>sign in</Button>}
 			<LoginModal oppened={!booleanAuthData}></LoginModal>
 		</div>
 	);

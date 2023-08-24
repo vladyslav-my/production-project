@@ -11,6 +11,8 @@
     align-items: center;
     flex-direction: column;
 
+    height: 100%;
+
     padding: rem(22);
 
     transition: background-color, color, $transition;

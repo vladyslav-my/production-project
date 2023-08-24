@@ -1,7 +1,8 @@
 
 import { DropDown } from "@/shared/ui/DropDown";
+import { Input, InputTheme } from "@/shared/ui/Input/Input";
 import { useTranslation } from "react-i18next";
-
+import SearchIcon from "@/shared/assets/icons/Input/search.svg";
 
 export interface  DropDownOption {
 	value: string;
@@ -22,6 +23,7 @@ const AboutPage = () => {
 		<div>
 			{t("text")}
 			<DropDown options={options} select={options[0].content}></DropDown>
+			<Input theme={InputTheme.SMALL} Icon={SearchIcon} />
 		</div>
 	);
 };

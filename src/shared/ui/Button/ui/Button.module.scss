@@ -20,6 +20,12 @@
         border-radius: em(16);
         background: none;
     }
+
+    &_fill {
+        padding: em(8) em(16);
+
+        border-radius: em(34);
+    }
 }
 
 

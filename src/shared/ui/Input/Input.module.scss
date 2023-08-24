@@ -1,6 +1,7 @@
 @import "@/scss/tools";
 
 .Input {
+	$p: &;
 	display: flex;
 	gap: em(8);
 
@@ -14,9 +15,47 @@
 		color: $hintColor;
 	 }
 
+	&__wrapper {
+		position: relative;
+
+		width: 100%;
+	}
+
+	&__icon {
+		position: absolute;
+		fill: $iconColor;
+
+		top: 50%;
+		left: em(18);
+
+		transform: translateY(-50%);
+	}
+
+	&_icon {
+		#{$p}__field {
+			padding-left: em(40) !important;
+		}
+	}
+
+	&_size {
+		&_medium {
+			#{$p}__field {
+				padding: em(8) em(16);
+			}
+			
+		}
+
+		&_small {
+			#{$p}__field {
+				padding: em(5) em(16);
+			}
+		}
+	}
+
+
 	&__field {
 		width: 100%;
-		padding: em(8) em(16);
+		
 
 		border: em(1) solid $iconColor;
 		border-radius: em(48);

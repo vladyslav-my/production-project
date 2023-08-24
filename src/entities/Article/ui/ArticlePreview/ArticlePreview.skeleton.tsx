@@ -2,20 +2,20 @@ import { FC } from "react";
 import cls from "./ArticlePreview.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { Shell } from "@/shared/layouts/Shell";
-import { Avatar } from "@/shared/ui/Avatar";
-import { Image } from "@/shared/ui/Image";
-import { Button, ThemeButton } from "@/shared/ui/Button";
 import ViewsIcon from "@/shared/assets/icons/Post/views.svg";
 import { Skeleton } from "@/shared/layouts/Skeleton";
+import { ViewMode } from "../../model/types/ArticlesSchema";
 
 interface ArticlePreviewProps {
 	className?: string;
-	isTile?: boolean;
+	viewMode?: ViewMode;
+
 }
 
-export const ArticlePreview: FC<ArticlePreviewProps> = ({ className, isTile }) => {
+export const ArticlePreview: FC<ArticlePreviewProps> = ({ className, viewMode }) => {
 
-	if (isTile) {
+
+	if (viewMode === ViewMode.TILE) {
 		return (
 			<Shell className={classNames(cls.ArticlePreview, {}, [className, cls.ArticlePreview_tile])}>
 				<Skeleton isImage width={732} height={420} className={cls.ArticlePreview__image} />
