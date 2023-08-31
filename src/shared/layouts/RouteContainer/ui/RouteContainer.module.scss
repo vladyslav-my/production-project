@@ -1,0 +1,57 @@
+@import "@/scss/tools";
+
+
+$mainContainer: 1060;
+$widgetContainer: 270;
+$pageContainer: 780;
+$margin: $mainContainer - ($widgetContainer + $pageContainer);
+
+
+.RouteContainer {
+	position: relative;
+
+	display: flex;
+
+	box-sizing: content-box;
+	max-width: rem($mainContainer);
+	margin: 0 auto;
+	padding: 0 rem(20);
+	gap: rem($margin);
+
+	&__widget {
+		@media (min-width: em(1394)) {
+			flex: 0 0 rem($widgetContainer);
+
+		}
+	}
+
+	&__widgetSticky {
+		position: sticky;
+		top: rem(32);
+
+		display: flex;
+		flex-direction: column;
+		gap: rem(10);
+	}
+
+	&__page {
+
+		@media (min-width: em(1394)) {
+			flex: 1 1 min(100%, rem($pageContainer));
+
+			min-width: 320px;
+		}
+		@media (max-width: em(1394)) {
+			order: 2;
+		}
+	}
+
+	&__feature {
+		position: absolute;
+		left: -100px;
+	}
+
+	@media (max-width: em(1394)) {
+		flex-direction: column;
+	}
+}

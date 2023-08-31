@@ -4,32 +4,21 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import { GroupButton } from "@/shared/ui/GroupButton";
 import { articlesActions } from "@/entities/Article/model/slice/articlesSlice";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { AnyAction } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import { getArticlesQueryParams } from "@/entities/Article/model/selectors/articles";
+import { useMediaQuery } from "react-responsive";
+import { Devices } from "@/shared/lib/mediaQuery";
+import { DropDown } from "@/shared/ui/DropDown";
+import { typeOptionsData } from "../../lib/optionsData/typeOptionsData";
 
 interface SelectTypeArticlesProps {
 	className?: string;
 }
 
-const typesOptions = [
-	{
-		content: "Всі статті",
-		value: "all",
-	},
-	{
-		content: "IT",
-		value: "IT",
-	},
-	{
-		content: "Наука",
-		value: "science",
-	}
-];
-
 export const SelectTypeArticles: FC<SelectTypeArticlesProps> = ({ className }) => {
 	const dispatch = useAppDispatch();
 	const queryParams = useSelector(getArticlesQueryParams);
+	const isSmallMobile = useMediaQuery({ maxWidth: Devices.SMALLMOBILE });
 
 	const onChangeTypeHandler = (type: string) => {
 		dispatch(
@@ -45,10 +34,21 @@ export const SelectTypeArticles: FC<SelectTypeArticlesProps> = ({ className }) =
 		);
 	};
 
+	if (isSmallMobile) {
+		return (
+			<DropDown 
+				className={classNames(cls.SelectTypeArticles, {}, [className])} 
+				options={typeOptionsData} 
+				select={queryParams?.type} 
+				onChange={onChangeTypeHandler} 
+			/>
+		);
+	}	
+
 	return (
 		<GroupButton 
 			className={classNames(cls.SelectTypeArticles, {}, [className])} 
-			options={typesOptions} 
+			options={typeOptionsData} 
 			value={queryParams?.type} 
 			onChange={onChangeTypeHandler} 
 		/>

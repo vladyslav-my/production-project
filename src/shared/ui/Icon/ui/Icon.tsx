@@ -11,8 +11,8 @@ interface IconProps extends SvgProps {
 	className?: any | classNameType;
 	clickable?: boolean;
 	onClick?: () => void;
-	width: number;
-	height: number;
+	width?: number;
+	height?: number;
 }
 
 
@@ -26,8 +26,10 @@ export const Icon: FC<IconProps> = ({ className, Svg, width, height, clickable, 
 	if (clickable) {
 		return (
 			<Button className={className?.parent} onClick={onClick}>
-				<Svg 
+				<Svg
+					//@ts-ignore
 					width={`${width / 16}em`} 
+					//@ts-ignore
 					height={`${height / 16}em`} 
 					className={classNames(cls.Icon, {}, [className?.icon])} 
 					{...props}

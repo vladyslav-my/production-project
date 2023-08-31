@@ -1,16 +1,27 @@
 @import "@/scss/tools"; 
 
 .SortArticles {
-	display: inline-flex;
+	display: flex;
 	flex-direction: column;
+	flex-wrap: wrap;
 	gap: rem(8);
+
+	width: 100%;
 
 	&__sortedDropDown {
 		z-index: 2;
+		
 	}
 
 	&__orderedDropDown {
 		z-index: 1;
+	}
+
+	&__wrapper {
+		display: flex;
+		gap: rem(8);
+
+		flex-wrap: wrap;
 	}
 
 	@media (max-width: em(1394)) {

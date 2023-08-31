@@ -10,8 +10,10 @@ import { RoutePath } from "@/shared/config/routeConfig/routeConfig";
 import LogoIcon from "@/shared/assets/icons/Sidebar/logo.svg";
 import ArrowIcon from "@/shared/assets/icons/Sidebar/arrow.svg";
 import { AppMediaQuery, Devices } from "@/shared/lib/mediaQuery";
-import { Button } from "@/shared/ui/Button";
 import { NavLink } from "react-router-dom";
+import { Icon } from "@/shared/ui/Icon";
+
+
 interface SidebarProps {
    className?: string
 }
@@ -30,22 +32,28 @@ export const Sidebar: FC<SidebarProps> = memo(({ className }) => {
 	}, [unroll]);
 
 	return (
-		<div data-testid="sidebar" className={classNames(cls.sidebar, { 
-			[cls.sidebar_unroll]: unroll
+		<div data-testid="sidebar" className={classNames(cls.Sidebar, { 
+			[cls.Sidebar_unroll]: unroll
 		}, [className])}>
 			<AppMediaQuery minWidth={Devices.TABLET}>
-				<Button className={cls.sidebar__arrowButton} onClick={onToggle}>
-					<ArrowIcon className={cls.sidebar__arrowIcon} />
-				</Button>
-				<NavLink className={cls.sidebar__logoLink} to={RoutePath.main}>
-					<LogoIcon className={cls.sidebar__logoIcon} />
+				<Icon
+					className={{ 
+						parent: cls.Sidebar__arrowButton, 
+						icon: cls.Sidebar__arrowIcon 
+					}}
+					Svg={ArrowIcon} 
+					onClick={onToggle}
+					clickable 
+				/>
+				<NavLink className={cls.Sidebar__logoLink} to={RoutePath.main}>
+					<Icon Svg={LogoIcon} className={cls.Sidebar__logoIcon} />
 				</NavLink>
 			</AppMediaQuery>
-			<div className={`${cls.links} ${cls.sidebar__links}`}>
+			<div className={`${cls.links} ${cls.Sidebar__links}`}>
 				{Links}
 			</div>
 			<AppMediaQuery minWidth={Devices.TABLET}>
-				<div className={`${cls.sidebar__switchers} ${cls.switchers}`}>
+				<div className={`${cls.Sidebar__switchers} ${cls.switchers}`}>
 					<ThemeSwitcher />
 					<LangSwitcher />
 				</div>

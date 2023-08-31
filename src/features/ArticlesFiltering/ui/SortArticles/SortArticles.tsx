@@ -2,33 +2,12 @@ import { FC } from "react";
 import cls from "./SortArticles.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { DropDown } from "@/shared/ui/DropDown";
-import { AnyAction } from "@reduxjs/toolkit";
 import { articlesActions } from "@/entities/Article/model/slice/articlesSlice";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { getArticlesQueryParams } from "@/entities/Article/model/selectors/articles";
 import { useSelector } from "react-redux";
-
-const sortOption = [
-	{
-		content: "Датою загрузки",
-		value: "createdAt"
-	},
-	{
-		content: "Перегдяду",
-		value: "views"
-	}
-];
-
-const orderOption = [
-	{
-		content: "Зростанням",
-		value: "asc"
-	},
-	{
-		content: "Зменьшуванням",
-		value: "desc"
-	}
-];
+import { sortOptionData } from "../../lib/optionsData/sortOptionsData";
+import { orderOptionsData } from "../../lib/optionsData/orderOptionsData";
 
 
 interface SortArticlesProps {
@@ -72,18 +51,20 @@ export const SortArticles: FC<SortArticlesProps> = ({ className }) => {
 	return (
 		<div className={classNames(cls.SortArticles, {}, [className])}>
 			<span className={cls.SortArticles__label}>Сортувати за:</span>
-			<DropDown 
-				className={cls.SortArticles__sortedDropDown} 
-				options={sortOption}
-				select={queryParams?.sort} 
-				onChange={onChangeSortHandler}
-			/>
-			<DropDown 
-				className={cls.SortArticles__orderedDropDown}
-				options={orderOption} 
-				select={queryParams?.order} 
-				onChange={onChangeOrderHandler}
-			/>
+			<div className={cls.SortArticles__wrapper}>
+				<DropDown 
+					className={cls.SortArticles__sortedDropDown} 
+					options={sortOptionData}
+					select={queryParams?.sort} 
+					onChange={onChangeSortHandler}
+				/>
+				<DropDown 
+					className={cls.SortArticles__orderedDropDown}
+					options={orderOptionsData} 
+					select={queryParams?.order} 
+					onChange={onChangeOrderHandler}
+				/>
+			</div>
 		</div>
 	);
 };

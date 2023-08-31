@@ -56,48 +56,7 @@ export const Article: FC<ArticleProps> = ({ className, id }) => {
 				src="https://www.imgonline.com.ua/examples/bee-on-daisy.jpg"
 				height={`${420 / 732 * 100}%`}
 			/>
-			{/* <p className={cls.Article__desc}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, maxime ut? Fugiat quae earum sit, eius praesentium a cupiditate itaque aliquid tenetur laudantium placeat voluptates alias et iste rem ad. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, maxime ut? Fugiat quae earum sit, eius praesentium a cupiditate itaque aliquid tenetur laudantium placeat voluptates alias et iste rem ad</p> */}
-			{/* <div className={classNames(cls.bottom, {}, [cls.Article__bottom])}>
-				<Button className={cls.bottom__btn} theme={ThemeButton.OUTLINE}>Читать далее...</Button>
-				<div className={cls.bottom__views}>
-					<ViewsIcon className={cls.bottom__viewsIcon} />
-					<span className={cls.bottom__viewerShip}>12843</span>
-				</div>
-			</div> */}
-			{/* {
-				data?.blocks?.map((block) => {
-					switch(block.type) {
-					case "TEXT": 
-						return (
-							<ArticleTextBlock
-								className={cls.Article__textBlock}
-								key={block.id}
-								title={block.title} 
-								paragraphs={block.paragraphs} 
-							/>
-						);
-					case "IMAGE": 
-						return (
-							<ArticleImageBlock 
-								className={cls.Article__imageBlock}
-								key={block.id}
-								title={block.title} 
-								src={block.src} 
-							/>
-						);
-					case "CODE": 
-						return (
-							<ArticleCodeBlock 
-								className={cls.Article__codeBlock}
-								key={block.id}
-								code={block.code}
-							/>
-						);
-					}		
-				})
-			} */}
 			<ArticleBlocks data={data?.blocks} />
-			
 		</Shell>
 	);
 };

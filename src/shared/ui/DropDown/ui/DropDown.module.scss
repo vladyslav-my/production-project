@@ -11,10 +11,6 @@
 	line-height: normal;
 	gap: em(8);
 
-	&:not(:last-child) {
-		margin-right: em(8);
-	}
-
 	&__self {
 		position: relative;
 		z-index: 0;
@@ -42,6 +38,7 @@
 
 
 		transition: border-radius 0.3s ease;
+		white-space: nowrap;
 
 		border-radius: em(19);
 
@@ -94,6 +91,7 @@
 		padding: em(5) em(35) em(5) em(16);
 
 		transition: max-height $transition, margin-bottom $transition;
+		white-space: nowrap;
 
 		background-color: $secondaryBgColor;
 		

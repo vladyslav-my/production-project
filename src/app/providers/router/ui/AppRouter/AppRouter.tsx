@@ -5,15 +5,17 @@ import { Loader } from "@/shared/ui/Loader";
 import { RequireAuth } from "../RequireAuth";
 import { AppContainer, Container } from "@/shared/layouts/AppContainer";
 import cls from "./AppRouter.module.scss";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { PageLoader } from "@/shared/ui/PageLoader";
 
 
 
 
-const AppRouter = () => {
+const AppRouter = ({ className }: {className: string}) => {
 	const RouteItems = Object.values(routeConfig).map((route: AppRouteProps) => {
 
 		const element = (	
-			<Suspense fallback={<Loader className={cls.loader} />}>
+			<Suspense fallback={<PageLoader/>}>
 				{route.element}
 			</Suspense>	
 
@@ -31,9 +33,12 @@ const AppRouter = () => {
 	});
 
 	return (
-		<Routes>
-			{RouteItems}
-		</Routes>
+		<div className={className}>
+			<Routes>
+				{RouteItems}
+			</Routes>
+		</div>
+	
 	);
 };
 

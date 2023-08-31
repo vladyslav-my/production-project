@@ -4,5 +4,5 @@ export enum Devices {
 	BREAKPOINT_1394 = "87.125em",
 	TABLET = "61.99875em",
 	MOBILE = "47.99875em",
-	MOBILESMALL = "29.99875em"
+	SMALLMOBILE = "29.99875em"
 }

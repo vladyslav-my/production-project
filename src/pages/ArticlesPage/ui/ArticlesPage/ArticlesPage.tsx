@@ -14,6 +14,7 @@ import { Devices, useAppMediaQuary } from "@/shared/lib/mediaQuery";
 import { useMediaQuery } from "react-responsive";
 import { Navbar } from "@/widgets/Navbar";
 import { Shell } from "@/shared/layouts/Shell";
+import { RouteContainer } from "@/shared/layouts/RouteContainer";
 
 interface ArticlePageProps {
 	className?: string
@@ -29,7 +30,7 @@ const ArticlesPage: FC<ArticlePageProps> = ({ className }) => {
 	const isTablet = useMediaQuery({ minWidth: 1800 });
 
 	return (
-		<Page 
+		<RouteContainer 
 			className={classNames(cls.ArticlesPage, {}, [className])} 
 			Widget={
 				<ArticlesFilters />
@@ -40,7 +41,7 @@ const ArticlesPage: FC<ArticlePageProps> = ({ className }) => {
 		>
 			
 			<InfinityArticlesList />
-		</Page>
+		</RouteContainer>
 	);
 };
 

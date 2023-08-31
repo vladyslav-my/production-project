@@ -4,6 +4,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import { Shell } from "@/shared/layouts/Shell";
 import { Article } from "@/entities/Article";
 import { useParams } from "react-router-dom";
+import { RouteContainer } from "@/shared/layouts/RouteContainer";
 
 interface ArticleDetailsPageProps {
 	className?: string
@@ -12,9 +13,9 @@ interface ArticleDetailsPageProps {
 const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
 	const { id } = useParams();
 	return (
-		<div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+		<RouteContainer className={classNames(cls.ArticleDetailsPage, {}, [className])}>
 			<Article id={id} />
-		</div>
+		</RouteContainer>
 	);
 };
 

@@ -3,7 +3,7 @@
 
 
 
-.sidebar {
+.Sidebar {
     $p: &;
     position: relative;
 
@@ -15,7 +15,7 @@
 
     padding: rem(22);
 
-    transition: background-color, color, $transition;
+    transition: background-color $transition, color $transition;
 
 
     border-radius: rem(32);
@@ -124,6 +124,10 @@
 
     @media (min-width: $tablet) {
         padding: rem(22) 0 rem(40) 0;
+	}
+
+    @media (max-width: $tablet) {
+        border-radius: 0;
 	}
 }
 

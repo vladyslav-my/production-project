@@ -29,7 +29,10 @@ $margin: $mainContainer - ($widgetContainer + $pageContainer);
 	&_app {
 		max-width: rem(1920);
 		margin: 0 auto;
-		padding-left: rem(32);
+		
+		@media (min-width: $tablet) {
+			padding-left: rem(32);
+		}
 	}
 
 	&__widget {
@@ -58,14 +61,20 @@ $margin: $mainContainer - ($widgetContainer + $pageContainer);
 }
 
 .sticky {
+	display: flex;
+	flex-direction: column;
+	gap: rem(10);
+
 	@media (min-width: em(1394)) {
 		position: sticky;
 		top: 0;
-		> * {
-			&:not(:last-child) {
-				margin-bottom: rem(10);
-			}
-		}
+
+
+		// > * {
+		// 	&:not(:last-child) {
+		// 		margin-bottom: rem(10);
+		// 	}
+		// }
 	}
 
 }
