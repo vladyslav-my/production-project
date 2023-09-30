@@ -1,23 +1,21 @@
-import { Article } from "./ui/Article/Article";
-import { articleDeteilsReducer } from "./model/slice/articleDeteilsSlice";
+import { Article } from "./model/types/Article";
 import { ArticleDetailsSchema } from "./model/types/ArticleDetailsSchema";
-import { articlesReducer, articlesActions } from "./model/slice/articlesSlice";
-import { ArticlesSchema, ViewMode } from "./model/types/ArticlesSchema";
-import { fetchArticles } from "./services/fetchArticles/fetchArticles";
-import { ArticlePreview } from "./ui/ArticlePreview/ArticlePreview";
-import { ArticlePreview as ArticlePreviewSkeleton } from "./ui/ArticlePreview/ArticlePreview.skeleton";
-import * as articlesSelectors from "./model/selectors/articles";
+import { ArticlesListSchema, ViewMode } from "./model/types/ArticlesListSchema";
+import { InfinityArticlesList } from "./ui/InfinityArticlesList/InfinityArticlesList";
+import { articlesListActions } from "./model/slice/articlesListSlice";
+import * as articlesListSelectors from "./model/selectors/articlesList"; 
+import { getArticlesListViewMode } from "./model/selectors/articlesList";
+
+export type {
+	Article,
+	ArticleDetailsSchema,
+	ArticlesListSchema,
+};
 
 export {
-	Article,
-	articlesActions,
-	articleDeteilsReducer,
-	articlesReducer,
-	fetchArticles,
-	type ArticleDetailsSchema,
-	type ArticlesSchema,
 	ViewMode,
-	ArticlePreview,
-	ArticlePreviewSkeleton,
-	articlesSelectors,
+	getArticlesListViewMode,
+	articlesListActions,
+	articlesListSelectors,
+	InfinityArticlesList
 };

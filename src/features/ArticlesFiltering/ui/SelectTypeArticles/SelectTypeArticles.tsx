@@ -2,14 +2,15 @@ import { FC } from "react";
 import cls from "./SelectTypeArticles.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { GroupButton } from "@/shared/ui/GroupButton";
-import { articlesActions } from "@/entities/Article/model/slice/articlesSlice";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useSelector } from "react-redux";
-import { getArticlesQueryParams } from "@/entities/Article/model/selectors/articles";
 import { useMediaQuery } from "react-responsive";
 import { Devices } from "@/shared/lib/mediaQuery";
 import { DropDown } from "@/shared/ui/DropDown";
 import { typeOptionsData } from "../../lib/optionsData/typeOptionsData";
+import { articlesListActions, articlesListSelectors } from "@/entities/Article";
+import { fetchArticlesList } from "@/entities/Article/services/fetchArticlesList/fetchArticlesList";
+
 
 interface SelectTypeArticlesProps {
 	className?: string;
@@ -17,20 +18,20 @@ interface SelectTypeArticlesProps {
 
 export const SelectTypeArticles: FC<SelectTypeArticlesProps> = ({ className }) => {
 	const dispatch = useAppDispatch();
-	const queryParams = useSelector(getArticlesQueryParams);
+	const { getArticlesListTypeQP } = articlesListSelectors;
+
+	const type = useSelector(getArticlesListTypeQP);
+
 	const isSmallMobile = useMediaQuery({ maxWidth: Devices.SMALLMOBILE });
 
 	const onChangeTypeHandler = (type: string) => {
 		dispatch(
-			articlesActions.removeData()
+			articlesListActions.setType(type)
 		);
 
-		dispatch(
-			articlesActions.setPage(1)
-		);
 
 		dispatch(
-			articlesActions.setType(type)
+			fetchArticlesList({ replace: true })
 		);
 	};
 
@@ -39,7 +40,7 @@ export const SelectTypeArticles: FC<SelectTypeArticlesProps> = ({ className }) =
 			<DropDown 
 				className={classNames(cls.SelectTypeArticles, {}, [className])} 
 				options={typeOptionsData} 
-				select={queryParams?.type} 
+				select={type} 
 				onChange={onChangeTypeHandler} 
 			/>
 		);
@@ -49,7 +50,7 @@ export const SelectTypeArticles: FC<SelectTypeArticlesProps> = ({ className }) =
 		<GroupButton 
 			className={classNames(cls.SelectTypeArticles, {}, [className])} 
 			options={typeOptionsData} 
-			value={queryParams?.type} 
+			value={type} 
 			onChange={onChangeTypeHandler} 
 		/>
 	);

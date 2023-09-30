@@ -7,8 +7,9 @@ import { Image } from "@/shared/ui/Image";
 import { Button, ThemeButton } from "@/shared/ui/Button";
 import ViewsIcon from "@/shared/assets/icons/Post/views.svg";
 import ArticleBlocks from "../ArticleBlocks/ArticleBlocks";
-import { Article } from "../../model/types/Article";
-import { ViewMode } from "../../model/types/ArticlesSchema";
+import { Article } from "@/entities/Article";
+import { ViewMode } from "../../model/types/ArticlesListSchema";
+import { Icon } from "@/shared/ui/Icon";
 
 interface ArticlePreviewProps {
 	className?: string;
@@ -23,7 +24,7 @@ export const ArticlePreview: FC<ArticlePreviewProps> = ({ className, data, viewM
 			<Shell className={classNames(cls.ArticlePreview, {}, [className, cls.ArticlePreview_tile])}>
 				<Image 
 					className={cls.ArticlePreview__image} 
-					src={"https://www.imgonline.com.ua/examples/bee-on-daisy.jpg"}
+					src={data?.img}
 					height={`${420 / 732 * 100}%`}
 				/>
 				<div className={cls.ArticlePreview__container}>
@@ -31,7 +32,7 @@ export const ArticlePreview: FC<ArticlePreviewProps> = ({ className, data, viewM
 					<div className={classNames(cls.bottom, {}, [cls.ArticlePreview__bottom])}>
 						<span className={cls.bottom__date}>{data?.createdAt}</span>
 						<div className={cls.bottom__views}>
-							<ViewsIcon className={cls.bottom__viewsIcon} />
+							<Icon className={cls.bottom__viewsIcon} Svg={ViewsIcon}  />
 							<span className={cls.bottom__viewerShip}>{data?.views}</span>
 						</div>
 					</div>

@@ -8,7 +8,7 @@ import { CombinedState } from "redux";
 import { AxiosInstance } from "axios";
 import { NavigateOptions, To } from "react-router-dom";
 import { ProfileSchema } from "@/entities/Profile/model/types/Profile";
-import { ArticleDetailsSchema, ArticlesSchema } from "@/entities/Article";
+import { ArticleDetailsSchema, ArticlesListSchema } from "@/entities/Article";
 import { ArticlesPageSchema } from "@/pages/ArticlesPage";
 
 export interface StateSchema {
@@ -18,7 +18,7 @@ export interface StateSchema {
     loginForm?: LoginFormSchema;
     profile?: ProfileSchema;
     articleDeteils?: ArticleDetailsSchema;
-    articles?: ArticlesSchema;
+    articlesList?: ArticlesListSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

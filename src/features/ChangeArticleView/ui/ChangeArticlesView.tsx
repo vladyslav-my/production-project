@@ -6,9 +6,9 @@ import TileIcon from "@/shared/assets/icons/articlesList/tile.svg";
 import { Icon } from "@/shared/ui/Icon";
 import { Button } from "@/shared/ui/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { getArticlesViewMode } from "@/entities/Article/model/selectors/articles";
-import { ViewMode, articlesActions } from "@/entities/Article";
-import { articlesSlice } from "@/entities/Article/model/slice/articlesSlice";
+import { ViewMode, articlesListActions, getArticlesListViewMode } from "@/entities/Article";
+import { fetchArticlesList } from "@/entities/Article/services/fetchArticlesList/fetchArticlesList";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 
 
 export enum CAVBorderStyle {
@@ -28,7 +28,7 @@ interface ChangeArticlesViewProps {
 }
 
 
-interface DataViewBtns { 
+interface DataViewBtns {
 	key: number;
 	Icon: FC<SVGProps<SVGSVGElement>>;
 	viewMode: ViewMode;
@@ -38,18 +38,19 @@ interface DataViewBtns {
 const dataViewBtns: DataViewBtns[] = [
 	{
 		key: 1,
+		Icon: TileIcon,
+		viewMode: ViewMode.TILE,
+		width: 18,
+		height: 18,
+	},
+	{
+		key: 2,
 		Icon: ListIcon,
 		viewMode: ViewMode.LIST,
 		width: 18,
 		height: 16
 	},
-	{
-		key: 2,
-		Icon: TileIcon,
-		viewMode: ViewMode.TILE,
-		width: 18,
-		height: 18,
-	}
+
 ];
 
 export const ChangeArticlesView: FC<ChangeArticlesViewProps> = ({ 
@@ -57,19 +58,27 @@ export const ChangeArticlesView: FC<ChangeArticlesViewProps> = ({
 	borderStyle = CAVBorderStyle.PRIMARY, 
 	sizeStyle = CAVSizeStyle.MEDIUM
 }) => {
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
-	const viewMode = useSelector(getArticlesViewMode);
+	const viewMode = useSelector(getArticlesListViewMode);
 
 	const onClickSwitchView = () => {
 		if (viewMode === ViewMode.LIST) {
 			dispatch(
-				articlesActions.setViewMode(ViewMode.TILE)
+				articlesListActions.setViewMode(ViewMode.TILE)
+			);
+
+			dispatch(
+				fetchArticlesList({ replace: true })
 			);
 			
 		} else if (viewMode === ViewMode.TILE) {
 			dispatch(
-				articlesActions.setViewMode(ViewMode.LIST)
+				articlesListActions.setViewMode(ViewMode.LIST)
+			);
+
+			dispatch(
+				fetchArticlesList({ replace: true })
 			);
 		}
 	}; 
@@ -85,9 +94,9 @@ export const ChangeArticlesView: FC<ChangeArticlesViewProps> = ({
 						<Icon 
 							className={cls.viewMode__icon}
 							width={width} 
-							height={height} 
+							height={height}
 							Svg={IconParam}
-						/>				
+						/>
 					</div>
 				))
 			}

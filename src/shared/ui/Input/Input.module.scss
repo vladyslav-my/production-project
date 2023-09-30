@@ -3,9 +3,10 @@
 .Input {
 	$p: &;
 	display: flex;
-	gap: em(8);
 
 	align-items: center;
+
+	gap: em(8);
 
 	&:focus {
 		outline: none;
@@ -59,12 +60,10 @@
 
 		border: em(1) solid $iconColor;
 		border-radius: em(48);
+		background: transparent;
 	}
 
 	&__label {
 		white-space: nowrap;
-		&::after {
-			content: ":";
-		}
 	}
 }

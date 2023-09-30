@@ -46,7 +46,7 @@ export const Input: FC<InputProps> = ({
 		}, [className, 
 			cls[theme]])}
 		>
-			{label && <span className={cls.Input__label}>{label}</span>}
+			{label && <span className={cls.Input__label}>{label}:</span>}
 			<div className={cls.Input__wrapper}>
 				{Icon && <IconComponent width={15} height={15} className={cls.Input__icon} Svg={Icon} />}
 				<input

@@ -14,12 +14,12 @@ import { getArticleDetailsData } from "../../model/selectors/articleDetails/getA
 import { getArticleDetailsIsLoading } from "../../model/selectors/articleDetails/getArticleDetailsIsLoading/getArticleDetailsIsLoading";
 import { getArticleDetailsError } from "../../model/selectors/articleDetails/getArticleDetailsError/getArticleDetailsError";
 
-interface ArticleProps {
+interface ArticleViewProps {
 	className?: string;
 	id?: string;
 }
 
-export const Article: FC<ArticleProps> = ({ className, id }) => {
+export const ArticleView: FC<ArticleViewProps> = ({ className, id }) => {
 	useDynamicReduce({
 		articleDeteils: articleDeteilsReducer,
 	}, false);
@@ -43,17 +43,17 @@ export const Article: FC<ArticleProps> = ({ className, id }) => {
 	}
 
 	return (
-		<Shell className={classNames(cls.Article, {}, [className, cls.Article_list])}>
-			<div className={classNames(cls.top, {}, [cls.Article__top])}>
+		<Shell className={classNames(cls.ArticleView, {}, [className, cls.ArticleViewlist])}>
+			<div className={classNames(cls.top, {}, [cls.ArticleView_top])}>
 				<Avatar size={32} className={cls.top__avatar} />
 				<span className={cls.top__user}>{data?.user.username}</span>
 				<span className={cls.top__date}>{data?.createdAt}</span>
 			</div>
-			<h2 className={cls.Article__title}>{data?.title}</h2>
-			<h3 className={cls.Article__subTitle}>{data?.subtitle}</h3>
+			<h2 className={cls.ArticleView_title}>{data?.title}</h2>
+			<h3 className={cls.ArticleView_subTitle}>{data?.subtitle}</h3>
 			<Image 
-				className={cls.Article__image} 
-				src="https://www.imgonline.com.ua/examples/bee-on-daisy.jpg"
+				className={cls.ArticleView_image} 
+				src={data?.img}
 				height={`${420 / 732 * 100}%`}
 			/>
 			<ArticleBlocks data={data?.blocks} />

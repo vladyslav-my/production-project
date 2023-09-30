@@ -5,7 +5,7 @@ export enum ViewMode {
 	LIST = "list"
 }
 
-export interface ArticlesSchema {
+export interface ArticlesListSchema {
 	data?: Article[];
 	hasMore: boolean;
 	isLoading?: boolean;

@@ -21,10 +21,6 @@ export const Navbar: FC<NavBarProps> = memo(({ className, shell }) => {
 	const authData = useSelector(getUserAuthData);
 	const isBreackpoint_1800 = useMediaQuery({ maxWidth: Devices.BREAKPOINT_1800 });
 	const isTablet = useMediaQuery({ maxWidth: Devices.TABLET });
-	
-	useEffect(() => {
-		dispatch(userActions.initAuthData());
-	}, []);
 
 	const onLogoutHandler = useCallback(() => {
 		dispatch(userActions.logout());

@@ -39,6 +39,6 @@ export const Icon: FC<IconProps> = ({ className, Svg, width, height, clickable, 
 	}
 
 	return (
-		<Svg width={`${width / 16}em`} height={`${height / 16}em`} className={classNames(cls.Icon, {}, [className])} {...props}/>
+		<Svg width={width && `${width / 16}em`} height={height && `${height / 16}em`} className={classNames(cls.Icon, {}, [className])} {...props}/>
 	);
 };

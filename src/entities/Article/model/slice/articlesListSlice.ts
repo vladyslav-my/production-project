@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ArticlesSchema, Order, Sort, Type } from "../types/ArticlesSchema";
-import { fetchArticles } from "../../services/fetchArticles/fetchArticles";
-import { ViewMode } from "../types/ArticlesSchema";
+import { ArticlesListSchema, Order, Sort, Type } from "../types/ArticlesListSchema";
+import { fetchArticlesList } from "../../services/fetchArticlesList/fetchArticlesList";
+import { ViewMode } from "../types/ArticlesListSchema";
 
-const initialState: ArticlesSchema = {
+const initialState: ArticlesListSchema = {
 	data: [],
 	hasMore: true,
 	viewMode: ViewMode.LIST,
@@ -15,13 +15,11 @@ const initialState: ArticlesSchema = {
 		sort: Sort.CREATEDAT,
 		type: Type.ALL,
 		search: "",
-	},
-	
-
+	}
 };
 
-export const articlesSlice = createSlice({
-	name: "articles",
+export const articlesListSlice = createSlice({
+	name: "articlesListSlice",
 	initialState,
 	reducers: {
 		setLimit: (state, action) => {
@@ -56,19 +54,24 @@ export const articlesSlice = createSlice({
 		}
 	},
 	extraReducers: {
-		[fetchArticles.fulfilled.type]: (state, action) => {
-			state.data?.push(...action.payload);
-			// state.data = action.payload;
+		[fetchArticlesList.fulfilled.type]: (state, action) => {
+			if (action.meta.arg.replace) {
+				console.log("replace");
+				state.data = action.payload;
+			} else {
+				state.data?.push(...action.payload);
+			}
+			
 			state.isLoading = false;
 		},
-		[fetchArticles.pending.type]: (state, action) => {
+		[fetchArticlesList.pending.type]: (state, action) => {
 			state.isLoading = true;
 		},
-		[fetchArticles.rejected.type]: (state, action) => {
+		[fetchArticlesList.rejected.type]: (state, action) => {
 			state.error = "error";
 		},
 	}
 });
 
-export const { actions: articlesActions } = articlesSlice;
-export const { reducer: articlesReducer } = articlesSlice;
+export const { actions: articlesListActions } = articlesListSlice;
+export const { reducer: articlesListReducer } = articlesListSlice;

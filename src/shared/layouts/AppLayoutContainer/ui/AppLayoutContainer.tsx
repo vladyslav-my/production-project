@@ -20,7 +20,9 @@ export const AppLayoutContainer: FC<AppLayoutContainerProps> = ({
 	main: Main
 }) => {
 
-
+	const isTablet = useMediaQuery({ maxWidth: Devices.TABLET });
+	const isBreakpoint_1800 = useMediaQuery({ minWidth: Devices.BREAKPOINT_1800 });
+	
 	const ref = useRef<any>(null);
 
 	useEffect(() => {
@@ -29,8 +31,7 @@ export const AppLayoutContainer: FC<AppLayoutContainerProps> = ({
 
 		const scrollPosition = () => window.pageYOffset || document.documentElement.scrollTop;
 		const containHide = () => ref.current.classList.contains(cls.hide);
-		
-		window.addEventListener("scroll", () => {
+		const smartHeader = () => {
 			if(scrollPosition() > lastScroll && !containHide()) {
 				ref.current.classList.add(cls.hide);
 			}
@@ -39,12 +40,18 @@ export const AppLayoutContainer: FC<AppLayoutContainerProps> = ({
 			}
 
 			lastScroll = scrollPosition();
-		});
-	}, []);
+		};
+		
+		isTablet && window.addEventListener("scroll", smartHeader);
+
+		return () => {
+			window.removeEventListener("scroll", smartHeader);
+		};
+
+	}, [isTablet]);
 	
 
-	const isTablet = useMediaQuery({ maxWidth: Devices.TABLET });
-	const isBreakpoint_1800 = useMediaQuery({ minWidth: Devices.BREAKPOINT_1800 });
+
 	
 	return (
 		<div className={classNames(cls.ALC, {}, [className])}>

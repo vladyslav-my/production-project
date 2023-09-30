@@ -2,12 +2,13 @@ import { FC } from "react";
 import cls from "./SortArticles.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { DropDown } from "@/shared/ui/DropDown";
-import { articlesActions } from "@/entities/Article/model/slice/articlesSlice";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { getArticlesQueryParams } from "@/entities/Article/model/selectors/articles";
 import { useSelector } from "react-redux";
 import { sortOptionData } from "../../lib/optionsData/sortOptionsData";
 import { orderOptionsData } from "../../lib/optionsData/orderOptionsData";
+import { articlesListActions, articlesListSelectors } from "@/entities/Article";
+import { fetchArticlesList } from "@/entities/Article/services/fetchArticlesList/fetchArticlesList";
+
 
 
 interface SortArticlesProps {
@@ -16,34 +17,28 @@ interface SortArticlesProps {
 
 export const SortArticles: FC<SortArticlesProps> = ({ className }) => {
 	const dispatch = useAppDispatch();
+	const { getArticlesListSortQP, getArticlesListOrderQP } = articlesListSelectors;
 
-	const queryParams = useSelector(getArticlesQueryParams);
+	const sort = useSelector(getArticlesListSortQP);
+	const order = useSelector(getArticlesListOrderQP);
 
 	const onChangeSortHandler = (value: string) => {
 		dispatch(
-			articlesActions.removeData()
+			articlesListActions.setSort(value)
 		);
 
 		dispatch(
-			articlesActions.setPage(1)
-		);
-		
-		dispatch(
-			articlesActions.setSort(value)
+			fetchArticlesList({ replace: true })
 		);
 	};
 
 	const onChangeOrderHandler = (value: string) => {
 		dispatch(
-			articlesActions.removeData()
+			articlesListActions.setOrder(value)
 		);
 
 		dispatch(
-			articlesActions.setPage(1)
-		);
-
-		dispatch(
-			articlesActions.setOrder(value)
+			fetchArticlesList({ replace: true })
 		);
 	};
 
@@ -55,13 +50,13 @@ export const SortArticles: FC<SortArticlesProps> = ({ className }) => {
 				<DropDown 
 					className={cls.SortArticles__sortedDropDown} 
 					options={sortOptionData}
-					select={queryParams?.sort} 
+					select={sort} 
 					onChange={onChangeSortHandler}
 				/>
 				<DropDown 
 					className={cls.SortArticles__orderedDropDown}
 					options={orderOptionsData} 
-					select={queryParams?.order} 
+					select={order} 
 					onChange={onChangeOrderHandler}
 				/>
 			</div>

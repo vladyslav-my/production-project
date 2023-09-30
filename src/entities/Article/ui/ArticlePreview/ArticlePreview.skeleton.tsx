@@ -4,7 +4,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import { Shell } from "@/shared/layouts/Shell";
 import ViewsIcon from "@/shared/assets/icons/Post/views.svg";
 import { Skeleton } from "@/shared/layouts/Skeleton";
-import { ViewMode } from "../../model/types/ArticlesSchema";
+import { ViewMode } from "../../model/types/ArticlesListSchema";
 
 interface ArticlePreviewProps {
 	className?: string;
