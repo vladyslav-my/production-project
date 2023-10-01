@@ -1,7 +1,7 @@
 import { FC } from "react";
 import cls from "./Icon.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Button } from "../../Button";
+import { Button } from "../../Buttons";
 
 
 type SvgProps = Omit<React.SVGProps<SVGSVGElement>, "className">

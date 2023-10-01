@@ -3,7 +3,7 @@ import cls from "./ThemeSwitcher.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { useTheme } from "@/app/providers/ThemeProvider";
 import { Theme } from "@/app/providers/ThemeProvider";
-import { Button } from "@/shared/ui/Button/ui/Button";
+import { Button } from "@/shared/ui/Buttons";
 import ThemeIcon from "@/shared/assets/icons/Sidebar/theme.svg";
 
 interface ThemeSwitcherProps {

@@ -1,5 +1,5 @@
 import { FC, useEffect } from "react";
-import cls from "./Article.module.scss";
+import cls from "./ArticleView.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { Shell } from "@/shared/layouts/Shell";
 import { useSelector } from "react-redux";

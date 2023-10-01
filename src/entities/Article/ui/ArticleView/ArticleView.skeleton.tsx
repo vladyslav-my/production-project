@@ -4,7 +4,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import { Shell } from "@/shared/layouts/Shell";
 import { Avatar } from "@/shared/ui/Avatar";
 import { Image } from "@/shared/ui/Image";
-import { Button, ThemeButton } from "@/shared/ui/Button";
+import { Button, ButtonTheme } from "@/shared/ui/Buttons";
 import ViewsIcon from "@/shared/assets/icons/Post/views.svg";
 import { Skeleton } from "@/shared/layouts/Skeleton";
 

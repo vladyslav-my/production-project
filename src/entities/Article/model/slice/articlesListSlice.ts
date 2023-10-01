@@ -4,17 +4,18 @@ import { fetchArticlesList } from "../../services/fetchArticlesList/fetchArticle
 import { ViewMode } from "../types/ArticlesListSchema";
 
 const initialState: ArticlesListSchema = {
+	_initedData: false,
 	data: [],
 	hasMore: true,
-	viewMode: ViewMode.LIST,
+	viewMode: localStorage.getItem("ArticlesViewMode") as ViewMode || ViewMode.LIST,
 	queryParams: {
-		_inited: false,
 		limit: 3,
 		page: 1,
 		order: Order.ASC,
 		sort: Sort.CREATEDAT,
 		type: Type.ALL,
 		search: "",
+		_inited: false,
 	}
 };
 
@@ -44,17 +45,18 @@ export const articlesListSlice = createSlice({
 			state.queryParams._inited = action.payload;
 		},
 		setViewMode: (state, action) => {
+			localStorage.setItem("ArticlesViewMode", action.payload);
 			state.viewMode = action.payload;
 		},
 		setHasMore: (state, action) => {
 			state.hasMore = action.payload;
 		},
-		removeData: (state) => {
-			state.data = [];
-		}
+		
 	},
 	extraReducers: {
 		[fetchArticlesList.fulfilled.type]: (state, action) => {
+			state._initedData = true;
+
 			if (action.meta.arg.replace) {
 				console.log("replace");
 				state.data = action.payload;
@@ -69,9 +71,11 @@ export const articlesListSlice = createSlice({
 		},
 		[fetchArticlesList.rejected.type]: (state, action) => {
 			state.error = "error";
-		},
+		}
 	}
 });
 
 export const { actions: articlesListActions } = articlesListSlice;
 export const { reducer: articlesListReducer } = articlesListSlice;
+
+

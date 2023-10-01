@@ -1,7 +1,7 @@
 import { FC, useCallback } from "react";
 import cls from "./ProfileHeader.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Button, ThemeButton } from "@/shared/ui/Button";
+import { Button, ButtonTheme } from "@/shared/ui/Buttons";
 import { useSelector } from "react-redux";
 import { ProfileActions } from "@/entities/Profile/model/slice/ProfileSlice";
 import { getProfileReadOnly } from "@/entities/Profile/model/selectors/getProfileReadOnly/getProfileReadOnly";
@@ -37,14 +37,14 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({ className }) => {
 				<div className={cls.ProfileHeader__leftBtn}>
 					<Button onClick={readOnly ? undefined : onCancelEditClickHandler} className={classNames(cls.ProfileHeader__cancel, {
 						[cls.ProfileHeader__cancel_hide]: !!readOnly
-					}, [])} theme={ThemeButton.OUTLINE}>Cancel</Button>
+					}, [])} theme={ButtonTheme.OUTLINE}>Cancel</Button>
 				</div>
 				<Avatar className={cls.ProfileHeader__avatar} size={128}/>
 				<div className={cls.ProfileHeader__rightBtn}>
 					<Button 
 						className={cls.ProfileHeader__editAndSave}
 						onClick={readOnly ? onEditClickHandler : onSaveClickHandler}
-						theme={ThemeButton.OUTLINE}
+						theme={ButtonTheme.OUTLINE}
 					>
 						{readOnly ? "Edit" : "Save"}
 					</Button>
@@ -54,11 +54,11 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({ className }) => {
 			</div>
 			{/* {readOnly 
 				?
-				<Button onClick={onEditClick} theme={ThemeButton.OUTLINE}>Edit</Button>
+				<Button onClick={onEditClick} theme={ButtonTheme.OUTLINE}>Edit</Button>
 				:
 				<>
-					<Button onClick={onSaveClick} theme={ThemeButton.OUTLINE}>Save</Button>
-					<Button onClick={onCancelEditClick} theme={ThemeButton.OUTLINE}>Cancel</Button>
+					<Button onClick={onSaveClick} theme={ButtonTheme.OUTLINE}>Save</Button>
+					<Button onClick={onCancelEditClick} theme={ButtonTheme.OUTLINE}>Cancel</Button>
 				</>
 			}  */}
 		</div>

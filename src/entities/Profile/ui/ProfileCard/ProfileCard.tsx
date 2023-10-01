@@ -7,7 +7,7 @@ import { Loader } from "@/shared/ui/Loader";
 import { CurrencyDropDown } from "@/entities/Currency";
 import { CountryDropDown } from "@/entities/Country";
 import { Shell } from "@/shared/layouts/Shell";
-import { Button } from "@/shared/ui/Button";
+import { Button } from "@/shared/ui/Buttons";
 
 interface ProfileCardProps {
 	className?: string;

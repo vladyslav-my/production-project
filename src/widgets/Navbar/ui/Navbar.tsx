@@ -1,7 +1,7 @@
 import cls from "./Navbar.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { FC, memo, useCallback, useEffect, useState } from "react";
-import { Button, ThemeButton } from "@/shared/ui/Button";
+import { Button, ButtonTheme } from "@/shared/ui/Buttons";
 import { LoginModal } from "@/features/AuthByUsername";
 import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "@/entities/User";
@@ -33,8 +33,8 @@ export const Navbar: FC<NavBarProps> = memo(({ className, shell }) => {
 	if (isBreackpoint_1800) {
 		return (
 			<Shell borderStyle={isTablet ? ShellBorderStyle.NONE : ShellBorderStyle.DEFAULT} className={classNames(cls.Navbar, {}, [className])}>
-				{authData && <Button onClick={onLogoutHandler} theme={ThemeButton.OUTLINE}>log out</Button>}
-				{!authData && <Button onClick={onLoginHandler} theme={ThemeButton.OUTLINE}>sign in</Button>}
+				{authData && <Button onClick={onLogoutHandler} theme={ButtonTheme.OUTLINE}>log out</Button>}
+				{!authData && <Button onClick={onLoginHandler} theme={ButtonTheme.OUTLINE}>sign in</Button>}
 				{/*@ts-ignore*/}
 				<LoginModal oppened={isOpenModal && !authData}></LoginModal>
 			</Shell>
@@ -43,8 +43,8 @@ export const Navbar: FC<NavBarProps> = memo(({ className, shell }) => {
 
 	return (
 		<div className={classNames(cls.Navbar, {}, [className])}>
-			{authData && <Button onClick={onLogoutHandler} theme={ThemeButton.PADDING}>log out</Button>}
-			{!authData && <Button onClick={onLoginHandler} theme={ThemeButton.PADDING}>sign in</Button>}
+			{authData && <Button onClick={onLogoutHandler} theme={ButtonTheme.PADDING}>log out</Button>}
+			{!authData && <Button onClick={onLoginHandler} theme={ButtonTheme.PADDING}>sign in</Button>}
 			{/*@ts-ignore*/}
 			<LoginModal oppened={isOpenModal && !authData}></LoginModal>
 		</div>

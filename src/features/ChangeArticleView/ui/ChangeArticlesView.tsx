@@ -4,7 +4,7 @@ import { classNames as cn } from "@/shared/lib/classNames/classNames";
 import ListIcon from "@/shared/assets/icons/articlesList/list.svg";
 import TileIcon from "@/shared/assets/icons/articlesList/tile.svg";
 import { Icon } from "@/shared/ui/Icon";
-import { Button } from "@/shared/ui/Button";
+import { Button } from "@/shared/ui/Buttons";
 import { useDispatch, useSelector } from "react-redux";
 import { ViewMode, articlesListActions, getArticlesListViewMode } from "@/entities/Article";
 import { fetchArticlesList } from "@/entities/Article/services/fetchArticlesList/fetchArticlesList";

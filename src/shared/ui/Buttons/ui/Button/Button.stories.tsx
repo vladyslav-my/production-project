@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { ThemeDecorator } from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator";
 
-import { Button, ThemeButton } from "./Button";
+import { Button, ButtonTheme } from "./Button";
 import { Theme } from "@/app/providers/ThemeProvider";
 
 const meta = {
@@ -26,21 +26,21 @@ export const Primary: Story = {
 export const Clear: Story = {
 	args: {
 		children: "Button",
-		theme: ThemeButton.CLEAR
+		theme: ButtonTheme.CLEAR
 	},
 };
 
 export const Outline: Story = {
 	args: {
 		children: "Button",
-		theme: ThemeButton.OUTLINE
+		theme: ButtonTheme.OUTLINE
 	},
 };
 
 export const OutlineDark: Story = {
 	args: {
 		children: "Button",
-		theme: ThemeButton.OUTLINE
+		theme: ButtonTheme.OUTLINE
 	},
 	decorators: [
 		ThemeDecorator(Theme.DARK),

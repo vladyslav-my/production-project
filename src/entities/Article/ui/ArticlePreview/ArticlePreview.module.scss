@@ -8,9 +8,14 @@
 	&_tile {
 		overflow: hidden;
 
+		width: 100%;
 		// max-width: rem(250);
 
 		padding: 0;
+
+		transition: scale, $transition;
+
+		transform: scale(1);
 
 		.top {
 			margin-left: rem(8);
@@ -43,6 +48,10 @@
 				font-weight: 400;
 				line-height: percent(28, 24);
 			}
+		}
+
+		&:hover {
+			transform: scale(1.05);
 		}
 	}
 

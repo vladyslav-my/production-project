@@ -1,4 +1,5 @@
 import { Article } from "./model/types/Article";
+import { ArticleView } from "./ui/ArticleView/ArticleView";
 import { ArticleDetailsSchema } from "./model/types/ArticleDetailsSchema";
 import { ArticlesListSchema, ViewMode } from "./model/types/ArticlesListSchema";
 import { InfinityArticlesList } from "./ui/InfinityArticlesList/InfinityArticlesList";
@@ -13,9 +14,10 @@ export type {
 };
 
 export {
+	ArticleView,
 	ViewMode,
 	getArticlesListViewMode,
 	articlesListActions,
 	articlesListSelectors,
-	InfinityArticlesList
+	InfinityArticlesList,
 };

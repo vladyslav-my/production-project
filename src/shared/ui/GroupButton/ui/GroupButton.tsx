@@ -1,7 +1,7 @@
 import { FC, useMemo } from "react";
 import cls from "./GroupButton.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Button, ThemeButton } from "../../Button";
+import { Button, ButtonTheme } from "../../Buttons";
 
 interface GroupButtonProps {
 	className?: string;
@@ -29,7 +29,7 @@ export const GroupButton: FC<GroupButtonProps> = ({ className, options, value, o
 				})}
 				onClick={onButtonClickHandler(option.value)} 
 				key={option.value} 
-				theme={ThemeButton.FILL}
+				theme={ButtonTheme.FILL}
 			>
 				{option.content}
 			</Button>

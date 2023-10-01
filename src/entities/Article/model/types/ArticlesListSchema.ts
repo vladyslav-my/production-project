@@ -6,6 +6,7 @@ export enum ViewMode {
 }
 
 export interface ArticlesListSchema {
+	_initedData: boolean,
 	data?: Article[];
 	hasMore: boolean;
 	isLoading?: boolean;

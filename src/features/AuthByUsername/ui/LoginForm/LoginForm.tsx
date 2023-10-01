@@ -4,7 +4,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import { FC, useCallback } from "react";
 import { Reducer } from "@reduxjs/toolkit";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, ThemeButton } from "@/shared/ui/Button";
+import { Button, ButtonTheme } from "@/shared/ui/Buttons";
 import { Input } from "@/shared/ui/Input/Input";
 import { DynamicReduceLoader } from "@/shared/lib/components/DynamicReduceLoader";
 import { ReducersList } from "@/app/providers/StoreProvider";
@@ -51,7 +51,7 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
 				<p>{error && "wrong username or password"}</p>
 				<Input onChange={setUsernameHandler} value={username} placeholder="username" className={cls.input} type="text" />
 				<Input onChange={setPasswordHandler} value={password} placeholder="password" className={cls.input} type="text" />
-				<Button onClick={onLoginClick} theme={ThemeButton.OUTLINE} className={cls.button} disabled={isLoading}>
+				<Button onClick={onLoginClick} theme={ButtonTheme.OUTLINE} className={cls.button} disabled={isLoading}>
 					Log in
 				</Button>
 			</div>

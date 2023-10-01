@@ -6,8 +6,6 @@ import { InfinityArticlesList } from "@/entities/Article";
 import { ChangeArticlesView } from "@/features/ChangeArticleView";
 import { useMediaQuery } from "react-responsive";
 import { RouteContainer } from "@/shared/layouts/RouteContainer";
-import { useDynamicReduce } from "@/shared/lib/hooks/useDynamicReduce/useDynamicReduce";
-import { articlesListReducer } from "@/entities/Article/model/slice/articlesListSlice";
 
 interface ArticlePageProps {
 	className?: string

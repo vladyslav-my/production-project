@@ -72,9 +72,9 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
 							onAgeChange={onAgeChange}
 							onAvatarChange={onAvatarChange}
 							onCurrencyChange={onCurrencyChange}
-							isLoading={isLoading} 
-							readOnly={readOnly} 
-							data={formData} 
+							isLoading={isLoading}
+							readOnly={readOnly}
+							data={formData}
 						/>
 					</div>
 				</Shell>

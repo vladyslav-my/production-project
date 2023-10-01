@@ -8,7 +8,7 @@ import { useDynamicReduce } from "@/shared/lib/hooks/useDynamicReduce/useDynamic
 import { articlesListReducer } from "../../model/slice/articlesListSlice";
 import { ViewMode } from "../../model/types/ArticlesListSchema";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { getArticlesListIsLoading, getArticlesListData, getArticlesListViewMode, getArticlesListPageQP, getArticlesListLimitQP, getArticlesListHasMore } from "../../model/selectors/articlesList";
+import { getArticlesListIsLoading, getArticlesListData, getArticlesListViewMode, getArticlesListPageQP, getArticlesListLimitQP, getArticlesListHasMore, getArticlesListInitedData } from "../../model/selectors/articlesList";
 import { fetchArticlesList } from "../../services/fetchArticlesList/fetchArticlesList";
 import { useQueryParams } from "../../model/hooks/useQueryParams";
 
@@ -25,15 +25,19 @@ export const InfinityArticlesList: FC<InfinityArticlesList> = ({ className }) =>
 	const viewMode = useSelector(getArticlesListViewMode);
 	const limit = useSelector(getArticlesListLimitQP);
 	const hasMore = useSelector(getArticlesListHasMore);
+	const _initedData = useSelector(getArticlesListInitedData);
 
 
 	const targetRef = useRef(null);
 	
 	useQueryParams();
 	useEffect(() => {
-		dispatch(
-			fetchArticlesList({ replace: true })
-		);
+		if (!_initedData) {
+			dispatch(
+				fetchArticlesList({ replace: true })
+			);
+		}
+
 	}, []);
 	
 

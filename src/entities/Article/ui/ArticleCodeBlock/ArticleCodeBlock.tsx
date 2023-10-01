@@ -2,7 +2,7 @@ import { FC, memo } from "react";
 import cls from "./ArticleCodeBlock.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import CopyIcon from "@/shared/assets/icons/article/copy.svg";
-import { Button } from "@/shared/ui/Button";
+import { Button } from "@/shared/ui/Buttons";
 
 interface ArticleCodeBlockProps {
 	className?: string;

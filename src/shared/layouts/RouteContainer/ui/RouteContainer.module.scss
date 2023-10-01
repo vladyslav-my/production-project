@@ -15,6 +15,7 @@ $margin: $mainContainer - ($widgetContainer + $pageContainer);
 	box-sizing: content-box;
 	max-width: rem($mainContainer);
 	margin: 0 auto;
+	margin-bottom: rem(32);
 	padding: 0 rem(20);
 	gap: rem($margin);
 
