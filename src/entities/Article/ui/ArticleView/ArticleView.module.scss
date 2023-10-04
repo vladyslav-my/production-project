@@ -111,9 +111,15 @@
 
 .bottom {
 	display: flex;
+	flex-direction: column;
 	justify-content: space-between;
 	row-gap: rem(20);
 
+
+	&__paragraph {
+		margin-left: rem(20);
+	}
+	
 	&__btn {
 
 	}

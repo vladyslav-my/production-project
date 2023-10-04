@@ -3,6 +3,8 @@ import cls from "./ArticleCommentsTape.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { useGetArticleCommentsQuery } from "@/entities/Comment/model/api/commentsApi";
 import { CommentCard } from "../../shared/CommentCard/CommentCard";
+import { CommentCard as CommentCardSkeleton } from "../../shared/CommentCard/CommentCard.skeleton";
+
 
 interface ArticleCommentsTapeProps {
 	className?: string;
@@ -10,7 +12,13 @@ interface ArticleCommentsTapeProps {
 
 
 export const ArticleCommentsTape: FC<ArticleCommentsTapeProps> = ({ className }) => {
-	const { isLoading, isError, data } = useGetArticleCommentsQuery();
+	const { isLoading, isFetching, data } = useGetArticleCommentsQuery();
+
+	
+	if (isLoading) {
+		return <CommentCardSkeleton />;
+		
+	}
 
 	return (
 		<div className={classNames(cls.ArticleCommentTape, {}, [className])}>

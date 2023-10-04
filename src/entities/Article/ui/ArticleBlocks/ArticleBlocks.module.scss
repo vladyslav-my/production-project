@@ -1,3 +1,7 @@
+@import "@/scss/tools";
+
 .ArticleBlocks {
-	
+	> *:not(:last-child) {
+		margin-bottom: rem(24);
+	}
 }

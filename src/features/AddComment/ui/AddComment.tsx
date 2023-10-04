@@ -24,7 +24,7 @@ export const AddComment: FC<AddCommentProps> = ({ className }) => {
 	});
 
 	const onClickHandler = useCallback(() => {
-		updateArticle({ userId: 1, articleId: 1, comment: "HUY HENTAI JOPA" });
+		updateArticle({ userId: 1, articleId: 1, comment: "New comment" });
 	}, []);
 
 	return (

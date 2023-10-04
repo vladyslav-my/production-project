@@ -5,9 +5,9 @@ import { ArticleView } from "@/entities/Article";
 import { useParams } from "react-router-dom";
 import { RouteContainer } from "@/shared/layouts/RouteContainer";
 import { RouteFeaturesContainer } from "@/widgets/RouteFeaturesContainer";
-import { ArticleCommentsTape } from "@/entities/Comment";
 import { Shell } from "@/shared/layouts/Shell";
 import { ArticleComment } from "@/widgets/ArticleComment";
+
 
 interface ArticleDetailsPageProps {
 	className?: string
@@ -22,7 +22,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
 		>
 			<Shell>
 				<ArticleView id={id} />
-				<ArticleComment />
+				<ArticleComment />				
 			</Shell>
 		</RouteContainer>
 	);

@@ -13,6 +13,7 @@ import ArticleBlocks from "../ArticleBlocks/ArticleBlocks";
 import { getArticleDetailsData } from "../../model/selectors/articleDetails/getArticleDetailsData/getArticleDetailsData";
 import { getArticleDetailsIsLoading } from "../../model/selectors/articleDetails/getArticleDetailsIsLoading/getArticleDetailsIsLoading";
 import { getArticleDetailsError } from "../../model/selectors/articleDetails/getArticleDetailsError/getArticleDetailsError";
+import { ArticleView as ArticleViewSkeleton } from "./ArticleView.skeleton";
 
 interface ArticleViewProps {
 	className?: string;
@@ -39,20 +40,21 @@ export const ArticleView: FC<ArticleViewProps> = ({ className, id }) => {
 	}
 
 	if (isLoading) {
-		return <div>Loading</div>;
+		return <ArticleViewSkeleton />;
 	}
 
+
 	return (
-		<div className={classNames(cls.ArticleView, {}, [className, cls.ArticleViewlist])}>
+		<div className={classNames(cls.ArticleView, {}, [className, cls.ArticleView_list])}>
 			<div className={classNames(cls.top, {}, [cls.ArticleView_top])}>
 				<Avatar size={32} className={cls.top__avatar} />
 				<span className={cls.top__user}>{data?.user.username}</span>
 				<span className={cls.top__date}>{data?.createdAt}</span>
 			</div>
-			<h2 className={cls.ArticleView_title}>{data?.title}</h2>
-			<h3 className={cls.ArticleView_subTitle}>{data?.subtitle}</h3>
+			<h2 className={cls.ArticleView__title}>{data?.title}</h2>
+			<h3 className={cls.ArticleView__subTitle}>{data?.subtitle}</h3>
 			<Image 
-				className={cls.ArticleView_image} 
+				className={cls.ArticleView__image} 
 				src={data?.img}
 				height={`${420 / 732 * 100}%`}
 			/>
