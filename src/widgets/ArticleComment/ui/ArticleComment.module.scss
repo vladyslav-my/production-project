@@ -1,0 +1,15 @@
+@import "@/scss/tools";
+
+.ArticleComment {
+	display: flex;
+	flex-direction: column;
+	gap: rem(16);
+
+	&__title {
+		text-transform: capitalize;
+
+		font-family: "Roboto";
+		font-size: rem(32);
+		font-weight: 900;
+	}
+}

@@ -10,6 +10,7 @@ import { NavigateOptions, To } from "react-router-dom";
 import { ProfileSchema } from "@/entities/Profile/model/types/Profile";
 import { ArticleDetailsSchema, ArticlesListSchema } from "@/entities/Article";
 import { ArticlesPageSchema } from "@/pages/ArticlesPage";
+import { rtkApi } from "@/shared/api/rtkApi";
 
 export interface StateSchema {
     counter: CounterSchema;
@@ -19,6 +20,7 @@ export interface StateSchema {
     profile?: ProfileSchema;
     articleDeteils?: ArticleDetailsSchema;
     articlesList?: ArticlesListSchema;
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 }
 
 export type StateSchemaKey = keyof StateSchema;

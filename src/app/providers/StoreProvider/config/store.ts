@@ -7,8 +7,7 @@ import { $api } from "@/shared/api/api";
 import { NavigateOptions, To } from "react-router-dom";
 import { ExtraArgumentType } from "./StateSchema";
 import { articlesPageReducer } from "@/pages/ArticlesPage";
-
-
+import { rtkApi } from "@/shared/api/rtkApi";
 
 export const createReduxStore = (
 	initialState?: StateSchema, 
@@ -18,9 +17,10 @@ export const createReduxStore = (
 
 	const rootReducers: ReducersMapObject<StateSchema> = {
 		...asyncReducers,
+		[rtkApi.reducerPath]: rtkApi.reducer,
 		counter: counterReducer,
 		user: userReducer,
-		articlesPage: articlesPageReducer
+		articlesPage: articlesPageReducer,
 	};
 
 	const extraArgument: ExtraArgumentType = {
@@ -37,7 +37,7 @@ export const createReduxStore = (
 		preloadedState: initialState,
 		middleware: (getDefaultMiddleware) => getDefaultMiddleware({
 			thunk: {	extraArgument }
-		})
+		}).concat(rtkApi.middleware)
 	});
 
 	// @ts-ignore

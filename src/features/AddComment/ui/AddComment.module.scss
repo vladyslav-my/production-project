@@ -1,0 +1,21 @@
+@import "@/scss/tools";
+
+.AddComment {
+	display: flex;
+	align-items: center;
+
+	gap: rem(16);
+	
+
+	&__input {
+		flex: 1 1 100%;
+	}
+
+	&__icon {
+		fill: $iconColor;
+	}
+	
+	@media (min-width: $mobile) {
+		margin-left: rem(48);
+	}
+}

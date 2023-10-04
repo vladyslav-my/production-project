@@ -1,0 +1,14 @@
+@import "@/scss/tools";
+
+.CommentCard {
+	display: flex;
+	gap: rem(16);
+
+	&__avatar {
+		flex: 0 0 auto;
+	}
+
+	&__comment {
+
+	}
+}

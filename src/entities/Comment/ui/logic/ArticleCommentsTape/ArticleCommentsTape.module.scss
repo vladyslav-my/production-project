@@ -1,0 +1,8 @@
+@import "@/scss/tools";
+
+.ArticleCommentTape {
+	display: flex;
+	flex-direction: column;
+
+	gap: rem(16);
+}

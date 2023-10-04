@@ -43,7 +43,7 @@ export const ArticleView: FC<ArticleViewProps> = ({ className, id }) => {
 	}
 
 	return (
-		<Shell className={classNames(cls.ArticleView, {}, [className, cls.ArticleViewlist])}>
+		<div className={classNames(cls.ArticleView, {}, [className, cls.ArticleViewlist])}>
 			<div className={classNames(cls.top, {}, [cls.ArticleView_top])}>
 				<Avatar size={32} className={cls.top__avatar} />
 				<span className={cls.top__user}>{data?.user.username}</span>
@@ -57,6 +57,6 @@ export const ArticleView: FC<ArticleViewProps> = ({ className, id }) => {
 				height={`${420 / 732 * 100}%`}
 			/>
 			<ArticleBlocks data={data?.blocks} />
-		</Shell>
+		</div>
 	);
 };

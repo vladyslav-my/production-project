@@ -4,6 +4,8 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import { Navbar } from "@/widgets/Navbar";
 import { useMediaQuery } from "react-responsive";
 import { AppMediaQuery, Devices } from "@/shared/lib/mediaQuery";
+import { Shell } from "../../Shell";
+import { createElement } from "react";
 
 interface RouteContainerProps {
 	className?: string;
@@ -14,6 +16,7 @@ interface RouteContainerProps {
 
 
 export const RouteContainer: FC<RouteContainerProps> = ({ className, children, Widget, Feature }) => {
+
 	return (
 		<div className={classNames(cls.RouteContainer, {}, [className])}>
 			{Feature && <div className={cls.RouteContainer__feature}>
