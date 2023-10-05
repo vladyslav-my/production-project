@@ -3,23 +3,27 @@ import { Comment } from "../types/Comment";
 
 
 interface UpdateArticleComments {
-	articleId: number; 
-	userId: number;
+	articleId: number | string; 
+	userId: number | string;
 	comment: string;
 }
 
 const commentsApi = rtkApi.injectEndpoints({
 	endpoints: (build) => ({
-		getArticleComments: build.query<Comment[], void>({
-			query: () => ({
+		getArticleComments: build.query<Comment[], string>({
+			providesTags: ["Comments"],
+			query: (articleId) => ({
 				url: "comments",
 				params: {
-					_expand: "user"
-				}
+					_expand: "user",
+					articleId
+				},
+				
 			}),
 		}),
 
 		updateArticleComments: build.mutation<unknown, UpdateArticleComments>({
+			invalidatesTags: ["Comments"],
 			query: ({ articleId, userId, comment }) => ({
 				url: "comments",
 				method: "POST",
@@ -28,10 +32,8 @@ const commentsApi = rtkApi.injectEndpoints({
 					articleId,
 					userId,
 					comment
-				}
+				},
 			}),
-
-
 		}),
 	}),
 	overrideExisting: false,

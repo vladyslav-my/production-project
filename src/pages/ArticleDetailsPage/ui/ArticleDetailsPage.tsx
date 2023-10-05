@@ -10,21 +10,29 @@ import { ArticleComment } from "@/widgets/ArticleComment";
 
 
 interface ArticleDetailsPageProps {
-	className?: string
+	className?: string;
 }
 
 const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
 	const { id } = useParams();
+
+	if (id) {
+		return (
+			<RouteContainer 
+				className={classNames(cls.ArticleDetailsPage, {}, [className])}
+				Widget={<RouteFeaturesContainer />}
+			>
+				<Shell>
+					<ArticleView id={id} />
+					<ArticleComment id={id} />				
+				</Shell>
+			</RouteContainer>
+		);
+
+	}
+
 	return (
-		<RouteContainer 
-			className={classNames(cls.ArticleDetailsPage, {}, [className])}
-			Widget={<RouteFeaturesContainer />}
-		>
-			<Shell>
-				<ArticleView id={id} />
-				<ArticleComment />				
-			</Shell>
-		</RouteContainer>
+		<div>not id</div>
 	);
 };
 

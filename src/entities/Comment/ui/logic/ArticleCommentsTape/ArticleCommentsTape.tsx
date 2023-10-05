@@ -8,16 +8,21 @@ import { CommentCard as CommentCardSkeleton } from "../../shared/CommentCard/Com
 
 interface ArticleCommentsTapeProps {
 	className?: string;
+	articleId: string;
 }
 
 
-export const ArticleCommentsTape: FC<ArticleCommentsTapeProps> = ({ className }) => {
-	const { isLoading, isFetching, data } = useGetArticleCommentsQuery();
+export const ArticleCommentsTape: FC<ArticleCommentsTapeProps> = ({ className, articleId }) => {
+	const { isLoading, data } = useGetArticleCommentsQuery(articleId);
 
 	
 	if (isLoading) {
 		return <CommentCardSkeleton />;
 		
+	}
+
+	if (data?.length === 0) {
+		return <div>No comments</div>;
 	}
 
 	return (
