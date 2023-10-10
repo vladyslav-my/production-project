@@ -58,7 +58,6 @@ export const articlesListSlice = createSlice({
 			state._initedData = true;
 
 			if (action.meta.arg.replace) {
-				console.log("replace");
 				state.data = action.payload;
 			} else {
 				state.data?.push(...action.payload);

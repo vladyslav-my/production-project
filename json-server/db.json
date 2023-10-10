@@ -1224,6 +1224,101 @@
       "userId": 1,
       "comment": "qq",
       "id": 32
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "comment": "oeoqweo",
+      "id": 33
+    }
+  ],
+  "rating": [
+    {
+      "id": 1,
+      "stars": 3,
+      "articleId": 1,
+      "userId": 1,
+      "feedback": "text"
+    },
+    {
+      "articleId": 2,
+      "userId": null,
+      "feedback": "Norm",
+      "id": 2
+    },
+    {
+      "articleId": 2,
+      "userId": null,
+      "id": 3
+    },
+    {
+      "articleId": 2,
+      "userId": null,
+      "feedback": "eqlelqw",
+      "id": 4
+    },
+    {
+      "articleId": 2,
+      "userId": null,
+      "feedback": "12321",
+      "id": 5
+    },
+    {
+      "articleId": 2,
+      "userId": null,
+      "feedback": "13213",
+      "id": 6
+    },
+    {
+      "articleId": 2,
+      "userId": 1,
+      "feedback": "1312313",
+      "id": 7
+    },
+    {
+      "articleId": 2,
+      "userId": 1,
+      "feedback": "Sldldl",
+      "id": 8
+    },
+    {
+      "articleId": 5,
+      "userId": 1,
+      "feedback": "Bad",
+      "id": 9
+    },
+    {
+      "articleId": 5,
+      "userId": 1,
+      "stars": 4,
+      "feedback": "good",
+      "id": 10
+    },
+    {
+      "articleId": 6,
+      "userId": 1,
+      "stars": 3,
+      "feedback": "good",
+      "id": 11
+    },
+    {
+      "articleId": 8,
+      "userId": 1,
+      "stars": 4,
+      "id": 12
+    },
+    {
+      "articleId": 4,
+      "userId": 1,
+      "stars": 3,
+      "feedback": "feedback",
+      "id": 13
+    },
+    {
+      "articleId": 9,
+      "userId": 1,
+      "stars": 2,
+      "id": 14
     }
   ]
 }

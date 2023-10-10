@@ -17,10 +17,10 @@ import { ArticleView as ArticleViewSkeleton } from "./ArticleView.skeleton";
 
 interface ArticleViewProps {
 	className?: string;
-	id?: string;
+	articleId: number;
 }
 
-export const ArticleView: FC<ArticleViewProps> = ({ className, id }) => {
+export const ArticleView: FC<ArticleViewProps> = ({ className, articleId }) => {
 	useDynamicReduce({
 		articleDeteils: articleDeteilsReducer,
 	}, false);
@@ -32,8 +32,8 @@ export const ArticleView: FC<ArticleViewProps> = ({ className, id }) => {
 	const error = useSelector(getArticleDetailsError);
 
 	useEffect(() => {
-		id && dispatch(fetchArticleDetailsById(id));
-	}, [dispatch, id]);
+		dispatch(fetchArticleDetailsById(articleId));
+	}, [dispatch, articleId]);
 
 	if (error) {
 		<div>Error</div>;

@@ -8,7 +8,7 @@ import { CommentCard as CommentCardSkeleton } from "../../shared/CommentCard/Com
 
 interface ArticleCommentsTapeProps {
 	className?: string;
-	articleId: string;
+	articleId: number;
 }
 
 
@@ -21,9 +21,12 @@ export const ArticleCommentsTape: FC<ArticleCommentsTapeProps> = ({ className, a
 		
 	}
 
+
 	if (data?.length === 0) {
 		return <div>No comments</div>;
 	}
+
+
 
 	return (
 		<div className={classNames(cls.ArticleCommentTape, {}, [className])}>

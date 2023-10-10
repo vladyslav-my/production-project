@@ -1,0 +1,26 @@
+@import "@/scss/tools";
+
+.Rating {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+
+	
+}
+
+
+.stars {
+	display: inline-flex;
+
+	&__item {
+		box-sizing: content-box;
+		padding: rem(6);
+
+		transition: fill $transition;
+		stroke: $iconColor;
+		fill: transparent;
+		&_active {
+			fill: $iconColor;
+		}
+	}
+}

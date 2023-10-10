@@ -1,4 +1,5 @@
 .Modal {
+	$p: &;
 	position: fixed;
 	top: 0;
 	right: 0;
@@ -16,31 +17,27 @@
 
 	background-color: rgba($color: #000000, $alpha: 0.4);
 
-}
 
-.wrapper {
-	padding: 10px;
+	&__shell {
+		transition: all 0.5s ease;
 
-	transition: all 0.5s ease;
+		background-color: var(--secondary-bg-color);
 
-	color: var(--primary-color);
-	border-radius: 10px;
-	background-color: var(--secondary-bg-color);
-}
-
-.clossed {
-	pointer-events: none;
-	.animation {
-		animation: fadeOut 0.3s;
 	}
-	
-}
 
-.oppened {
-	pointer-events: auto;
-	.animation {
-		animation: fadeIn 0.3s;
+	&_clossed {
+		pointer-events: none;
+		#{$p}__shell_animation {
+			animation: fadeOut 0.3s;
+		}
 	}
+
+	&_oppened {
+		#{$p}__shell_animation {
+			animation: fadeIn 0.3s;
+		}
+	}
+
 }
 
 

@@ -2,13 +2,14 @@ import React, { FC, ReactNode, useEffect, useRef, useState } from "react";
 import cls from "./Modal.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { Portal } from "@/shared/ui/Portal";
+import { Shell } from "@/shared/layouts/Shell";
 
 interface ModalProps {
-	className?: string,
-	oppened: boolean,
-	lazy?: boolean,
-	onToggle?: () => void
-	children: ReactNode,
+	className?: string;
+	oppened: boolean;
+	lazy?: boolean;
+	onToggle: (oppened: boolean) => void;
+	children: ReactNode;
 }
 
 export const Modal: FC<ModalProps> = ({ className, oppened, lazy, onToggle, children }) => {
@@ -25,29 +26,27 @@ export const Modal: FC<ModalProps> = ({ className, oppened, lazy, onToggle, chil
 				setIsMounted(false);
 			}, 300);
 		}
-	}, [oppened]);
 
-
-	useEffect(() => {
 		return () => {
 			clearTimeout(timeoutRef.current);
 		};
-	}, []);
+	}, [oppened]);
+
 
 	const onCloseHandler = () => {
-		onToggle && onToggle();
+		onToggle(false);
 		timeoutRef.current = setTimeout(() => {
 			setIsMounted(false);
 		}, 300);
 	};
 
-	const onWrapperClick = (e: React.MouseEvent) => {
+	const onClickShell = (e: React.MouseEvent) => {
 		e.stopPropagation();
 	};
 	
 	const modalMods = {
-		[cls.oppened]: oppened,
-		[cls.clossed]: !oppened
+		[cls.Modal_oppened]: oppened,
+		[cls.Modal_clossed]: !oppened
 	};
 
 	if (lazy && !isMounted) {
@@ -56,10 +55,10 @@ export const Modal: FC<ModalProps> = ({ className, oppened, lazy, onToggle, chil
 
 	return (
 		<Portal>
-			<div onClick={onCloseHandler} className={classNames(cls.Modal, modalMods, [className])}>
-				<div onClick={onWrapperClick} className={classNames(cls.wrapper, {}, [cls.animation])}>
+			<div onClick={onCloseHandler} className={classNames(cls.Modal, modalMods, [])}>
+				<Shell onClick={onClickShell} className={classNames(cls.Modal__shell, {}, [cls.Modal__shell_animation, className])}>
 					{ children }
-				</div>
+				</Shell>
 			</div>
 		</Portal>
 	);

@@ -12,6 +12,7 @@ import ArrowIcon from "@/shared/assets/icons/Sidebar/arrow.svg";
 import { AppMediaQuery, Devices } from "@/shared/lib/mediaQuery";
 import { NavLink } from "react-router-dom";
 import { Icon } from "@/shared/ui/Icon";
+import { Button } from "@/shared/ui/Buttons";
 
 
 interface SidebarProps {
@@ -36,15 +37,15 @@ export const Sidebar: FC<SidebarProps> = memo(({ className }) => {
 			[cls.Sidebar_unroll]: unroll
 		}, [className])}>
 			<AppMediaQuery minWidth={Devices.TABLET}>
-				<Icon
-					className={{ 
-						parent: cls.Sidebar__arrowButton, 
-						icon: cls.Sidebar__arrowIcon 
-					}}
-					Svg={ArrowIcon} 
-					onClick={onToggle}
-					clickable 
-				/>
+				<Button className={cls.Sidebar__arrowButton}>
+					<Icon 
+						className={cls.Sidebar__arrowIcon}
+						Svg={ArrowIcon} 
+						onClick={onToggle}
+						clickable 
+					/>
+				</Button>
+
 				<NavLink className={cls.Sidebar__logoLink} to={RoutePath.main}>
 					<Icon Svg={LogoIcon} className={cls.Sidebar__logoIcon} />
 				</NavLink>

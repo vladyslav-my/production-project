@@ -3,14 +3,14 @@ import { Comment } from "../types/Comment";
 
 
 interface UpdateArticleComments {
-	articleId: number | string; 
-	userId: number | string;
+	articleId: number; 
+	userId: number;
 	comment: string;
 }
 
 const commentsApi = rtkApi.injectEndpoints({
 	endpoints: (build) => ({
-		getArticleComments: build.query<Comment[], string>({
+		getArticleComments: build.query<Comment[], number>({
 			providesTags: ["Comments"],
 			query: (articleId) => ({
 				url: "comments",

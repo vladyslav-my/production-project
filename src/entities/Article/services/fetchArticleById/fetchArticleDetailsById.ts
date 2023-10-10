@@ -4,7 +4,7 @@ import { Article } from "../../model/types/Article";
 
 export const fetchArticleDetailsById = createAsyncThunk<
 	Article,
-	string,
+	number,
 	ThunkConfig<string>
 >(
 	"articleDetails/fetchArticleDetailsById",

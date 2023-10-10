@@ -52,15 +52,6 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({ className }) => {
 
 				
 			</div>
-			{/* {readOnly 
-				?
-				<Button onClick={onEditClick} theme={ButtonTheme.OUTLINE}>Edit</Button>
-				:
-				<>
-					<Button onClick={onSaveClick} theme={ButtonTheme.OUTLINE}>Save</Button>
-					<Button onClick={onCancelEditClick} theme={ButtonTheme.OUTLINE}>Cancel</Button>
-				</>
-			}  */}
 		</div>
 	);
 };
