@@ -4,7 +4,7 @@ import { USER_LOCALSTORAGE_KEY } from "../const/localstorage";
 export const rtkApi = createApi({
 	tagTypes: ["Comments", "Rating"],
 	reducerPath: "rtkApi",
-	baseQuery: fetchBaseQuery({ 
+	baseQuery: fetchBaseQuery({
 		baseUrl: __API__,
 		prepareHeaders: (headers) => {
 			headers.set("Authorization", localStorage.getItem(USER_LOCALSTORAGE_KEY) || "");
@@ -12,5 +12,5 @@ export const rtkApi = createApi({
 		},
 	}),
 	endpoints: () => ({}),
-	
+
 });

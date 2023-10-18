@@ -1,19 +1,21 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { ThunkConfig } from "@/app/providers/StoreProvider";
-import { Article } from "../../model/types/Article";
-import { getArticlesListLimitQP, getArticlesListOrderQP, getArticlesListPageQP, getArticlesListSearchQP, getArticlesListSortQP, getArticlesListTypeQP, getArticlesListViewMode } from "../../model/selectors/articlesList";
+import {
+	getArticlesListLimitQP, getArticlesListOrderQP, getArticlesListPageQP, getArticlesListSearchQP, getArticlesListSortQP, getArticlesListTypeQP, getArticlesListViewMode,
+} from "../../model/selectors/articlesList";
 import { articlesListActions } from "../../model/slice/articlesListSlice";
+import { Article } from "../../model/types/Article";
 import { ViewMode } from "../../model/types/ArticlesListSchema";
 
-
 export const fetchArticlesList = createAsyncThunk<
-	Article[],
-	any,
-	ThunkConfig<string>
+Article[],
+any,
+ThunkConfig<string>
 >(
 	"articlesList/fetchArticles",
-	async (params, { extra, rejectWithValue, getState, dispatch }) => {
-
+	async (params, {
+		extra, rejectWithValue, getState, dispatch,
+	}) => {
 		try {
 			let limit = getArticlesListLimitQP(getState());
 			const order = getArticlesListOrderQP(getState());
@@ -25,22 +27,21 @@ export const fetchArticlesList = createAsyncThunk<
 
 			if (params.replace) {
 				dispatch(
-					articlesListActions.setPage(1)
+					articlesListActions.setPage(1),
 				);
 			} else {
 				dispatch(
-					articlesListActions.setPage(page + 1)
+					articlesListActions.setPage(page + 1),
 				);
 			}
 
-			
 			if (viewMode === ViewMode.LIST) {
 				dispatch(
-					articlesListActions.setLimit(3)
+					articlesListActions.setLimit(3),
 				);
 			} else if (viewMode === ViewMode.TILE) {
 				dispatch(
-					articlesListActions.setLimit(9)
+					articlesListActions.setLimit(9),
 				);
 			}
 
@@ -53,25 +54,23 @@ export const fetchArticlesList = createAsyncThunk<
 					_limit: limit,
 					_page: page,
 					_order: order,
-					_sort: sort, 
+					_sort: sort,
 					type: type !== "all" ? type : undefined,
-					q: search ? search : undefined,
-				}
+					q: search || undefined,
+				},
 			});
-					
+
 			if (!response.data) {
 				throw new Error();
 			}
 
-
-
 			if (response.data.length < limit) {
 				dispatch(
-					articlesListActions.setHasMore(false)
+					articlesListActions.setHasMore(false),
 				);
 			} else {
 				dispatch(
-					articlesListActions.setHasMore(true)
+					articlesListActions.setHasMore(true),
 				);
 			}
 

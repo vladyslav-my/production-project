@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ArticlesPageSchema, Order, Sort, Type } from "../types/ArticlesPageSchema";
-
+import {
+	ArticlesPageSchema, Order, Sort, Type,
+} from "../types/ArticlesPageSchema";
 
 const initialState: ArticlesPageSchema = {
 	_inited: false,
@@ -37,7 +38,7 @@ export const articlesPageSlice = createSlice({
 		setInited: (state, action) => {
 			state._inited = action.payload;
 		},
-	}
+	},
 });
 
 // Action creators are generated for each case reducer function

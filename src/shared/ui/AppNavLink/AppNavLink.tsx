@@ -1,24 +1,20 @@
-import { FC, ReactNode, memo } from "react";
-import cls from "./AppNavLink.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
+import { FC, memo } from "react";
 import { NavLink, NavLinkProps } from "react-router-dom";
-
+import { classNames } from "../../lib/classNames/classNames";
+import cls from "./AppNavLink.module.scss";
 
 interface AppNavLinkProps extends NavLinkProps {
 	className?: string;
 }
 
-
-
-
-export const AppNavLink: FC<AppNavLinkProps> = memo(({ className, children, to, ...otherProps }) => {
-	return (
-		<NavLink
-			to={to}
-			className={classNames(cls.AppLink, {}, [className])}
-			{...otherProps}
-		>
-			{ children }
-		</NavLink>
-	);
-});
+export const AppNavLink: FC<AppNavLinkProps> = memo(({
+	className, children, to, ...otherProps
+}) => (
+	<NavLink
+		className={classNames(cls.AppLink, {}, [className])}
+		to={to}
+		{...otherProps}
+	>
+		{children}
+	</NavLink>
+));

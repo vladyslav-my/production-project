@@ -1,12 +1,11 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { LoginFormSchema } from "../types/LoginFormSchema";
 import { loginByUsername } from "../services/loginByUsername/loginByUsername";
-
+import { LoginFormSchema } from "../types/LoginFormSchema";
 
 const initialState: LoginFormSchema = {
 	username: "",
 	password: "",
-	isLoading: false
+	isLoading: false,
 };
 
 export const loginFormSlice = createSlice({
@@ -18,7 +17,7 @@ export const loginFormSlice = createSlice({
 		},
 		setPassword: (state, action: PayloadAction<string>) => {
 			state.password = action.payload;
-		}
+		},
 	},
 	extraReducers: (builder) => {
 		builder

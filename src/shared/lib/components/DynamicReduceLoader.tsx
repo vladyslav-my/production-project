@@ -1,17 +1,15 @@
+import { Reducer } from "@reduxjs/toolkit";
 import { FC, ReactNode, useEffect } from "react";
 import { useDispatch, useStore } from "react-redux";
-import { Reducer } from "@reduxjs/toolkit";
 import { ReduxStoreWithManager, StateSchemaKey } from "@/app/providers/StoreProvider/config/StateSchema";
 
-
-type ReducersListEntry = [StateSchemaKey, Reducer]
+type ReducersListEntry = [StateSchemaKey, Reducer];
 
 interface DynamicReduceLoaderProps {
 	children: ReactNode,
 	removeAfterUnmount?: boolean,
 	reducers: any,
 }
-
 
 export const DynamicReduceLoader: FC<DynamicReduceLoaderProps> = ({ children, reducers, removeAfterUnmount }) => {
 	const dispatch = useDispatch();
@@ -26,14 +24,13 @@ export const DynamicReduceLoader: FC<DynamicReduceLoaderProps> = ({ children, re
 
 		return () => {
 			if (removeAfterUnmount) {
-				cortageEntries.forEach(([name, reducer]: ReducersListEntry) => {
+				cortageEntries.forEach(([name]: ReducersListEntry) => {
 					store.reducerManager.remove(name);
 					dispatch({ type: `@DESTROY ${name} reducer` });
 				});
 			}
 		};
-	}, []);
+	}, [dispatch, removeAfterUnmount, store.reducerManager, reducers]);
 
 	return children;
 };
-

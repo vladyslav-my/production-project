@@ -1,10 +1,10 @@
 export const orderOptionsData = [
 	{
 		content: "Зростанням",
-		value: "asc"
+		value: "asc",
 	},
 	{
 		content: "Зменьшуванням",
-		value: "desc"
-	}
+		value: "desc",
+	},
 ];

@@ -1,7 +1,7 @@
-import { FC, useMemo } from "react";
-import cls from "./GroupButton.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
+import { FC, useCallback, useMemo } from "react";
+import { classNames } from "../../../lib/classNames/classNames";
 import { Button, ButtonTheme } from "../../Buttons";
+import cls from "./GroupButton.module.scss";
 
 interface GroupButtonProps {
 	className?: string;
@@ -15,26 +15,27 @@ interface ButtonOptions {
 	content: string;
 }
 
-export const GroupButton: FC<GroupButtonProps> = ({ className, options, value, onChange }) => {
-	const onButtonClickHandler = (content: string) => () => {
+export const GroupButton: FC<GroupButtonProps> = ({
+	className, options, value, onChange,
+}) => {
+	const onButtonClickHandler = useCallback((content: string) => () => {
 		onChange?.(content);
-	};
-
+	}, [onChange]);
 
 	const buttons = useMemo(() => (
 		options.map((option) => (
-			<Button 
+			<Button
 				className={classNames(cls.GroupButton__button, {
-					[cls.GroupButton_active]: value === option.value
+					[cls.GroupButton_active]: value === option.value,
 				})}
-				onClick={onButtonClickHandler(option.value)} 
-				key={option.value} 
+				key={option.value}
 				theme={ButtonTheme.FILL}
+				onClick={onButtonClickHandler(option.value)}
 			>
 				{option.content}
 			</Button>
 		))
-	), [value]);
+	), [value, onButtonClickHandler, options]);
 
 	return (
 		<div className={classNames(cls.GroupButton, {}, [className])}>

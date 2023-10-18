@@ -1,17 +1,14 @@
-import { Profile } from "../../types/Profile";
-import { ValidateProfileError } from "../../types/Profile";
+import { IProfile, ValidateProfileError } from "../../types/IProfile";
 
-
-export const validateProfileData = (profile?: Profile) => {
-
-	const errors: ValidateProfileError[] = []; 
+export const validateProfileData = (profile?: IProfile) => {
+	const errors: ValidateProfileError[] = [];
 
 	if (!profile) {
 		return [ValidateProfileError.NO_DATA];
 	}
 
-	const { 
-		age, first, lastname 
+	const {
+		age, first, lastname,
 	} = profile;
 
 	if (!age || !Number.isInteger(age)) {

@@ -1,9 +1,11 @@
-import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
-import { articlesListActions } from "../slice/articlesListSlice";
 import { useSelector } from "react-redux";
-import { getArticlesListTypeQP, getArticlesListSortQP, getArticlesListSearchQP, getArticlesListOrderQP, getArticlesListPageQP, getArticlesListViewMode, getArticlesListInitedQP } from "@/entities/Article/model/selectors/articlesList";
+import { useSearchParams } from "react-router-dom";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
+import {
+	getArticlesListTypeQP, getArticlesListSortQP, getArticlesListSearchQP, getArticlesListOrderQP, getArticlesListPageQP, getArticlesListViewMode, getArticlesListInitedQP,
+} from "../selectors/articlesList";
+import { articlesListActions } from "../slice/articlesListSlice";
 import { ViewMode } from "../types/ArticlesListSchema";
 
 export const useQueryParams = () => {
@@ -23,51 +25,46 @@ export const useQueryParams = () => {
 		const orderParam = URLSearchParams.get("order");
 		const sortParam = URLSearchParams.get("sort");
 		const searchParam = URLSearchParams.get("search");
-	
+
 		if (typeParam) {
 			dispatch(
-				articlesListActions.setType(typeParam)
+				articlesListActions.setType(typeParam),
 			);
 		}
-	
+
 		if (orderParam) {
 			dispatch(
-				articlesListActions.setOrder(orderParam)
+				articlesListActions.setOrder(orderParam),
 			);
 		}
-	
+
 		if (sortParam) {
 			dispatch(
-				articlesListActions.setSort(sortParam)
+				articlesListActions.setSort(sortParam),
 			);
 		}
-	
+
 		if (searchParam) {
 			dispatch(
-				articlesListActions.setSearch(searchParam)
+				articlesListActions.setSearch(searchParam),
 			);
 		}
 
-
 		dispatch(
-			articlesListActions.setInited(true)
+			articlesListActions.setInited(true),
 		);
-		
-
-	}, []);
-
+	}, [dispatch, URLSearchParams]);
 
 	useEffect(() => {
 		if (_inited) {
 			SetURLSearchParams(
 				{
-					order: order,
-					sort: sort,
-					type: type,
-					...(search ? { search: search } : {})
-				}
+					order,
+					sort,
+					type,
+					...(search ? { search } : {}),
+				},
 			);
 		}
-
-	}, [order, sort, type, search]);
+	}, [order, sort, type, search, _inited, SetURLSearchParams]);
 };

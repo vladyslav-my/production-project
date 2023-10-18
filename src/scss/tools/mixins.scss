@@ -1,0 +1,39 @@
+//* Font connection
+@mixin font($font_name, $file_name, $weight, $style) {
+	@font-face {
+		src: url("../fonts/#{$file_name}.woff2") format("woff2"), url("../fonts/#{$file_name}.woff") format("woff");
+
+		font-family: $font_name;
+		font-weight: #{$weight};
+		font-style: #{$style};
+		font-display: swap;
+	}
+}
+
+//* Percent
+@function percent($px, $from) {
+	$result: math.div($px, $from) * 100%;
+
+	@return $result;
+}
+
+//* REM
+@function rem($px, $current: 16) {
+	$result: math.div($px, $current) + rem;
+
+	@return $result;
+}
+
+//* EM
+@function em($px, $current: 16) {
+	$result: math.div($px, $current) + em;
+
+	@return $result;
+}
+
+//* Currency
+@mixin currency($sym) {
+	&::after {
+		content: "#{$sym}";
+	}
+}

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ArticleDetailsSchema } from "../types/ArticleDetailsSchema";
 import { fetchArticleDetailsById } from "../../services/fetchArticleById/fetchArticleDetailsById";
+import { ArticleDetailsSchema } from "../types/ArticleDetailsSchema";
 
 const initialState: ArticleDetailsSchema = {
 
@@ -23,7 +23,7 @@ export const articleDeteilsSlice = createSlice({
 		[fetchArticleDetailsById.rejected.type]: (state, action) => {
 			state.error = "error";
 		},
-	}
+	},
 });
 
 export const { actions: articleDeteilsActions } = articleDeteilsSlice;

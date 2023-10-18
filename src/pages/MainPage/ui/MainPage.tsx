@@ -1,13 +1,12 @@
 import { FC } from "react";
-import cls from "./MainPage.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
 import { useTranslation } from "react-i18next";
-import { BugButton } from "@/app/providers/ErrorBoundary";
-import { Counter } from "@/entities/Counter/ui/Counter";
+import { Counter } from "@/entities/Counter";
 import { RouteContainer } from "@/shared/layouts/RouteContainer";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import cls from "./MainPage.module.scss";
 
 interface MainPageProps {
-    className?: string
+	className?: string
 }
 
 const MainPage: FC<MainPageProps> = ({ className }) => {
@@ -15,8 +14,7 @@ const MainPage: FC<MainPageProps> = ({ className }) => {
 	return (
 		<RouteContainer className={classNames(cls.MainPage, {}, [className])}>
 			{t("text")}
-			<BugButton />
-			<Counter></Counter>
+			<Counter />
 		</RouteContainer>
 	);
 };

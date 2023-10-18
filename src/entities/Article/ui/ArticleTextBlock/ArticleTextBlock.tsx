@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
-import cls from "./ArticleTextBlock.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
+import cls from "./ArticleTextBlock.module.scss";
 
 interface ArticleTextBlockProps {
 	className?: string;
@@ -8,17 +8,24 @@ interface ArticleTextBlockProps {
 	paragraphs?: string[];
 }
 
-const ArticleTextBlock: FC<ArticleTextBlockProps> = ({ className, title, paragraphs }) => {
-	return (
-		<div className={classNames(cls.ArticleTextBlock, {}, [className])}>
-			{title && <h3 className={cls.ArticleTextBlock__title}>{title}</h3>}
-			{paragraphs && <div className={cls.ArticleTextBlock__paragraphs}>
+const ArticleTextBlock: FC<ArticleTextBlockProps> = ({ className, title, paragraphs }) => (
+	<div className={classNames(cls.ArticleTextBlock, {}, [className])}>
+		{!!title && (
+			<h3 className={cls.ArticleTextBlock__title}>
+				{title}
+			</h3>
+		)}
+		{!!paragraphs && (
+			<div className={cls.ArticleTextBlock__paragraphs}>
 				{paragraphs.map((paragraph, index) => (
-					<p key={index} className={cls.ArticleTextBlock__paragraph}>{paragraph}</p>
+					// eslint-disable-next-line react/no-array-index-key
+					<p className={cls.ArticleTextBlock__paragraph} key={index}>
+						{paragraph}
+					</p>
 				))}
-			</div>}
-		</div>
-	);
-};
+			</div>
+		)}
+	</div>
+);
 
 export default memo(ArticleTextBlock);

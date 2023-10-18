@@ -1,47 +1,89 @@
 import { FC } from "react";
-import cls from "./ArticleView.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
 import { Skeleton } from "@/shared/layouts/Skeleton";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import cls from "./ArticleView.module.scss";
 
 interface ArticleViewProps {
 	className?: string;
 }
 
-export const ArticleView: FC<ArticleViewProps> = ({ className }) => {
-	return (
-		<div className={classNames(cls.ArticleView, {}, [className, cls.ArticleView_list])}>
-			<div className={classNames(cls.top, {}, [cls.ArticleView__top])}>
-				<Skeleton width="32px" height="32px" circle="100%" className={cls.top__avatar} />
-				<Skeleton width="57px" height="22px" circle="8px" className={cls.top__user} />
-				<Skeleton width="84px" height="22px" circle="8px" className={cls.top__date} />
+export const ArticleView: FC<ArticleViewProps> = ({ className }) => (
+	<div className={classNames(cls.ArticleView, {}, [className, cls.ArticleView_list])}>
+		<div className={classNames(cls.top, {}, [cls.ArticleView__top])}>
+			<Skeleton
+				circle="100%"
+				className={cls.top__avatar}
+				height="32px"
+				width="32px"
+			/>
+			<Skeleton
+				circle="8px"
+				className={cls.top__user}
+				height="22px"
+				width="57px"
+			/>
+			<Skeleton
+				circle="8px"
+				className={cls.top__date}
+				height="22px"
+				width="84px"
+			/>
+		</div>
+		<div className={cls.ArticleView__title}>
+			<Skeleton
+				circle="8px"
+				className={cls.top__date}
+				height="38px"
+				width="100%"
+			/>
+			<Skeleton
+				circle="8px"
+				className={cls.top__date}
+				height="38px"
+				width="90%"
+			/>
+		</div>
+		<div className={cls.ArticleView__subTitle}>
+			<Skeleton
+				circle="8px"
+				className={cls.top__date}
+				height="27px"
+				width="80%"
+			/>
+		</div>
+		<Skeleton
+			circle={8}
+			className={cls.ArticleView__image}
+			height={420}
+			isImage
+			width={732}
+		/>
+		<div className={classNames(cls.bottom, {}, [cls.ArticleView__bottom])}>
+			<Skeleton circle={4} height={32} width={260} />
+			<div>
+				<Skeleton
+					circle={4}
+					className={cls.bottom__paragraph}
+					height={17}
+					width="90%"
+				/>
+				<Skeleton circle={4} height={17} width="97%" />
+				<Skeleton circle={4} height={17} width="98%" />
+				<Skeleton circle={4} height={17} width="96%" />
+				<Skeleton circle={4} height={17} width="98%" />
+				<Skeleton circle={4} height={17} width="85%" />
 			</div>
-			<div className={cls.ArticleView__title}>
-				<Skeleton width="100%" height="38px" circle="8px" className={cls.top__date} />
-				<Skeleton width="90%" height="38px" circle="8px" className={cls.top__date} />
-			</div>
-			<div className={cls.ArticleView__subTitle}>
-				<Skeleton width="80%" height="27px" circle="8px" className={cls.top__date} />
-			</div>
-			<Skeleton isImage width={732} height={420} circle={8} className={cls.ArticleView__image} />
-			<div className={classNames(cls.bottom, {}, [cls.ArticleView__bottom])}>
-				<Skeleton width={260} height={32} circle={4} />
-				<div>
-					<Skeleton className={cls.bottom__paragraph} width="90%" height={17} circle={4} />
-					<Skeleton width="97%" height={17} circle={4} />
-					<Skeleton width="98%" height={17} circle={4} />
-					<Skeleton width="96%" height={17} circle={4} />
-					<Skeleton width="98%" height={17} circle={4} />
-					<Skeleton width="85%" height={17} circle={4} />
-				</div>
-				<div>
-					<Skeleton className={cls.bottom__paragraph} width="90%" height={17} circle={4} />
-					<Skeleton width="97%" height={17} circle={4} />
-					<Skeleton width="98%" height={17} circle={4} />
-					<Skeleton width="96%" height={17} circle={4} />
-				</div>
+			<div>
+				<Skeleton
+					circle={4}
+					className={cls.bottom__paragraph}
+					height={17}
+					width="90%"
+				/>
+				<Skeleton circle={4} height={17} width="97%" />
+				<Skeleton circle={4} height={17} width="98%" />
+				<Skeleton circle={4} height={17} width="96%" />
 			</div>
 		</div>
-	);
-};
-
-
+	</div>
+);

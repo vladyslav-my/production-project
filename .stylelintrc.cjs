@@ -7,7 +7,7 @@ const otherRules = {
    "no-descending-specificity": null
 };
 
-const rulesOrder = {
+const orderRules = {
    'declaration-empty-line-before': null,
    'order/order': [
       'custom-properties',
@@ -386,7 +386,7 @@ module.exports = {
    extends: 'stylelint-config-recommended-scss',
    plugins: ['stylelint-order'],
    rules: {
-      ...rulesOrder,
+      ...orderRules,
       ...otherRules,
    },
 };

@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
-import { StateSchema } from "../config/StateSchema";
 import { Provider } from "react-redux";
+import { StateSchema } from "../config/StateSchema";
 import { createReduxStore } from "../config/store";
 
 interface StoreProviderProps {
@@ -8,15 +8,14 @@ interface StoreProviderProps {
 	initialState?: StateSchema
 }
 
-export const StoreProvider: FC<StoreProviderProps> = ({ children, initialState }) => {
-	
+const StoreProvider: FC<StoreProviderProps> = ({ children, initialState }) => {
 	const store = createReduxStore(initialState);
-	
 
 	return (
 		<Provider store={store}>
-			{ children }
+			{children}
 		</Provider>
 	);
 };
 
+export default StoreProvider;

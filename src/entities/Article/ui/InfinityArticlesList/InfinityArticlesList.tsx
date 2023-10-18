@@ -1,22 +1,24 @@
 import { FC, useEffect, useRef } from "react";
-import cls from "./InfinityArticlesList.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { ArticlePreview } from "../ArticlePreview/ArticlePreview";
-import { ArticlePreview as ArticlePreviewSkeleton } from "../ArticlePreview/ArticlePreview.skeleton";
 import { useSelector } from "react-redux";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useDynamicReduce } from "@/shared/lib/hooks/useDynamicReduce/useDynamicReduce";
+import { useQueryParams } from "../../model/hooks/useQueryParams";
+import {
+	getArticlesListIsLoading, getArticlesListData, getArticlesListViewMode, getArticlesListPageQP, getArticlesListLimitQP, getArticlesListHasMore, getArticlesListInitedData,
+} from "../../model/selectors/articlesList";
 import { articlesListReducer } from "../../model/slice/articlesListSlice";
 import { ViewMode } from "../../model/types/ArticlesListSchema";
-import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { getArticlesListIsLoading, getArticlesListData, getArticlesListViewMode, getArticlesListPageQP, getArticlesListLimitQP, getArticlesListHasMore, getArticlesListInitedData } from "../../model/selectors/articlesList";
 import { fetchArticlesList } from "../../services/fetchArticlesList/fetchArticlesList";
-import { useQueryParams } from "../../model/hooks/useQueryParams";
+import { ArticlePreview } from "../ArticlePreview/ArticlePreview";
+import { ArticlePreview as ArticlePreviewSkeleton } from "../ArticlePreview/ArticlePreview.skeleton";
+import cls from "./InfinityArticlesList.module.scss";
 
-interface InfinityArticlesList {
+interface InfinityArticlesListProps {
 	className?: string
 }
 
-export const InfinityArticlesList: FC<InfinityArticlesList> = ({ className }) => {
+export const InfinityArticlesList: FC<InfinityArticlesListProps> = ({ className }) => {
 	useDynamicReduce({ articlesList: articlesListReducer }, false);
 
 	const dispatch = useAppDispatch();
@@ -27,63 +29,59 @@ export const InfinityArticlesList: FC<InfinityArticlesList> = ({ className }) =>
 	const hasMore = useSelector(getArticlesListHasMore);
 	const _initedData = useSelector(getArticlesListInitedData);
 
-
 	const targetRef = useRef(null);
-	
+
 	useQueryParams();
 	useEffect(() => {
 		if (!_initedData) {
 			dispatch(
-				fetchArticlesList({ replace: true })
+				fetchArticlesList({ replace: true }),
 			);
 		}
-
-	}, []);
-	
+	}, [dispatch, _initedData]);
 
 	useEffect(() => {
-		const observer = new IntersectionObserver(entries => {
-			entries.forEach(entry => {
-				if (entry.isIntersecting) {
-					hasMore && dispatch(
-						fetchArticlesList({})
-					);					
+		const { current } = targetRef;
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting && hasMore) {
+					dispatch(
+						fetchArticlesList({}),
+					);
 				}
 			});
 		});
-	
-		if (targetRef.current) {
-			observer.observe(targetRef.current);
+
+		if (current) {
+			observer.observe(current);
 		}
-	
+
 		return () => {
-			if (targetRef.current) {
-				observer.unobserve(targetRef.current);
+			if (current) {
+				observer.unobserve(current);
 			}
 		};
-	}, [hasMore]);
- 
-	
-
+	}, [hasMore, dispatch]);
 
 	return (
-		<div className={classNames(cls.InfinityArticlesList, {
-			[cls.InfinityArticlesList_list]: viewMode === ViewMode.LIST,
-			[cls.InfinityArticlesList_tile]: viewMode === ViewMode.TILE
-		}, [className])}>
+		<div
+			className={classNames(cls.InfinityArticlesList, {
+				[cls.InfinityArticlesList_list]: viewMode === ViewMode.LIST,
+				[cls.InfinityArticlesList_tile]: viewMode === ViewMode.TILE,
+			}, [className])}
+		>
 			<div className={cls.InfinityArticlesList__articles}>
 				{
 					data?.map((article) => (
-						<ArticlePreview key={article.id} data={article} viewMode={viewMode} />
+						<ArticlePreview data={article} key={article.id} viewMode={viewMode} />
 					))
 				}
 				{
-					isLoading ?
-						new Array(limit).fill(undefined).map((_, i) => <ArticlePreviewSkeleton key={i} viewMode={viewMode} />)
-						: null
+					// eslint-disable-next-line react/no-array-index-key
+					!!isLoading && new Array(limit).fill(undefined).map((_, i) => <ArticlePreviewSkeleton key={i} viewMode={viewMode} />)
 				}
 			</div>
-			{hasMore && <div ref={targetRef} className={cls.InfinityArticlesList__articlesTrigger} />}
+			{!!hasMore && <div className={cls.InfinityArticlesList__articlesTrigger} ref={targetRef} />}
 		</div>
 	);
 };

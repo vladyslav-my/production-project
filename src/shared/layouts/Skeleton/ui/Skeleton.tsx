@@ -1,8 +1,6 @@
 import { CSSProperties, FC, ReactNode } from "react";
+import { classNames } from "../../../lib/classNames/classNames";
 import cls from "./Skeleton.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { DynamicTag } from "@/shared/ui/DynamicTag";
-
 
 interface SkeletonProps {
 	className?: string;
@@ -11,28 +9,24 @@ interface SkeletonProps {
 	circle?: string | number;
 	children?: ReactNode;
 	isImage?: boolean;
-	tagName?: string;
 }
 
-export const Skeleton: FC<SkeletonProps> = ({ className, width, height, circle, tagName = "div", children, isImage }) => {
-
+export const Skeleton: FC<SkeletonProps> = ({
+	className, width, height, circle, children, isImage,
+}) => {
 	const styles: CSSProperties = isImage && (typeof height === "number") && (typeof width === "number") ? {
 		paddingBottom: `${(height / width) * 100}%`,
 	} : {
-		width: width,
-		height: height
+		width,
+		height,
 	};
 
-
-
 	return (
-		<DynamicTag 
-			style={{ borderRadius: circle, ...styles }} 
+		<div
 			className={classNames(cls.Skeleton, {}, [className])}
-			tagName={tagName}
-
+			style={{ borderRadius: circle, ...styles }}
 		>
 			{children}
-		</DynamicTag>
+		</div>
 	);
 };

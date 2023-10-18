@@ -1,13 +1,12 @@
 import { StateSchema } from "@/app/providers/StoreProvider/config/StateSchema";
-
 import { getLoginFormUsername } from "./getLoginFormUsername";
 
 describe("getLoginFormPassword", () => {
 	test("should return current value", () => {
 		const state: DeepPartial<StateSchema> = {
 			loginForm: {
-				username: "test"
-			}
+				username: "test",
+			},
 		};
 
 		expect(getLoginFormUsername(state as StateSchema)).toEqual("test");

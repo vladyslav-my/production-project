@@ -1,3 +1,3 @@
-import { StateSchema } from "@/app/providers/StoreProvider/config/StateSchema";
+import { StateSchema } from "@/app/providers/StoreProvider";
 
 export const getUserAuthData = (state: StateSchema) => state.user.authData;

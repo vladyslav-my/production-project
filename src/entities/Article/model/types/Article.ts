@@ -1,3 +1,4 @@
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { User } from "@/entities/User";
 
 export interface Article {
@@ -12,17 +13,16 @@ export interface Article {
 	blocks: ArticleBlocks[];
 }
 
-
 enum ArticleTypes {
 	IT = "IT",
 	SCIENCE = "SCIENCE",
-	ECONOMICS = "ECONOMICS"
+	ECONOMICS = "ECONOMICS",
 }
 
 enum ArticleBlockTypes {
 	CODE = "CODE",
 	TEXT = "TEXT",
-	IMAGE = "IMAGE"
+	IMAGE = "IMAGE",
 }
 
 export type ArticleBlocks = ArticleBlockCode | ArticleBlockText | ArticleBlockImage;
@@ -48,5 +48,3 @@ interface ArticleBlockImage extends ArticleBlockBase {
 	src: string;
 	title: string;
 }
-
-

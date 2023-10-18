@@ -1,8 +1,10 @@
-import React, { FC, ReactNode, useEffect, useRef, useState } from "react";
+import React, {
+	FC, ReactNode, useEffect, useRef, useState,
+} from "react";
+import { Shell } from "../../../layouts/Shell";
+import { classNames } from "../../../lib/classNames/classNames";
+import { Portal } from "../../Portal";
 import cls from "./Modal.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { Portal } from "@/shared/ui/Portal";
-import { Shell } from "@/shared/layouts/Shell";
 
 interface ModalProps {
 	className?: string;
@@ -12,7 +14,9 @@ interface ModalProps {
 	children: ReactNode;
 }
 
-export const Modal: FC<ModalProps> = ({ className, oppened, lazy, onToggle, children }) => {
+export const Modal: FC<ModalProps> = ({
+	className, oppened, lazy, onToggle, children,
+}) => {
 	const [isMounted, setIsMounted] = useState(false);
 	const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
 
@@ -32,7 +36,6 @@ export const Modal: FC<ModalProps> = ({ className, oppened, lazy, onToggle, chil
 		};
 	}, [oppened]);
 
-
 	const onCloseHandler = () => {
 		onToggle(false);
 		timeoutRef.current = setTimeout(() => {
@@ -43,10 +46,10 @@ export const Modal: FC<ModalProps> = ({ className, oppened, lazy, onToggle, chil
 	const onClickShell = (e: React.MouseEvent) => {
 		e.stopPropagation();
 	};
-	
+
 	const modalMods = {
 		[cls.Modal_oppened]: oppened,
-		[cls.Modal_clossed]: !oppened
+		[cls.Modal_clossed]: !oppened,
 	};
 
 	if (lazy && !isMounted) {
@@ -55,9 +58,12 @@ export const Modal: FC<ModalProps> = ({ className, oppened, lazy, onToggle, chil
 
 	return (
 		<Portal>
-			<div onClick={onCloseHandler} className={classNames(cls.Modal, modalMods, [])}>
-				<Shell onClick={onClickShell} className={classNames(cls.Modal__shell, {}, [cls.Modal__shell_animation, className])}>
-					{ children }
+			<div className={classNames(cls.Modal, modalMods, [])} onClick={onCloseHandler}>
+				<Shell
+					className={classNames(cls.Modal__shell, {}, [cls.Modal__shell_animation, className])}
+					onClick={onClickShell}
+				>
+					{children}
 				</Shell>
 			</div>
 		</Portal>

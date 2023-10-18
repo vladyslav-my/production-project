@@ -1,24 +1,23 @@
 import { FC, SVGProps } from "react";
-import cls from "./ChangeArticlesView.module.scss";
-import { classNames as cn } from "@/shared/lib/classNames/classNames";
-import ListIcon from "@/shared/assets/icons/articlesList/list.svg";
-import TileIcon from "@/shared/assets/icons/articlesList/tile.svg";
-import { Icon } from "@/shared/ui/Icon";
-import { Button } from "@/shared/ui/Buttons";
 import { useDispatch, useSelector } from "react-redux";
 import { ViewMode, articlesListActions, getArticlesListViewMode } from "@/entities/Article";
 import { fetchArticlesList } from "@/entities/Article/services/fetchArticlesList/fetchArticlesList";
+import ListIcon from "@/shared/assets/icons/articlesList/list.svg";
+import TileIcon from "@/shared/assets/icons/articlesList/tile.svg";
+import { classNames as cn } from "@/shared/lib/classNames/classNames";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-
+import { Button } from "@/shared/ui/Buttons";
+import { Icon } from "@/shared/ui/Icon";
+import cls from "./ChangeArticlesView.module.scss";
 
 export enum CAVBorderStyle {
 	PRIMARY = "ChangeArticlesView_border_primary",
-	SECONDARY = "ChangeArticlesView_border_secondary"
+	SECONDARY = "ChangeArticlesView_border_secondary",
 }
 
 export enum CAVSizeStyle {
 	SMALL = "ChangeArticlesView_size_small",
-	MEDIUM = "ChangeArticlesView_size_medium"
+	MEDIUM = "ChangeArticlesView_size_medium",
 }
 
 interface ChangeArticlesViewProps {
@@ -26,7 +25,6 @@ interface ChangeArticlesViewProps {
 	borderStyle?: CAVBorderStyle;
 	sizeStyle?: CAVSizeStyle;
 }
-
 
 interface DataViewBtns {
 	key: number;
@@ -48,15 +46,15 @@ const dataViewBtns: DataViewBtns[] = [
 		Icon: ListIcon,
 		viewMode: ViewMode.LIST,
 		width: 18,
-		height: 16
+		height: 16,
 	},
 
 ];
 
-export const ChangeArticlesView: FC<ChangeArticlesViewProps> = ({ 
+export const ChangeArticlesView: FC<ChangeArticlesViewProps> = ({
 	className,
-	borderStyle = CAVBorderStyle.PRIMARY, 
-	sizeStyle = CAVSizeStyle.MEDIUM
+	borderStyle = CAVBorderStyle.PRIMARY,
+	sizeStyle = CAVSizeStyle.MEDIUM,
 }) => {
 	const dispatch = useAppDispatch();
 
@@ -65,37 +63,40 @@ export const ChangeArticlesView: FC<ChangeArticlesViewProps> = ({
 	const onClickSwitchView = () => {
 		if (viewMode === ViewMode.LIST) {
 			dispatch(
-				articlesListActions.setViewMode(ViewMode.TILE)
+				articlesListActions.setViewMode(ViewMode.TILE),
 			);
 
 			dispatch(
-				fetchArticlesList({ replace: true })
+				fetchArticlesList({ replace: true }),
 			);
-			
 		} else if (viewMode === ViewMode.TILE) {
 			dispatch(
-				articlesListActions.setViewMode(ViewMode.LIST)
+				articlesListActions.setViewMode(ViewMode.LIST),
 			);
 
 			dispatch(
-				fetchArticlesList({ replace: true })
+				fetchArticlesList({ replace: true }),
 			);
 		}
-	}; 
-
+	};
 
 	return (
 		<Button className={cn(cls.ChangeArticlesView, {}, [className, cls[borderStyle], cls[sizeStyle]])} onClick={onClickSwitchView}>
 			{
-				dataViewBtns.map(({ key, Icon: IconParam, viewMode: viewModeParam, width, height }) => (
-					<div key={key} className={cn(cls.viewMode, {
-						[cls.viewMode_active]: viewMode === viewModeParam
-					})}>
-						<Icon 
-							className={cls.viewMode__icon}
-							width={width} 
-							height={height}
+				dataViewBtns.map(({
+					key, Icon: IconParam, viewMode: viewModeParam, width, height,
+				}) => (
+					<div
+						className={cn(cls.viewMode, {
+							[cls.viewMode_active]: viewMode === viewModeParam,
+						})}
+						key={key}
+					>
+						<Icon
 							Svg={IconParam}
+							className={cls.viewMode__icon}
+							height={height}
+							width={width}
 						/>
 					</div>
 				))

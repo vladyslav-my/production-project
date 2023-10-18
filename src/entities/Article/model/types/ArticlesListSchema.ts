@@ -2,7 +2,7 @@ import { Article } from "./Article";
 
 export enum ViewMode {
 	TILE = "tile",
-	LIST = "list"
+	LIST = "list",
 }
 
 export interface ArticlesListSchema {
@@ -15,7 +15,6 @@ export interface ArticlesListSchema {
 	queryParams: QueryParams;
 }
 
-
 export interface QueryParams {
 	_inited: boolean,
 	limit: 9 | 3;
@@ -24,20 +23,20 @@ export interface QueryParams {
 	order: Order;
 	search?: string;
 	type: Type;
-} 
+}
 
 export enum Order {
 	DESC = "desc",
-	ASC = "asc"
+	ASC = "asc",
 }
 
 export enum Type {
 	ALL = "all",
 	IT = "IT",
-	SCIENCE = "SCIENCE"
+	SCIENCE = "SCIENCE",
 }
 
 export enum Sort {
 	VIEWS = "views",
-	CREATEDAT = "createdAt" 
+	CREATEDAT = "createdAt",
 }

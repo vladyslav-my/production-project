@@ -1,35 +1,29 @@
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import { AppRouteProps, routeConfig } from "@/shared/config/routeConfig/routeConfig";
-import { Loader } from "@/shared/ui/Loader";
-import { RequireAuth } from "../RequireAuth";
-import { AppContainer, Container } from "@/shared/layouts/AppContainer";
-import cls from "./AppRouter.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
 import { PageLoader } from "@/shared/ui/PageLoader";
+import { AppRouteProps, routeConfig } from "../../routes/routes";
+import { RequireAuth } from "../RequireAuth";
 
-
-
-
-const AppRouter = ({ className }: {className: string}) => {
+const AppRouter = ({ className }: { className: string }) => {
 	const RouteItems = Object.values(routeConfig).map((route: AppRouteProps) => {
-
-		const element = (	
-			<Suspense fallback={<PageLoader/>}>
+		const element = (
+			<Suspense fallback={<PageLoader />}>
 				{route.element}
-			</Suspense>	
+			</Suspense>
 
 		);
 
-
-		return <Route key={route.path} path={route.path} element={
-			route.authOnly ?
-				<RequireAuth>
-					{element}
-				</RequireAuth> :
-				element
-		} 
-		/>;
+		return (
+			<Route
+				element={route.authOnly ? (
+					<RequireAuth>
+						{element}
+					</RequireAuth>
+				) : element}
+				key={route.path}
+				path={route.path}
+			/>
+		);
 	});
 
 	return (
@@ -38,7 +32,7 @@ const AppRouter = ({ className }: {className: string}) => {
 				{RouteItems}
 			</Routes>
 		</div>
-	
+
 	);
 };
 

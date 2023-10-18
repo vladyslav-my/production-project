@@ -1,9 +1,8 @@
 import { rtkApi } from "@/shared/api/rtkApi";
 import { Comment } from "../types/Comment";
 
-
 interface UpdateArticleComments {
-	articleId: number; 
+	articleId: number;
 	userId: number;
 	comment: string;
 }
@@ -16,9 +15,9 @@ const commentsApi = rtkApi.injectEndpoints({
 				url: "comments",
 				params: {
 					_expand: "user",
-					articleId
+					articleId,
 				},
-				
+
 			}),
 		}),
 
@@ -27,11 +26,11 @@ const commentsApi = rtkApi.injectEndpoints({
 			query: ({ articleId, userId, comment }) => ({
 				url: "comments",
 				method: "POST",
-				
+
 				body: {
 					articleId,
 					userId,
-					comment
+					comment,
 				},
 			}),
 		}),

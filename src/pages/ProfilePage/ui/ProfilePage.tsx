@@ -1,24 +1,20 @@
 import { FC, useCallback, useEffect } from "react";
-import cls from "./ProfilePage.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { ProfileCard } from "@/entities/Profile/ui/ProfileCard/ProfileCard";
-import { ProfileHeader } from "./ProfileHeader/ProfileHeader";
-import { DynamicReduceLoader } from "@/shared/lib/components/DynamicReduceLoader";
-import { ProfileActions, ProfileReducer } from "@/entities/Profile/model/slice/ProfileSlice";
 import { useSelector } from "react-redux";
-import { getProfileReadOnly } from "@/entities/Profile/model/selectors/getProfileReadOnly/getProfileReadOnly";
 import { ReducersList } from "@/app/providers/StoreProvider";
-import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { fetchProfileData } from "@/entities/Profile/model/services/fetchProfileData/fetchProfileData";
-import { getProfileIsLoading } from "@/entities/Profile/model/selectors/getProfileIsLoading/getProfileIsLoading";
-import { getProfileFormData } from "@/entities/Profile/model/selectors/getProfileFormData/getProfileFormData";
 import { Currency } from "@/entities/Currency";
-import { getProfileError } from "@/entities/Profile/model/selectors/getProfileError/getProfileError";
-import { Shell } from "@/shared/layouts/Shell";
+import {
+	getProfileError, getProfileFormData, getProfileIsLoading, getProfileReadOnly, fetchProfileData, ProfileActions, ProfileReducer, ProfileCard,
+} from "@/entities/Profile";
 import { RouteContainer } from "@/shared/layouts/RouteContainer";
+import { Shell } from "@/shared/layouts/Shell";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { DynamicReduceLoader } from "@/shared/lib/components/DynamicReduceLoader";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { ProfileHeader } from "./ProfileHeader/ProfileHeader";
+import cls from "./ProfilePage.module.scss";
 
 interface ProfilePageProps {
-   className?: string
+	className?: string
 }
 
 const initialReducers: ReducersList = {
@@ -30,7 +26,7 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
 	const readOnly = useSelector(getProfileReadOnly);
 	const formData = useSelector(getProfileFormData);
 	const isLoading = useSelector(getProfileIsLoading);
-	const error = useSelector(getProfileError);
+	const errorList = useSelector(getProfileError);
 
 	const onFirstNameChange = useCallback((value?: string) => {
 		dispatch(ProfileActions.setFormData({ first: value }));
@@ -52,10 +48,9 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
 		dispatch(ProfileActions.setFormData({ currency: value }));
 	}, [dispatch]);
 
-
 	useEffect(() => {
 		dispatch(fetchProfileData());
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<RouteContainer>
@@ -63,24 +58,25 @@ const ProfilePage: FC<ProfilePageProps> = ({ className }) => {
 				<Shell>
 					<div className={classNames(cls.ProfilePage, {}, [className])}>
 						<ProfileHeader />
-						{ error?.length !== 0 && error?.map(error => (
-							<div key={error} className={cls.error}>{error}</div>
-						)) }
+						{errorList?.length !== 0 && errorList?.map((error) => (
+							<div className={cls.error} key={error}>
+								{error}
+							</div>
+						))}
 						<ProfileCard
-							onFirstNameChange={onFirstNameChange}
-							onLastNameChange={onLastNameChange}
+							data={formData}
+							isLoading={isLoading}
+							readOnly={readOnly}
 							onAgeChange={onAgeChange}
 							onAvatarChange={onAvatarChange}
 							onCurrencyChange={onCurrencyChange}
-							isLoading={isLoading}
-							readOnly={readOnly}
-							data={formData}
+							onFirstNameChange={onFirstNameChange}
+							onLastNameChange={onLastNameChange}
 						/>
 					</div>
 				</Shell>
 			</DynamicReduceLoader>
 		</RouteContainer>
-
 
 	);
 };

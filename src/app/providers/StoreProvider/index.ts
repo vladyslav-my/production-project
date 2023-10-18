@@ -1,14 +1,15 @@
-import { StateSchema, ReducersList } from "./config/StateSchema";
-import { StoreProvider } from "./ui/StoreProvider";
-import { AppDispatch } from "./config/store";
-import { RootState } from "./config/store";
-import { ThunkConfig } from "./config/StateSchema";
+import { StateSchema, ReducersList, ThunkConfig } from "./config/StateSchema";
+import { AppDispatch, RootState } from "./config/store";
+import StoreProvider from "./ui/StoreProvider";
 
 export {
 	StoreProvider,
+};
+
+export type {
 	StateSchema,
 	ReducersList,
 	AppDispatch,
 	RootState,
-	ThunkConfig
+	ThunkConfig,
 };

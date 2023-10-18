@@ -1,13 +1,12 @@
 import { StateSchema } from "@/app/providers/StoreProvider/config/StateSchema";
-
 import { getLoginFormIsLoading } from "./getLoginFormIsLoading";
 
 describe("getLoginFormIsLoading", () => {
 	test("should return true", () => {
 		const state: DeepPartial<StateSchema> = {
 			loginForm: {
-				isLoading: true
-			}
+				isLoading: true,
+			},
 		};
 
 		expect(getLoginFormIsLoading(state as StateSchema)).toEqual(true);

@@ -2,12 +2,12 @@
 
 import path from "path";
 import { Configuration, RuleSetRule } from "webpack";
-import { BuildPaths } from "../build/types/config";
 import { buildCssLoader } from "../build/loaders/buildCssLoader";
+import { BuildPaths } from "../build/types/config";
 
-export default ({ config }: {config: Configuration}) => {
+export default ({ config }: { config: Configuration }) => {
 	const paths: BuildPaths = {
-		src: path.resolve(__dirname, "..", "..", "src")
+		src: path.resolve(__dirname, "..", "..", "src"),
 	};
 
 	config.resolve.modules.push(paths.src);
@@ -16,6 +16,11 @@ export default ({ config }: {config: Configuration}) => {
 		if (/svg/.test(rule.test as string)) {
 			return { ...rule, exclude: /\.svg$/i };
 		}
+
+		config.resolve.alias = {
+			...config.resolve.alias,
+			"@": paths.src,
+		};
 
 		return rule;
 	});

@@ -1,9 +1,7 @@
-import { LoginFormSchema } from "./types/LoginFormSchema";
-import { loginFormActions } from "./slice/loginFormSlice";
-import { loginFormReducer } from "./slice/loginFormSlice";
 import { getUserState } from "@/entities/User/selectors/getUserState";
+import { loginFormActions, loginFormReducer } from "./slice/loginFormSlice";
+import { LoginFormSchema } from "./types/LoginFormSchema";
 import { LoginModal } from "./ui/LoginModal/LoginModal";
-
 
 export {
 	LoginModal,
@@ -13,5 +11,5 @@ export {
 };
 
 export type {
-	LoginFormSchema
+	LoginFormSchema,
 };

@@ -1,53 +1,54 @@
 import { FC, memo } from "react";
-import cls from "./ArticleBlocks.module.scss";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import ArticleTextBlock from "../ArticleTextBlock/ArticleTextBlock";
-import ArticleImageBlock from "../ArticleImageBlock/ArticleImageBlock";
-import ArticleCodeBlock from "../ArticleCodeBlock/ArticleCodeBlock";
 import { ArticleBlocks as ArticleBlocksType } from "../../model/types/Article";
+import ArticleCodeBlock from "../ArticleCodeBlock/ArticleCodeBlock";
+import ArticleImageBlock from "../ArticleImageBlock/ArticleImageBlock";
+import ArticleTextBlock from "../ArticleTextBlock/ArticleTextBlock";
+import cls from "./ArticleBlocks.module.scss";
 
 interface ArticleBlocksProps {
 	className?: string;
 	data?: ArticleBlocksType[];
 }
 
-const ArticleBlocks: FC<ArticleBlocksProps> = ({ className, data }) => {
-	return (
-		<div className={classNames(cls.ArticleBlocks, {}, [className])}>
-			{
-				data?.map((block) => {
-					switch(block.type) {
-					case "TEXT": 
+const ArticleBlocks: FC<ArticleBlocksProps> = ({ className, data }) => (
+	<div className={classNames(cls.ArticleBlocks, {}, [className])}>
+		{
+			data?.map((block) => {
+				switch (block.type) {
+					case "TEXT":
 						return (
 							<ArticleTextBlock
 								className={cls.Article__textBlock}
 								key={block.id}
-								title={block.title} 
-								paragraphs={block.paragraphs} 
+								paragraphs={block.paragraphs}
+								title={block.title}
 							/>
 						);
-					case "IMAGE": 
+					case "IMAGE":
 						return (
-							<ArticleImageBlock 
+							<ArticleImageBlock
 								className={cls.Article__imageBlock}
 								key={block.id}
-								title={block.title} 
-								src={block.src} 
+								src={block.src}
+								title={block.title}
 							/>
 						);
-					case "CODE": 
+					case "CODE":
 						return (
-							<ArticleCodeBlock 
+							<ArticleCodeBlock
 								className={cls.Article__codeBlock}
-								key={block.id}
 								code={block.code}
+								key={block.id}
 							/>
 						);
-					}		
-				})
-			}
-		</div>
-	);
-};
+					default: {
+						return null;
+					}
+				}
+			})
+		}
+	</div>
+);
 
 export default memo(ArticleBlocks);

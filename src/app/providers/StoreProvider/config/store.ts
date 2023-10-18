@@ -1,20 +1,20 @@
-import { CombinedState, Reducer, ReducersMapObject, configureStore } from "@reduxjs/toolkit";
-import { StateSchema } from "./StateSchema";
+import {
+	CombinedState, Reducer, ReducersMapObject, configureStore,
+} from "@reduxjs/toolkit";
+import { NavigateOptions, To } from "react-router-dom";
+import { articlesPageReducer } from "@/pages/ArticlesPage";
 import { counterReducer } from "@/entities/Counter";
 import { userReducer } from "@/entities/User";
-import { createReducerManager } from "./reducerManager";
 import { $api } from "@/shared/api/api";
-import { NavigateOptions, To } from "react-router-dom";
-import { ExtraArgumentType } from "./StateSchema";
-import { articlesPageReducer } from "@/pages/ArticlesPage";
 import { rtkApi } from "@/shared/api/rtkApi";
+import { createReducerManager } from "./reducerManager";
+import { ExtraArgumentType, StateSchema } from "./StateSchema";
 
 export const createReduxStore = (
-	initialState?: StateSchema, 
+	initialState?: StateSchema,
 	asyncReducers?: ReducersMapObject<StateSchema>,
-	navigate?: (to: To, options?: NavigateOptions | undefined) => void
+	navigate?: (to: To, options?: NavigateOptions | undefined) => void,
 ) => {
-
 	const rootReducers: ReducersMapObject<StateSchema> = {
 		...asyncReducers,
 		[rtkApi.reducerPath]: rtkApi.reducer,
@@ -25,9 +25,8 @@ export const createReduxStore = (
 
 	const extraArgument: ExtraArgumentType = {
 		api: $api,
-		navigate
+		navigate,
 	};
-
 
 	const reducerManager = createReducerManager(rootReducers);
 
@@ -36,17 +35,15 @@ export const createReduxStore = (
 		devTools: __IS_DEV__,
 		preloadedState: initialState,
 		middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-			thunk: {	extraArgument }
-		}).concat(rtkApi.middleware)
+			thunk: {	extraArgument },
+		}).concat(rtkApi.middleware),
 	});
 
 	// @ts-ignore
 	store.reducerManager = reducerManager;
 
-	return store; 
+	return store;
 };
 
 export type AppDispatch = ReturnType<typeof createReduxStore>["dispatch"];
 export type RootState = ReturnType<ReturnType<typeof createReduxStore>["getState"]>;
-
-

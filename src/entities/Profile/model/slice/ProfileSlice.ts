@@ -1,10 +1,11 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { Profile, ProfileSchema } from "../types/Profile";
 import { fetchProfileData } from "../services/fetchProfileData/fetchProfileData";
 import { updateProfileData } from "../services/updateProfileData/updateProfileData";
+import { Profile, ProfileSchema } from "../types/Profile";
+
 const initialState: ProfileSchema = {
 	readonly: true,
-	isLoading: false
+	isLoading: false,
 };
 
 export const ProfileSlice = createSlice({
@@ -21,9 +22,9 @@ export const ProfileSlice = createSlice({
 		setFormData: (state, action: PayloadAction<Profile>) => {
 			state.formData = {
 				...state.data,
-				...action.payload
+				...action.payload,
 			};
-		}
+		},
 	},
 	extraReducers: (builder) => {
 		builder

@@ -1,8 +1,6 @@
 import { FC } from "react";
+import { classNames } from "../../../lib/classNames/classNames";
 import cls from "./Avatar.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
-
-
 
 interface AvatarProps {
 	className?: string
@@ -10,10 +8,8 @@ interface AvatarProps {
 	src?: string;
 }
 
-export const Avatar: FC<AvatarProps> = ({ className, size, src }) => {
-	return (
-		<div style={{ width: size, height: size }} className={classNames(cls.Avatar, {}, [className])}>
-			<img className={cls.Avatar__image} src={src} />
-		</div>
-	);
-};
+export const Avatar: FC<AvatarProps> = ({ className, size, src }) => (
+	<div className={classNames(cls.Avatar, {}, [className])} style={{ width: size, height: size }}>
+		<img className={cls.Avatar__image} src={src} />
+	</div>
+);

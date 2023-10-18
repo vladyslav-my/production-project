@@ -8,14 +8,14 @@ import path from "path";
 export default {
 	globals: {
 		__IS_DEV__: true,
-		__API__: ""
+		__API__: "",
 	},
 	clearMocks: true,
 	coveragePathIgnorePatterns: [
-		"\\\\node_modules\\\\"
+		"\\\\node_modules\\\\",
 	],
 	moduleDirectories: [
-		"node_modules"
+		"node_modules",
 	],
 	modulePaths: [
 		"<rootDir>src",
@@ -28,12 +28,14 @@ export default {
 		"ts",
 		"tsx",
 		"json",
-		"node"
+		"node",
 	],
 	moduleNameMapper: {
 		"\\.svg$": path.resolve(__dirname, "jestEmptyComponent.tsx"),
 		"^.+\\.(css|less|scss)$": "identity-obj-proxy",
+		"^@/(.*)$": "<rootDir>/src/$1",
 	},
+
 	setupFilesAfterEnv: ["<rootDir>config/jest/setupTests.ts"],
 	rootDir: "../../",
 	testEnvironment: "jsdom",
@@ -107,7 +109,6 @@ export default {
 
 	// An array of file extensions your modules use
 
-
 	// A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
 	// moduleNameMapper: {},
 
@@ -164,7 +165,7 @@ export default {
 	// snapshotSerializers: [],
 
 	// The test environment that will be used for testing
-	
+
 	// Options that will be passed to the testEnvironment
 	// testEnvironmentOptions: {},
 
@@ -172,7 +173,6 @@ export default {
 	// testLocationInResults: false,
 
 	// The glob patterns Jest uses to detect test files
-
 
 	// An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
 	// testPathIgnorePatterns: [

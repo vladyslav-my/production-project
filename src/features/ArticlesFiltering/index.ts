@@ -5,5 +5,5 @@ import { SortArticles } from "./ui/SortArticles/SortArticles";
 export {
 	SearchArticles,
 	SortArticles,
-	SelectTypeArticles
+	SelectTypeArticles,
 };

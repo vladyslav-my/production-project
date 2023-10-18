@@ -1,17 +1,15 @@
 import { FC } from "react";
-import cls from "./ProfileCard.module.scss";
+import { CountryDropDown } from "@/entities/Country";
+import { CurrencyDropDown } from "@/entities/Currency";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { Input } from "@/shared/ui/Input/Input";
-import { Profile } from "@/entities/Profile/model/types/Profile";
 import { Loader } from "@/shared/ui/Loader";
-import { CurrencyDropDown } from "@/entities/Currency";
-import { CountryDropDown } from "@/entities/Country";
-import { Shell } from "@/shared/layouts/Shell";
-import { Button } from "@/shared/ui/Buttons";
+import { IProfile } from "../../model/types/IProfile";
+import cls from "./ProfileCard.module.scss";
 
 interface ProfileCardProps {
 	className?: string;
-	data?: Profile;
+	data?: IProfile;
 	error?: string;
 	readOnly?: boolean;
 	isLoading?: boolean;
@@ -23,7 +21,7 @@ interface ProfileCardProps {
 	onCountryChange?: () => void;
 }
 
-export const ProfileCard: FC<ProfileCardProps> = ({ 
+export const ProfileCard: FC<ProfileCardProps> = ({
 	className,
 	data,
 	readOnly = true,
@@ -34,11 +32,14 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 	onAgeChange,
 	onAvatarChange,
 	onCurrencyChange,
-	onCountryChange
+	onCountryChange,
 }) => {
-
 	if (error) {
-		return <div>error</div>;
+		return (
+			<div>
+				error
+			</div>
+		);
 	}
 
 	if (isLoading) {
@@ -49,65 +50,67 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 		);
 	}
 
-
 	return (
 		<div className={classNames(cls.ProfileCard, {}, [className])}>
 			<div className={cls.ProfileCard__row}>
 				<div className={cls.ProfileCard__leftColumn}>
-					<Input 
-						className={cls.ProfileCard__firstNameInput} 
-						onChange={onFirstNameChange} 
+					<Input
+						className={cls.ProfileCard__firstNameInput}
+						label="Name"
 						readOnly={readOnly}
-						label="Name" 
-						value={data?.first} 
+						value={data?.first}
+						onChange={onFirstNameChange}
 					/>
-					<Input 
-						className={cls.ProfileCard__lastNameInput} 
-						onChange={onLastNameChange} 
-						readOnly={readOnly} 
-						label="Last name" 
-						value={data?.lastname} 
+					<Input
+						className={cls.ProfileCard__lastNameInput}
+						label="Last name"
+						readOnly={readOnly}
+						value={data?.lastname}
+						onChange={onLastNameChange}
 					/>
-					<Input className={cls.ProfileCard__ageInput} 
-						onChange={onAgeChange} 
-						readOnly={readOnly} 
-						label="Age" 
-						value={data?.age?.toString()} 
+					<Input
+						className={cls.ProfileCard__ageInput}
+						label="Age"
+						readOnly={readOnly}
+						value={data?.age?.toString()}
+						onChange={onAgeChange}
 					/>
-					<Input 
-						className={cls.ProfileCard__cityInput} 
-						onChange={onAvatarChange} 
-						readOnly={readOnly} 
+					<Input
+						className={cls.ProfileCard__cityInput}
 						label="City"
-						value={data?.city} 
+						readOnly={readOnly}
+						value={data?.city}
+						onChange={onAvatarChange}
 					/>
 				</div>
 				<div className={cls.ProfileCard__rightColumn}>
-					<Input className={cls.ProfileCard__usernameInput} 
-						onChange={onAvatarChange} 
-						readOnly={readOnly} 
-						label="Username" 
-						value={data?.username} 
+					<Input
+						className={cls.ProfileCard__usernameInput}
+						label="Username"
+						readOnly={readOnly}
+						value={data?.username}
+						onChange={onAvatarChange}
 					/>
-					<Input className={cls.ProfileCard__avatarURLInput} 
-						onChange={onAvatarChange} 
-						readOnly={readOnly} 
-						label="Avatar URL" 
-						value={data?.avatar} 
+					<Input
+						className={cls.ProfileCard__avatarURLInput}
+						label="Avatar URL"
+						readOnly={readOnly}
+						value={data?.avatar}
+						onChange={onAvatarChange}
 					/>
-					<CurrencyDropDown 
-						className={cls.ProfileCard__currencyDropDown} 
-						onChange={onCurrencyChange} 
-						readOnly={readOnly} 
-						label="Currency" 
-						value={data?.currency} 
+					<CurrencyDropDown
+						className={cls.ProfileCard__currencyDropDown}
+						label="Currency"
+						readOnly={readOnly}
+						value={data?.currency}
+						onChange={onCurrencyChange}
 					/>
-					<CountryDropDown 
-						className={cls.ProfileCard__countryDropDown} 
-						onChange={onCountryChange} 
-						readOnly={readOnly} 
-						label="Country" 
-						value={data?.country} 
+					<CountryDropDown
+						className={cls.ProfileCard__countryDropDown}
+						label="Country"
+						readOnly={readOnly}
+						value={data?.country}
+						onChange={onCountryChange}
 					/>
 				</div>
 			</div>

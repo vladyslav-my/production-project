@@ -9,7 +9,6 @@ export const getArticlesListHasMore = (state: StateSchema) => state.articlesList
 export const getArticlesListIsLoading = (state: StateSchema) => state.articlesList?.isLoading;
 export const getArticlesListViewMode = (state: StateSchema) => state.articlesList?.viewMode;
 
-
 export const getArticlesListInitedQP = (state: StateSchema) => state.articlesList?.queryParams._inited || false;
 export const getArticlesListLimitQP = (state: StateSchema) => state.articlesList?.queryParams.limit || 3;
 export const getArticlesListOrderQP = (state: StateSchema) => state.articlesList?.queryParams.order || Order.ASC;

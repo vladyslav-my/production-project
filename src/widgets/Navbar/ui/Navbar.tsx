@@ -1,52 +1,66 @@
-import cls from "./Navbar.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { FC, memo, useCallback, useEffect, useState } from "react";
-import { Button, ButtonTheme } from "@/shared/ui/Buttons";
+import {
+	FC, memo, useCallback, useState,
+} from "react";
+import { useSelector } from "react-redux";
 import { LoginModal } from "@/features/AuthByUsername";
-import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "@/entities/User";
 import { getUserAuthData } from "@/entities/User/selectors/getUserAuthData";
-import { Shell, ShellBorderStyle } from "@/shared/layouts/Shell";
-import { useMediaQuery } from "react-responsive";
-import { Devices } from "@/shared/lib/mediaQuery";
+import { Shell } from "@/shared/layouts/Shell";
+import { classNames } from "@/shared/lib/classNames/classNames";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
+import { Button, ButtonTheme } from "@/shared/ui/Buttons";
+import cls from "./Navbar.module.scss";
 
 interface NavBarProps {
-   className?: string;
-	shell?: boolean
+	className?: string;
 }
 
-export const Navbar: FC<NavBarProps> = memo(({ className, shell }) => {
+const Navbar: FC<NavBarProps> = ({ className }) => {
 	const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 	const authData = useSelector(getUserAuthData);
-	const isBreackpoint_1800 = useMediaQuery({ maxWidth: Devices.BREAKPOINT_1800 });
-	const isTablet = useMediaQuery({ maxWidth: Devices.TABLET });
 
 	const onLogoutHandler = useCallback(() => {
 		dispatch(userActions.logout());
-	}, []); 
+	}, [dispatch]);
+
+	const onToggleHandler = useCallback(() => {
+		setIsOpenModal((prev) => !prev);
+	}, []);
 
 	const onLoginHandler = useCallback(() => {
 		setIsOpenModal(true);
-	}, []); 
+	}, []);
 
-	if (isBreackpoint_1800) {
-		return (
-			<Shell borderStyle={isTablet ? ShellBorderStyle.NONE : ShellBorderStyle.DEFAULT} className={classNames(cls.Navbar, {}, [className])}>
-				{authData && <Button onClick={onLogoutHandler} theme={ButtonTheme.OUTLINE}>log out</Button>}
-				{!authData && <Button onClick={onLoginHandler} theme={ButtonTheme.OUTLINE}>sign in</Button>}
-				{/*@ts-ignore*/}
-				<LoginModal oppened={isOpenModal && !authData}></LoginModal>
-			</Shell>
-		);
-	}
+	const LogoutButton = useCallback(
+		() => {
+			if (authData) {
+				return <Button theme={ButtonTheme.PADDING} onClick={onLogoutHandler}>log out</Button>;
+			}
+
+			return null;
+		},
+		[authData, onLogoutHandler],
+	);
+
+	const LoginButton = useCallback(
+		() => {
+			if (!authData) {
+				return <Button theme={ButtonTheme.PADDING} onClick={onLoginHandler}>log out</Button>;
+			}
+
+			return null;
+		},
+		[authData, onLoginHandler],
+	);
 
 	return (
-		<div className={classNames(cls.Navbar, {}, [className])}>
-			{authData && <Button onClick={onLogoutHandler} theme={ButtonTheme.PADDING}>log out</Button>}
-			{!authData && <Button onClick={onLoginHandler} theme={ButtonTheme.PADDING}>sign in</Button>}
-			{/*@ts-ignore*/}
-			<LoginModal oppened={isOpenModal && !authData}></LoginModal>
-		</div>
+		<Shell className={classNames(cls.Navbar, {}, [className])}>
+			<LogoutButton />
+			<LoginButton />
+			<LoginModal oppened={isOpenModal} onToggle={onToggleHandler} />
+		</Shell>
 	);
-});
+};
+
+export default memo(Navbar);

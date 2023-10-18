@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ArticlesListSchema, Order, Sort, Type } from "../types/ArticlesListSchema";
 import { fetchArticlesList } from "../../services/fetchArticlesList/fetchArticlesList";
-import { ViewMode } from "../types/ArticlesListSchema";
+import {
+	ArticlesListSchema, Order, Sort, Type,
+	ViewMode,
+} from "../types/ArticlesListSchema";
 
 const initialState: ArticlesListSchema = {
 	_initedData: false,
@@ -16,7 +18,7 @@ const initialState: ArticlesListSchema = {
 		type: Type.ALL,
 		search: "",
 		_inited: false,
-	}
+	},
 };
 
 export const articlesListSlice = createSlice({
@@ -51,7 +53,7 @@ export const articlesListSlice = createSlice({
 		setHasMore: (state, action) => {
 			state.hasMore = action.payload;
 		},
-		
+
 	},
 	extraReducers: {
 		[fetchArticlesList.fulfilled.type]: (state, action) => {
@@ -62,7 +64,7 @@ export const articlesListSlice = createSlice({
 			} else {
 				state.data?.push(...action.payload);
 			}
-			
+
 			state.isLoading = false;
 		},
 		[fetchArticlesList.pending.type]: (state, action) => {
@@ -70,11 +72,9 @@ export const articlesListSlice = createSlice({
 		},
 		[fetchArticlesList.rejected.type]: (state, action) => {
 			state.error = "error";
-		}
-	}
+		},
+	},
 });
 
 export const { actions: articlesListActions } = articlesListSlice;
 export const { reducer: articlesListReducer } = articlesListSlice;
-
-

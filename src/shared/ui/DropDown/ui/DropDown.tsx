@@ -1,8 +1,10 @@
-import { ChangeEvent, FC, MouseEventHandler, useEffect, useMemo, useRef, useState } from "react";
+import {
+	ChangeEvent,
+	FC, useCallback, useEffect, useMemo, useRef, useState,
+} from "react";
+import ArrowIcon from "../../../assets/icons/Sidebar/arrow.svg";
+import { classNames } from "../../../lib/classNames/classNames";
 import cls from "./DropDown.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
-import ArrowIcon from "@/shared/assets/icons/Sidebar/arrow.svg";
-
 
 export interface DropDownOption {
 	value: string;
@@ -24,7 +26,7 @@ export const DropDown: FC<DropDownProps> = ({
 	select,
 	label,
 	readOnly = false,
-	onChange
+	onChange,
 }) => {
 	const [unroll, setUnroll] = useState(false);
 	const [size, setSize] = useState<string | undefined>(undefined);
@@ -32,12 +34,11 @@ export const DropDown: FC<DropDownProps> = ({
 	const dropDownMenu = useRef<HTMLDivElement>(null);
 	const dropDownSelect = useRef<HTMLDivElement>(null);
 
-	const onMenuItemClickHandler = (content: string) => () => {
+	const onMenuItemClickHandler = useCallback((content: string) => () => {
 		onChange?.(content);
-	};
+	}, [onChange]);
 
-
-	const onSelfClickHandler: MouseEventHandler<HTMLDivElement> = (e) => {
+	const onSelfClickHandler = () => (e: ChangeEvent<HTMLDivElement>) => {
 		e.stopPropagation();
 		setUnroll((prev) => !prev);
 	};
@@ -50,7 +51,6 @@ export const DropDown: FC<DropDownProps> = ({
 		} else {
 			setSize(`${widthMenu}px`);
 		}
-
 	}, [dropDownMenu, dropDownSelect, size]);
 
 	useEffect(() => {
@@ -63,47 +63,52 @@ export const DropDown: FC<DropDownProps> = ({
 		return () => {
 			window.removeEventListener("click", onCloseClickHandler);
 		};
-
 	}, []);
 
 	const menuItem = useMemo(() => (
 		options.map(({ value, content }) => (
-			<div onClick={readOnly ? undefined : onMenuItemClickHandler(value)} 
-				key={value} 
+			<div
 				className={classNames(cls.DropDown__menuItem, {
-					[cls.DropDown__menuItem_active]: select === value
+					[cls.DropDown__menuItem_active]: select === value,
 				})}
+				key={value}
+				onClick={onMenuItemClickHandler(content)}
 			>
 				{content}
 			</div>
 		))
-	), [select, readOnly]);
-
+	), [select, onMenuItemClickHandler, options]);
 
 	return (
-		<div 
+		<div
 			className={classNames(cls.DropDown, {
 				[cls.DropDown_unroll]: unroll,
-				[cls.DropDown_cursor]: readOnly
+				[cls.DropDown_cursor]: readOnly,
 			}, [className])}
 		>
-			{label && <span className={cls.DropDown__label}>{label}:</span>}
+			{!!label && (
+				<span className={cls.DropDown__label}>
+					{label}
+					:
+				</span>
+			)}
 			<div
-				onClick={readOnly ? undefined : onSelfClickHandler}
-				style={{ width: size }}
 				className={cls.DropDown__self}
+				style={{ width: size }}
+				onClick={onSelfClickHandler}
 			>
-				<div ref={dropDownSelect} className={cls.DropDown__select}>
+				<div className={cls.DropDown__select} ref={dropDownSelect}>
 					<div className={cls.DropDown__currentValue}>
 						{
-							options.map(option => option.value === select ? option.content : null)
+							options.map((option) => (option.value === select ? option.content : null))
 						}
 					</div>
 					<ArrowIcon className={cls.DropDown__arrowIcon} />
 				</div>
 				<div
+					className={cls.DropDown__menu}
 					ref={dropDownMenu}
-					className={cls.DropDown__menu}>
+				>
 					{menuItem}
 				</div>
 			</div>

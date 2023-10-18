@@ -5,8 +5,8 @@ describe("getCounterValue", () => {
 	test("Check default value", () => {
 		const state: DeepPartial<StateSchema> = {
 			counter: {
-				value: 10
-			}
+				value: 10,
+			},
 		};
 		expect(getCounterValue(state as StateSchema)).toEqual(10);
 	});

@@ -10,5 +10,5 @@ export const typeOptionsData = [
 	{
 		content: "Наука",
 		value: "science",
-	}
+	},
 ];

@@ -1,13 +1,13 @@
-import { classNames } from "@/shared/lib/classNames/classNames";
-import { useTheme } from "@/app/providers/ThemeProvider";
-import { AppRouter } from "./providers/router";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { AppLayoutContainer } from "@/widgets/AppLayoutContainer";
 import { Navbar } from "@/widgets/Navbar";
 import { Sidebar } from "@/widgets/Sidebar";
-import { useSelector } from "react-redux";
 import { getUserInited, userActions } from "@/entities/User";
-import { AppLayoutContainer } from "@/shared/layouts/AppLayoutContainer";
+import { classNames } from "@/shared/lib/classNames/classNames";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-import { useEffect } from "react";
+import { useTheme } from "@/shared/lib/hooks/useTheme/useTheme";
+import { AppRouter } from "./providers/router";
 
 const App = () => {
 	const { theme } = useTheme();
@@ -16,18 +16,17 @@ const App = () => {
 
 	useEffect(() => {
 		dispatch(userActions.initAuthData());
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<div className={classNames("app", {}, [theme])}>
-			<AppLayoutContainer 
-				main={inited ? AppRouter : undefined} 
-				sidebar={Sidebar}
+			<AppLayoutContainer
+				main={!!inited && AppRouter}
 				navbar={Navbar}
+				sidebar={Sidebar}
 			/>
 		</div>
 	);
 };
 
 export default App;
-

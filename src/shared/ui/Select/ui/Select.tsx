@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, memo } from "react";
+import { classNames } from "../../../lib/classNames/classNames";
 import cls from "./Select.module.scss";
-import { classNames } from "@/shared/lib/classNames/classNames";
 
 export interface SelectOption {
 	value: string;
@@ -16,25 +16,30 @@ interface SelectProps {
 	onChange?: (value: string) => void;
 }
 
-export const Select: FC<SelectProps> = memo(({ className, value, options, readOnly, externalPlaceholder, onChange }) => {
-
-
+export const Select: FC<SelectProps> = memo(({
+	className, value, options, readOnly, externalPlaceholder, onChange,
+}) => {
 	const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
 		onChange?.(e.target.value);
-		
 	};
 
 	const optionList = options?.map((opt) => (
-		<option 
+		<option
+			className={cls.selectOption}
 			key={opt.value}
 			value={opt.value}
-			className={cls.selectOption}
-		>{opt.content}</option>
+		>
+			{opt.content}
+		</option>
 	));
 
 	return (
 		<div className={classNames(cls.Select, {}, [className])}>
-			{externalPlaceholder && <span>{externalPlaceholder}</span>}
+			{!!externalPlaceholder && (
+				<span>
+					{externalPlaceholder}
+				</span>
+			)}
 			<select
 				className={cls.selectItem}
 				disabled={readOnly}
