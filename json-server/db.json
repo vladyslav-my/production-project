@@ -1243,6 +1243,18 @@
       "userId": "1",
       "comment": "oeoqweo",
       "id": 33
+    },
+    {
+      "articleId": 8,
+      "userId": 1,
+      "comment": "1",
+      "id": 34
+    },
+    {
+      "articleId": 8,
+      "userId": 1,
+      "comment": "2",
+      "id": 35
     }
   ],
   "rating": [
@@ -1332,6 +1344,13 @@
       "userId": 1,
       "stars": 2,
       "id": 14
+    },
+    {
+      "articleId": 14,
+      "userId": 1,
+      "stars": 3,
+      "feedback": "Good",
+      "id": 15
     }
   ]
 }

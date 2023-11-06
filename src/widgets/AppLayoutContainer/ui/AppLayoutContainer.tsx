@@ -1,8 +1,9 @@
 import {
-	ElementType, FC, useEffect, useRef,
+	ElementType, FC, useRef,
 } from "react";
 import { useMediaQuery } from "react-responsive";
 import { classNames } from "@/shared/lib/classNames/classNames";
+import { useSmartHeader } from "@/shared/lib/hooks/useSmartHeader/useSmartHeader";
 import { Devices } from "@/shared/lib/mediaQuery";
 import cls from "./AppLayoutContainer.module.scss";
 
@@ -23,31 +24,32 @@ export const AppLayoutContainer: FC<AppLayoutContainerProps> = ({
 	const isLargeDesktop = useMediaQuery({ maxWidth: Devices.LARGE_DESKTOP });
 
 	const ref = useRef<any>(null);
+	useSmartHeader({
+		ref, condition: isTablet, className: cls.hide, defaultOffset: 200,
+	});
+	// 	let lastScroll = 0;
+	// 	const defaultOffset = 200;
 
-	useEffect(() => {
-		let lastScroll = 0;
-		const defaultOffset = 200;
+	// 	const scrollPosition = () => window.scrollY;
+	// 	const containHide = () => ref.current.classList.contains(cls.hide);
+	// 	const smartHeader = () => {
+	// 		if (scrollPosition() > lastScroll && scrollPosition() > defaultOffset && !containHide()) {
+	// 			ref.current.classList.add(cls.hide);
+	// 		} else if (scrollPosition() < lastScroll && containHide()) {
+	// 			ref.current.classList.remove(cls.hide);
+	// 		}
 
-		const scrollPosition = () => window.scrollY;
-		const containHide = () => ref.current.classList.contains(cls.hide);
-		const smartHeader = () => {
-			if (scrollPosition() > lastScroll && scrollPosition() > defaultOffset && !containHide()) {
-				ref.current.classList.add(cls.hide);
-			} else if (scrollPosition() < lastScroll && containHide()) {
-				ref.current.classList.remove(cls.hide);
-			}
+	// 		lastScroll = scrollPosition();
+	// 	};
 
-			lastScroll = scrollPosition();
-		};
+	// 	if (isTablet) {
+	// 		window.addEventListener("scroll", smartHeader);
+	// 	}
 
-		if (isTablet) {
-			window.addEventListener("scroll", smartHeader);
-		}
-
-		return () => {
-			window.removeEventListener("scroll", smartHeader);
-		};
-	}, [isTablet]);
+	// 	return () => {
+	// 		window.removeEventListener("scroll", smartHeader);
+	// 	};
+	// }, [isTablet]);
 
 	return (
 		<div className={classNames(cls.ALC, {}, [className])}>
