@@ -5,7 +5,7 @@ import { Button, ButtonTheme } from "@/shared/ui/Buttons";
 import cls from "./BackToPrevRoute.module.scss";
 
 interface BackToPrevRouteProps {
-	className?: string
+	className?: string;
 }
 
 export const BackToPrevRoute: FC<BackToPrevRouteProps> = ({ className }) => {

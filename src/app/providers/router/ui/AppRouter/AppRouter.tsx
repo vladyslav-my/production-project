@@ -6,20 +6,11 @@ import { RequireAuth } from "../RequireAuth";
 
 const AppRouter = ({ className }: { className: string }) => {
 	const RouteItems = Object.values(routeConfig).map((route: AppRouteProps) => {
-		const element = (
-			<Suspense fallback={<PageLoader />}>
-				{route.element}
-			</Suspense>
-
-		);
+		const element = <Suspense fallback={<PageLoader />}>{route.element}</Suspense>;
 
 		return (
 			<Route
-				element={route.authOnly ? (
-					<RequireAuth>
-						{element}
-					</RequireAuth>
-				) : element}
+				element={route.authOnly ? <RequireAuth>{element}</RequireAuth> : element}
 				key={route.path}
 				path={route.path}
 			/>
@@ -28,11 +19,8 @@ const AppRouter = ({ className }: { className: string }) => {
 
 	return (
 		<div className={className}>
-			<Routes>
-				{RouteItems}
-			</Routes>
+			<Routes>{RouteItems}</Routes>
 		</div>
-
 	);
 };
 

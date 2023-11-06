@@ -7,11 +7,7 @@ import { ArticlesListSchema, ViewMode } from "./model/types/ArticlesListSchema";
 import { ArticleView } from "./ui/ArticleView/ArticleView";
 import { InfinityArticlesList } from "./ui/InfinityArticlesList/InfinityArticlesList";
 
-export type {
-	Article,
-	ArticleDetailsSchema,
-	ArticlesListSchema,
-};
+export type { Article, ArticleDetailsSchema, ArticlesListSchema };
 
 export {
 	ArticleView,

@@ -50,50 +50,47 @@ export const Rating: FC<RatingProps> = ({ className, articleId }) => {
 
 	const onSendHandler = (feedback?: string) => () => {
 		writeArticleRating({
-			articleId, userId: 1, stars: currentRating, feedback,
+			articleId,
+			userId: 1,
+			stars: currentRating,
+			feedback,
 		}); // hard
 		setIsOpennedModal(false);
 	};
 
 	if (isLoading) {
-		return (
-			<div>
-				Loading
-			</div>
-		);
+		return <div>Loading</div>;
 	}
 
 	return (
 		<div className={classNames(cls.Rating, {}, [className])}>
-			{data ? (
-				<h2>
-					Дякую за оцінку
-				</h2>
-			) : (
-				<h2>
-					Оцініть статтю
-				</h2>
-			)}
+			{data ? <h2>Дякую за оцінку</h2> : <h2>Оцініть статтю</h2>}
 			<div className={cls.stars}>
-				{
-					ratingNumbers.map((ratingNumber) => (
-						<Icon
-							Svg={Star}
-							className={classNames(cls.stars__item, {
-								[cls.stars__item_active]: ratingNumber <= hoverRating || ratingNumber <= currentRating,
-							}, [])}
-							height={30}
-							key={ratingNumber}
-							width={32}
-							onClick={onClickHandler(ratingNumber)}
-							onMouseOut={onMouseOutHandler}
-							onMouseOver={onMouseOverHandler(ratingNumber)}
-						/>
-					))
-				}
+				{ratingNumbers.map((ratingNumber) => (
+					<Icon
+						Svg={Star}
+						className={classNames(
+							cls.stars__item,
+							{
+								[cls.stars__item_active]:
+									ratingNumber <= hoverRating || ratingNumber <= currentRating,
+							},
+							[],
+						)}
+						height={30}
+						key={ratingNumber}
+						width={32}
+						onClick={onClickHandler(ratingNumber)}
+						onMouseOut={onMouseOutHandler}
+						onMouseOver={onMouseOverHandler(ratingNumber)}
+					/>
+				))}
 			</div>
-			<RatingModal oppened={isOpennedModal} onSend={onSendHandler} onToggle={setIsOpennedModal} />
+			<RatingModal
+				oppened={isOpennedModal}
+				onSend={onSendHandler}
+				onToggle={setIsOpennedModal}
+			/>
 		</div>
-
 	);
 };

@@ -6,9 +6,7 @@ interface DynamicComponentProps extends HTMLAttributes<HTMLElement> {
 }
 
 const DynamicComponent: FC<DynamicComponentProps> = ({ Component, children, ...otherProps }) => {
-	return (
-		<Component {...otherProps}>{children}</Component>
-	);
+	return <Component {...otherProps}>{children}</Component>;
 };
 
 export default DynamicComponent;

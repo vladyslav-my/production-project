@@ -1,5 +1,3 @@
 import { ArticlesFilters } from "./ui/ArticlesFilters";
 
-export {
-	ArticlesFilters,
-};
+export { ArticlesFilters };

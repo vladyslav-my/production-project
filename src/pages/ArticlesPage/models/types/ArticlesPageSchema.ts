@@ -5,7 +5,7 @@ export interface ArticlesPageSchema {
 	sort: Sort;
 	order: Order;
 	search?: string;
-	type: Type
+	type: Type;
 }
 
 export enum Order {

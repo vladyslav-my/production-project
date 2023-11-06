@@ -5,7 +5,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import cls from "./RouteFeaturesContainer.module.scss";
 
 interface RouteFeaturesContainerProps {
-	className?: string
+	className?: string;
 }
 
 export const RouteFeaturesContainer: FC<RouteFeaturesContainerProps> = ({ className }) => (

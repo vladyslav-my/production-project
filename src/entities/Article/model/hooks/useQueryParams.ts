@@ -3,7 +3,13 @@ import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import {
-	getArticlesListTypeQP, getArticlesListSortQP, getArticlesListSearchQP, getArticlesListOrderQP, getArticlesListPageQP, getArticlesListViewMode, getArticlesListInitedQP,
+	getArticlesListTypeQP,
+	getArticlesListSortQP,
+	getArticlesListSearchQP,
+	getArticlesListOrderQP,
+	getArticlesListPageQP,
+	getArticlesListViewMode,
+	getArticlesListInitedQP,
 } from "../selectors/articlesList";
 import { articlesListActions } from "../slice/articlesListSlice";
 import { ViewMode } from "../types/ArticlesListSchema";
@@ -27,44 +33,32 @@ export const useQueryParams = () => {
 		const searchParam = URLSearchParams.get("search");
 
 		if (typeParam) {
-			dispatch(
-				articlesListActions.setType(typeParam),
-			);
+			dispatch(articlesListActions.setType(typeParam));
 		}
 
 		if (orderParam) {
-			dispatch(
-				articlesListActions.setOrder(orderParam),
-			);
+			dispatch(articlesListActions.setOrder(orderParam));
 		}
 
 		if (sortParam) {
-			dispatch(
-				articlesListActions.setSort(sortParam),
-			);
+			dispatch(articlesListActions.setSort(sortParam));
 		}
 
 		if (searchParam) {
-			dispatch(
-				articlesListActions.setSearch(searchParam),
-			);
+			dispatch(articlesListActions.setSearch(searchParam));
 		}
 
-		dispatch(
-			articlesListActions.setInited(true),
-		);
+		dispatch(articlesListActions.setInited(true));
 	}, [dispatch, URLSearchParams]);
 
 	useEffect(() => {
 		if (_inited) {
-			SetURLSearchParams(
-				{
-					order,
-					sort,
-					type,
-					...(search ? { search } : {}),
-				},
-			);
+			SetURLSearchParams({
+				order,
+				sort,
+				type,
+				...(search ? { search } : {}),
+			});
 		}
 	}, [order, sort, type, search, _inited, SetURLSearchParams]);
 };

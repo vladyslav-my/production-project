@@ -8,7 +8,7 @@
 		align-items: center;
 		flex-wrap: wrap;
 		gap: rem(20);
-		@media (max-width: $laptop) {
+		@media (max-width: em($laptop)) {
 			flex-direction: column;
 		}
 	}
@@ -17,7 +17,7 @@
 		display: flex;
 		flex: 1 1;
 		justify-content: start;
-		@media (max-width: $laptop) {
+		@media (max-width: em($laptop)) {
 			order: 2;
 		}
 	}

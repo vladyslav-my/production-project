@@ -13,25 +13,17 @@ interface RouteContainerProps {
 }
 
 export const RouteContainer: FC<RouteContainerProps> = ({
-	className, children, Widget, Feature,
+	className,
+	children,
+	Widget,
+	Feature,
 }) => (
 	<div className={classNames(cls.RouteContainer, {}, [className])}>
-		{
-			!!Feature && (
-				<div className={cls.RouteContainer__feature}>
-					{Feature}
-				</div>
-			)
-		}
-		<div className={cls.RouteContainer__page}>
-			{children}
-		</div>
+		{!!Feature && <div className={cls.RouteContainer__feature}>{Feature}</div>}
+		<div className={cls.RouteContainer__page}>{children}</div>
 		<div className={cls.RouteContainer__widget}>
 			<div className={cls.RouteContainer__widgetSticky}>
-				<AppMediaQuery
-					maxWidth={Devices.BREAKPOINT_1800}
-					minWidth={Devices.TABLET}
-				>
+				<AppMediaQuery maxWidth={Devices.LARGE_DESKTOP} minWidth={Devices.TABLET}>
 					<Navbar />
 				</AppMediaQuery>
 				{Widget}

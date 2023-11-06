@@ -7,11 +7,7 @@ export interface DropDownOption {
 
 const AboutPage = () => {
 	const { t } = useTranslation("about");
-	return (
-		<div>
-			{t("text")}
-		</div>
-	);
+	return <div>{t("text")}</div>;
 };
 
 export default AboutPage;

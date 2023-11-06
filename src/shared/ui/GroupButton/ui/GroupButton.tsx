@@ -18,12 +18,15 @@ interface ButtonOptions {
 export const GroupButton: FC<GroupButtonProps> = ({
 	className, options, value, onChange,
 }) => {
-	const onButtonClickHandler = useCallback((content: string) => () => {
-		onChange?.(content);
-	}, [onChange]);
+	const onButtonClickHandler = useCallback(
+		(content: string) => () => {
+			onChange?.(content);
+		},
+		[onChange],
+	);
 
-	const buttons = useMemo(() => (
-		options.map((option) => (
+	const buttons = useMemo(
+		() => options.map((option) => (
 			<Button
 				className={classNames(cls.GroupButton__button, {
 					[cls.GroupButton_active]: value === option.value,
@@ -34,12 +37,9 @@ export const GroupButton: FC<GroupButtonProps> = ({
 			>
 				{option.content}
 			</Button>
-		))
-	), [value, onButtonClickHandler, options]);
-
-	return (
-		<div className={classNames(cls.GroupButton, {}, [className])}>
-			{buttons}
-		</div>
+		)),
+		[value, onButtonClickHandler, options],
 	);
+
+	return <div className={classNames(cls.GroupButton, {}, [className])}>{buttons}</div>;
 };

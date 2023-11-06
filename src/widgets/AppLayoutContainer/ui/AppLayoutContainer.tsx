@@ -10,7 +10,7 @@ interface AppLayoutContainerProps {
 	className?: string;
 	navbar: ElementType;
 	sidebar: ElementType;
-	main: ElementType | false;
+	main?: ElementType;
 }
 
 export const AppLayoutContainer: FC<AppLayoutContainerProps> = ({
@@ -20,7 +20,7 @@ export const AppLayoutContainer: FC<AppLayoutContainerProps> = ({
 	main: Main,
 }) => {
 	const isTablet = useMediaQuery({ maxWidth: Devices.TABLET });
-	const isBreakpoint_1800 = useMediaQuery({ minWidth: Devices.BREAKPOINT_1800 });
+	const isLargeDesktop = useMediaQuery({ maxWidth: Devices.LARGE_DESKTOP });
 
 	const ref = useRef<any>(null);
 
@@ -28,10 +28,10 @@ export const AppLayoutContainer: FC<AppLayoutContainerProps> = ({
 		let lastScroll = 0;
 		const defaultOffset = 200;
 
-		const scrollPosition = () => window.pageYOffset || document.documentElement.scrollTop;
+		const scrollPosition = () => window.scrollY;
 		const containHide = () => ref.current.classList.contains(cls.hide);
 		const smartHeader = () => {
-			if (scrollPosition() > lastScroll && !containHide()) {
+			if (scrollPosition() > lastScroll && scrollPosition() > defaultOffset && !containHide()) {
 				ref.current.classList.add(cls.hide);
 			} else if (scrollPosition() < lastScroll && containHide()) {
 				ref.current.classList.remove(cls.hide);
@@ -51,19 +51,11 @@ export const AppLayoutContainer: FC<AppLayoutContainerProps> = ({
 
 	return (
 		<div className={classNames(cls.ALC, {}, [className])}>
-			{!!isBreakpoint_1800 && <Navbar className={cls.ALC__navbar} />}
-			{!isTablet && (
-				<div className={cls.ALC__sidebarWrapper}>
-					<Sidebar className={cls.ALC__sidebar} />
-				</div>
-			)}
-			{!!isTablet && (
-				<div className={cls.ALC__fixed} ref={ref}>
-					<Navbar className={cls.ALC__navbar} />
-					<Sidebar className={cls.ALC__sidebar} />
-				</div>
-			)}
-			{!!Main && <Main className={cls.ALC__main} />}
+			<div className={cls.ALC__fixed} ref={ref}>
+				{isTablet || !isLargeDesktop ? <Navbar className={cls.ALC__navbar} /> : null}
+				<Sidebar className={cls.ALC__sidebar} />
+			</div>
+			{Main && <Main className={cls.ALC__main} />}
 		</div>
 	);
 };

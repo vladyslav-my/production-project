@@ -4,12 +4,7 @@ import { LoginFormSchema } from "./types/LoginFormSchema";
 import { LoginModal } from "./ui/LoginModal/LoginModal";
 
 export {
-	LoginModal,
-	loginFormActions,
-	loginFormReducer,
-	getUserState,
+	LoginModal, loginFormActions, loginFormReducer, getUserState,
 };
 
-export type {
-	LoginFormSchema,
-};
+export type { LoginFormSchema };

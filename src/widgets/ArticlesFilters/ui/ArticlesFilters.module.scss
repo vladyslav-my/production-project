@@ -6,7 +6,7 @@
 	gap: rem(32);
 
 	&__changeArticlesView {
-		@media (max-width: em(1394)) {
+		@media (max-width: em($intermediateDesktop)) {
 			width: max-content;
 		}
 	}
@@ -19,13 +19,13 @@
 		display: inline-flex;
 		
 		gap: rem(8);
-		@media (max-width: em(1394)) {
+		@media (max-width: em($intermediateDesktop)) {
 			flex-direction: row;
 
 			width: max-content;
 		}
 
-		@media (min-width: em(1394)) {
+		@media (min-width: em($intermediateDesktop)) {
 			align-items: start;
 			flex-direction: column;
 		}
@@ -34,6 +34,7 @@
 	&__wrapper {
 		display: flex;
 		align-items: center;
+		flex-wrap: wrap;
 		justify-content: space-between;
 		gap: rem(24);
 
@@ -43,14 +44,12 @@
 	}
 
 	&__sort {
-		@media (max-width: em(1394)) {
-			width: max-content;
-		}
 	}
-	@media (max-width: em(1394)) {
+
+	@media (max-width: em($intermediateDesktop)) {
 	}
 	
-	@media (min-width: em(1394)) {
+	@media (min-width: em($intermediateDesktop)) {
 		align-items: start;
 	}
 }

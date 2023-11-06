@@ -12,8 +12,6 @@ interface CommentCardProps {
 export const CommentCard: FC<CommentCardProps> = ({ className, data }) => (
 	<div className={classNames(cls.CommentCard, {}, [className])}>
 		<Avatar className={cls.CommentCard__avatar} size={32} src={data.user.avatar} />
-		<p className={cls.CommentCard__comment}>
-			{data.comment}
-		</p>
+		<p className={cls.CommentCard__comment}>{data.comment}</p>
 	</div>
 );

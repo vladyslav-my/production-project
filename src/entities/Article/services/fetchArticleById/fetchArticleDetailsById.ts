@@ -2,11 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { ThunkConfig } from "@/app/providers/StoreProvider";
 import { Article } from "../../model/types/Article";
 
-export const fetchArticleDetailsById = createAsyncThunk<
-Article,
-number,
-ThunkConfig<string>
->(
+export const fetchArticleDetailsById = createAsyncThunk<Article, number, ThunkConfig<string>>(
 	"articleDetails/fetchArticleDetailsById",
 	async (articleId, thunkApi) => {
 		try {

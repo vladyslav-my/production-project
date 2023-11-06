@@ -5,9 +5,7 @@ const meta = {
 	title: "@/shared/AppLink",
 	component: AppNavLink,
 	tags: ["autodocs"],
-	argTypes: {
-
-	},
+	argTypes: {},
 	args: {
 		to: "/",
 	},

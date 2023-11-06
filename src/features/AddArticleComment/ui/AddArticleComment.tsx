@@ -34,14 +34,13 @@ export const AddArticleComment: FC<AddArticleCommentProps> = ({ className, artic
 
 	return (
 		<div className={classNames(cls.AddArticleComment, {}, [className])}>
-			<Input className={cls.AddArticleComment__input} value={comment} onChange={onChangeHandler} />
+			<Input
+				className={cls.AddArticleComment__input}
+				value={comment}
+				onChange={onChangeHandler}
+			/>
 			<Button onClick={onClickHandler}>
-				<Icon
-					Svg={Send}
-					className={cls.AddArticleComment__icon}
-					height={32}
-					width={32}
-				/>
+				<Icon Svg={Send} className={cls.AddArticleComment__icon} height={32} width={32} />
 			</Button>
 		</div>
 	);

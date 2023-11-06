@@ -4,13 +4,7 @@ import { userActions, userReducer } from "./slice/UserSlice";
 import { User, UserSchema } from "./types/UserSchema";
 
 export {
-	userActions,
-	userReducer,
-	getUserAuthData,
-	getUserInited,
+	userActions, userReducer, getUserAuthData, getUserInited,
 };
 
-export type {
-	User,
-	UserSchema,
-};
+export type { User, UserSchema };

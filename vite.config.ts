@@ -6,24 +6,18 @@ import svgr from "vite-plugin-svgr";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	plugins: [
-		svgr({ exportAsDefault: true }),
-		react(),
-	],
+	plugins: [svgr({ exportAsDefault: true }), react()],
 	resolve: {
-		alias: [
-			{ find: "@", replacement: "/src" },
-		],
+		alias: [{ find: "@", replacement: "/src" }],
 	},
 
 	css: {
 		preprocessorOptions: {
 			scss: {
-				additionalData: readFileSync(
-					path.resolve("src/scss/tools/index.scss"),
-					{ encoding: "utf8", flag: "r" },
-				),
-
+				additionalData: readFileSync(path.resolve("src/scss/tools/index.scss"), {
+					encoding: "utf8",
+					flag: "r",
+				}),
 			},
 		},
 	},
@@ -31,5 +25,4 @@ export default defineConfig({
 		__IS_DEV__: JSON.stringify(true),
 		__API__: JSON.stringify("http://localhost:8000"),
 	},
-
 });

@@ -12,13 +12,8 @@ export const preview: Preview = {
 				color: /(background|color)$/i,
 				date: /Date$/,
 			},
-
 		},
 	},
 };
 
-export const decorators = [
-	ThemeDecorator(Theme.LIGHT),
-	StyleDecorator,
-	RouterDecorator,
-];
+export const decorators = [ThemeDecorator(Theme.LIGHT), StyleDecorator, RouterDecorator];

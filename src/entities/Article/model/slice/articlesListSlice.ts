@@ -1,15 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchArticlesList } from "../../services/fetchArticlesList/fetchArticlesList";
 import {
-	ArticlesListSchema, Order, Sort, Type,
-	ViewMode,
+	ArticlesListSchema, Order, Sort, Type, ViewMode,
 } from "../types/ArticlesListSchema";
 
 const initialState: ArticlesListSchema = {
 	_initedData: false,
 	data: [],
 	hasMore: true,
-	viewMode: localStorage.getItem("ArticlesViewMode") as ViewMode || ViewMode.LIST,
+	viewMode: (localStorage.getItem("ArticlesViewMode") as ViewMode) || ViewMode.LIST,
 	queryParams: {
 		limit: 3,
 		page: 1,
@@ -53,7 +52,6 @@ export const articlesListSlice = createSlice({
 		setHasMore: (state, action) => {
 			state.hasMore = action.payload;
 		},
-
 	},
 	extraReducers: {
 		[fetchArticlesList.fulfilled.type]: (state, action) => {

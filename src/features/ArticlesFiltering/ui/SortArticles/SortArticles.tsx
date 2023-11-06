@@ -21,30 +21,20 @@ export const SortArticles: FC<SortArticlesProps> = ({ className }) => {
 	const order = useSelector(getArticlesListOrderQP);
 
 	const onChangeSortHandler = (value: string) => {
-		dispatch(
-			articlesListActions.setSort(value),
-		);
+		dispatch(articlesListActions.setSort(value));
 
-		dispatch(
-			fetchArticlesList({ replace: true }),
-		);
+		dispatch(fetchArticlesList({ replace: true }));
 	};
 
 	const onChangeOrderHandler = (value: string) => {
-		dispatch(
-			articlesListActions.setOrder(value),
-		);
+		dispatch(articlesListActions.setOrder(value));
 
-		dispatch(
-			fetchArticlesList({ replace: true }),
-		);
+		dispatch(fetchArticlesList({ replace: true }));
 	};
 
 	return (
 		<div className={classNames(cls.SortArticles, {}, [className])}>
-			<span className={cls.SortArticles__label}>
-				Сортувати за:
-			</span>
+			<span className={cls.SortArticles__label}>Сортувати за:</span>
 			<div className={cls.SortArticles__wrapper}>
 				<DropDown
 					className={cls.SortArticles__sortedDropDown}

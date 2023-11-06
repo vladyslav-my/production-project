@@ -10,8 +10,5 @@ interface IconProps extends SvgProps {
 }
 
 export const Icon: FC<IconProps> = ({ className, Svg, ...props }) => (
-	<Svg
-		className={classNames(cls.Icon, {}, [className])}
-		{...props}
-	/>
+	<Svg className={classNames(cls.Icon, {}, [className])} {...props} />
 );

@@ -6,16 +6,13 @@ import { Button } from "@/shared/ui/Buttons";
 import cls from "./ThemeSwitcher.module.scss";
 
 interface ThemeSwitcherProps {
-	className?: string
+	className?: string;
 }
 
 export const ThemeSwitcher: FC<ThemeSwitcherProps> = memo(({ className }) => {
 	const { toggleTheme } = useTheme();
 	return (
-		<Button
-			className={classNames(cls.ThemeSwitcher, {}, [className])}
-			onClick={toggleTheme}
-		>
+		<Button className={classNames(cls.ThemeSwitcher, {}, [className])} onClick={toggleTheme}>
 			<ThemeIcon className={classNames(`${cls.themIcon} ${cls.ThemeSwitcher__themeIcon}`)} />
 		</Button>
 	);

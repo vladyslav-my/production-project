@@ -21,7 +21,7 @@ const App = () => {
 	return (
 		<div className={classNames("app", {}, [theme])}>
 			<AppLayoutContainer
-				main={!!inited && AppRouter}
+				main={inited ? AppRouter : undefined}
 				navbar={Navbar}
 				sidebar={Sidebar}
 			/>

@@ -4,24 +4,24 @@ import { getProfileFormData } from "../../selectors/getProfileFormData/getProfil
 import { IProfile, ValidateProfileError } from "../../types/IProfile";
 import { validateProfileData } from "../validateProfileData/validateProfileData";
 
-export const updateProfileData = createAsyncThunk<IProfile, void, ThunkConfig<ValidateProfileError[]>>(
-	"profile/updateProfileData",
-	async (_, thunkAPI) => {
-		try {
-			const formData = getProfileFormData(thunkAPI.getState());
+export const updateProfileData = createAsyncThunk<
+IProfile,
+{ profileId: number },
+ThunkConfig<ValidateProfileError[]>
+>("profile/updateProfileData", async ({ profileId }, thunkAPI) => {
+	try {
+		const formData = getProfileFormData(thunkAPI.getState());
 
-			const errors = validateProfileData(formData);
-			if (errors.length) {
-				return thunkAPI.rejectWithValue(errors);
-			}
-
-			const response = await thunkAPI.extra.api.put<IProfile>("/profile", formData);
-
-			return response.data;
-		} catch (error) {
-			console.log(error);
-			return thunkAPI.rejectWithValue([ValidateProfileError.SERVER_ERROR]);
+		const errors = validateProfileData(formData);
+		if (errors.length) {
+			return thunkAPI.rejectWithValue(errors);
 		}
-	},
 
-);
+		const response = await thunkAPI.extra.api.put<IProfile>(`/profile/${profileId}`, formData);
+
+		return response.data;
+	} catch (error) {
+		console.log(error);
+		return thunkAPI.rejectWithValue([ValidateProfileError.SERVER_ERROR]);
+	}
+});

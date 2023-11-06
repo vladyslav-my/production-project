@@ -7,9 +7,7 @@ export const validateProfileData = (profile?: IProfile) => {
 		return [ValidateProfileError.NO_DATA];
 	}
 
-	const {
-		age, first, lastname,
-	} = profile;
+	const { age, first, lastname } = profile;
 
 	if (!age || !Number.isInteger(age)) {
 		errors.push(ValidateProfileError.INCORRECT_AGE);

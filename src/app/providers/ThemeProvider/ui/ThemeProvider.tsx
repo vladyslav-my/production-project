@@ -4,7 +4,7 @@ import React, {
 import { LOCAL_STORAGE_THEME_KEY } from "@/shared/const/localstorage";
 import { Theme, ThemeContext } from "@/shared/contexts/ThemeContext";
 
-const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme || Theme.LIGHT;
+const defaultTheme = (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) || Theme.LIGHT;
 
 interface ThemeProviderProps {
 	children: ReactNode;
@@ -13,16 +13,15 @@ interface ThemeProviderProps {
 const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
 	const [theme, setTheme] = useState<Theme>(defaultTheme);
 
-	const defaultProps = useMemo(() => ({
-		theme,
-		setTheme,
-	}), [theme]);
-
-	return (
-		<ThemeContext.Provider value={defaultProps}>
-			{children}
-		</ThemeContext.Provider>
+	const defaultProps = useMemo(
+		() => ({
+			theme,
+			setTheme,
+		}),
+		[theme],
 	);
+
+	return <ThemeContext.Provider value={defaultProps}>{children}</ThemeContext.Provider>;
 };
 
 export default ThemeProvider;

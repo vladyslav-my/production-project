@@ -13,41 +13,39 @@ interface ArticleBlocksProps {
 
 const ArticleBlocks: FC<ArticleBlocksProps> = ({ className, data }) => (
 	<div className={classNames(cls.ArticleBlocks, {}, [className])}>
-		{
-			data?.map((block) => {
-				switch (block.type) {
-					case "TEXT":
-						return (
-							<ArticleTextBlock
-								className={cls.Article__textBlock}
-								key={block.id}
-								paragraphs={block.paragraphs}
-								title={block.title}
-							/>
-						);
-					case "IMAGE":
-						return (
-							<ArticleImageBlock
-								className={cls.Article__imageBlock}
-								key={block.id}
-								src={block.src}
-								title={block.title}
-							/>
-						);
-					case "CODE":
-						return (
-							<ArticleCodeBlock
-								className={cls.Article__codeBlock}
-								code={block.code}
-								key={block.id}
-							/>
-						);
-					default: {
-						return null;
-					}
+		{data?.map((block) => {
+			switch (block.type) {
+				case "TEXT":
+					return (
+						<ArticleTextBlock
+							className={cls.Article__textBlock}
+							key={block.id}
+							paragraphs={block.paragraphs}
+							title={block.title}
+						/>
+					);
+				case "IMAGE":
+					return (
+						<ArticleImageBlock
+							className={cls.Article__imageBlock}
+							key={block.id}
+							src={block.src}
+							title={block.title}
+						/>
+					);
+				case "CODE":
+					return (
+						<ArticleCodeBlock
+							className={cls.Article__codeBlock}
+							code={block.code}
+							key={block.id}
+						/>
+					);
+				default: {
+					return null;
 				}
-			})
-		}
+			}
+		})}
 	</div>
 );
 

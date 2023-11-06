@@ -1,6 +1,5 @@
 import {
-	ChangeEvent,
-	FC, useCallback, useEffect, useMemo, useRef, useState,
+	ChangeEvent, FC, useCallback, useEffect, useMemo, useRef, useState,
 } from "react";
 import ArrowIcon from "../../../assets/icons/Sidebar/arrow.svg";
 import { classNames } from "../../../lib/classNames/classNames";
@@ -34,19 +33,25 @@ export const DropDown: FC<DropDownProps> = ({
 	const dropDownMenu = useRef<HTMLDivElement>(null);
 	const dropDownSelect = useRef<HTMLDivElement>(null);
 
-	const onMenuItemClickHandler = useCallback((content: string) => () => {
-		onChange?.(content);
-	}, [onChange]);
+	const onMenuItemClickHandler = useCallback(
+		(value: string) => () => {
+			onChange?.(value);
+		},
+		[onChange],
+	);
 
-	const onSelfClickHandler = () => (e: ChangeEvent<HTMLDivElement>) => {
-		e.stopPropagation();
-		setUnroll((prev) => !prev);
+	const onSelfClickHandler = (e: any) => {
+		//! MouseEventHandler<HTMLDivElement>
+		if (!readOnly) {
+			e.stopPropagation();
+			setUnroll((prev) => !prev);
+		}
 	};
 
 	useEffect(() => {
 		const widthMenu = dropDownMenu.current?.scrollWidth;
 		const widthSelect = dropDownSelect.current?.scrollWidth;
-		if ((widthMenu && widthSelect) && widthSelect > widthMenu) {
+		if (widthMenu && widthSelect && widthSelect > widthMenu) {
 			setSize(`${widthSelect}px`);
 		} else {
 			setSize(`${widthMenu}px`);
@@ -65,26 +70,31 @@ export const DropDown: FC<DropDownProps> = ({
 		};
 	}, []);
 
-	const menuItem = useMemo(() => (
-		options.map(({ value, content }) => (
+	const menuItem = useMemo(
+		() => options.map(({ value, content }) => (
 			<div
 				className={classNames(cls.DropDown__menuItem, {
 					[cls.DropDown__menuItem_active]: select === value,
 				})}
 				key={value}
-				onClick={onMenuItemClickHandler(content)}
+				onClick={onMenuItemClickHandler(value)}
 			>
 				{content}
 			</div>
-		))
-	), [select, onMenuItemClickHandler, options]);
+		)),
+		[select, onMenuItemClickHandler, options],
+	);
 
 	return (
 		<div
-			className={classNames(cls.DropDown, {
-				[cls.DropDown_unroll]: unroll,
-				[cls.DropDown_cursor]: readOnly,
-			}, [className])}
+			className={classNames(
+				cls.DropDown,
+				{
+					[cls.DropDown_unroll]: unroll,
+					[cls.DropDown_cursor]: readOnly,
+				},
+				[className],
+			)}
 		>
 			{!!label && (
 				<span className={cls.DropDown__label}>
@@ -92,23 +102,14 @@ export const DropDown: FC<DropDownProps> = ({
 					:
 				</span>
 			)}
-			<div
-				className={cls.DropDown__self}
-				style={{ width: size }}
-				onClick={onSelfClickHandler}
-			>
+			<div className={cls.DropDown__self} style={{ width: size }} onClick={onSelfClickHandler}>
 				<div className={cls.DropDown__select} ref={dropDownSelect}>
 					<div className={cls.DropDown__currentValue}>
-						{
-							options.map((option) => (option.value === select ? option.content : null))
-						}
+						{options.map((option) => (option.value === select ? option.content : null))}
 					</div>
 					<ArrowIcon className={cls.DropDown__arrowIcon} />
 				</div>
-				<div
-					className={cls.DropDown__menu}
-					ref={dropDownMenu}
-				>
+				<div className={cls.DropDown__menu} ref={dropDownMenu}>
 					{menuItem}
 				</div>
 			</div>

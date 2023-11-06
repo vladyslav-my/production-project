@@ -11,25 +11,10 @@ export default {
 		__API__: "",
 	},
 	clearMocks: true,
-	coveragePathIgnorePatterns: [
-		"\\\\node_modules\\\\",
-	],
-	moduleDirectories: [
-		"node_modules",
-	],
-	modulePaths: [
-		"<rootDir>src",
-	],
-	moduleFileExtensions: [
-		"js",
-		"mjs",
-		"cjs",
-		"jsx",
-		"ts",
-		"tsx",
-		"json",
-		"node",
-	],
+	coveragePathIgnorePatterns: ["\\\\node_modules\\\\"],
+	moduleDirectories: ["node_modules"],
+	modulePaths: ["<rootDir>src"],
+	moduleFileExtensions: ["js", "mjs", "cjs", "jsx", "ts", "tsx", "json", "node"],
 	moduleNameMapper: {
 		"\\.svg$": path.resolve(__dirname, "jestEmptyComponent.tsx"),
 		"^.+\\.(css|less|scss)$": "identity-obj-proxy",
@@ -39,9 +24,7 @@ export default {
 	setupFilesAfterEnv: ["<rootDir>config/jest/setupTests.ts"],
 	rootDir: "../../",
 	testEnvironment: "jsdom",
-	testMatch: [
-		"<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)",
-	],
+	testMatch: ["<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)"],
 
 	// All imported modules in your tests should be mocked automatically
 	// automock: false,

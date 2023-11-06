@@ -18,20 +18,12 @@ export const ArticleCommentsTape: FC<ArticleCommentsTapeProps> = ({ className, a
 	}
 
 	if (data?.length === 0) {
-		return (
-			<div>
-				No comments
-			</div>
-		);
+		return <div>No comments</div>;
 	}
 
 	return (
 		<div className={classNames(cls.ArticleCommentTape, {}, [className])}>
-			{
-				data?.map((article) => (
-					<CommentCard data={article} key={article.id} />
-				))
-			}
+			{data?.map((article) => <CommentCard data={article} key={article.id} />)}
 		</div>
 	);
 };

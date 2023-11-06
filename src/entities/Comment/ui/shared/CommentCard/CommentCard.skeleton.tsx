@@ -11,31 +11,11 @@ interface CommentCardProps {
 
 export const CommentCard: FC<CommentCardProps> = ({ className }) => (
 	<div className={classNames(cls.CommentCard, {}, [className])}>
-		<Skeleton
-			circle="100%"
-			className={cls.CommentCard__avatar}
-			height={32}
-			width={32}
-		/>
+		<Skeleton circle="100%" className={cls.CommentCard__avatar} height={32} width={32} />
 		<div className={cls.CommentCard__comment}>
-			<Skeleton
-				circle={8}
-				className={cls.CommentCard__avatar}
-				height={22}
-				width="95%"
-			/>
-			<Skeleton
-				circle={8}
-				className={cls.CommentCard__avatar}
-				height={22}
-				width="90%"
-			/>
-			<Skeleton
-				circle={8}
-				className={cls.CommentCard__avatar}
-				height={22}
-				width="98%"
-			/>
+			<Skeleton circle={8} className={cls.CommentCard__avatar} height={22} width="95%" />
+			<Skeleton circle={8} className={cls.CommentCard__avatar} height={22} width="90%" />
+			<Skeleton circle={8} className={cls.CommentCard__avatar} height={22} width="98%" />
 		</div>
 	</div>
 );

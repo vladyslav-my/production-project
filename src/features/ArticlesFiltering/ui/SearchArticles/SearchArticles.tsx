@@ -21,13 +21,9 @@ export const SearchArticles: FC<SearchArticlesProps> = ({ className }) => {
 	console.log(search);
 
 	const onChangeSearchHandler = (value: string) => {
-		dispatch(
-			articlesListActions.setSearch(value),
-		);
+		dispatch(articlesListActions.setSearch(value));
 
-		dispatch(
-			fetchArticlesList({ replace: true }),
-		);
+		dispatch(fetchArticlesList({ replace: true }));
 	};
 
 	return (

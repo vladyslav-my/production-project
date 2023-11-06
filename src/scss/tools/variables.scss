@@ -31,7 +31,8 @@ $containerWidth: $maxWidthContainer + $containerPadding * 2; //? ширина с
 
 //** Брейк-поїнти:
 $pc: $containerWidth; //? ПК, ноутбуки, деякі планшети у горизонтальному положенні
-$widescreen: 1800;
+$largeDesktop: 1800;
+$intermediateDesktop: 1394;
 $laptop: 1199.98;
 $tablet: 991.98; //? планшети, деякі телефони в горизонтальному положенні
 $mobile: 767.98; //? Телефони L

@@ -12,6 +12,11 @@ describe("classNames", () => {
 
 	test("with all params", () => {
 		const expected = "someClass additionClass1 additionClass2 mods1";
-		expect(classNames("someClass", { mods1: true, mods2: false }, ["additionClass1", "additionClass2"])).toBe(expected);
+		expect(
+			classNames("someClass", { mods1: true, mods2: false }, [
+				"additionClass1",
+				"additionClass2",
+			]),
+		).toBe(expected);
 	});
 });

@@ -1,17 +1,19 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { ThunkConfig } from "@/app/providers/StoreProvider";
 import {
-	getArticlesListLimitQP, getArticlesListOrderQP, getArticlesListPageQP, getArticlesListSearchQP, getArticlesListSortQP, getArticlesListTypeQP, getArticlesListViewMode,
+	getArticlesListLimitQP,
+	getArticlesListOrderQP,
+	getArticlesListPageQP,
+	getArticlesListSearchQP,
+	getArticlesListSortQP,
+	getArticlesListTypeQP,
+	getArticlesListViewMode,
 } from "../../model/selectors/articlesList";
 import { articlesListActions } from "../../model/slice/articlesListSlice";
 import { Article } from "../../model/types/Article";
 import { ViewMode } from "../../model/types/ArticlesListSchema";
 
-export const fetchArticlesList = createAsyncThunk<
-Article[],
-any,
-ThunkConfig<string>
->(
+export const fetchArticlesList = createAsyncThunk<Article[], any, ThunkConfig<string>>(
 	"articlesList/fetchArticles",
 	async (params, {
 		extra, rejectWithValue, getState, dispatch,
@@ -26,23 +28,15 @@ ThunkConfig<string>
 			const viewMode = getArticlesListViewMode(getState());
 
 			if (params.replace) {
-				dispatch(
-					articlesListActions.setPage(1),
-				);
+				dispatch(articlesListActions.setPage(1));
 			} else {
-				dispatch(
-					articlesListActions.setPage(page + 1),
-				);
+				dispatch(articlesListActions.setPage(page + 1));
 			}
 
 			if (viewMode === ViewMode.LIST) {
-				dispatch(
-					articlesListActions.setLimit(3),
-				);
+				dispatch(articlesListActions.setLimit(3));
 			} else if (viewMode === ViewMode.TILE) {
-				dispatch(
-					articlesListActions.setLimit(9),
-				);
+				dispatch(articlesListActions.setLimit(9));
 			}
 
 			page = getArticlesListPageQP(getState());
@@ -65,13 +59,9 @@ ThunkConfig<string>
 			}
 
 			if (response.data.length < limit) {
-				dispatch(
-					articlesListActions.setHasMore(false),
-				);
+				dispatch(articlesListActions.setHasMore(false));
 			} else {
-				dispatch(
-					articlesListActions.setHasMore(true),
-				);
+				dispatch(articlesListActions.setHasMore(true));
 			}
 
 			return response.data;

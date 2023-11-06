@@ -6,7 +6,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import cls from "./MainPage.module.scss";
 
 interface MainPageProps {
-	className?: string
+	className?: string;
 }
 
 const MainPage: FC<MainPageProps> = ({ className }) => {

@@ -4,14 +4,15 @@ import { Currency } from "@/entities/Currency";
 /* eslint-enable */
 
 export interface IProfile {
-	first?: string,
-	lastname?: string,
-	age?: number,
-	currency?: Currency,
-	country?: Country,
-	city?: string,
-	username?: string,
-	avatar?: string
+	first?: string;
+	lastname?: string;
+	age?: number;
+	currency?: Currency;
+	country?: Country;
+	city?: string;
+	username?: string;
+	avatar?: string;
+	userId?: number;
 }
 
 export interface IProfileSchema {
@@ -19,6 +20,7 @@ export interface IProfileSchema {
 	data?: IProfile;
 	formData?: IProfile;
 	isLoading: boolean;
+	isMe: boolean;
 	error?: ValidateProfileError[];
 }
 

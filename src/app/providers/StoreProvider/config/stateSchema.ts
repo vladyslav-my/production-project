@@ -20,7 +20,7 @@ export interface StateSchema {
 	profile?: IProfileSchema;
 	articleDeteils?: ArticleDetailsSchema;
 	articlesList?: ArticlesListSchema;
-	[rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
+	[rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 }
 
 export type StateSchemaKey = keyof StateSchema;

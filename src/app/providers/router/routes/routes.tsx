@@ -6,7 +6,11 @@ import { MainPage } from "@/pages/MainPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import { ProfilePage } from "@/pages/ProfilePage";
 import {
-	getAboutRoutePath, getArticleRoutePath, getMainRoutePath, getNotFoundRoutePath, getProfileRoutePath,
+	getAboutRoutePath,
+	getArticleRoutePath,
+	getMainRoutePath,
+	getNotFoundRoutePath,
+	getProfileRoutePath,
 } from "@/shared/config/routes/path";
 
 export type AppRouteProps = RouteProps & {
@@ -36,7 +40,7 @@ export const routeConfig: Record<AppRoutes, AppRouteProps> = {
 		element: <NotFoundPage />,
 	},
 	[AppRoutes.PROFILE]: {
-		path: getProfileRoutePath(),
+		path: getProfileRoutePath(":id"),
 		element: <ProfilePage />,
 		authOnly: true,
 	},

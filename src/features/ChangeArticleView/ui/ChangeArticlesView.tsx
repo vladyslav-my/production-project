@@ -21,7 +21,7 @@ export enum CAVSizeStyle {
 }
 
 interface ChangeArticlesViewProps {
-	className?: string
+	className?: string;
 	borderStyle?: CAVBorderStyle;
 	sizeStyle?: CAVSizeStyle;
 }
@@ -48,7 +48,6 @@ const dataViewBtns: DataViewBtns[] = [
 		width: 18,
 		height: 16,
 	},
-
 ];
 
 export const ChangeArticlesView: FC<ChangeArticlesViewProps> = ({
@@ -62,45 +61,33 @@ export const ChangeArticlesView: FC<ChangeArticlesViewProps> = ({
 
 	const onClickSwitchView = () => {
 		if (viewMode === ViewMode.LIST) {
-			dispatch(
-				articlesListActions.setViewMode(ViewMode.TILE),
-			);
+			dispatch(articlesListActions.setViewMode(ViewMode.TILE));
 
-			dispatch(
-				fetchArticlesList({ replace: true }),
-			);
+			dispatch(fetchArticlesList({ replace: true }));
 		} else if (viewMode === ViewMode.TILE) {
-			dispatch(
-				articlesListActions.setViewMode(ViewMode.LIST),
-			);
+			dispatch(articlesListActions.setViewMode(ViewMode.LIST));
 
-			dispatch(
-				fetchArticlesList({ replace: true }),
-			);
+			dispatch(fetchArticlesList({ replace: true }));
 		}
 	};
 
 	return (
-		<Button className={cn(cls.ChangeArticlesView, {}, [className, cls[borderStyle], cls[sizeStyle]])} onClick={onClickSwitchView}>
-			{
-				dataViewBtns.map(({
-					key, Icon: IconParam, viewMode: viewModeParam, width, height,
-				}) => (
-					<div
-						className={cn(cls.viewMode, {
-							[cls.viewMode_active]: viewMode === viewModeParam,
-						})}
-						key={key}
-					>
-						<Icon
-							Svg={IconParam}
-							className={cls.viewMode__icon}
-							height={height}
-							width={width}
-						/>
-					</div>
-				))
-			}
+		<Button
+			className={cn(cls.ChangeArticlesView, {}, [className, cls[borderStyle], cls[sizeStyle]])}
+			onClick={onClickSwitchView}
+		>
+			{dataViewBtns.map(({
+				key, Icon: IconParam, viewMode: viewModeParam, width, height,
+			}) => (
+				<div
+					className={cn(cls.viewMode, {
+						[cls.viewMode_active]: viewMode === viewModeParam,
+					})}
+					key={key}
+				>
+					<Icon Svg={IconParam} className={cls.viewMode__icon} height={height} width={width} />
+				</div>
+			))}
 		</Button>
 	);
 };

@@ -1,7 +1,3 @@
 import { ChangeArticlesView, CAVBorderStyle, CAVSizeStyle } from "./ui/ChangeArticlesView";
 
-export {
-	ChangeArticlesView,
-	CAVBorderStyle,
-	CAVSizeStyle,
-};
+export { ChangeArticlesView, CAVBorderStyle, CAVSizeStyle };

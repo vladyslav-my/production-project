@@ -19,6 +19,8 @@ interface ProfileCardProps {
 	onAvatarChange?: () => void;
 	onCurrencyChange?: () => void;
 	onCountryChange?: () => void;
+	onChangeCity?: () => void;
+	onChangeUsername?: () => void;
 }
 
 export const ProfileCard: FC<ProfileCardProps> = ({
@@ -33,13 +35,11 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 	onAvatarChange,
 	onCurrencyChange,
 	onCountryChange,
+	onChangeCity,
+	onChangeUsername,
 }) => {
 	if (error) {
-		return (
-			<div>
-				error
-			</div>
-		);
+		return <div>error</div>;
 	}
 
 	if (isLoading) {
@@ -80,7 +80,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 						label="City"
 						readOnly={readOnly}
 						value={data?.city}
-						onChange={onAvatarChange}
+						onChange={onChangeCity}
 					/>
 				</div>
 				<div className={cls.ProfileCard__rightColumn}>
@@ -89,7 +89,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 						label="Username"
 						readOnly={readOnly}
 						value={data?.username}
-						onChange={onAvatarChange}
+						onChange={onChangeUsername}
 					/>
 					<Input
 						className={cls.ProfileCard__avatarURLInput}

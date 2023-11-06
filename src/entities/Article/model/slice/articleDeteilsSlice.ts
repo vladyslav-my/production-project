@@ -2,16 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import { fetchArticleDetailsById } from "../../services/fetchArticleById/fetchArticleDetailsById";
 import { ArticleDetailsSchema } from "../types/ArticleDetailsSchema";
 
-const initialState: ArticleDetailsSchema = {
-
-};
+const initialState: ArticleDetailsSchema = {};
 
 export const articleDeteilsSlice = createSlice({
 	name: "articleDeteils",
 	initialState,
-	reducers: {
-
-	},
+	reducers: {},
 	extraReducers: {
 		[fetchArticleDetailsById.fulfilled.type]: (state, action) => {
 			state.data = action.payload;

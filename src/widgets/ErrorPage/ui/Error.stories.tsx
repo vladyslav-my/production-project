@@ -7,9 +7,7 @@ const meta = {
 	title: "@/widgets/PageError",
 	component: PageError,
 	tags: ["autodocs"],
-	argTypes: {
-
-	},
+	argTypes: {},
 } satisfies Meta<typeof PageError>;
 
 export default meta;

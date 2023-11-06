@@ -126,7 +126,7 @@
         padding: rem(22) 0 rem(40) 0;
 	}
 
-    @media (max-width: $tablet) {
+    @media (max-width: em($tablet)) {
         border-radius: 0;
 	}
 }
@@ -168,7 +168,7 @@
     }
     
 
-    @media (max-width: $tablet) {
+    @media (max-width: em($tablet)) {
         flex-direction: row;
     }
 }

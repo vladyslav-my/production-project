@@ -11,9 +11,7 @@ interface ArticleCommentProps {
 
 export const ArticleComment: FC<ArticleCommentProps> = ({ className, articleId }) => (
 	<div className={classNames(cls.ArticleComment, {}, [className])}>
-		<h3 className={cls.ArticleComment__title}>
-			Comments
-		</h3>
+		<h3 className={cls.ArticleComment__title}>Comments</h3>
 		<AddArticleComment articleId={articleId} />
 		<ArticleCommentsTape articleId={articleId} />
 	</div>

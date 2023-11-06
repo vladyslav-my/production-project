@@ -1,6 +1,3 @@
 import { Select, SelectOption } from "./ui/Select";
 
-export {
-	Select,
-	type SelectOption,
-};
+export { Select, type SelectOption };

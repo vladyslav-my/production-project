@@ -28,7 +28,11 @@ interface CurrencyDropDownProps {
 }
 
 export const CurrencyDropDown: FC<CurrencyDropDownProps> = ({
-	className, value, label, readOnly, onChange,
+	className,
+	value,
+	label,
+	readOnly,
+	onChange,
 }) => (
 	<DropDown
 		className={classNames(cls.CurrencyDropDown, {}, [className])}

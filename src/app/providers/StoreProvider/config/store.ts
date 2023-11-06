@@ -35,7 +35,7 @@ export const createReduxStore = (
 		devTools: __IS_DEV__,
 		preloadedState: initialState,
 		middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-			thunk: {	extraArgument },
+			thunk: { extraArgument },
 		}).concat(rtkApi.middleware),
 	});
 

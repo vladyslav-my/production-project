@@ -12,4 +12,8 @@ interface DynamicTagProps extends HTMLProps<HTMLDivElement> {
 
 export const DynamicTag: FC<DynamicTagProps> = ({
 	className, tagName, children, ...otherProps
-}) => createElement(tagName, { className: classNames(cls.DynamicTag, {}, [className]), ...otherProps }, children);
+}) => createElement(
+	tagName,
+	{ className: classNames(cls.DynamicTag, {}, [className]), ...otherProps },
+	children,
+);

@@ -14,14 +14,15 @@ import { loginFormActions, loginFormReducer } from "../../slice/loginFormSlice";
 import cls from "./LoginForm.module.scss";
 
 export interface LoginFormProps {
-	className?: string
+	className?: string;
+	onToggle: (isOpen: boolean) => void;
 }
 
 const initialReducers: ReducersList = {
 	loginForm: loginFormReducer,
 };
 
-const LoginForm: FC<LoginFormProps> = ({ className }) => {
+const LoginForm: FC<LoginFormProps> = ({ className, onToggle }) => {
 	const dispatch = useDispatch<any>();
 
 	const username = useSelector(getLoginFormUsername);
@@ -29,25 +30,29 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
 	const isLoading = useSelector(getLoginFormIsLoading);
 	const error = useSelector(getLoginFormError);
 
-	const setUsernameHandler = useCallback((value: string) => {
-		dispatch(loginFormActions.setUsername(value));
-	}, [dispatch]);
+	const setUsernameHandler = useCallback(
+		(value: string) => {
+			dispatch(loginFormActions.setUsername(value));
+		},
+		[dispatch],
+	);
 
-	const setPasswordHandler = useCallback((value: string) => {
-		dispatch(loginFormActions.setPassword(value));
-	}, [dispatch]);
+	const setPasswordHandler = useCallback(
+		(value: string) => {
+			dispatch(loginFormActions.setPassword(value));
+		},
+		[dispatch],
+	);
 
 	const onLoginClick = useCallback(() => {
-		console.log("loginByUsername");
 		dispatch(loginByUsername({ username, password }));
-	}, [dispatch, username, password]);
+		onToggle(false);
+	}, [dispatch, username, password, onToggle]);
 
 	return (
 		<DynamicReduceLoader reducers={initialReducers} removeAfterUnmount>
 			<div className={classNames(cls.LoginForm, {}, [className])}>
-				<p>
-					{error && "wrong username or password"}
-				</p>
+				<p>{error && "wrong username or password"}</p>
 				<Input
 					className={cls.input}
 					placeholder="username"
@@ -72,7 +77,6 @@ const LoginForm: FC<LoginFormProps> = ({ className }) => {
 				</Button>
 			</div>
 		</DynamicReduceLoader>
-
 	);
 };
 

@@ -1,13 +1,5 @@
 .Navbar {
 	display: flex;
 	gap: rem(8);
-
-	@media (max-width: em($tablet)) {
-		border-radius: 0;
-	}
-
-	@media (min-width: em($widescreen)) {
-		background: none;
-	}
 }
 

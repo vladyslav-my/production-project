@@ -5,9 +5,7 @@ const meta = {
 	title: "@/widgets/Sidebar",
 	component: Sidebar,
 	tags: ["autodocs"],
-	argTypes: {
-
-	},
+	argTypes: {},
 } satisfies Meta<typeof Sidebar>;
 
 export default meta;

@@ -10,7 +10,5 @@ interface AppMediaQueryProps extends MediaQueryAllQueryable {
 }
 
 export const AppMediaQuery: FC<AppMediaQueryProps> = (props) => (
-	<MediaQuery {...props}>
-		{props.children}
-	</MediaQuery>
+	<MediaQuery {...props}>{props.children}</MediaQuery>
 );

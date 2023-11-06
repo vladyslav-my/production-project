@@ -15,7 +15,7 @@
 		fill: $iconColor;
 	}
 	
-	@media (min-width: $mobile) {
+	@media (min-width: em($mobile)) {
 		margin-left: rem(48);
 	}
 }

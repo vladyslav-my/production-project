@@ -10,11 +10,7 @@ interface ArticleTextBlockProps {
 
 const ArticleTextBlock: FC<ArticleTextBlockProps> = ({ className, title, paragraphs }) => (
 	<div className={classNames(cls.ArticleTextBlock, {}, [className])}>
-		{!!title && (
-			<h3 className={cls.ArticleTextBlock__title}>
-				{title}
-			</h3>
-		)}
+		{!!title && <h3 className={cls.ArticleTextBlock__title}>{title}</h3>}
 		{!!paragraphs && (
 			<div className={cls.ArticleTextBlock__paragraphs}>
 				{paragraphs.map((paragraph, index) => (

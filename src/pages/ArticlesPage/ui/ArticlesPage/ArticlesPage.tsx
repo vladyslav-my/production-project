@@ -8,7 +8,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import cls from "./ArticlesPage.module.scss";
 
 interface ArticlePageProps {
-	className?: string
+	className?: string;
 }
 
 const ArticlesPage: FC<ArticlePageProps> = ({ className }) => {
@@ -16,15 +16,10 @@ const ArticlesPage: FC<ArticlePageProps> = ({ className }) => {
 
 	return (
 		<RouteContainer
-			Feature={
-				!!isTablet && <ChangeArticlesView className={cls.ChangeArticlesView__feature} />
-			}
-			Widget={
-				<ArticlesFilters />
-			}
+			Feature={!!isTablet && <ChangeArticlesView className={cls.ChangeArticlesView__feature} />}
+			Widget={<ArticlesFilters />}
 			className={classNames(cls.ArticlesPage, {}, [className])}
 		>
-
 			<InfinityArticlesList />
 		</RouteContainer>
 	);

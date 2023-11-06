@@ -5,7 +5,12 @@ import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { useDynamicReduce } from "@/shared/lib/hooks/useDynamicReduce/useDynamicReduce";
 import { useQueryParams } from "../../model/hooks/useQueryParams";
 import {
-	getArticlesListIsLoading, getArticlesListData, getArticlesListViewMode, getArticlesListPageQP, getArticlesListLimitQP, getArticlesListHasMore, getArticlesListInitedData,
+	getArticlesListIsLoading,
+	getArticlesListData,
+	getArticlesListViewMode,
+	getArticlesListLimitQP,
+	getArticlesListHasMore,
+	getArticlesListInitedData,
 } from "../../model/selectors/articlesList";
 import { articlesListReducer } from "../../model/slice/articlesListSlice";
 import { ViewMode } from "../../model/types/ArticlesListSchema";
@@ -15,7 +20,7 @@ import { ArticlePreview as ArticlePreviewSkeleton } from "../ArticlePreview/Arti
 import cls from "./InfinityArticlesList.module.scss";
 
 interface InfinityArticlesListProps {
-	className?: string
+	className?: string;
 }
 
 export const InfinityArticlesList: FC<InfinityArticlesListProps> = ({ className }) => {
@@ -34,9 +39,7 @@ export const InfinityArticlesList: FC<InfinityArticlesListProps> = ({ className 
 	useQueryParams();
 	useEffect(() => {
 		if (!_initedData) {
-			dispatch(
-				fetchArticlesList({ replace: true }),
-			);
+			dispatch(fetchArticlesList({ replace: true }));
 		}
 	}, [dispatch, _initedData]);
 
@@ -45,9 +48,7 @@ export const InfinityArticlesList: FC<InfinityArticlesListProps> = ({ className 
 		const observer = new IntersectionObserver((entries) => {
 			entries.forEach((entry) => {
 				if (entry.isIntersecting && hasMore) {
-					dispatch(
-						fetchArticlesList({}),
-					);
+					dispatch(fetchArticlesList({}));
 				}
 			});
 		});
@@ -71,17 +72,21 @@ export const InfinityArticlesList: FC<InfinityArticlesListProps> = ({ className 
 			}, [className])}
 		>
 			<div className={cls.InfinityArticlesList__articles}>
+				{data?.map((article) => (
+					<ArticlePreview data={article} key={article.id} viewMode={viewMode} />
+				))}
 				{
-					data?.map((article) => (
-						<ArticlePreview data={article} key={article.id} viewMode={viewMode} />
-					))
-				}
-				{
-					// eslint-disable-next-line react/no-array-index-key
-					!!isLoading && new Array(limit).fill(undefined).map((_, i) => <ArticlePreviewSkeleton key={i} viewMode={viewMode} />)
+
+					!!isLoading
+						&& new Array(limit)
+							.fill(undefined)
+							// eslint-disable-next-line react/no-array-index-key
+							.map((_, i) => <ArticlePreviewSkeleton key={i} viewMode={viewMode} />)
 				}
 			</div>
-			{!!hasMore && <div className={cls.InfinityArticlesList__articlesTrigger} ref={targetRef} />}
+			{!!hasMore && (
+				<div className={cls.InfinityArticlesList__articlesTrigger} ref={targetRef} />
+			)}
 		</div>
 	);
 };

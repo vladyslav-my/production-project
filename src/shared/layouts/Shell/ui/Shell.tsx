@@ -5,18 +5,22 @@ import cls from "./Shell.module.scss";
 interface ShellProps extends HTMLAttributes<HTMLElement> {
 	children: ReactNode;
 	className?: string;
-	borderStyle?: ShellBorderStyle;
+	shellStyle?: ShellStyle;
 }
 
-export enum ShellBorderStyle {
-	DEFAULT = "Shell_border_default",
-	NONE = 0,
+export enum ShellStyle {
+	DEFAULT = "Shell_style_default",
+	NO_BORDER = "Shell_style_no-border",
+	NONE = "Shell_style_none",
 }
 
 export const Shell: FC<ShellProps> = ({
-	className, children, borderStyle = ShellBorderStyle.DEFAULT, ...otherProps
+	className,
+	children,
+	shellStyle = ShellStyle.DEFAULT,
+	...otherProps
 }) => (
-	<div className={classNames(cls.Shell, {}, [className, cls[borderStyle]])} {...otherProps}>
+	<div className={classNames(cls.Shell, {}, [className, cls[shellStyle]])} {...otherProps}>
 		{children}
 	</div>
 );

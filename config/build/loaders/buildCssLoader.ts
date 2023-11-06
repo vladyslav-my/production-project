@@ -23,7 +23,6 @@ export function buildCssLoader(isDev: boolean) {
 					additionalData: "@import \"@/scss/tools/index.scss\";",
 				},
 			},
-
 		],
 	};
 }

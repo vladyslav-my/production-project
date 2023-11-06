@@ -1,17 +1,23 @@
 
 
 .Shell {
-	padding: rem(24);	
+	padding: rem(24);
+
+	border-radius: rem(32);	
 
 	background-color: $primaryBgColor;
 
-	&_border {
-		&_default {
-			border-radius: rem(32);
+	&_style {
+		&_no-border {
+			border-radius: 0;
 		}
+		
 
 		&_none {
+			padding: 0;
+
 			border-radius: 0;
+			background: none;
 		}
 	}
 }

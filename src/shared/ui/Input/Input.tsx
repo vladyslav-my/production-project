@@ -11,12 +11,12 @@ export enum InputTheme {
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "value" | "onChange">;
 
 interface InputProps extends HTMLInputProps {
-	className?: string,
-	value?: string,
-	type?: string,
-	placeholder?: string,
-	label?: string,
-	readOnly?: boolean
+	className?: string;
+	value?: string;
+	type?: string;
+	placeholder?: string;
+	label?: string;
+	readOnly?: boolean;
 	onChange?: (value: string) => void;
 	theme?: InputTheme;
 	Icon?: React.FC<React.SVGProps<SVGSVGElement>>;
@@ -39,10 +39,13 @@ export const Input: FC<InputProps> = ({
 
 	return (
 		<div
-			className={classNames(cls.Input, {
-				[cls.Input_icon]: !!Icon,
-			}, [className,
-				cls[theme]])}
+			className={classNames(
+				cls.Input,
+				{
+					[cls.Input_icon]: !!Icon,
+				},
+				[className, cls[theme]],
+			)}
 		>
 			{!!label && (
 				<span className={cls.Input__label}>
@@ -52,12 +55,7 @@ export const Input: FC<InputProps> = ({
 			)}
 			<div className={cls.Input__wrapper}>
 				{!!Icon && (
-					<IconComponent
-						Svg={Icon}
-						className={cls.Input__icon}
-						height={15}
-						width={15}
-					/>
+					<IconComponent Svg={Icon} className={cls.Input__icon} height={15} width={15} />
 				)}
 				<input
 					className={classNames(cls.Input__field, {}, [className])}
@@ -69,6 +67,5 @@ export const Input: FC<InputProps> = ({
 				/>
 			</div>
 		</div>
-
 	);
 };

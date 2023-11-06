@@ -15,9 +15,7 @@ interface SelectTypeArticlesProps {
 	className?: string;
 }
 
-export const SelectTypeArticles: FC<SelectTypeArticlesProps> = ({
-	className,
-}) => {
+export const SelectTypeArticles: FC<SelectTypeArticlesProps> = ({ className }) => {
 	const dispatch = useAppDispatch();
 	const { getArticlesListTypeQP } = articlesListSelectors;
 

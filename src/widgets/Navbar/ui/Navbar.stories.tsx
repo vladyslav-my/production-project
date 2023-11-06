@@ -7,9 +7,7 @@ const meta = {
 	title: "@/widgets/Navbar",
 	component: Navbar,
 	tags: ["autodocs"],
-	argTypes: {
-
-	},
+	argTypes: {},
 } satisfies Meta<typeof Navbar>;
 
 export default meta;

@@ -6,9 +6,9 @@ import { LoginFormAsync } from "../LoginForm/LoginForm.async";
 import cls from "./LoginModal.module.scss";
 
 interface LoginModalProps {
-	className?: string,
-	oppened: boolean,
-	onToggle: () => void,
+	className?: string;
+	oppened: boolean;
+	onToggle: () => void;
 }
 
 export const LoginModal: FC<LoginModalProps> = ({ className, oppened, onToggle }) => (
@@ -19,7 +19,7 @@ export const LoginModal: FC<LoginModalProps> = ({ className, oppened, onToggle }
 		onToggle={onToggle}
 	>
 		<Suspense fallback={<Loader />}>
-			<LoginFormAsync />
+			<LoginFormAsync onToggle={onToggle} />
 		</Suspense>
 	</Modal>
 );

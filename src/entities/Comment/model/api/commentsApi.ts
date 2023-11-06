@@ -17,7 +17,6 @@ const commentsApi = rtkApi.injectEndpoints({
 					_expand: "user",
 					articleId,
 				},
-
 			}),
 		}),
 

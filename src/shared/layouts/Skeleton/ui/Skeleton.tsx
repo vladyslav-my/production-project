@@ -1,25 +1,38 @@
-import { CSSProperties, FC, ReactNode } from "react";
+import {
+	CSSProperties, FC, ReactNode, useMemo,
+} from "react";
 import { classNames } from "../../../lib/classNames/classNames";
 import cls from "./Skeleton.module.scss";
 
 interface SkeletonProps {
 	className?: string;
-	width: string | number;
-	height: string | number;
+	width: any;
+	height: any;
 	circle?: string | number;
 	children?: ReactNode;
 	isImage?: boolean;
 }
 
 export const Skeleton: FC<SkeletonProps> = ({
-	className, width, height, circle, children, isImage,
+	className,
+	width,
+	height,
+	circle,
+	children,
+	isImage,
 }) => {
-	const styles: CSSProperties = isImage && (typeof height === "number") && (typeof width === "number") ? {
-		paddingBottom: `${(height / width) * 100}%`,
-	} : {
-		width,
-		height,
-	};
+	const styles = useMemo(() => {
+		if (isImage) {
+			return {
+				paddingBottom: `${(height / width) * 100}%`,
+			};
+		}
+
+		return {
+			width,
+			height,
+		};
+	}, [width, height, isImage]);
 
 	return (
 		<div

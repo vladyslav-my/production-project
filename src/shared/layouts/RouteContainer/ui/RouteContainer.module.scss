@@ -20,7 +20,7 @@ $margin: $mainContainer - ($widgetContainer + $pageContainer);
 	gap: rem($margin);
 
 	&__widget {
-		@media (min-width: em(1394)) {
+		@media (min-width: em($intermediateDesktop)) {
 			flex: 0 0 rem($widgetContainer);
 
 		}
@@ -37,12 +37,12 @@ $margin: $mainContainer - ($widgetContainer + $pageContainer);
 
 	&__page {
 
-		@media (min-width: em(1394)) {
+		@media (min-width: em($intermediateDesktop)) {
 			flex: 1 1 min(100%, rem($pageContainer));
 
 			min-width: 320px;
 		}
-		@media (max-width: em(1394)) {
+		@media (max-width: em($intermediateDesktop)) {
 			order: 2;
 		}
 	}
@@ -52,7 +52,7 @@ $margin: $mainContainer - ($widgetContainer + $pageContainer);
 		left: -100px;
 	}
 
-	@media (max-width: em(1394)) {
+	@media (max-width: em($intermediateDesktop)) {
 		flex-direction: column;
 	}
 }

@@ -31,20 +31,17 @@ export function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRule[] {
 			options: {
 				presets: ["@babel/preset-env"],
 				plugins: [
-					["i18next-extract", {
-						locales: ["en", "uk"],
-						keyAsDefaultValue: true,
-					}],
+					[
+						"i18next-extract",
+						{
+							locales: ["en", "uk"],
+							keyAsDefaultValue: true,
+						},
+					],
 				],
 			},
 		},
 	};
 
-	return [
-		fileLoader,
-		svgLoader,
-		babelLoader,
-		typescriptLoader,
-		cssLoader,
-	];
+	return [fileLoader, svgLoader, babelLoader, typescriptLoader, cssLoader];
 }

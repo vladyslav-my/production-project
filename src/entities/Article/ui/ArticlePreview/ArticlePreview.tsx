@@ -22,37 +22,30 @@ export const ArticlePreview: FC<ArticlePreviewProps> = ({ className, data, viewM
 	if (viewMode === ViewMode.TILE) {
 		return (
 			<AppNavLink to={getArticleRoutePath(data?.id)}>
-				<Shell className={classNames(cls.ArticlePreview, {}, [className, cls.ArticlePreview_tile])}>
+				<Shell
+					className={classNames(cls.ArticlePreview, {}, [className, cls.ArticlePreview_tile])}
+				>
 					<Image
 						className={cls.ArticlePreview__image}
-						height={`${420 / (732 * 100)}%`}
+						height={`${(420 / 732) * 100}%`}
 						src={data?.img}
 					/>
 					<div className={cls.ArticlePreview__container}>
-						<h2 className={cls.ArticlePreview__title}>
-							{data?.title}
-						</h2>
+						<h2 className={cls.ArticlePreview__title}>{data?.title}</h2>
 						<div className={classNames(cls.bottom, {}, [cls.ArticlePreview__bottom])}>
-							<span className={cls.bottom__date}>
-								{data?.createdAt}
-							</span>
+							<span className={cls.bottom__date}>{data?.createdAt}</span>
 							<div className={cls.bottom__views}>
 								<Icon Svg={ViewsIcon} className={cls.bottom__viewsIcon} />
-								<span className={cls.bottom__viewerShip}>
-									{data?.views}
-								</span>
+								<span className={cls.bottom__viewerShip}>{data?.views}</span>
 							</div>
 						</div>
 						<div className={classNames(cls.top, {}, [cls.ArticlePreview__top])}>
 							<Avatar className={cls.top__avatar} size={32} src={data?.user.avatar} />
-							<span className={cls.top__user}>
-								{data?.user.username}
-							</span>
+							<span className={cls.top__user}>{data?.user.username}</span>
 						</div>
 					</div>
 				</Shell>
 			</AppNavLink>
-
 		);
 	}
 
@@ -60,19 +53,11 @@ export const ArticlePreview: FC<ArticlePreviewProps> = ({ className, data, viewM
 		<Shell className={classNames(cls.ArticlePreview, {}, [className, cls.ArticlePreview_list])}>
 			<div className={classNames(cls.top, {}, [cls.ArticlePreview__top])}>
 				<Avatar className={cls.top__avatar} size={32} src={data?.user.avatar} />
-				<span className={cls.top__user}>
-					{data?.user.username}
-				</span>
-				<span className={cls.top__date}>
-					{data?.createdAt}
-				</span>
+				<span className={cls.top__user}>{data?.user.username}</span>
+				<span className={cls.top__date}>{data?.createdAt}</span>
 			</div>
-			<h2 className={cls.ArticlePreview__title}>
-				{data?.title}
-			</h2>
-			<h3 className={cls.ArticlePreview__subTitle}>
-				{data?.subtitle}
-			</h3>
+			<h2 className={cls.ArticlePreview__title}>{data?.title}</h2>
+			<h3 className={cls.ArticlePreview__subTitle}>{data?.subtitle}</h3>
 			<Image
 				className={cls.ArticlePreview__image}
 				height={`${(420 / 732) * 100}%`}
@@ -82,14 +67,16 @@ export const ArticlePreview: FC<ArticlePreviewProps> = ({ className, data, viewM
 				<ArticleBlocks data={data && [data.blocks[0]]} />
 			</div>
 			<div className={classNames(cls.bottom, {}, [cls.ArticlePreview__bottom])}>
-				<AppNavLink className={cls.bottom__btn} theme={ButtonTheme.OUTLINE} to={getArticleRoutePath(data?.id)}>
+				<AppNavLink
+					className={cls.bottom__btn}
+					theme={ButtonTheme.OUTLINE}
+					to={getArticleRoutePath(data?.id)}
+				>
 					Читать далее...
 				</AppNavLink>
 				<div className={cls.bottom__views}>
 					<ViewsIcon className={cls.bottom__viewsIcon} />
-					<span className={cls.bottom__viewerShip}>
-						{data?.views}
-					</span>
+					<span className={cls.bottom__viewerShip}>{data?.views}</span>
 				</div>
 			</div>
 		</Shell>

@@ -7,10 +7,13 @@ const overwritedAirbnbRules = {
 	"react/jsx-indent": [2, "tab"],
 	"import/extensions": [0],
 	"react/prop-types": [0],
-	"react/function-component-definition": [2, {
-		namedComponents: "arrow-function",
-		unnamedComponents: "arrow-function",
-	}],
+	"react/function-component-definition": [
+		2,
+		{
+			namedComponents: "arrow-function",
+			unnamedComponents: "arrow-function",
+		},
+	],
 	"react/require-default-props": [0],
 	"react/jsx-props-no-spreading": [0],
 	"arrow-body-style": [0],
@@ -18,9 +21,12 @@ const overwritedAirbnbRules = {
 	"jsx-a11y/click-events-have-key-events": [0],
 	"no-underscore-dangle": [0],
 	"no-param-reassign": [0],
-	"eslint/no-restricted-imports": [0, {
-		allowTypeImports: true,
-	}],
+	"eslint/no-restricted-imports": [
+		0,
+		{
+			allowTypeImports: true,
+		},
+	],
 };
 
 const temporarilyDisabled = {
@@ -37,9 +43,16 @@ const temporarilyDisabled = {
 };
 
 const overwritedFsdRules = {
-	"@conarti/feature-sliced/layers-slices": ["error", {
-		ignorePatterns: ["**/StoreProvider/**", "@/entities/Country", "@/entities/Currency"],
-	}],
+	"@conarti/feature-sliced/layers-slices": [
+		"error",
+		{
+			ignorePatterns: [
+				"**/StoreProvider/**",
+				"@/entities/Country",
+				"@/entities/Currency",
+			],
+		},
+	],
 };
 
 module.exports = {
@@ -53,6 +66,7 @@ module.exports = {
 	parserOptions: {
 		project: ["./tsconfig.json", "./tsconfig.node.json"],
 	},
+	plugins: ["prettier"],
 	overrides: [
 		{
 			files: ["config/**"],

@@ -28,7 +28,11 @@ interface CountryDropDownProps {
 }
 
 export const CountryDropDown: FC<CountryDropDownProps> = ({
-	className, value, label, readOnly, onChange,
+	className,
+	value,
+	label,
+	readOnly,
+	onChange,
 }) => (
 	<DropDown
 		className={classNames(cls.CountryDropDown, {}, [className])}

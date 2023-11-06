@@ -15,9 +15,7 @@ export const ArticleCodeBlock: FC<ArticleCodeBlockProps> = ({ className, code })
 			<CopyIcon className={cls.ArticleCodeBlock__copyIcon} />
 		</Button>
 		<pre className={cls.ArticleCodeBlock__pre}>
-			<code className={cls.ArticleCodeBlock__code}>
-				{code}
-			</code>
+			<code className={cls.ArticleCodeBlock__code}>{code}</code>
 		</pre>
 	</div>
 );

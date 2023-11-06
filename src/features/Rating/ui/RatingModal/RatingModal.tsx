@@ -29,16 +29,10 @@ export const RatingModal: FC<RatingModalProps> = ({
 			oppened={oppened}
 			onToggle={onToggle}
 		>
-			<h2>
-				Залиште свій відгук про прочитану статтю, це допоможе нам покращити якість
-			</h2>
+			<h2>Залиште свій відгук про прочитану статтю, це допоможе нам покращити якість</h2>
 			<Input label="Feedback" value={feedbackText} onChange={onChangeFeedbackHandler} />
-			<Button onClick={onSend(feedbackText)}>
-				Відправити
-			</Button>
-			<Button onClick={onSend()}>
-				Закрити
-			</Button>
+			<Button onClick={onSend(feedbackText)}>Відправити</Button>
+			<Button onClick={onSend()}>Закрити</Button>
 		</Modal>
 	);
 };

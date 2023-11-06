@@ -17,7 +17,6 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
 	const { id } = useParams();
 	const articleId = useMemo(() => Number(id), [id]);
 
-	console.log(articleId);
 	if (articleId) {
 		return (
 			<RouteContainer
@@ -33,11 +32,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
 		);
 	}
 
-	return (
-		<div>
-			not id
-		</div>
-	);
+	return <div>not id</div>;
 };
 
 export default ArticleDetailsPage;
