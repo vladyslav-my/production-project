@@ -31,9 +31,7 @@ export const ArticlesFilters: FC<ArticlesFiltersProps> = ({ className }) => (
 			</div>
 		</AppMediaQuery>
 		<AppMediaQuery minWidth={Devices.INTERMEDIATE_DESKTOP}>
-			<div>
-				<SelectTypeArticles className={cls.ArticlesFilters__selectType} />
-			</div>
+			<SelectTypeArticles className={cls.ArticlesFilters__selectType} />
 		</AppMediaQuery>
 
 		<SortArticles className={cls.ArticlesFilters__sort} />
