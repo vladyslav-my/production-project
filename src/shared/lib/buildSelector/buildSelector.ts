@@ -13,14 +13,14 @@ export const buildSelector = <T>(selector: TSelectorArgs<T>): TSelectorResult<T>
 	return [useSelectorHook, selector];
 };
 
-// type TCreateSelectorParams = Parameters<typeof createSelector>;
+type TCreateSelectorParams = Parameters<typeof createSelector>;
 
-// export const buildCreateSelector = (...args: TCreateSelectorParams) => {
-// 	const createSelectorApp = createSelector(...args);
+export const buildCreateSelector = (...args: TCreateSelectorParams) => {
+	const createSelectorApp = createSelector(...args);
 
-// 	const useSelectorHook = () => {
-// 		return useSelector(createSelectorApp);
-// 	};
+	const useSelectorHook = () => {
+		return useSelector(createSelectorApp);
+	};
 
-// 	return [useSelectorHook, createSelectorApp];
-// };
+	return [useSelectorHook, createSelectorApp];
+};

@@ -1,8 +1,7 @@
 import { FC, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { useCounterValue } from "../model/selectors/getCounterValue/getCounterValue";
-import { counterActions } from "../model/slice/counterSlice";
+import { useCounterActions } from "../model/slice/counterSlice";
 import cls from "./Counter.module.scss";
 
 interface CounterProps {
@@ -10,16 +9,16 @@ interface CounterProps {
 }
 
 const Counter: FC<CounterProps> = ({ className }) => {
-	const dispatch = useDispatch();
 	const counterValue = useCounterValue();
+	const { decrement, increment } = useCounterActions();
 
 	const onDecrement = useCallback(() => {
-		dispatch(counterActions.decrement());
-	}, [dispatch]);
+		decrement();
+	}, [decrement]);
 
 	const onIncrement = useCallback(() => {
-		dispatch(counterActions.increment());
-	}, [dispatch]);
+		increment();
+	}, [increment]);
 
 	return (
 		<div className={classNames(cls.Counter, {}, [className])}>
