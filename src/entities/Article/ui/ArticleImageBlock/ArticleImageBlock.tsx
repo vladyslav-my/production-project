@@ -1,6 +1,6 @@
 import { FC, memo } from "react";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { Image } from "@/shared/ui/Image";
+// import { Image } from "@/shared/ui/Image";
 import cls from "./ArticleImageBlock.module.scss";
 
 interface ArticleImageBlockProps {

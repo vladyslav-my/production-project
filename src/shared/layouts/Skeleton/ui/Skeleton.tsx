@@ -1,5 +1,5 @@
 import {
-	CSSProperties, FC, ReactNode, useMemo,
+	FC, ReactNode, useMemo,
 } from "react";
 import { classNames } from "../../../lib/classNames/classNames";
 import cls from "./Skeleton.module.scss";
@@ -24,6 +24,7 @@ export const Skeleton: FC<SkeletonProps> = ({
 	const styles = useMemo(() => {
 		if (isImage) {
 			return {
+				width,
 				paddingBottom: `${(height / width) * 100}%`,
 			};
 		}

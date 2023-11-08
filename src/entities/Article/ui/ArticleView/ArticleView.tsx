@@ -4,7 +4,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useDynamicReduce } from "@/shared/lib/hooks/useDynamicReduce/useDynamicReduce";
 import { Avatar } from "@/shared/ui/Avatar";
-import { Image } from "@/shared/ui/Image";
+import { Img } from "@/shared/ui/Img";
 import { getArticleDetailsData } from "../../model/selectors/articleDetails/getArticleDetailsData/getArticleDetailsData";
 import { getArticleDetailsError } from "../../model/selectors/articleDetails/getArticleDetailsError/getArticleDetailsError";
 import { getArticleDetailsIsLoading } from "../../model/selectors/articleDetails/getArticleDetailsIsLoading/getArticleDetailsIsLoading";
@@ -54,9 +54,10 @@ export const ArticleView: FC<ArticleViewProps> = ({ className, articleId }) => {
 			</div>
 			<h2 className={cls.ArticleView__title}>{data?.title}</h2>
 			<h3 className={cls.ArticleView__subTitle}>{data?.subtitle}</h3>
-			<Image
+			<Img
 				className={cls.ArticleView__image}
-				height={`${(420 / 732) * 100}%`}
+				width={732}
+				height={420}
 				src={data?.img}
 			/>
 			<ArticleBlocks data={data?.blocks} />

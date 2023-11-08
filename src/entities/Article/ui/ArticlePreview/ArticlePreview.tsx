@@ -6,7 +6,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import { Avatar } from "@/shared/ui/Avatar";
 import { AppNavLink, ButtonTheme } from "@/shared/ui/Buttons";
 import { Icon } from "@/shared/ui/Icon";
-import { Image } from "@/shared/ui/Image";
+import { Img } from "@/shared/ui/Img";
 import { Article } from "../../model/types/Article";
 import { ViewMode } from "../../model/types/ArticlesListSchema";
 import ArticleBlocks from "../ArticleBlocks/ArticleBlocks";
@@ -25,9 +25,10 @@ export const ArticlePreview: FC<ArticlePreviewProps> = ({ className, data, viewM
 				<Shell
 					className={classNames(cls.ArticlePreview, {}, [className, cls.ArticlePreview_tile])}
 				>
-					<Image
+					<Img
 						className={cls.ArticlePreview__image}
-						height={`${(420 / 732) * 100}%`}
+						width={732}
+						height={420}
 						src={data?.img}
 					/>
 					<div className={cls.ArticlePreview__container}>
@@ -58,9 +59,10 @@ export const ArticlePreview: FC<ArticlePreviewProps> = ({ className, data, viewM
 			</div>
 			<h2 className={cls.ArticlePreview__title}>{data?.title}</h2>
 			<h3 className={cls.ArticlePreview__subTitle}>{data?.subtitle}</h3>
-			<Image
+			<Img
 				className={cls.ArticlePreview__image}
-				height={`${(420 / 732) * 100}%`}
+				width={732}
+				height={420}
 				src={data?.img}
 			/>
 			<div className={cls.ArticlePreview__desc}>
