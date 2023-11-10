@@ -1,6 +1,6 @@
 import { FC, SVGProps } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ViewMode, articlesListActions, getArticlesListViewMode } from "@/entities/Article";
+import { ViewMode, articlesListActions, articlesListSelectors } from "@/entities/Article";
 import { fetchArticlesList } from "@/entities/Article/services/fetchArticlesList/fetchArticlesList";
 import ListIcon from "@/shared/assets/icons/articlesList/list.svg";
 import TileIcon from "@/shared/assets/icons/articlesList/tile.svg";
@@ -56,6 +56,7 @@ export const ChangeArticlesView: FC<ChangeArticlesViewProps> = ({
 	sizeStyle = CAVSizeStyle.MEDIUM,
 }) => {
 	const dispatch = useAppDispatch();
+	const { getArticlesListViewMode } = articlesListSelectors;
 
 	const viewMode = useSelector(getArticlesListViewMode);
 

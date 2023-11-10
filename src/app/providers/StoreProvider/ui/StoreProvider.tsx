@@ -5,12 +5,11 @@ import { createReduxStore } from "../config/store";
 
 interface StoreProviderProps {
 	children: ReactNode;
-	initialState?: StateSchema;
 }
 
-const StoreProvider: FC<StoreProviderProps> = ({ children, initialState }) => {
-	const store = createReduxStore(initialState);
+export const store = createReduxStore();
 
+const StoreProvider: FC<StoreProviderProps> = ({ children }) => {
 	return <Provider store={store}>{children}</Provider>;
 };
 

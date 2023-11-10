@@ -1,5 +1,7 @@
 import { FC, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
+// eslint-disable-next-line @conarti/feature-sliced/layers-slices
+import { useTriggerFetch } from "@/features/TriggerFetch";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useDynamicReduce } from "@/shared/lib/hooks/useDynamicReduce/useDynamicReduce";
@@ -34,8 +36,6 @@ export const InfinityArticlesList: FC<InfinityArticlesListProps> = ({ className 
 	const hasMore = useSelector(getArticlesListHasMore);
 	const _initedData = useSelector(getArticlesListInitedData);
 
-	const targetRef = useRef(null);
-
 	useQueryParams();
 	useEffect(() => {
 		if (!_initedData) {
@@ -43,26 +43,10 @@ export const InfinityArticlesList: FC<InfinityArticlesListProps> = ({ className 
 		}
 	}, [dispatch, _initedData]);
 
-	useEffect(() => {
-		const { current } = targetRef;
-		const observer = new IntersectionObserver((entries) => {
-			entries.forEach((entry) => {
-				if (entry.isIntersecting && hasMore) {
-					dispatch(fetchArticlesList({}));
-				}
-			});
-		});
-
-		if (current) {
-			observer.observe(current);
-		}
-
-		return () => {
-			if (current) {
-				observer.unobserve(current);
-			}
-		};
-	}, [hasMore, dispatch]);
+	const TriggerFetch = useTriggerFetch({
+		action: () => dispatch(fetchArticlesList({})),
+		condition: hasMore,
+	}, []);
 
 	return (
 		<div
@@ -84,9 +68,7 @@ export const InfinityArticlesList: FC<InfinityArticlesListProps> = ({ className 
 							.map((_, i) => <ArticlePreviewSkeleton key={i} viewMode={viewMode} />)
 				}
 			</div>
-			{!!hasMore && (
-				<div className={cls.InfinityArticlesList__articlesTrigger} ref={targetRef} />
-			)}
+			<TriggerFetch />
 		</div>
 	);
 };
