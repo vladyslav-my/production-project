@@ -14,7 +14,7 @@ server.use(jsonServer.bodyParser);
 // Нужно для небольшой задержки, чтобы запрос проходил не мгновенно, имитация реального апи
 server.use(async (req, res, next) => {
 	await new Promise((res) => {
-		setTimeout(res, 0);
+		setTimeout(res, 3000);
 	});
 	next();
 });

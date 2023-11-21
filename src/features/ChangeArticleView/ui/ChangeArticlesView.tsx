@@ -1,4 +1,4 @@
-import { FC, SVGProps } from "react";
+import { FC, SVGProps, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ViewMode, articlesListActions, articlesListSelectors } from "@/entities/Article";
 import { fetchArticlesList } from "@/entities/Article/services/fetchArticlesList/fetchArticlesList";
@@ -50,17 +50,23 @@ const dataViewBtns: DataViewBtns[] = [
 	},
 ];
 
-export const ChangeArticlesView: FC<ChangeArticlesViewProps> = ({
+const { getArticlesListViewMode, getArticlesListIsLoading } = articlesListSelectors;
+
+const ChangeArticlesView: FC<ChangeArticlesViewProps> = ({
 	className,
 	borderStyle = CAVBorderStyle.PRIMARY,
 	sizeStyle = CAVSizeStyle.MEDIUM,
 }) => {
 	const dispatch = useAppDispatch();
-	const { getArticlesListViewMode } = articlesListSelectors;
 
 	const viewMode = useSelector(getArticlesListViewMode);
+	const isLoading = useSelector(getArticlesListIsLoading);
 
 	const onClickSwitchView = () => {
+		if (isLoading) {
+			return;
+		}
+
 		if (viewMode === ViewMode.LIST) {
 			dispatch(articlesListActions.setViewMode(ViewMode.TILE));
 
@@ -74,7 +80,9 @@ export const ChangeArticlesView: FC<ChangeArticlesViewProps> = ({
 
 	return (
 		<Button
-			className={cn(cls.ChangeArticlesView, {}, [className, cls[borderStyle], cls[sizeStyle]])}
+			className={cn(cls.ChangeArticlesView, {
+				[cls.ChangeArticlesView_disabled]: isLoading,
+			}, [className, cls[borderStyle], cls[sizeStyle]])}
 			onClick={onClickSwitchView}
 		>
 			{dataViewBtns.map(({
@@ -92,3 +100,5 @@ export const ChangeArticlesView: FC<ChangeArticlesViewProps> = ({
 		</Button>
 	);
 };
+
+export default memo(ChangeArticlesView);

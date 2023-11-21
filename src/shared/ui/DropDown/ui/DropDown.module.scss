@@ -120,12 +120,12 @@
 		}
 	}
 
-	&_cursor {
+	&_disabled {
 		#{$p}__self {
 			cursor: not-allowed;
 		}
-		
 	}
+
 }
 
 

@@ -4,7 +4,6 @@ import {
 import { AxiosInstance } from "axios";
 import { NavigateOptions, To } from "react-router-dom";
 import { CombinedState } from "redux";
-import { ArticlesPageSchema } from "@/pages/ArticlesPage";
 import { LoginFormSchema } from "@/features/AuthByUsername";
 import { ArticleDetailsSchema, ArticlesListSchema } from "@/entities/Article";
 import { CounterSchema } from "@/entities/Counter";
@@ -15,11 +14,10 @@ import { rtkApi } from "@/shared/api/rtkApi";
 export interface StateSchema {
 	counter: CounterSchema;
 	user: UserSchema;
-	articlesPage: ArticlesPageSchema;
 	loginForm?: LoginFormSchema;
-	profile?: IProfileSchema;
+	profile: IProfileSchema;
 	articleDeteils?: ArticleDetailsSchema;
-	articlesList?: ArticlesListSchema;
+	articlesList: ArticlesListSchema;
 	[rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 }
 

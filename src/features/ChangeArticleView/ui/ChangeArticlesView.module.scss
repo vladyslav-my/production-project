@@ -28,6 +28,10 @@
 			border: rem(3) solid $secondaryBgColor;
 		}
 	}
+
+	&_disabled {
+		cursor: not-allowed;
+	}
 }
 
 
@@ -51,6 +55,8 @@
 			fill: $iconColor;
 		}
 	}
+
+
 
 	&__icon {
 		fill: $thirdBgColor;

@@ -32,6 +32,7 @@ export const Input: FC<InputProps> = ({
 	onChange,
 	Icon,
 	theme = InputTheme.MEDIUM,
+	disabled,
 }) => {
 	const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
 		onChange?.(e.target.value);
@@ -43,6 +44,7 @@ export const Input: FC<InputProps> = ({
 				cls.Input,
 				{
 					[cls.Input_icon]: !!Icon,
+					[cls.Input_disabled]: disabled,
 				},
 				[className, cls[theme]],
 			)}
@@ -58,6 +60,7 @@ export const Input: FC<InputProps> = ({
 					<IconComponent Svg={Icon} className={cls.Input__icon} height={15} width={15} />
 				)}
 				<input
+					disabled={disabled}
 					className={classNames(cls.Input__field, {}, [className])}
 					placeholder={placeholder}
 					readOnly={readOnly}

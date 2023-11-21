@@ -1,7 +1,11 @@
-
-
 .GroupButton {
-	&_active {
-		background-color: $thirdBgColor;
+	&__button {
+		&_active {
+			background-color: $thirdBgColor;
+		}
+	
+		&_disabled {
+			cursor: not-allowed;
+		}
 	}
 }

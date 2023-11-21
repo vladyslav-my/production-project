@@ -1,9 +1,9 @@
 import {
 	CombinedState, Reducer, ReducersMapObject, configureStore,
 } from "@reduxjs/toolkit";
-import { NavigateOptions, To } from "react-router-dom";
-import { articlesPageReducer } from "@/pages/ArticlesPage";
+import { articlesListReducer } from "@/entities/Article";
 import { counterReducer } from "@/entities/Counter";
+import { ProfileReducer } from "@/entities/Profile";
 import { userReducer } from "@/entities/User";
 import { $api } from "@/shared/api/api";
 import { rtkApi } from "@/shared/api/rtkApi";
@@ -13,19 +13,18 @@ import { ExtraArgumentType, StateSchema } from "./StateSchema";
 export const createReduxStore = (
 	initialState?: StateSchema,
 	asyncReducers?: ReducersMapObject<StateSchema>,
-	navigate?: (to: To, options?: NavigateOptions | undefined) => void,
 ) => {
 	const rootReducers: ReducersMapObject<StateSchema> = {
 		...asyncReducers,
 		[rtkApi.reducerPath]: rtkApi.reducer,
 		counter: counterReducer,
 		user: userReducer,
-		articlesPage: articlesPageReducer,
+		profile: ProfileReducer,
+		articlesList: articlesListReducer,
 	};
 
 	const extraArgument: ExtraArgumentType = {
 		api: $api,
-		navigate,
 	};
 
 	const reducerManager = createReducerManager(rootReducers);

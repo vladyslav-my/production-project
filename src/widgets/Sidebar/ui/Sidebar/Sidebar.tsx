@@ -3,8 +3,8 @@ import {
 } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { LangSwitcher } from "@/features/LangSwitcher";
 import { ThemeSwitcher } from "@/features/ThemeSwitcher";
-import { LangSwitcher } from "@/features/ui/LangSwitcher";
 import ArrowIcon from "@/shared/assets/icons/Sidebar/arrow.svg";
 import LogoIcon from "@/shared/assets/icons/Sidebar/logo.svg";
 import { getMainRoutePath } from "@/shared/config/routes/path";

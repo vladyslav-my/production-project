@@ -40,6 +40,8 @@ body {
 input,
 button,
 textarea {
+	color: inherit;
+
 	font-family: $fontFamily;
 	font-size: inherit;
 }

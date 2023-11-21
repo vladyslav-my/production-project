@@ -1,12 +1,12 @@
 import { FC, useMemo } from "react";
 import { useParams } from "react-router-dom";
-import { ArticleComment } from "@/widgets/ArticleComment";
 import { RouteFeaturesContainer } from "@/widgets/RouteFeaturesContainer";
 import { Rating } from "@/features/Rating";
 import { ArticleView } from "@/entities/Article";
 import { RouteContainer } from "@/shared/layouts/RouteContainer";
 import { Shell } from "@/shared/layouts/Shell";
 import { classNames } from "@/shared/lib/classNames/classNames";
+import { ArticleComment } from "../ArticleComment";
 import cls from "./ArticleDetailsPage.module.scss";
 
 interface ArticleDetailsPageProps {

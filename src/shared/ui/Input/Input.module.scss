@@ -38,6 +38,12 @@
 		}
 	}
 
+	&_disabled {
+		#{$p}__field {
+			cursor: not-allowed;
+		}
+	}
+
 	&_size {
 		&_medium {
 			#{$p}__field {
@@ -56,7 +62,6 @@
 
 	&__field {
 		width: 100%;
-		
 
 		border: em(1) solid $iconColor;
 		border-radius: em(48);

@@ -17,6 +17,7 @@ interface DropDownProps {
 	readOnly?: boolean;
 	options: DropDownOption[];
 	onChange?: (value: string) => void;
+	disabled?: boolean;
 }
 
 export const DropDown: FC<DropDownProps> = ({
@@ -26,6 +27,7 @@ export const DropDown: FC<DropDownProps> = ({
 	label,
 	readOnly = false,
 	onChange,
+	disabled,
 }) => {
 	const [unroll, setUnroll] = useState(false);
 	const [size, setSize] = useState<string | undefined>(undefined);
@@ -35,14 +37,16 @@ export const DropDown: FC<DropDownProps> = ({
 
 	const onMenuItemClickHandler = useCallback(
 		(value: string) => () => {
-			onChange?.(value);
+			if (!disabled) {
+				onChange?.(value);
+			}
 		},
 		[onChange],
 	);
 
 	const onSelfClickHandler = (e: any) => {
 		//! MouseEventHandler<HTMLDivElement>
-		if (!readOnly) {
+		if (!readOnly && !disabled) {
 			e.stopPropagation();
 			setUnroll((prev) => !prev);
 		}
@@ -91,7 +95,7 @@ export const DropDown: FC<DropDownProps> = ({
 				cls.DropDown,
 				{
 					[cls.DropDown_unroll]: unroll,
-					[cls.DropDown_cursor]: readOnly,
+					[cls.DropDown_disabled]: disabled || readOnly,
 				},
 				[className],
 			)}

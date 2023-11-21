@@ -6,8 +6,7 @@ export enum ViewMode {
 }
 
 export interface ArticlesListSchema {
-	_initedData: boolean;
-	data?: Article[];
+	data: Article[];
 	hasMore: boolean;
 	isLoading?: boolean;
 	error?: string;
@@ -16,12 +15,11 @@ export interface ArticlesListSchema {
 }
 
 export interface QueryParams {
-	_inited: boolean;
 	limit: 9 | 3;
 	page: number;
 	sort: Sort;
 	order: Order;
-	search?: string;
+	search?: string | null;
 	type: Type;
 }
 

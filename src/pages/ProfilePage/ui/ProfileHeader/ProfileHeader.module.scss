@@ -43,14 +43,15 @@
 	}
 	
 	&__cancel {
-		transition: font-size 0.2s ease;
+		transition: opacity 0.2s ease;
+
+		opacity: 1;
 
 		border-color: $cancelColor;
-
-		font-size: rem(16);		
-
 		&_hide {
-			font-size: 0;
+			pointer-events: none;
+
+			opacity: 0;
 		}
 	}
 }

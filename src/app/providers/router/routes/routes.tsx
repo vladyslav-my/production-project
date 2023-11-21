@@ -17,41 +17,32 @@ export type AppRouteProps = RouteProps & {
 	authOnly?: boolean;
 };
 
-export enum AppRoutes {
-	MAIN = "main",
-	ABOUT = "about",
-	PROFILE = "profile",
-	ARTICLE = "article",
-	ARTICLE_DETAILS = "article_details",
-	NOT_FOUND = "not_found",
-}
-
-export const routeConfig: Record<AppRoutes, AppRouteProps> = {
-	[AppRoutes.MAIN]: {
+export const routes: AppRouteProps[] = [
+	{
 		path: getMainRoutePath(),
 		element: <MainPage />,
 	},
-	[AppRoutes.ABOUT]: {
+	{
 		path: getAboutRoutePath(),
 		element: <AboutPage />,
 	},
-	[AppRoutes.NOT_FOUND]: {
+	{
 		path: getNotFoundRoutePath(),
 		element: <NotFoundPage />,
 	},
-	[AppRoutes.PROFILE]: {
+	{
 		path: getProfileRoutePath(":id"),
 		element: <ProfilePage />,
 		authOnly: true,
 	},
-	[AppRoutes.ARTICLE]: {
+	{
 		path: getArticleRoutePath(),
 		element: <ArticlesPage />,
 		authOnly: true,
 	},
-	[AppRoutes.ARTICLE_DETAILS]: {
+	{
 		path: getArticleRoutePath(":id"),
 		element: <ArticleDetailsPage />,
 		authOnly: true,
 	},
-};
+];

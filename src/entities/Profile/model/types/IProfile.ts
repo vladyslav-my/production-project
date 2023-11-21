@@ -17,11 +17,12 @@ export interface IProfile {
 
 export interface IProfileSchema {
 	readonly: boolean;
-	data?: IProfile;
-	formData?: IProfile;
+	data: IProfile;
+	formData: IProfile;
 	isLoading: boolean;
 	isMe: boolean;
-	error?: ValidateProfileError[];
+	// error?: ValidateProfileError[];
+	error?: any;
 }
 
 export enum ValidateProfileError {

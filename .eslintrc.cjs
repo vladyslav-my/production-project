@@ -27,6 +27,7 @@ const overwritedAirbnbRules = {
 			allowTypeImports: true,
 		},
 	],
+	"react-hooks/exhaustive-deps": [1],
 };
 
 const temporarilyDisabled = {

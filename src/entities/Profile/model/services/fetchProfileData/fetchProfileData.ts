@@ -5,7 +5,7 @@ import { IProfile, ValidateProfileError } from "../../types/IProfile";
 export const fetchProfileData = createAsyncThunk<
 IProfile,
 { profileId: number },
-ThunkConfig<ValidateProfileError[]>
+ThunkConfig<any>
 >("profile/fetchProfileData", async ({ profileId }, { rejectWithValue, extra, getState }) => {
 	try {
 		const response = await extra.api.get<IProfile>(`/profile/${profileId}`);
@@ -13,6 +13,8 @@ ThunkConfig<ValidateProfileError[]>
 		return response.data;
 	} catch (error) {
 		console.log(error);
-		return rejectWithValue([ValidateProfileError.SERVER_ERROR]);
+		// @ts-ignore
+		const { status, statusText } = error.response;
+		return rejectWithValue({ status, statusText });
 	}
 });

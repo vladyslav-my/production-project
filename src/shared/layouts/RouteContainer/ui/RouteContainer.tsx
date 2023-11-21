@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode, memo } from "react";
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Navbar } from "@/widgets/Navbar";
 import { classNames } from "../../../lib/classNames/classNames";
@@ -12,22 +12,26 @@ interface RouteContainerProps {
 	Feature?: ReactNode;
 }
 
-export const RouteContainer: FC<RouteContainerProps> = ({
+const RouteContainer: FC<RouteContainerProps> = ({
 	className,
 	children,
 	Widget,
 	Feature,
-}) => (
-	<div className={classNames(cls.RouteContainer, {}, [className])}>
-		{!!Feature && <div className={cls.RouteContainer__feature}>{Feature}</div>}
-		<div className={cls.RouteContainer__page}>{children}</div>
-		<div className={cls.RouteContainer__widget}>
-			<div className={cls.RouteContainer__widgetSticky}>
-				<AppMediaQuery maxWidth={Devices.LARGE_DESKTOP} minWidth={Devices.TABLET}>
-					<Navbar />
-				</AppMediaQuery>
-				{Widget}
+}) => {
+	return (
+		<div className={classNames(cls.RouteContainer, {}, [className])}>
+			{Feature && <div className={cls.RouteContainer__feature}>{Feature}</div>}
+			<div className={cls.RouteContainer__page}>{children}</div>
+			<div className={cls.RouteContainer__widget}>
+				<div className={cls.RouteContainer__widgetSticky}>
+					<AppMediaQuery maxWidth={Devices.LARGE_DESKTOP} minWidth={Devices.TABLET}>
+						<Navbar />
+					</AppMediaQuery>
+					{Widget}
+				</div>
 			</div>
 		</div>
-	</div>
-);
+	);
+};
+
+export default memo(RouteContainer);

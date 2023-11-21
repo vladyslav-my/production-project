@@ -1,18 +1,16 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
+import { articlesListActions, articlesListSelectors } from "@/entities/Article";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
-import {
-	getArticlesListTypeQP,
+
+const {
+	getArticlesListInitedQP,
 	getArticlesListSortQP,
+	getArticlesListTypeQP,
 	getArticlesListSearchQP,
 	getArticlesListOrderQP,
-	getArticlesListPageQP,
-	getArticlesListViewMode,
-	getArticlesListInitedQP,
-} from "../selectors/articlesList";
-import { articlesListActions } from "../slice/articlesListSlice";
-import { ViewMode } from "../types/ArticlesListSchema";
+} = articlesListSelectors;
 
 export const useQueryParams = () => {
 	const dispatch = useAppDispatch();
@@ -23,10 +21,9 @@ export const useQueryParams = () => {
 	const order = useSelector(getArticlesListOrderQP);
 	const sort = useSelector(getArticlesListSortQP);
 	const search = useSelector(getArticlesListSearchQP);
-	const page = useSelector(getArticlesListPageQP);
-	const viewMode = useSelector(getArticlesListViewMode);
 
 	useEffect(() => {
+		console.log("effect 2");
 		const typeParam = URLSearchParams.get("type");
 		const orderParam = URLSearchParams.get("order");
 		const sortParam = URLSearchParams.get("sort");
@@ -52,6 +49,7 @@ export const useQueryParams = () => {
 	}, [dispatch, URLSearchParams]);
 
 	useEffect(() => {
+		console.log("effect 3");
 		if (_inited) {
 			SetURLSearchParams({
 				order,
@@ -60,5 +58,5 @@ export const useQueryParams = () => {
 				...(search ? { search } : {}),
 			});
 		}
-	}, [order, sort, type, search, _inited, SetURLSearchParams]);
+	}, [order, sort, type, search, _inited]);
 };

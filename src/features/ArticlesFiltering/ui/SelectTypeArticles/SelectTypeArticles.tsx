@@ -15,11 +15,13 @@ interface SelectTypeArticlesProps {
 	className?: string;
 }
 
+const { getArticlesListTypeQP, getArticlesListIsLoading } = articlesListSelectors;
+
 export const SelectTypeArticles: FC<SelectTypeArticlesProps> = ({ className }) => {
 	const dispatch = useAppDispatch();
-	const { getArticlesListTypeQP } = articlesListSelectors;
 
 	const type = useSelector(getArticlesListTypeQP);
+	const isLoading = useSelector(getArticlesListIsLoading);
 
 	const isSmallMobile = useMediaQuery({ maxWidth: Devices.SMALLMOBILE });
 
@@ -36,6 +38,7 @@ export const SelectTypeArticles: FC<SelectTypeArticlesProps> = ({ className }) =
 				options={typeOptionsData}
 				select={type}
 				onChange={onChangeTypeHandler}
+				disabled={isLoading}
 			/>
 		);
 	}
@@ -46,6 +49,7 @@ export const SelectTypeArticles: FC<SelectTypeArticlesProps> = ({ className }) =
 			options={typeOptionsData}
 			value={type}
 			onChange={onChangeTypeHandler}
+			disabled={isLoading}
 		/>
 	);
 };

@@ -2,6 +2,7 @@ import { FC, useCallback } from "react";
 import { useSelector } from "react-redux";
 import {
 	getProfileReadOnly, updateProfileData, ProfileActions, getProfileFormData, getProfileIsMe,
+	getProfileData,
 } from "@/entities/Profile";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
@@ -19,6 +20,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({ className, profileId }) 
 	const readOnly = useSelector(getProfileReadOnly);
 	const isMe = useSelector(getProfileIsMe);
 	const formData = useSelector(getProfileFormData);
+	const data = useSelector(getProfileData);
 
 	const onEditClickHandler = useCallback(() => {
 		if (isMe) {
@@ -29,9 +31,9 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({ className, profileId }) 
 	const onSaveClickHandler = useCallback(() => {
 		if (!readOnly) {
 			dispatch(ProfileActions.setReadOnly(true));
-			dispatch(updateProfileData({ profileId }));
+			dispatch(updateProfileData({ profileId: data.userId! }));
 		}
-	}, [dispatch, readOnly, profileId]);
+	}, [readOnly, dispatch, data.userId]);
 
 	const onCancelEditClickHandler = useCallback(() => {
 		if (!readOnly) {

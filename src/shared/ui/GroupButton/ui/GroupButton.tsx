@@ -7,7 +7,8 @@ interface GroupButtonProps {
 	className?: string;
 	options: ButtonOptions[];
 	value?: string;
-	onChange: (value: string) => void;
+	onChange?: (value: string) => void;
+	disabled?: boolean;
 }
 
 interface ButtonOptions {
@@ -16,11 +17,13 @@ interface ButtonOptions {
 }
 
 export const GroupButton: FC<GroupButtonProps> = ({
-	className, options, value, onChange,
+	className, options, value, onChange, disabled,
 }) => {
 	const onButtonClickHandler = useCallback(
 		(content: string) => () => {
-			onChange?.(content);
+			if (!disabled) {
+				onChange?.(content);
+			}
 		},
 		[onChange],
 	);
@@ -29,7 +32,8 @@ export const GroupButton: FC<GroupButtonProps> = ({
 		() => options.map((option) => (
 			<Button
 				className={classNames(cls.GroupButton__button, {
-					[cls.GroupButton_active]: value === option.value,
+					[cls.GroupButton__button_active]: value === option.value,
+					[cls.GroupButton__button_disabled]: disabled,
 				})}
 				key={option.value}
 				theme={ButtonTheme.FILL}
@@ -38,7 +42,7 @@ export const GroupButton: FC<GroupButtonProps> = ({
 				{option.content}
 			</Button>
 		)),
-		[value, onButtonClickHandler, options],
+		[value, onButtonClickHandler, options, disabled],
 	);
 
 	return <div className={classNames(cls.GroupButton, {}, [className])}>{buttons}</div>;

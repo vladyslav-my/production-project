@@ -3,13 +3,11 @@ import { Order, Sort, Type } from "../../types/ArticlesListSchema";
 
 export const getArticlesListData = (state: StateSchema) => state.articlesList?.data;
 
-export const getArticlesListInitedData = (state: StateSchema) => state.articlesList?._initedData || false;
 export const getArticlesListError = (state: StateSchema) => state.articlesList?.error;
 export const getArticlesListHasMore = (state: StateSchema) => state.articlesList?.hasMore;
 export const getArticlesListIsLoading = (state: StateSchema) => state.articlesList?.isLoading;
 export const getArticlesListViewMode = (state: StateSchema) => state.articlesList?.viewMode;
 
-export const getArticlesListInitedQP = (state: StateSchema) => state.articlesList?.queryParams._inited || false;
 export const getArticlesListLimitQP = (state: StateSchema) => state.articlesList?.queryParams.limit || 3;
 export const getArticlesListOrderQP = (state: StateSchema) => state.articlesList?.queryParams.order || Order.ASC;
 export const getArticlesListSortQP = (state: StateSchema) => state.articlesList?.queryParams.sort || Sort.CREATEDAT;

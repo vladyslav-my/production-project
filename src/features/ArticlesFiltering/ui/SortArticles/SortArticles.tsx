@@ -9,16 +9,18 @@ import { orderOptionsData } from "../../lib/optionsData/orderOptionsData";
 import { sortOptionData } from "../../lib/optionsData/sortOptionsData";
 import cls from "./SortArticles.module.scss";
 
+const { getArticlesListSortQP, getArticlesListOrderQP, getArticlesListIsLoading } = articlesListSelectors;
+
 interface SortArticlesProps {
 	className?: string;
 }
 
 export const SortArticles: FC<SortArticlesProps> = ({ className }) => {
 	const dispatch = useAppDispatch();
-	const { getArticlesListSortQP, getArticlesListOrderQP } = articlesListSelectors;
 
 	const sort = useSelector(getArticlesListSortQP);
 	const order = useSelector(getArticlesListOrderQP);
+	const isLoading = useSelector(getArticlesListIsLoading);
 
 	const onChangeSortHandler = (value: string) => {
 		dispatch(articlesListActions.setSort(value));
@@ -37,12 +39,14 @@ export const SortArticles: FC<SortArticlesProps> = ({ className }) => {
 			<span className={cls.SortArticles__label}>Сортувати за:</span>
 			<div className={cls.SortArticles__wrapper}>
 				<DropDown
+					disabled={isLoading}
 					className={cls.SortArticles__sortedDropDown}
 					options={sortOptionData}
 					select={sort}
 					onChange={onChangeSortHandler}
 				/>
 				<DropDown
+					disabled={isLoading}
 					className={cls.SortArticles__orderedDropDown}
 					options={orderOptionsData}
 					select={order}

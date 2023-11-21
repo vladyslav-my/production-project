@@ -4,8 +4,10 @@ import { updateProfileData } from "../services/updateProfileData/updateProfileDa
 import { IProfile, IProfileSchema } from "../types/IProfile";
 
 const initialState: IProfileSchema = {
+	data: {},
+	formData: {},
 	readonly: true,
-	isLoading: false,
+	isLoading: true,
 	isMe: false,
 };
 

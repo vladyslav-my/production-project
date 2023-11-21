@@ -27,5 +27,5 @@ export const useDynamicReduce = (reducers: any, removeAfterUnmount: boolean) => 
 				});
 			}
 		};
-	}, [dispatch, removeAfterUnmount, store.reducerManager, reducers]);
+	}, []);
 };

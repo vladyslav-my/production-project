@@ -1,17 +1,22 @@
 import * as articlesListSelectors from "./model/selectors/articlesList";
-import { articlesListActions } from "./model/slice/articlesListSlice";
+import { articlesListActions, articlesListReducer } from "./model/slice/articlesListSlice";
 import { Article } from "./model/types/Article";
 import { ArticleDetailsSchema } from "./model/types/ArticleDetailsSchema";
 import { ArticlesListSchema, ViewMode } from "./model/types/ArticlesListSchema";
+import { fetchArticlesList } from "./services/fetchArticlesList/fetchArticlesList";
+import { ArticlePreview } from "./ui/ArticlePreview/ArticlePreview";
+import { ArticlePreview as ArticlePreviewSkeleton } from "./ui/ArticlePreview/ArticlePreview.skeleton";
 import { ArticleView } from "./ui/ArticleView/ArticleView";
-import { InfinityArticlesList } from "./ui/InfinityArticlesList/InfinityArticlesList";
 
 export type { Article, ArticleDetailsSchema, ArticlesListSchema };
 
 export {
-	ArticleView,
 	ViewMode,
 	articlesListActions,
+	articlesListReducer,
 	articlesListSelectors,
-	InfinityArticlesList,
+	fetchArticlesList,
+	ArticlePreview,
+	ArticlePreviewSkeleton,
+	ArticleView,
 };
