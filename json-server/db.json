@@ -1029,7 +1029,7 @@
     {
       "userId": 1,
       "id": 1,
-      "first": "Vladis",
+      "first": "Vladi",
       "lastname": "Myronets",
       "age": 19,
       "currency": "USD",
@@ -1041,7 +1041,7 @@
     {
       "userId": 2,
       "id": 2,
-      "first": "Aboba",
+      "first": "Abob",
       "lastname": "Boba",
       "age": 21,
       "currency": "UAH",

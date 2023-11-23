@@ -1,3 +1,1 @@
-import RouteContainer from "./ui/RouteContainer";
-
-export { RouteContainer };
+export { RouteContainer } from "./ui/RouteContainer";

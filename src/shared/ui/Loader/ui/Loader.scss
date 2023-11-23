@@ -17,7 +17,7 @@
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
 
     border-radius: 50%;
-    background: var(--invert-bg-color);
+    background: $accentColor;
 }
 
 .lds-ellipsis div:nth-child(1) {

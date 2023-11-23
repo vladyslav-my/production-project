@@ -42,14 +42,6 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 		return <div>error</div>;
 	}
 
-	if (isLoading) {
-		return (
-			<div className={classNames(cls.ProfileCard, {}, [className])}>
-				<Loader />
-			</div>
-		);
-	}
-
 	return (
 		<div className={classNames(cls.ProfileCard, {}, [className])}>
 			<div className={cls.ProfileCard__row}>
@@ -60,6 +52,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 						readOnly={readOnly}
 						value={data?.first}
 						onChange={onFirstNameChange}
+						disabled={isLoading}
 					/>
 					<Input
 						className={cls.ProfileCard__lastNameInput}
@@ -67,6 +60,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 						readOnly={readOnly}
 						value={data?.lastname}
 						onChange={onLastNameChange}
+						disabled={isLoading}
 					/>
 					<Input
 						className={cls.ProfileCard__ageInput}
@@ -74,6 +68,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 						readOnly={readOnly}
 						value={data?.age?.toString()}
 						onChange={onAgeChange}
+						disabled={isLoading}
 					/>
 					<Input
 						className={cls.ProfileCard__cityInput}
@@ -81,6 +76,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 						readOnly={readOnly}
 						value={data?.city}
 						onChange={onChangeCity}
+						disabled={isLoading}
 					/>
 				</div>
 				<div className={cls.ProfileCard__rightColumn}>
@@ -90,6 +86,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 						readOnly={readOnly}
 						value={data?.username}
 						onChange={onChangeUsername}
+						disabled={isLoading}
 					/>
 					<Input
 						className={cls.ProfileCard__avatarURLInput}
@@ -97,6 +94,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 						readOnly={readOnly}
 						value={data?.avatar}
 						onChange={onAvatarChange}
+						disabled={isLoading}
 					/>
 					<CurrencyDropDown
 						className={cls.ProfileCard__currencyDropDown}
@@ -104,6 +102,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 						readOnly={readOnly}
 						value={data?.currency}
 						onChange={onCurrencyChange}
+						disabled={isLoading}
 					/>
 					<CountryDropDown
 						className={cls.ProfileCard__countryDropDown}
@@ -111,6 +110,7 @@ export const ProfileCard: FC<ProfileCardProps> = ({
 						readOnly={readOnly}
 						value={data?.country}
 						onChange={onCountryChange}
+						disabled={isLoading}
 					/>
 				</div>
 			</div>

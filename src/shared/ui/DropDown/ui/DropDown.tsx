@@ -1,5 +1,5 @@
 import {
-	ChangeEvent, FC, useCallback, useEffect, useMemo, useRef, useState,
+	FC, memo, useCallback, useEffect, useMemo, useRef, useState,
 } from "react";
 import ArrowIcon from "../../../assets/icons/Sidebar/arrow.svg";
 import { classNames } from "../../../lib/classNames/classNames";
@@ -20,7 +20,7 @@ interface DropDownProps {
 	disabled?: boolean;
 }
 
-export const DropDown: FC<DropDownProps> = ({
+export const DropDown: FC<DropDownProps> = memo(({
 	className,
 	options,
 	select,
@@ -119,4 +119,4 @@ export const DropDown: FC<DropDownProps> = ({
 			</div>
 		</div>
 	);
-};
+});

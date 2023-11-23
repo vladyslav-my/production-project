@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { DropDown, DropDownOption } from "@/shared/ui/DropDown";
 import { Currency } from "../model/types/Currency";
@@ -25,14 +25,16 @@ interface CurrencyDropDownProps {
 	readOnly: boolean;
 	label?: string;
 	onChange?: () => void;
+	disabled?: boolean;
 }
 
-export const CurrencyDropDown: FC<CurrencyDropDownProps> = ({
+export const CurrencyDropDown: FC<CurrencyDropDownProps> = memo(({
 	className,
 	value,
 	label,
 	readOnly,
 	onChange,
+	disabled,
 }) => (
 	<DropDown
 		className={classNames(cls.CurrencyDropDown, {}, [className])}
@@ -41,5 +43,6 @@ export const CurrencyDropDown: FC<CurrencyDropDownProps> = ({
 		readOnly={readOnly}
 		select={value}
 		onChange={onChange}
+		disabled={disabled}
 	/>
-);
+));

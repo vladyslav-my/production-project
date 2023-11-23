@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { DropDown, DropDownOption } from "@/shared/ui/DropDown";
 import { Country } from "../model/types/Country";
@@ -25,14 +25,16 @@ interface CountryDropDownProps {
 	readOnly: boolean;
 	label?: string;
 	onChange?: () => void;
+	disabled?: boolean;
 }
 
-export const CountryDropDown: FC<CountryDropDownProps> = ({
+export const CountryDropDown: FC<CountryDropDownProps> = memo(({
 	className,
 	value,
 	label,
 	readOnly,
 	onChange,
+	disabled,
 }) => (
 	<DropDown
 		className={classNames(cls.CountryDropDown, {}, [className])}
@@ -41,5 +43,6 @@ export const CountryDropDown: FC<CountryDropDownProps> = ({
 		readOnly={readOnly}
 		select={value}
 		onChange={onChange}
+		disabled={disabled}
 	/>
-);
+));

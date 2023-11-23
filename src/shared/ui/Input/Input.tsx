@@ -1,4 +1,6 @@
-import { ChangeEvent, FC, InputHTMLAttributes } from "react";
+import {
+	ChangeEvent, FC, InputHTMLAttributes, memo,
+} from "react";
 import { classNames } from "../../lib/classNames/classNames";
 import { Icon as IconComponent } from "../Icon";
 import cls from "./Input.module.scss";
@@ -22,7 +24,7 @@ interface InputProps extends HTMLInputProps {
 	Icon?: React.FC<React.SVGProps<SVGSVGElement>>;
 }
 
-export const Input: FC<InputProps> = ({
+export const Input: FC<InputProps> = memo(({
 	className,
 	value,
 	placeholder,
@@ -49,14 +51,14 @@ export const Input: FC<InputProps> = ({
 				[className, cls[theme]],
 			)}
 		>
-			{!!label && (
+			{label && (
 				<span className={cls.Input__label}>
 					{label}
 					:
 				</span>
 			)}
 			<div className={cls.Input__wrapper}>
-				{!!Icon && (
+				{Icon && (
 					<IconComponent Svg={Icon} className={cls.Input__icon} height={15} width={15} />
 				)}
 				<input
@@ -71,4 +73,4 @@ export const Input: FC<InputProps> = ({
 			</div>
 		</div>
 	);
-};
+});

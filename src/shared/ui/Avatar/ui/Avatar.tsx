@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { classNames } from "../../../lib/classNames/classNames";
 import cls from "./Avatar.module.scss";
 
@@ -8,8 +8,8 @@ interface AvatarProps {
 	src?: string;
 }
 
-export const Avatar: FC<AvatarProps> = ({ className, size, src }) => (
+export const Avatar: FC<AvatarProps> = memo(({ className, size, src }) => (
 	<div className={classNames(cls.Avatar, {}, [className])} style={{ width: size, height: size }}>
 		<img className={cls.Avatar__image} src={src} />
 	</div>
-);
+));

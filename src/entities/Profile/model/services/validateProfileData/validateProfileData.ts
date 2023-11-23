@@ -17,7 +17,7 @@ export const validateProfileData = (profile?: IProfile) => {
 		errors.push(ValidateProfileError.INCORRECT_FIRST);
 	}
 
-	if (!first || lastname?.length === 0) {
+	if (!lastname || lastname?.length === 0) {
 		errors.push(ValidateProfileError.INCORRECT_LASTNAME);
 	}
 

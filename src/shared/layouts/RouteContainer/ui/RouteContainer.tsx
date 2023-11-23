@@ -1,4 +1,4 @@
-import { FC, ReactNode, memo } from "react";
+import { FC, ReactNode } from "react";
 // eslint-disable-next-line @conarti/feature-sliced/layers-slices
 import { Navbar } from "@/widgets/Navbar";
 import { classNames } from "../../../lib/classNames/classNames";
@@ -12,7 +12,7 @@ interface RouteContainerProps {
 	Feature?: ReactNode;
 }
 
-const RouteContainer: FC<RouteContainerProps> = ({
+export const RouteContainer: FC<RouteContainerProps> = ({
 	className,
 	children,
 	Widget,
@@ -33,5 +33,3 @@ const RouteContainer: FC<RouteContainerProps> = ({
 		</div>
 	);
 };
-
-export default memo(RouteContainer);

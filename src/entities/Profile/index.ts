@@ -2,6 +2,8 @@ import { IProfileSchema } from "./model/types/IProfile";
 
 export type { IProfileSchema };
 
+export { getProfileValidateError } from "./model/selectors/getProfileValidateError/getProfileValidateError";
+export { getProfileIsFetching } from "./model/selectors/getProfileIsFetching/getProfileIsFetching";
 export { getProfileError } from "./model/selectors/getProfileError/getProfileError";
 export { getProfileFormData } from "./model/selectors/getProfileFormData/getProfileFormData";
 export { getProfileIsLoading } from "./model/selectors/getProfileIsLoading/getProfileIsLoading";

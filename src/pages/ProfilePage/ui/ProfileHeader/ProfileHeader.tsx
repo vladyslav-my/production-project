@@ -1,9 +1,10 @@
-import { FC, useCallback } from "react";
+import { FC, useCallback, useEffect } from "react";
 import { useSelector } from "react-redux";
 import {
 	getProfileReadOnly, updateProfileData, ProfileActions, getProfileFormData, getProfileIsMe,
 	getProfileData,
 } from "@/entities/Profile";
+import { getUserAuthData } from "@/entities/User";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Avatar } from "@/shared/ui/Avatar";
@@ -12,34 +13,38 @@ import cls from "./ProfileHeader.module.scss";
 
 interface ProfileHeaderProps {
 	className?: string;
-	profileId: number;
 }
 
-export const ProfileHeader: FC<ProfileHeaderProps> = ({ className, profileId }) => {
+export const ProfileHeader: FC<ProfileHeaderProps> = ({ className }) => {
 	const dispatch = useAppDispatch();
 	const readOnly = useSelector(getProfileReadOnly);
 	const isMe = useSelector(getProfileIsMe);
-	const formData = useSelector(getProfileFormData);
 	const data = useSelector(getProfileData);
+	const authData = useSelector(getUserAuthData);
+
+	useEffect(() => {
+		if (authData?.id === data?.userId) {
+			dispatch(ProfileActions.setIsMe(true));
+		}
+	}, []);
 
 	const onEditClickHandler = useCallback(() => {
 		if (isMe) {
 			dispatch(ProfileActions.setReadOnly(false));
 		}
-	}, [dispatch, isMe]);
+	}, [isMe]);
 
 	const onSaveClickHandler = useCallback(() => {
-		if (!readOnly) {
-			dispatch(ProfileActions.setReadOnly(true));
+		if (!readOnly && isMe) {
 			dispatch(updateProfileData({ profileId: data.userId! }));
 		}
-	}, [readOnly, dispatch, data.userId]);
+	}, [readOnly, data.userId, isMe]);
 
 	const onCancelEditClickHandler = useCallback(() => {
-		if (!readOnly) {
+		if (!readOnly && isMe) {
 			dispatch(ProfileActions.cancelEdit());
 		}
-	}, [dispatch, readOnly]);
+	}, [readOnly]);
 
 	return (
 		<div className={classNames(cls.ProfileHeader, {}, [className])}>
@@ -49,7 +54,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({ className, profileId }) 
 						className={classNames(
 							cls.ProfileHeader__cancel,
 							{
-								[cls.ProfileHeader__cancel_hide]: !!readOnly,
+								[cls.ProfileHeader__cancel_hide]: readOnly,
 							},
 							[],
 						)}
@@ -59,7 +64,7 @@ export const ProfileHeader: FC<ProfileHeaderProps> = ({ className, profileId }) 
 						Cancel
 					</Button>
 				</div>
-				<Avatar className={cls.ProfileHeader__avatar} size={128} src={formData?.avatar} />
+				<Avatar className={cls.ProfileHeader__avatar} size={128} src={data.avatar} />
 				<div className={cls.ProfileHeader__rightBtn}>
 					<Button
 						className={cls.ProfileHeader__editAndSave}

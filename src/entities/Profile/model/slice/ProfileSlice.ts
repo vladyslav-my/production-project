@@ -7,8 +7,10 @@ const initialState: IProfileSchema = {
 	data: {},
 	formData: {},
 	readonly: true,
-	isLoading: true,
+	isFetching: true,
+	isLoading: false,
 	isMe: false,
+	validateError: [],
 };
 
 export const ProfileSlice = createSlice({
@@ -21,6 +23,7 @@ export const ProfileSlice = createSlice({
 		cancelEdit: (state) => {
 			state.readonly = true;
 			state.formData = state.data;
+			state.validateError = [];
 		},
 		setFormData: (state, action: PayloadAction<IProfile>) => {
 			state.formData = {
@@ -36,30 +39,31 @@ export const ProfileSlice = createSlice({
 		builder
 			.addCase(fetchProfileData.pending, (state) => {
 				state.error = undefined;
-				state.isLoading = true;
+				state.isFetching = true;
 			})
 			.addCase(fetchProfileData.fulfilled, (state, action: PayloadAction<IProfile>) => {
-				state.isLoading = false;
+				state.isFetching = false;
 				state.data = action.payload;
 				state.formData = action.payload;
 			})
 			.addCase(fetchProfileData.rejected, (state, action) => {
-				state.isLoading = false;
+				state.isFetching = false;
 				state.error = action.payload;
 			})
 
 			.addCase(updateProfileData.pending, (state) => {
-				state.error = undefined;
 				state.isLoading = true;
 			})
 			.addCase(updateProfileData.fulfilled, (state, action: PayloadAction<IProfile>) => {
 				state.isLoading = false;
 				state.data = action.payload;
 				state.formData = action.payload;
+				state.readonly = true;
+				state.validateError = [];
 			})
 			.addCase(updateProfileData.rejected, (state, action) => {
 				state.isLoading = false;
-				state.error = action.payload;
+				state.validateError = action.payload;
 			});
 	},
 });
