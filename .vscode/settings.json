@@ -2,8 +2,8 @@
    "editor.tabSize": 3,
    "editor.insertSpaces": false,
    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true,
-      "source.fixAll.stylelint": true
+      "source.fixAll.eslint": "explicit",
+      "source.fixAll.stylelint": "explicit"
    },
    "jest.jestCommandLine": "npx jest --config config/jest/jest.config.ts",
    "jest.autoRun": "off",

@@ -15,11 +15,11 @@ interface ArticlePageProps {
 }
 
 const ArticlesPage: FC<ArticlePageProps> = ({ className }) => {
-	const isTablet = useMediaQuery({ minWidth: Devices.TABLET });
+	const isLargeDesktop = useMediaQuery({ minWidth: Devices.LARGE_DESKTOP });
 
 	return (
 		<RouteContainer
-			Feature={isTablet && <ChangeArticlesView className={cls.ChangeArticlesView__feature} />}
+			Feature={isLargeDesktop && <ChangeArticlesView className={cls.ChangeArticlesView__feature} />}
 			Widget={<ArticlesFilters />}
 			className={classNames(cls.ArticlesPage, {}, [className])}
 		>

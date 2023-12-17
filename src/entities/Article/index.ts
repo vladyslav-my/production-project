@@ -1,3 +1,4 @@
+import { getArticleDetailsIsLoading } from "./model/selectors/articleDetails/getArticleDetailsIsLoading/getArticleDetailsIsLoading";
 import * as articlesListSelectors from "./model/selectors/articlesList";
 import { articlesListActions, articlesListReducer } from "./model/slice/articlesListSlice";
 import { Article } from "./model/types/Article";
@@ -7,6 +8,7 @@ import { fetchArticlesList } from "./services/fetchArticlesList/fetchArticlesLis
 import { ArticlePreview } from "./ui/ArticlePreview/ArticlePreview";
 import { ArticlePreview as ArticlePreviewSkeleton } from "./ui/ArticlePreview/ArticlePreview.skeleton";
 import { ArticleView } from "./ui/ArticleView/ArticleView";
+import { ArticleView as ArticleViewSkeleton } from "./ui/ArticleView/ArticleView.skeleton";
 
 export type { Article, ArticleDetailsSchema, ArticlesListSchema };
 
@@ -19,4 +21,6 @@ export {
 	ArticlePreview,
 	ArticlePreviewSkeleton,
 	ArticleView,
+	ArticleViewSkeleton,
+	getArticleDetailsIsLoading,
 };
