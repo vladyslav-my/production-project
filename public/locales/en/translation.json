@@ -1,4 +1,21 @@
 {
+    "home": "Home",
+    "about": "About",
+    "profile": "Profile",
+    "articles": "Articles",
     "lang": "EN",
-    "Page not found": "Page not found"
+
+    "all articles": "All Articles",
+    "it": "IT",
+    "science": "Science",
+    "sort by": "Sort by",
+    "relevance": "Relevance",
+    "views": "Views",
+    "asc": "Ascending",
+    "desc": "Descending",
+
+    "log in": "Log in",
+    "log out": "Log out",
+    "back": "Back",
+    "read more": "Read more"
 }

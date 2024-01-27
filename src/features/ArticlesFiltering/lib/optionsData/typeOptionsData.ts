@@ -1,14 +1,16 @@
-export const typeOptionsData = [
-	{
-		content: "Всі статті",
-		value: "all",
-	},
-	{
-		content: "IT",
-		value: "IT",
-	},
-	{
-		content: "Наука",
-		value: "science",
-	},
-];
+export const typeOptionsData = (t: any) => {
+	return [
+		{
+			content: t("all articles"),
+			value: "all",
+		},
+		{
+			content: t("it"),
+			value: "IT",
+		},
+		{
+			content: t("science"),
+			value: "science",
+		},
+	];
+};

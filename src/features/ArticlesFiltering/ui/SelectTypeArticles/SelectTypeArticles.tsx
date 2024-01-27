@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { articlesListActions, articlesListSelectors } from "@/entities/Article";
@@ -20,6 +21,8 @@ const { getArticlesListTypeQP, getArticlesListIsLoading } = articlesListSelector
 export const SelectTypeArticles: FC<SelectTypeArticlesProps> = ({ className }) => {
 	const dispatch = useAppDispatch();
 
+	const { t } = useTranslation();
+
 	const type = useSelector(getArticlesListTypeQP);
 	const isLoading = useSelector(getArticlesListIsLoading);
 
@@ -35,7 +38,7 @@ export const SelectTypeArticles: FC<SelectTypeArticlesProps> = ({ className }) =
 		return (
 			<DropDown
 				className={classNames(cls.SelectTypeArticles, {}, [className])}
-				options={typeOptionsData}
+				options={typeOptionsData(t)}
 				select={type}
 				onChange={onChangeTypeHandler}
 				disabled={isLoading}
@@ -46,7 +49,7 @@ export const SelectTypeArticles: FC<SelectTypeArticlesProps> = ({ className }) =
 	return (
 		<GroupButton
 			className={classNames(cls.SelectTypeArticles, {}, [className])}
-			options={typeOptionsData}
+			options={typeOptionsData(t)}
 			value={type}
 			onChange={onChangeTypeHandler}
 			disabled={isLoading}

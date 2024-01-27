@@ -1,10 +1,12 @@
-export const sortOptionData = [
-	{
-		content: "Датою загрузки",
-		value: "createdAt",
-	},
-	{
-		content: "Перегдяду",
-		value: "views",
-	},
-];
+export const sortOptionsData = (t: any) => {
+	return [
+		{
+			content: t("relevance"),
+			value: "createdAt",
+		},
+		{
+			content: t("views"),
+			value: "views",
+		},
+	];
+};

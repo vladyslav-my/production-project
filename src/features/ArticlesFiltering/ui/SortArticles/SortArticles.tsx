@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { articlesListActions, articlesListSelectors } from "@/entities/Article";
 import { fetchArticlesList } from "@/entities/Article/services/fetchArticlesList/fetchArticlesList";
@@ -6,7 +7,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { DropDown } from "@/shared/ui/DropDown";
 import { orderOptionsData } from "../../lib/optionsData/orderOptionsData";
-import { sortOptionData } from "../../lib/optionsData/sortOptionsData";
+import { sortOptionsData } from "../../lib/optionsData/sortOptionsData";
 import cls from "./SortArticles.module.scss";
 
 const { getArticlesListSortQP, getArticlesListOrderQP, getArticlesListIsLoading } = articlesListSelectors;
@@ -17,6 +18,8 @@ interface SortArticlesProps {
 
 export const SortArticles: FC<SortArticlesProps> = ({ className }) => {
 	const dispatch = useAppDispatch();
+
+	const { t } = useTranslation();
 
 	const sort = useSelector(getArticlesListSortQP);
 	const order = useSelector(getArticlesListOrderQP);
@@ -36,19 +39,22 @@ export const SortArticles: FC<SortArticlesProps> = ({ className }) => {
 
 	return (
 		<div className={classNames(cls.SortArticles, {}, [className])}>
-			<span className={cls.SortArticles__label}>Сортувати за:</span>
+			<span className={cls.SortArticles__label}>
+				{t("sort by")}
+				:
+			</span>
 			<div className={cls.SortArticles__wrapper}>
 				<DropDown
 					disabled={isLoading}
 					className={cls.SortArticles__sortedDropDown}
-					options={sortOptionData}
+					options={sortOptionsData(t)}
 					select={sort}
 					onChange={onChangeSortHandler}
 				/>
 				<DropDown
 					disabled={isLoading}
 					className={cls.SortArticles__orderedDropDown}
-					options={orderOptionsData}
+					options={orderOptionsData(t)}
 					select={order}
 					onChange={onChangeOrderHandler}
 				/>

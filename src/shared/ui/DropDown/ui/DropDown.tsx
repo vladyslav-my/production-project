@@ -1,6 +1,7 @@
 import {
 	FC, memo, useCallback, useEffect, useMemo, useRef, useState,
 } from "react";
+import { useTranslation } from "react-i18next";
 import ArrowIcon from "../../../assets/icons/Sidebar/arrow.svg";
 import { classNames } from "../../../lib/classNames/classNames";
 import cls from "./DropDown.module.scss";
@@ -31,6 +32,7 @@ export const DropDown: FC<DropDownProps> = memo(({
 }) => {
 	const [unroll, setUnroll] = useState(false);
 	const [size, setSize] = useState<string | undefined>(undefined);
+	const { t, i18n } = useTranslation();
 
 	const dropDownMenu = useRef<HTMLDivElement>(null);
 	const dropDownSelect = useRef<HTMLDivElement>(null);
@@ -54,13 +56,17 @@ export const DropDown: FC<DropDownProps> = memo(({
 
 	useEffect(() => {
 		const widthMenu = dropDownMenu.current?.scrollWidth;
-		const widthSelect = dropDownSelect.current?.scrollWidth;
-		if (widthMenu && widthSelect && widthSelect > widthMenu) {
-			setSize(`${widthSelect}px`);
-		} else {
-			setSize(`${widthMenu}px`);
-		}
-	}, [dropDownMenu, dropDownSelect, size]);
+		// const widthSelect = dropDownSelect.current?.scrollWidth;
+
+		// if (!widthSelect > !widthMenu) {
+		// 	setSize(`${widthSelect}px`);
+		// 	console.log("width select active", widthSelect);
+		// } else {
+		// 	setSize(`${widthMenu}px`);
+		// 	console.log("width menu active", widthMenu);
+		// }
+		setSize(`${widthMenu}px`);
+	}, [dropDownMenu, dropDownSelect, size, i18n.language]);
 
 	useEffect(() => {
 		const onCloseClickHandler = () => {

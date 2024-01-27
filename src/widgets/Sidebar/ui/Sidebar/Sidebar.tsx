@@ -6,12 +6,12 @@ import { NavLink } from "react-router-dom";
 import { LangSwitcher } from "@/features/LangSwitcher";
 import { ThemeSwitcher } from "@/features/ThemeSwitcher";
 import ArrowIcon from "@/shared/assets/icons/Sidebar/arrow.svg";
-import LogoIcon from "@/shared/assets/icons/Sidebar/logo.svg";
 import { getMainRoutePath } from "@/shared/config/routes/path";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { AppMediaQuery, Devices } from "@/shared/lib/mediaQuery";
 import { Button } from "@/shared/ui/Buttons";
 import { Icon } from "@/shared/ui/Icon";
+import { Logo } from "@/shared/ui/Logo/Logo";
 import { getSidebarLinks } from "../../model/selectors/getSidebarLinks";
 import { SidebarLinkItem } from "../SidebarLinkItem/SidebarLinkItem";
 import cls from "./Sidebar.module.scss";
@@ -55,9 +55,7 @@ const Sidebar: FC<SidebarProps> = ({ className }) => {
 				<Button className={cls.Sidebar__arrowButton} onClick={onToggle}>
 					<Icon Svg={ArrowIcon} className={cls.Sidebar__arrowIcon} />
 				</Button>
-				<NavLink className={cls.Sidebar__logoLink} to={getMainRoutePath()}>
-					<Icon Svg={LogoIcon} className={cls.Sidebar__logoIcon} />
-				</NavLink>
+				<Logo className={cls.Sidebar__logo} />
 			</AppMediaQuery>
 			<div className={`${cls.links} ${cls.Sidebar__links}`}>{Links}</div>
 			<AppMediaQuery minWidth={Devices.TABLET}>

@@ -6,6 +6,9 @@ import svgr from "vite-plugin-svgr";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+	server: {
+		host: "0.0.0.0",
+	},
 	plugins: [svgr({ exportAsDefault: true }), react()],
 	resolve: {
 		alias: [{ find: "@", replacement: "/src" }],
@@ -23,6 +26,7 @@ export default defineConfig({
 	},
 	define: {
 		__IS_DEV__: JSON.stringify(true),
-		__API__: JSON.stringify("http://localhost:8000"),
+		// __API__: JSON.stringify("http://localhost:8000"),
+		__API__: JSON.stringify("http://192.168.0.107:8000"),
 	},
 });

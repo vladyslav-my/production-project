@@ -16,6 +16,8 @@
 	}
 
 	&__selectType {
+		z-index: 3;
+
 		display: inline-flex;
 		
 		gap: rem(8);

@@ -13,7 +13,7 @@ export const validateProfileData = (profile?: IProfile) => {
 		errors.push(ValidateProfileError.INCORRECT_AGE);
 	}
 
-	if (!first || first?.length === 0) {
+	if (!first || first?.length === 0 || first?.length > 10) {
 		errors.push(ValidateProfileError.INCORRECT_FIRST);
 	}
 

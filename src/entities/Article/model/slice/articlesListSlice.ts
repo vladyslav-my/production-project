@@ -10,9 +10,9 @@ const initialState: ArticlesListSchema = {
 	data: [],
 	hasMore: true,
 	isLoading: false,
-	viewMode: (localStorage.getItem("ArticlesViewMode") as ViewMode) || ViewMode.LIST,
+	viewMode: (localStorage.getItem("ArticlesViewMode") as ViewMode) || ViewMode.TILE,
 	queryParams: {
-		limit: localStorage.getItem("ArticlesViewMode") as ViewMode ? 9 : 3,
+		limit: localStorage.getItem("ArticlesViewMode") as ViewMode ? 3 : 9,
 		page: 1,
 		order: getUrlParams("order") as Order || Order.ASC,
 		sort: getUrlParams("sort") as Sort || Sort.CREATEDAT,

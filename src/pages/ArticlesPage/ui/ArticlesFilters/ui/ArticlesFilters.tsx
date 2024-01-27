@@ -23,11 +23,13 @@ export const ArticlesFilters: FC<ArticlesFiltersProps> = ({ className }) => (
 		<AppMediaQuery maxWidth={Devices.INTERMEDIATE_DESKTOP}>
 			<div className={cls.ArticlesFilters__wrapper}>
 				<SelectTypeArticles className={cls.ArticlesFilters__selectType} />
-				<ChangeArticlesView
-					borderStyle={CAVBorderStyle.SECONDARY}
-					className={cls.ArticlesFilters__changeArticlesView}
-					sizeStyle={CAVSizeStyle.SMALL}
-				/>
+				<AppMediaQuery minWidth={Devices.MOBILE}>
+					<ChangeArticlesView
+						borderStyle={CAVBorderStyle.SECONDARY}
+						className={cls.ArticlesFilters__changeArticlesView}
+						sizeStyle={CAVSizeStyle.SMALL}
+					/>
+				</AppMediaQuery>
 			</div>
 		</AppMediaQuery>
 		<AppMediaQuery minWidth={Devices.INTERMEDIATE_DESKTOP}>

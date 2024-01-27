@@ -1,5 +1,12 @@
 .Navbar {
 	display: flex;
-	gap: rem(8);
+	align-items: center;
+
+	justify-content: space-between;
+	gap: rem(20);
+
+	&__langSwitcher {
+		margin-left: auto;
+	}
 }
 

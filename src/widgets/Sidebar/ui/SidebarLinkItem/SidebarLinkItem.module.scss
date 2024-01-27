@@ -110,7 +110,7 @@
 		width: em(21);
 		height: em(21);
 		margin-right: rem(16);
-	
+
 		transition: all 0.25s ease-in-out;
 		fill: #74A2B2;
 		@media (max-width: em($tablet)) {
@@ -128,5 +128,6 @@
 
 		transition: all 0.25s ease-in-out;
 		transform: translateX(-100%);
+		text-wrap: nowrap;
 	}
 }

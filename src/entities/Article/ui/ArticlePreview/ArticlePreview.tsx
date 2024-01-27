@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useTranslation } from "react-i18next";
 import ViewsIcon from "@/shared/assets/icons/Post/views.svg";
 import { getArticleRoutePath } from "@/shared/config/routes/path";
 import { Shell } from "@/shared/layouts/Shell";
@@ -19,6 +20,7 @@ interface ArticlePreviewProps {
 }
 
 export const ArticlePreview: FC<ArticlePreviewProps> = ({ className, data, viewMode }) => {
+	const { t } = useTranslation();
 	if (viewMode === ViewMode.TILE) {
 		return (
 			<AppNavLink to={getArticleRoutePath(data?.id)}>
@@ -74,7 +76,7 @@ export const ArticlePreview: FC<ArticlePreviewProps> = ({ className, data, viewM
 					theme={ButtonTheme.OUTLINE}
 					to={getArticleRoutePath(data?.id)}
 				>
-					Читать далее...
+					{t("read more")}
 				</AppNavLink>
 				<div className={cls.bottom__views}>
 					<ViewsIcon className={cls.bottom__viewsIcon} />

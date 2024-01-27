@@ -1,17 +1,18 @@
-import { FC, useMemo } from "react";
+import { FC, useEffect, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import { RouteFeaturesContainer } from "@/widgets/RouteFeaturesContainer";
 import { Rating } from "@/features/Rating";
 import {
-	ArticlePreviewSkeleton, ArticleView, ArticleViewSkeleton, getArticleDetailsIsLoading,
+	ArticleView, ArticleViewSkeleton, getArticleDetailsIsLoading,
+	getArticleDetailsError,
 } from "@/entities/Article";
-import { getArticleDetailsError } from "@/entities/Article/model/selectors/articleDetails/getArticleDetailsError/getArticleDetailsError";
+import { fetchArticleDetailsById } from "@/entities/Article/services/fetchArticleById/fetchArticleDetailsById";
 import { RouteContainer } from "@/shared/layouts/RouteContainer";
 import { Shell } from "@/shared/layouts/Shell";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { PageLoader } from "@/shared/ui/PageLoader";
+import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { ArticleComment } from "../ArticleComment";
 import cls from "./ArticleDetailsPage.module.scss";
 
@@ -24,6 +25,11 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
 	const articleId = useMemo(() => Number(id), [id]);
 	const isLoading = useSelector(getArticleDetailsIsLoading);
 	const error = useSelector(getArticleDetailsError);
+	const dispatch = useAppDispatch();
+
+	useEffect(() => {
+		dispatch(fetchArticleDetailsById(articleId));
+	}, []);
 
 	if (error) {
 		return <NotFoundPage />;
@@ -48,8 +54,8 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
 				className={classNames(cls.ArticleDetailsPage, {}, [className])}
 			>
 				<Shell>
+					<ArticleView />
 					<Rating articleId={articleId} />
-					<ArticleView articleId={articleId} />
 					<ArticleComment articleId={articleId} />
 				</Shell>
 			</RouteContainer>

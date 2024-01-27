@@ -1,9 +1,11 @@
 import {
 	FC, memo, useCallback, useMemo, useState,
 } from "react";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "react-responsive";
 import { LoginModal } from "@/features/AuthByUsername";
+import { LangSwitcher } from "@/features/LangSwitcher";
 import { userActions } from "@/entities/User";
 import { getUserAuthData } from "@/entities/User/selectors/getUserAuthData";
 import { Shell } from "@/shared/layouts/Shell";
@@ -12,6 +14,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Devices } from "@/shared/lib/mediaQuery";
 import { Button, ButtonTheme } from "@/shared/ui/Buttons";
+import { Logo } from "@/shared/ui/Logo/Logo";
 import cls from "./Navbar.module.scss";
 
 interface NavbarProps {
@@ -24,6 +27,8 @@ const Navbar: FC<NavbarProps> = ({ className }) => {
 	const authData = useSelector(getUserAuthData);
 	const isTablet = useMediaQuery({ maxWidth: Devices.TABLET });
 	const isLargeDesktop = useMediaQuery({ maxWidth: Devices.LARGE_DESKTOP });
+
+	const { t } = useTranslation();
 
 	const onLogoutHandler = useCallback(() => {
 		dispatch(userActions.logout());
@@ -44,7 +49,7 @@ const Navbar: FC<NavbarProps> = ({ className }) => {
 					theme={!isLargeDesktop ? ButtonTheme.PADDING : ButtonTheme.OUTLINE}
 					onClick={onLogoutHandler}
 				>
-					log out
+					{t("log out")}
 				</Button>
 			);
 		}
@@ -59,7 +64,7 @@ const Navbar: FC<NavbarProps> = ({ className }) => {
 					theme={!isLargeDesktop ? ButtonTheme.PADDING : ButtonTheme.OUTLINE}
 					onClick={onLoginHandler}
 				>
-					log in
+					{t("log in")}
 				</Button>
 			);
 		}
@@ -81,6 +86,8 @@ const Navbar: FC<NavbarProps> = ({ className }) => {
 
 	return (
 		<Shell className={classNames(cls.Navbar, {}, [className])} shellStyle={shellStyle}>
+			{isTablet && <Logo />}
+			{isTablet && <LangSwitcher className={cls.Navbar__langSwitcher} />}
 			<LogoutButton />
 			<LoginButton />
 			<LoginModal oppened={isOpenModal} onToggle={onToggleHandler} />

@@ -25,23 +25,23 @@ export const getSidebarLinks = createSelector(
 			{
 				path: getMainRoutePath(),
 				Icon: HomeSvg,
-				name: "Home",
+				name: "home",
 			},
 			{
 				path: getAboutRoutePath(),
 				Icon: AboutUsSvg,
-				name: "About",
+				name: "about",
 			},
 			{
 				path: getProfileRoutePath(authData?.id),
 				Icon: ProfileSvg,
-				name: "Profile",
+				name: "profile",
 				authOnly: true,
 			},
 			{
 				path: getArticleRoutePath(),
 				Icon: ArticleSvg,
-				name: "Articles",
+				name: "articles",
 				authOnly: true,
 			},
 		];

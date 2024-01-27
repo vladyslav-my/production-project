@@ -1,3 +1,4 @@
+import { getArticleDetailsError } from "./model/selectors/articleDetails/getArticleDetailsError/getArticleDetailsError";
 import { getArticleDetailsIsLoading } from "./model/selectors/articleDetails/getArticleDetailsIsLoading/getArticleDetailsIsLoading";
 import * as articlesListSelectors from "./model/selectors/articlesList";
 import { articlesListActions, articlesListReducer } from "./model/slice/articlesListSlice";
@@ -23,4 +24,5 @@ export {
 	ArticleView,
 	ArticleViewSkeleton,
 	getArticleDetailsIsLoading,
+	getArticleDetailsError,
 };

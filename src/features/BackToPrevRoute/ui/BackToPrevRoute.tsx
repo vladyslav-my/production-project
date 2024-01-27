@@ -1,4 +1,5 @@
 import { FC, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { Button, ButtonTheme } from "@/shared/ui/Buttons";
@@ -10,6 +11,7 @@ interface BackToPrevRouteProps {
 
 export const BackToPrevRoute: FC<BackToPrevRouteProps> = ({ className }) => {
 	const navigate = useNavigate();
+	const { t } = useTranslation();
 
 	const onClickHandler = useCallback(() => {
 		navigate(-1);
@@ -21,7 +23,7 @@ export const BackToPrevRoute: FC<BackToPrevRouteProps> = ({ className }) => {
 			theme={ButtonTheme.OUTLINE}
 			onClick={onClickHandler}
 		>
-			Назад
+			{t("back")}
 		</Button>
 	);
 };
